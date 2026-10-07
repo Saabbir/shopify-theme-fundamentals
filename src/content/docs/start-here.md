@@ -21,8 +21,9 @@ A Shopify theme is the code that controls how a store's storefront looks and beh
 | 4 | [Liquid Language Basics](/liquid-basics/) | The actual syntax rules behind every example you've read so far: tags, output, variables, conditionals, loops, and filters. |
 | 5 | [Shopify's Global Objects](/global-objects/) | What's actually inside `product`, `cart`, `customer`, `settings`, and the rest — and which ones are available on which pages. |
 | 6 | [Schema & Settings](/schema-and-settings/) | Every setting type, presets vs. defaults, the two settings files, conditional settings, and locale/translation keys. |
+| 7 | [Design Tokens: Color, Type & Spacing](/design-tokens/) | Color schemes, loading a merchant-chosen font correctly, a spacing scale, and the CSS-variable technique that ties all three together. |
 
-More sections are planned beyond these six — design tokens, forms, the Figma-to-code mental model, CSS, JavaScript, and a full reference section. See the [roadmap](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) in the repo for the complete plan. New sections get added here as they're written.
+More sections are planned beyond these seven — forms, the Figma-to-code mental model, CSS, JavaScript, and a full reference section. See the [roadmap](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) in the repo for the complete plan. New sections get added here as they're written.
 
 ## How this site is organized
 

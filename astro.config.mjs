@@ -155,6 +155,16 @@ export default defineConfig({
             { label: '6.5. Locale Files & Translation Keys', slug: 'schema-and-settings/locale-files-and-translation-keys' },
           ],
         },
+        {
+          label: '7. Design Tokens: Color, Type & Spacing',
+          items: [
+            { label: 'Overview', slug: 'design-tokens' },
+            { label: '7.1. Color Settings & Color Schemes', slug: 'design-tokens/color-settings-and-color-schemes' },
+            { label: '7.2. Typography & font_picker', slug: 'design-tokens/typography-and-font-picker' },
+            { label: '7.3. Spacing & Layout Tokens', slug: 'design-tokens/spacing-and-layout-tokens' },
+            { label: '7.4. Turning Settings into CSS Variables', slug: 'design-tokens/turning-settings-into-css-variables' },
+          ],
+        },
       ],
     }),
   ],

@@ -59,7 +59,7 @@ Audience throughout: someone who has never touched a Shopify theme before, but a
 - 6.4. Conditional Settings (visible_if)
 - 6.5. Locale Files & Translation Keys
 
-## 7. Design Tokens: Color, Type & Spacing — `status: planned`
+## 7. Design Tokens: Color, Type & Spacing — `status: live`
 
 - Overview
 - 7.1. Color Settings & Color Schemes
