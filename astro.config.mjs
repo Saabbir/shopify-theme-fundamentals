@@ -286,6 +286,7 @@ export default defineConfig({
             { label: '18.8. Font-Loading Performance', slug: 'all-about-typography/font-loading-performance' },
             { label: '18.9. Fluid Type Scales in Depth', slug: 'all-about-typography/fluid-type-scales-in-depth' },
             { label: '18.10. Font Fallback for Multi-Language Stores', slug: 'all-about-typography/font-fallback-for-multi-language-stores' },
+            { label: '18.11. A Complete Design Tokens Example', slug: 'all-about-typography/a-complete-design-tokens-example' },
           ],
         },
         {
