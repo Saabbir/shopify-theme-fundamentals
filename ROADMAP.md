@@ -50,7 +50,7 @@ Audience throughout: someone who has never touched a Shopify theme before, but a
 - 5.3. settings, section & block
 - 5.4. Other Useful Objects (request, routes, images, metafields)
 
-## 6. Schema & Settings — `status: planned`
+## 6. Schema & Settings — `status: live`
 
 - Overview
 - 6.1. Section & Block Settings: Every Type

@@ -144,6 +144,17 @@ export default defineConfig({
             { label: '5.4. Other Useful Objects', slug: 'global-objects/other-useful-objects' },
           ],
         },
+        {
+          label: '6. Schema & Settings',
+          items: [
+            { label: 'Overview', slug: 'schema-and-settings' },
+            { label: '6.1. Section & Block Settings: Every Type', slug: 'schema-and-settings/section-and-block-settings-every-type' },
+            { label: '6.2. Presets & Defaults', slug: 'schema-and-settings/presets-and-defaults' },
+            { label: '6.3. settings_schema.json & settings_data.json', slug: 'schema-and-settings/settings-schema-and-settings-data' },
+            { label: '6.4. Conditional Settings', slug: 'schema-and-settings/conditional-settings' },
+            { label: '6.5. Locale Files & Translation Keys', slug: 'schema-and-settings/locale-files-and-translation-keys' },
+          ],
+        },
       ],
     }),
   ],
