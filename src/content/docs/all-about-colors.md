@@ -1,18 +1,17 @@
 ---
 title: All About Colors
-description: Everything about color that the introductory chapter didn't have room for.
+description: Everything about color, from the color setting to token systems and a real contrast-testing workflow.
 ---
 
-**TL;DR:** Everything about color that the introductory chapter didn't have room for.
+**TL;DR:** Everything about color, from the `color` setting to token systems and a real contrast-testing workflow.
 
-:::note[This is a Part 2 deep dive]
-This chapter assumes you've already read [Color Settings & Color Schemes](/design-tokens/color-settings-and-color-schemes/) — it doesn't repeat what a `color` setting is or how `color_scheme_group` works. If you haven't read Part 1 yet, start there; this chapter goes deep on one topic rather than introducing it.
-:::
+This chapter is a complete, standalone reference on color — it starts from zero and builds all the way up to advanced territory, so it works whether this is the first page you've ever read on this site or the fiftieth. It assumes you know HTML, CSS, and JavaScript, same as the rest of this site, but nothing Shopify-specific beyond that.
 
 ## What's in this chapter
 
 | Page | Answers |
 |---|---|
+| [Color Fundamentals](/all-about-colors/color-fundamentals/) | The `color` setting, `color_scheme_group`, and why bundling colors beats standalone pickers |
 | [Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/) | Hex, RGB, and HSL — what a merchant's color picker actually gives you, and converting between them |
 | [Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/) | Every Liquid color filter, with before/after examples |
 | [Dark Mode](/all-about-colors/dark-mode/) | Supporting `prefers-color-scheme` alongside (or instead of) a merchant-controlled scheme setting |

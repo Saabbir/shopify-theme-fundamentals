@@ -5,7 +5,7 @@ description: Supporting prefers-color-scheme alongside (or instead of) a merchan
 
 **TL;DR:** Supporting `prefers-color-scheme` alongside (or instead of) a merchant-controlled scheme setting.
 
-`color_scheme_group` from Part 1 lets a merchant deliberately switch a section to a different scheme — a light one, a dark one, a bold one. That's a merchant choosing a look. **Dark mode**, as the term is normally used, is different: it's the shopper's own operating system or browser preference, and a theme that respects it does so automatically, without the merchant doing anything.
+`color_scheme_group` (see [Color Fundamentals](/all-about-colors/color-fundamentals/)) lets a merchant deliberately switch a section to a different scheme — a light one, a dark one, a bold one. That's a merchant choosing a look. **Dark mode**, as the term is normally used, is different: it's the shopper's own operating system or browser preference, and a theme that respects it does so automatically, without the merchant doing anything.
 
 ## Reading the shopper's system preference in CSS
 

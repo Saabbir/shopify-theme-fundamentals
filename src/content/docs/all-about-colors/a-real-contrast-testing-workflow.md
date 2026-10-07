@@ -14,7 +14,7 @@ If a merchant can freely pick any color for a text setting and any color for a b
 - **4.5:1** for normal body text.
 - **3:1** for large text (roughly 24px and up, or bold text around 19px and up) and for meaningful UI elements like icon buttons.
 
-These are the two numbers [Color palette](/design-tokens/color-settings-and-color-schemes/) already referenced — this page is about actually checking against them systematically, not just knowing what they are.
+This page is about actually checking against these two numbers systematically, not just knowing what they are.
 
 ## Step 2: check every default pairing with `color_contrast`
 
@@ -35,7 +35,7 @@ Shipped defaults are one thing — a merchant freely picking their own colors la
 
 1. **Do nothing extra**, beyond checking your own defaults. Reasonable for most themes — merchants are ultimately responsible for their own brand choices, and over-engineering guardrails around every setting adds real complexity for a problem most merchants won't actually hit.
 2. **Warn in the theme editor**, using a `color_contrast` check inside the section's own Liquid to conditionally show a visible warning message when the live-selected pairing fails, without blocking the merchant from using it anyway.
-3. **Constrain the choices**, by offering `color_scheme_group` (from Part 1) instead of independent color settings in the first place, so a merchant picks between pre-checked combinations rather than assembling their own from scratch. This is the strongest guarantee, and the reason `color_scheme_group` exists.
+3. **Constrain the choices**, by offering `color_scheme_group` (see [Color Fundamentals](/all-about-colors/color-fundamentals/)) instead of independent color settings in the first place, so a merchant picks between pre-checked combinations rather than assembling their own from scratch. This is the strongest guarantee, and the reason `color_scheme_group` exists.
 
 :::tip[Prevention beats detection]
 Option 3 — constraining choices via `color_scheme_group` — prevents the problem from being possible at all, rather than detecting it after the fact. Where a design can reasonably offer a fixed set of schemes instead of fully independent color pickers, that's usually the better trade, for the exact same reason `enabled_on`/`disabled_on` prevents a section-placement mistake earlier than a Liquid conditional could.
