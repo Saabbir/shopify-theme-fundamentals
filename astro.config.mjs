@@ -269,6 +269,7 @@ export default defineConfig({
             { label: '17.4. Dark Mode', slug: 'all-about-colors/dark-mode' },
             { label: '17.5. Building a Token System', slug: 'all-about-colors/building-a-token-system' },
             { label: '17.6. A Real Contrast-Testing Workflow', slug: 'all-about-colors/a-real-contrast-testing-workflow' },
+            { label: '17.7. A Complete Color Scheme Example', slug: 'all-about-colors/a-complete-color-scheme-example' },
           ],
         },
         {

@@ -66,7 +66,7 @@ A section or block picks from the available schemes with a `color_scheme` settin
 }
 ```
 
-`section.settings.color_scheme` then holds whichever scheme ID a merchant picked (`"scheme-1"`, `"scheme-2"`, or any custom one they've added via the editor) — Shopify handles generating the actual CSS for every defined scheme and applying it wherever that scheme ID is referenced, typically through a class added to the section's outer element.
+`section.settings.color_scheme` then holds whichever scheme ID a merchant picked (`"scheme-1"`, `"scheme-2"`, or any custom one they've added via the editor). Shopify doesn't generate the actual CSS for you automatically — the theme still needs to loop over `settings.color_schemes` itself (usually once, in a snippet rendered near the top of `theme.liquid`) and output a class per scheme, each holding that scheme's colors as CSS custom properties. A section then applies the right one with a matching class, like `color-{{ section.settings.color_scheme }}`, on its outer element. See [A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) for this loop written out in full.
 
 ## Why this is worth the extra setup
 
