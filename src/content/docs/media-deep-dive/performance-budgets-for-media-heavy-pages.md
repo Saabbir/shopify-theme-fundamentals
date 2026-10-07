@@ -15,7 +15,7 @@ A performance budget is a concrete, numeric limit agreed on ahead of time — mo
 
 - Total page weight under roughly 2–3 MB for a typical page.
 - Images and video combined under roughly half of that total.
-- No single image over a set file size (several hundred KB, for instance), after the responsive `srcset` sizing from [Images & Responsive Image Tags](/media-and-assets/images-and-responsive-image-tags/) has already done its job.
+- No single image over a set file size (several hundred KB, for instance), after the responsive `srcset` sizing from [Media Fundamentals](/media-deep-dive/media-fundamentals/) has already done its job.
 
 The exact numbers matter less than having any agreed number at all — a budget with specific thresholds gives everyone building the theme a shared, checkable target, instead of a vague sense that "the page shouldn't be too heavy."
 
@@ -29,7 +29,7 @@ Once a page measurably exceeds its budget, the fix is rarely "compress everythin
 
 - **Cut something.** Does this page actually need six hero-sized images, or would three make the same point? The cheapest performance win is often content that shouldn't have been added in the first place.
 - **Downgrade something from video to image, or from autoplay to a static poster.** A looping background video rarely needs to be video at all if a well-chosen still image would read the same way to a shopper scrolling past it.
-- **Defer something.** An image gallery's later images, or a video further down the page, can load lazily (per [Images & Responsive Image Tags](/media-and-assets/images-and-responsive-image-tags/) and [Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/)) rather than all at once on first load.
+- **Defer something.** An image gallery's later images, or a video further down the page, can load lazily (see [Media Fundamentals](/media-deep-dive/media-fundamentals/) and [Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/)) rather than all at once on first load.
 
 ## Key takeaways
 
