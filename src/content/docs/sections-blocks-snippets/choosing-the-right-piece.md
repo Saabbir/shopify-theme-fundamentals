@@ -45,13 +45,6 @@ Say you're asked to build "a strip of customer logos" for a homepage. Walking th
 
 Result: one section (`sections/logo-strip.liquid`), one block type (`logo`), and possibly one snippet if the logo markup is reused elsewhere.
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Walk through the questions above every time, even for something that feels obvious. | **Deciding based on what's fastest to write right now**, rather than what's correct for how a merchant will actually need to use it. |
-| Default to "snippet" only after confirming a merchant genuinely needs no visible settings for the thing you're building. | **Defaulting to "snippet" first** and only reconsidering if something later clearly needs settings. Decide the settings question up front instead. |
-
 ## Key takeaways
 
 - The deciding question is almost always: does a merchant need to see and control this from the theme editor?

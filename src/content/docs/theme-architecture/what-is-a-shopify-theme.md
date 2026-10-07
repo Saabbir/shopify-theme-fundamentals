@@ -27,13 +27,6 @@ Two different people interact with a theme in two different ways. A **developer*
 
 If you've built websites with a general-purpose framework before, resist carrying over assumptions about routing, data fetching, or build tooling. Shopify handles routing for you (a URL like `/products/a-product` maps automatically to your product template), and themes can run with zero build step at all — a `.liquid` file edited directly is already a working page. Build tooling (bundlers, CSS preprocessors) is optional, not foundational, and several of it are explicitly disallowed for Theme Store submissions specifically.
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Think of a theme as "presentation and configuration," reading data Shopify already manages. | **Assuming a theme can or should implement its own checkout, inventory, or payment logic.** Shopify owns all of that; a theme only displays what it's given. |
-| Keep "a merchant will configure this visually, without code" in mind as you design any setting. | **Designing settings only from a developer's point of view.** A setting that makes sense in code can still be confusing or easy to misuse in the visual editor. |
-
 ## Key takeaways
 
 - A theme controls the storefront's look and behavior. It does not own checkout, payments, inventory, or the admin dashboard — Shopify handles all of that.

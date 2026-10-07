@@ -54,13 +54,6 @@ Before nesting existed, the only available layout was: section, then a flat list
 
 Nesting gives a merchant much finer control over layout directly from the theme editor (arranging blocks into rows and columns, say) without a developer having to build a bespoke section for every layout variation.
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Reach for a nested "group"-style block when a merchant needs flexible layout control (arranging items into rows, columns, or sub-groups) themselves. | **Building a new, bespoke section every time a layout variation is needed**, when a nestable group block could let merchants assemble that layout themselves. |
-| Trust that `{% content_for 'blocks' %}` and `"blocks": [...]` work identically whether they're written inside a section or inside a block. | **Assuming old, section-only tutorials still describe current best practice.** If a resource doesn't mention blocks containing other blocks, treat it as describing an outdated model. |
-
 ## Key takeaways
 
 - Blocks can contain other blocks, nested to any depth — this is a genuinely new capability, not something themes have always supported.

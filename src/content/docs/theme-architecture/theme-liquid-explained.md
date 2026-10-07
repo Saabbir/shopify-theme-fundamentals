@@ -46,13 +46,6 @@ Because `theme.liquid` wraps every page, anything you put directly in it (outsid
 Don't add page-specific markup directly into `theme.liquid` because "it's just one page and this was the fastest place to add it." It will appear on every page, not just the one you meant, and you'll likely need to wrap it in conditional Liquid logic to hide it elsewhere — more work than putting it in the right layer from the start.
 :::
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Keep `theme.liquid` limited to the HTML skeleton, header/footer, and anything genuinely global (analytics, fonts, the two required content outputs). | **Adding page-specific sections directly into `theme.liquid`.** Build them as a section on the relevant template instead, so they only appear where intended. |
-| Always include both `{{ content_for_header }}` in `<head>` and `{{ content_for_layout }}` in `<body>` — both are required for a working theme. | **Forgetting `{{ content_for_header }}`.** Without it, required scripts and meta tags that Shopify and installed apps depend on never load. |
-
 ## Key takeaways
 
 - `layout/theme.liquid` is the only strictly required file in a theme.

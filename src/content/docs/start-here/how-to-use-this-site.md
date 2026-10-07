@@ -23,13 +23,6 @@ If you're following along while building an actual theme — maybe one with its 
 
 You'll see the word **Liquid** constantly from here on. It's Shopify's templating language — the syntax that lets a `.liquid` file mix plain HTML with logic and data from the store (a product's price, a merchant's chosen color, a loop over every item in a collection). A dedicated Liquid syntax section (tags, filters, loops) is planned; until then, this site introduces just enough Liquid syntax as needed, in context, to explain theme architecture, sections, blocks, and snippets.
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Try each code example in a real file as you read, even a throwaway one. Seeing a `{% for %}` loop actually render something sticks far better than reading about it. | **Reading everything before writing any code.** Shopify theme development has enough small, concrete mechanics (file naming, schema shape, rendering order) that hands-on practice teaches them faster than reading alone. |
-| Use search for a specific term ("whitespace control," "section group") once you've read through once. | **Re-reading an entire section from the top** every time you have one small question, once you've already been through it once. |
-
 ## Further reading
 
 - [Shopify themes overview](https://shopify.dev/docs/storefronts/themes) (shopify.dev)

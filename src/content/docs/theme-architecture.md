@@ -25,13 +25,6 @@ A Shopify theme is a set of files, organized into a fixed folder structure, that
 This section covers the files and folders a theme is made of. The next section, [Sections, Blocks & Snippets](/sections-blocks-snippets/), goes deep on the three specific, reusable pieces you'll spend most of your actual time building. Read this section first — it explains where those pieces live and when they get rendered, which the next section assumes you already know.
 :::
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Learn the folder structure and rendering order before writing any real code. It's a small, fixed set of rules that pays off on literally every file you create afterward. | **Copying an existing theme's files around and guessing at the pattern.** You'll eventually hit a case the pattern you guessed doesn't explain, with no mental model to fall back on. |
-| Keep the rendering chain (layout → template → sections → blocks) in mind whenever something doesn't show up where you expect. | **Assuming a change isn't working when it's actually just in the wrong layer.** Most "why isn't this showing up" confusion for beginners comes down to not knowing which file controls what. |
-
 ## Further reading
 
 - [Shopify theme architecture](https://shopify.dev/docs/storefronts/themes/architecture) (shopify.dev)

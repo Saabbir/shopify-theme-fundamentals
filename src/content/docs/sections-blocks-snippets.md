@@ -27,13 +27,6 @@ A **section** is a page-level module a merchant can add, remove, and reorder fro
 Blocks can now contain other blocks, nested several levels deep. This is a relatively recent, significant shift from how sections and blocks used to work (where a block could never hold another block). If you've read older tutorials or blog posts about Shopify themes, this is the single biggest thing likely to be out of date. See [Nesting Blocks Inside Blocks](/sections-blocks-snippets/nesting-blocks/) for the full explanation.
 :::
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Walk through the [decision guide](/sections-blocks-snippets/choosing-the-right-piece/) before creating a new file, instead of guessing which of the three you need. | **Defaulting to "snippet" for everything reusable**, without asking whether a merchant actually needs to configure it visually — if so, it should be a block, not a snippet. |
-| Read this section's pages in order — blocks assume you understand sections, and nesting assumes you understand blocks. | **Jumping straight to nesting** without first understanding plain, non-nested blocks and sections. |
-
 ## Further reading
 
 - [Theme architecture: sections](https://shopify.dev/docs/storefronts/themes/architecture/sections) (shopify.dev)

@@ -54,13 +54,9 @@ Say you're building a feature that shows a "related products" strip at the botto
 </div>
 ```
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Walk through the decision table above whenever you're unsure whether something is a section, block, or snippet. | **Putting reusable content straight into `snippets/`** just because it's reused, without asking whether a merchant actually needs to control it visually. If they do, it should be a block, not a snippet. |
-| Keep `assets/` organized by type as your theme grows (clear naming for CSS, JS, images). | **Creating your own top-level folders**, like `components/` or `styles/`. Only the 8 folders above are supported — Shopify silently ignores anything else at that level. |
-| Treat `config/settings_schema.json` as genuinely global. If a setting there is only used by one section, move it into that section's own schema. | **Overloading `config/settings_schema.json`** with settings that really belong to a single section, cluttering the global settings panel for merchants. |
+:::caution[A mistake worth knowing about up front]
+Don't create your own top-level folders, like `components/` or `styles/`, even though that's a normal pattern in general web projects. Only the 8 folders above are recognized — Shopify silently ignores anything else you create at that level, with no error to tell you it didn't do anything.
+:::
 
 ## Key takeaways
 

@@ -77,13 +77,6 @@ The `schema` block is what makes a section editable in the theme editor at all. 
 
 The `presets` array defines what a merchant sees the moment they add this section for the first time — which default settings it starts with. A section with an empty or missing preset can add it to a page and see a confusing blank result. Always give a section at least one sensible preset with real default values, so it looks correct the instant it's added.
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Give every section a `presets` entry with real, sensible defaults, so it looks right the moment it's added. | **Leaving `presets` empty**, forcing a merchant to configure every single setting themselves before a newly-added section looks like anything. |
-| Keep a section's responsibility at the page level — "one distinct module of a page," not "the whole page." | **Building an entire page's content as one giant section** instead of breaking it into multiple sections a merchant can independently reorder or remove. |
-
 ## Key takeaways
 
 - A section is a page-level module, defined by one `.liquid` file with markup, optional styling, and a `schema` block.

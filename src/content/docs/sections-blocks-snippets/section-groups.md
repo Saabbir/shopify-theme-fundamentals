@@ -49,13 +49,6 @@ In `theme.liquid`, you render the group instead of listing individual sections:
 
 Because the group lives in `theme.liquid`, it renders on every page automatically — but because it's still built from ordinary sections with their own schemas, a merchant can add, remove, reorder, and configure everything inside it from the theme editor, exactly like page-level sections. You get "appears on every page" and "merchant-editable" at the same time, which hardcoding directly into `theme.liquid` could never give you.
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Render a header and footer as section groups (`{% sections 'header-group' %}`), not as hardcoded markup in `theme.liquid`. | **Hardcoding header/footer markup directly into `theme.liquid`.** It works, but a merchant loses all ability to edit it from the theme editor. |
-| Build each section inside a group exactly like any other section — same schema rules, same presets. | **Treating section-group sections as a special case** with different rules. They're ordinary sections; only the file that lists them (a group, not a template) is different. |
-
 ## Key takeaways
 
 - A section group is a JSON file (`header-group.json`, `footer-group.json`) listing sections, rendered from the layout rather than a page template.

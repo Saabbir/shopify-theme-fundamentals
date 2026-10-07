@@ -51,13 +51,6 @@ This still works, but a merchant can't rearrange or add sections to a page built
 
 In practice: rarely, for a brand-new theme. The main case is a page type so simple that section-based flexibility doesn't add value (a one-off literal redirect page, for example). Even then, a JSON template with a single appropriate section is usually still the better default, since it keeps every page consistently editable the same way.
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Default to JSON templates for every page type in a new theme. | **Writing a new template as `.liquid`** just because it feels like less setup for one section's worth of content — you lose merchant editability for no real benefit. |
-| Keep a JSON template's job limited to "which sections, in what order, with what default settings." | **Putting markup or logic directly in a JSON template.** JSON templates can't contain either — all markup belongs in the sections they reference. |
-
 ## Key takeaways
 
 - A template decides which sections appear on a page type, and in what order.

@@ -120,13 +120,6 @@ Rendering a single product (image, title, price) is something this section needs
 - **The schema's `range` setting has real `min`/`max`/`step` values**, not an unbounded number input — this keeps a merchant from accidentally setting an unreasonable value, like showing 500 products in a grid designed for a dozen.
 - **`presets` includes a `name`**, so the section looks complete and sensible the moment it's added, before a merchant has touched any setting.
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Assign every setting you'll use to a variable at the top of the file, then only reference the variable below. | **Writing `section.settings.x` repeatedly throughout the file.** It works, but it's harder to scan and easier to typo inconsistently. |
-| Handle the "not configured yet" state explicitly with a clear message. | **Letting a section render nothing when unconfigured**, leaving a merchant unsure whether something is broken or just not set up yet. |
-
 ## Key takeaways
 
 - The same decision process from the previous page applies to every new feature: section first, then ask about blocks, then ask about shared/reusable markup.

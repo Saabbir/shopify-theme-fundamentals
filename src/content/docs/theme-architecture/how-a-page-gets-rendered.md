@@ -36,13 +36,6 @@ Every single page request — home, product, collection, cart, search — follow
 If a change you made isn't showing up, ask which layer it should live in. Edited a block's settings but nothing changed? Check whether that block is actually added to the section on this specific page — a block only renders if a merchant has placed it there. Edited `theme.liquid` but a page-specific thing didn't change? That's expected: `theme.liquid` is shared across every page, so page-specific content never belongs there.
 :::
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| When something doesn't render as expected, work backward through the chain: is it in the right section? Is that section on the right template? Is the template assigned to the right page? | **Guessing at random fixes** when a change doesn't show up, instead of checking which layer actually controls what you're trying to change. |
-| Keep layout markup (`theme.liquid`) limited to things genuinely shared across every page. | **Putting page-specific content in the layout** because it felt like the easiest place to add it quickly. |
-
 ## Key takeaways
 
 - The chain is always: layout → template → sections → blocks (→ nested blocks).

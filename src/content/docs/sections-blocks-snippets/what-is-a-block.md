@@ -90,14 +90,6 @@ A section's schema can allow two different kinds of blocks:
 
 Allowing `@app` blocks matters more than it might seem: it's what lets a merchant drop an app's widget directly into your section through the theme editor, instead of the app being stuck in its own separate, less flexible placement. Many themes explicitly design their main content sections to accept both.
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Move a block to a standalone file in `blocks/` as soon as more than one section needs it. | **Copy-pasting the same inline block definition into multiple sections.** Extract it once it's needed more than once. |
-| Include `{{ block.shopify_attributes }}` on every block's outermost element. | **Omitting `block.shopify_attributes`.** The theme editor's click-to-select behavior depends on it being present. |
-| Consider allowing `@app` blocks on any section an app might reasonably want to extend. | **Assuming a section never needs app blocks** without considering that a merchant might want to add a review widget, countdown timer, or similar app content right into it. |
-
 ## Key takeaways
 
 - A block is a configurable, repeatable piece inside a section — one layer below the page-level section itself.

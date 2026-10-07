@@ -33,13 +33,6 @@ Every page follows the same shape:
 - **Key takeaways**, on longer pages, summarizing the one or two things worth remembering.
 - **Further reading**, linking to Shopify's own documentation for anything this site doesn't cover in full.
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Read sections 1 through 3 in order the first time through. Each one builds on the last — section 3 assumes you already know the folder structure from section 2. | **Jumping straight to a sub-page** that sounds interesting without reading its section's Overview first. You'll miss context the sub-page assumes you already have. |
-| Keep this site open in a tab while you build your first theme. It's meant to be a reference you return to, not something you read once. | **Trying to memorize everything before you start building.** You'll retain far more by reading a page, then immediately trying the example yourself. |
-
 ## Further reading
 
 - [Shopify themes overview](https://shopify.dev/docs/storefronts/themes) (shopify.dev)

@@ -124,7 +124,7 @@ Every content page follows the same shape used throughout the Shopify Theme Hand
 - Frontmatter: `title` + `description`.
 - A `**TL;DR:**` line right after the frontmatter, restating the description in one sentence.
 - Starlight asides — `:::note[Title]`, `:::tip[Title]`, `:::caution[Title]` — for anything that needs visual separation from the main flow.
-- A `## Do / Don't` two-column table on any page where a common mistake is worth contrasting against the right approach.
+- A `## Do / Don't` two-column table **only** where it adds something the prose hasn't already said — a specific, common mistake worth contrasting against the right approach. Most pages won't have one. If the "Don't" column would just restate a sentence already written above it, leave the table out (a `:::caution` or `:::tip` aside, or a plain sentence, usually says it better anyway).
 - A `## Key takeaways` bullet list on longer/denser pages.
 - A `## Further reading` list at the end, linking to shopify.dev and/or other pages on this site.
 - Every top-level sidebar group has its own `Overview` page (e.g. `theme-architecture.md`) that explains what the group covers and links to each sub-page, exactly like `getting-started.md` does in the handbook.

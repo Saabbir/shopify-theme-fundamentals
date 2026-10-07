@@ -35,13 +35,6 @@ You don't need any of these to read sections 2 and 3 of this site — they're co
 Installing the CLI and creating a development store only make sense once you understand what you're about to build — otherwise you're clicking through setup screens for concepts you haven't met yet. A full setup walkthrough is a natural fit for a later, planned section once you've read [Theme Architecture & Files](/theme-architecture/) and [Sections, Blocks & Snippets](/sections-blocks-snippets/). Until then, [Shopify's own CLI quickstart](https://shopify.dev/docs/themes/tools/cli) covers the setup steps directly.
 :::
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Read sections 2 and 3 first, even without a development store set up yet. They're entirely conceptual — folders, rendering order, and the building blocks of a theme — and don't require running anything. | **Stalling on setup before reading anything.** Creating a Partner account and development store takes a few minutes whenever you're ready for it; it's not a blocker for understanding the concepts first. |
-| Make sure your HTML/CSS/JS fundamentals are solid before diving in. Shopify-specific concepts build on top of them, not instead of them. | **Starting here if you've never written HTML/CSS/JS.** Learn general web development fundamentals first — this site teaches Shopify's platform, not web development from zero. |
-
 ## Further reading
 
 - [Shopify Partners](https://www.shopify.com/partners) — free account, required eventually to create development stores

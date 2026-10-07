@@ -24,6 +24,8 @@ A **snippet** is a small, reusable chunk of Liquid code, stored in `snippets/`. 
 </div>
 ```
 
+The `{% doc %}` comment at the top isn't optional busywork — document every snippet's expected parameters this way, so anyone using it later doesn't have to read through its internals just to call it correctly.
+
 You render it with `{% render %}`, passing in whatever data it needs explicitly:
 
 ```liquid
@@ -38,13 +40,9 @@ It's tempting to reach for a snippet any time you want to avoid repeating code �
 
 A good rule of thumb: snippets are for developers avoiding repetition in their own code. Blocks are for merchants who need visible, editable control over something. The `product-card` snippet above is a good fit — a merchant never needs to directly configure "how a product card renders," they just see it as part of whatever section uses it.
 
-## Do / Don't
-
-| ✅ Do | ❌ Don't |
-|---|---|
-| Pass every variable a snippet needs explicitly, as named parameters to `{% render %}`. | **Relying on a snippet implicitly reading variables from its caller's scope.** `{% render %}` deliberately isolates a snippet's scope — pass in what it needs. |
-| Reach for a snippet to avoid repeating markup across multiple sections or blocks. | **Reaching for a snippet when a merchant actually needs to configure the content visually.** That's a sign you need a block, not a snippet. |
-| Add a `{% doc %}` comment to every snippet, documenting the parameters it expects. | **Leaving a snippet's expected parameters undocumented**, forcing anyone using it later to read through the snippet's internals just to call it correctly. |
+:::caution[A common mistake if you've used other templating languages]
+Don't assume a snippet can read variables from whatever called it, the way some other languages' "partials" or "includes" work. Liquid's `{% render %}` deliberately isolates scope — a snippet only ever sees what you explicitly pass it. Relying on anything else will work in some places and silently fail in others, depending on what happens to be in scope at each call site.
+:::
 
 ## Key takeaways
 
