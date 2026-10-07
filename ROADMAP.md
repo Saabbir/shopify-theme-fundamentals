@@ -135,7 +135,7 @@ Static blocks (`"static": true` — a block always present, not removable by a m
 
 Recursive snippets, organizing a large snippet library as a theme grows, and the performance characteristics of `render` at scale.
 
-## 17. All About Colors — `status: planned`
+## 17. All About Colors — `status: live`
 
 Beyond [Color Settings & Color Schemes](/design-tokens/color-settings-and-color-schemes/): color formats and conversions, every color filter in depth with before/after examples, dark mode (`prefers-color-scheme`), building a full primitive → semantic → component token system, and a real contrast-testing workflow.
 
