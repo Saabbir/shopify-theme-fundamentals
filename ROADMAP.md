@@ -139,7 +139,7 @@ Recursive snippets, organizing a large snippet library as a theme grows, and the
 
 Beyond [Color Settings & Color Schemes](/design-tokens/color-settings-and-color-schemes/): color formats and conversions, every color filter in depth with before/after examples, dark mode (`prefers-color-scheme`), building a full primitive → semantic → component token system, and a real contrast-testing workflow.
 
-## 18. All About Typography — `status: planned`
+## 18. All About Typography — `status: live`
 
 Beyond [Typography & font_picker](/design-tokens/typography-and-font-picker/): variable fonts, font-loading performance (`font-display`, preloading), fluid type scales in depth, and font fallback strategy for multi-language stores.
 

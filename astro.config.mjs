@@ -264,6 +264,16 @@ export default defineConfig({
             { label: '17.5. A Real Contrast-Testing Workflow', slug: 'all-about-colors/a-real-contrast-testing-workflow' },
           ],
         },
+        {
+          label: '18. All About Typography',
+          items: [
+            { label: 'Overview', slug: 'all-about-typography' },
+            { label: '18.1. Variable Fonts', slug: 'all-about-typography/variable-fonts' },
+            { label: '18.2. Font-Loading Performance', slug: 'all-about-typography/font-loading-performance' },
+            { label: '18.3. Fluid Type Scales in Depth', slug: 'all-about-typography/fluid-type-scales-in-depth' },
+            { label: '18.4. Font Fallback for Multi-Language Stores', slug: 'all-about-typography/font-fallback-for-multi-language-stores' },
+          ],
+        },
       ],
     }),
   ],
