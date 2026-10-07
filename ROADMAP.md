@@ -131,7 +131,7 @@ Everything [Sections, Blocks & Snippets](/sections-blocks-snippets/) didn't have
 
 Static blocks (`"static": true` — a block always present, not removable by a merchant), deeper nested-block patterns, `@app`/`@theme` targeting rules in full, block count limits, and advanced preset patterns.
 
-## 16. All About Snippets — `status: planned`
+## 16. All About Snippets — `status: live`
 
 Recursive snippets, organizing a large snippet library as a theme grows, and the performance characteristics of `render` at scale.
 

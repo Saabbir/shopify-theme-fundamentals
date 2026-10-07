@@ -244,6 +244,15 @@ export default defineConfig({
             { label: '15.5. Advanced Preset Patterns', slug: 'all-about-blocks/advanced-preset-patterns' },
           ],
         },
+        {
+          label: '16. All About Snippets',
+          items: [
+            { label: 'Overview', slug: 'all-about-snippets' },
+            { label: '16.1. Recursive Snippets', slug: 'all-about-snippets/recursive-snippets' },
+            { label: '16.2. Organizing a Large Snippet Library', slug: 'all-about-snippets/organizing-a-large-snippet-library' },
+            { label: '16.3. Render Performance at Scale', slug: 'all-about-snippets/render-performance-at-scale' },
+          ],
+        },
       ],
     }),
   ],
