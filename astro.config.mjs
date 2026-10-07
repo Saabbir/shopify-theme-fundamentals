@@ -256,6 +256,7 @@ export default defineConfig({
             { label: '16.2. Recursive Snippets', slug: 'all-about-snippets/recursive-snippets' },
             { label: '16.3. Organizing a Large Snippet Library', slug: 'all-about-snippets/organizing-a-large-snippet-library' },
             { label: '16.4. Render Performance at Scale', slug: 'all-about-snippets/render-performance-at-scale' },
+            { label: '16.5. A Complete Snippet Example', slug: 'all-about-snippets/a-complete-snippet-example' },
           ],
         },
         {
