@@ -123,7 +123,7 @@ Part 1 (groups 1–13 above) is a front-to-back path for someone who's never bui
 
 Where a Part 2 topic already has an intro-level page in Part 1 (sections, blocks, snippets, colors, typography, media), that Part 1 page is left alone — it's still the right on-ramp for a first-time reader, and it's cross-linked from dozens of other pages. The Part 2 chapter is an additional, standalone deep dive, not a replacement.
 
-## 14. All About Sections — `status: planned`
+## 14. All About Sections — `status: live`
 
 Everything [Sections, Blocks & Snippets](/sections-blocks-snippets/) didn't have room for: `enabled_on`/`disabled_on` (restricting a section to specific templates or groups), `max_blocks`, practical schema-size limits, section-level performance considerations, and a wider set of real-world section patterns.
 
@@ -195,3 +195,4 @@ Every content page follows the same shape used throughout the Shopify Theme Hand
 - A `## Further reading` list at the end, linking to shopify.dev and/or other pages on this site.
 - Every top-level sidebar group has its own `Overview` page (e.g. `theme-architecture.md`) that explains what the group covers and links to each sub-page, exactly like `getting-started.md` does in the handbook.
 - Generic examples only. No `sol-` prefixes, no references to any specific theme's repo or files. If an example needs a name, invent a plain one (`hero-banner`, `product-card`) rather than borrowing a real project's naming convention.
+- Every Part 2 group's Overview page opens with a `:::note[This is a Part 2 deep dive]` aside naming the specific Part 1 page it assumes the reader has already read, so a reader who lands on a Part 2 chapter directly knows where to go first if they haven't read Part 1 yet.
