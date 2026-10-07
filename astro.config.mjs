@@ -232,6 +232,7 @@ export default defineConfig({
             { label: '14.3. Limits: max_blocks and Schema Size', slug: 'all-about-sections/limits-max-blocks-and-schema-size' },
             { label: '14.4. Section Performance Considerations', slug: 'all-about-sections/section-performance-considerations' },
             { label: '14.5. Real-World Section Patterns', slug: 'all-about-sections/real-world-section-patterns' },
+            { label: '14.6. A Complete Section Example', slug: 'all-about-sections/a-complete-section-example' },
           ],
         },
         {
