@@ -115,9 +115,73 @@ Audience throughout: someone who has never touched a Shopify theme before, but a
 - 13.3. Glossary
 - 13.4. Cheatsheet
 
+---
+
+# Part 2: Deep Dives
+
+Part 1 (groups 1–13 above) is a front-to-back path for someone who's never built a theme before — it stays exactly as it is, and nothing in Part 2 renumbers or disrupts it. Part 2 is a second, separate shelf of comprehensive, reference-depth chapters for after Part 1: each one goes much deeper on a single topic than Part 1 had room for, written for someone who already has the fundamentals and wants to go deep on one specific thing. Unlike Part 1, these don't need to be read in order relative to each other — each stands on its own, though every one still assumes all of Part 1.
+
+Where a Part 2 topic already has an intro-level page in Part 1 (sections, blocks, snippets, colors, typography, media), that Part 1 page is left alone — it's still the right on-ramp for a first-time reader, and it's cross-linked from dozens of other pages. The Part 2 chapter is an additional, standalone deep dive, not a replacement.
+
+## 14. All About Sections — `status: planned`
+
+Everything [Sections, Blocks & Snippets](/sections-blocks-snippets/) didn't have room for: `enabled_on`/`disabled_on` (restricting a section to specific templates or groups), `max_blocks`, practical schema-size limits, section-level performance considerations, and a wider set of real-world section patterns.
+
+## 15. All About Blocks — `status: planned`
+
+Static blocks (`"static": true` — a block always present, not removable by a merchant), deeper nested-block patterns, `@app`/`@theme` targeting rules in full, block count limits, and advanced preset patterns.
+
+## 16. All About Snippets — `status: planned`
+
+Recursive snippets, organizing a large snippet library as a theme grows, and the performance characteristics of `render` at scale.
+
+## 17. All About Colors — `status: planned`
+
+Beyond [Color Settings & Color Schemes](/design-tokens/color-settings-and-color-schemes/): color formats and conversions, every color filter in depth with before/after examples, dark mode (`prefers-color-scheme`), building a full primitive → semantic → component token system, and a real contrast-testing workflow.
+
+## 18. All About Typography — `status: planned`
+
+Beyond [Typography & font_picker](/design-tokens/typography-and-font-picker/): variable fonts, font-loading performance (`font-display`, preloading), fluid type scales in depth, and font fallback strategy for multi-language stores.
+
+## 19. Media Deep Dive — `status: planned`
+
+Beyond [Media & Assets](/media-and-assets/): art direction with `<picture>` (different crops per breakpoint, not just different sizes of the same crop), video loading/autoplay strategy, image CDN transform parameters beyond `width`, and performance budgets for media-heavy pages.
+
+## 20. The Section Rendering API — `status: planned`
+
+Re-rendering one section's HTML via `?sections=section-id`, without a full page reload — what it's for (cart drawers, filtering without navigation), and a worked example.
+
+## 21. The Cart AJAX API — `status: planned`
+
+`/cart/add.js`, `/cart/change.js`, `/cart/update.js`, `/cart/clear.js` — the full cart JSON shape each returns, and building a cart drawer with no page reload. A direct follow-up to [The Cart Form](/forms/the-cart-form/), which covered the non-JS version.
+
+## 22. Collection Filtering & Sorting — `status: planned`
+
+`collection.filters`, `sort_by`, tag-based filtering as a manual fallback, and how this interacts with the Search & Discovery app.
+
+## 23. Accessibility Deep Dive — `status: planned`
+
+A comprehensive chapter instead of the scattered callouts across Icons & SVGs, Forms, and Web Components: WCAG basics, keyboard navigation patterns, screen-reader testing workflow, focus management, and ARIA patterns for common interactive components (modals, accordions, carousels).
+
+## 24. Performance Deep Dive — `status: planned`
+
+Core Web Vitals, consolidated image/font/CSS/JS loading strategy, Lighthouse, and setting real performance budgets.
+
+## 25. Naming Conventions & Theme Architecture at Scale — `status: planned`
+
+Consolidates the "pick one consistent prefix" advice scattered across the CSS, JavaScript, and data-attribute chapters into one authoritative naming system, plus file/folder organization for a theme that's grown large.
+
+## 26. Best Practices & Theme Store Readiness — `status: planned`
+
+A practical, checklist-style capstone — and the natural bridge to the [Shopify Theme Handbook](https://saabbir.github.io/shopify-theme-handbook/), which covers real Theme Store submission requirements in full for a reader who's finished this entire site.
+
+---
+
 ## Why this order
 
 Groups 2–3 come before Liquid syntax (group 4) on purpose. Learning "a theme is made of these pieces, rendered in this order" first gives every later Liquid example somewhere to live — a `{% for %}` loop means more once you've seen the section it would loop inside. Groups 5–8 build outward from there: the data you render (objects), the settings merchants control (schema), and the two systems most requests are actually about (design tokens, forms). Group 9 (Figma to code) is placed after the reader has vocabulary for sections/blocks/snippets/settings, since that page's whole job is mapping a visual design onto those exact terms — it wouldn't land earlier. Groups 10–12 (CSS, JS, media) are deliberately last: important, but every example written so far already stood on its own without them, consistent with building for someone reading front-to-back for the first time rather than reference-hopping.
+
+Part 2's groups (14+) don't follow this same "each depends on the last" logic — they're independent deep dives, not a continued front-to-back path, so their relative order only reflects how closely each one follows from Part 1 (architecture deep dives first, then the two AJAX APIs and filtering, then the three cross-cutting concerns, ending on the capstone that bridges to the Handbook).
 
 ## Page conventions (match these exactly in every new page)
 
