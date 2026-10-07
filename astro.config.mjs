@@ -175,6 +175,17 @@ export default defineConfig({
             { label: '8.4. Contact & Newsletter Forms', slug: 'forms/contact-and-newsletter-forms' },
           ],
         },
+        {
+          label: '9. From Figma to Code: The Mental Model',
+          items: [
+            { label: 'Overview', slug: 'figma-to-code' },
+            { label: '9.1. Reading a Design Like a Developer', slug: 'figma-to-code/reading-a-design-like-a-developer' },
+            { label: '9.2. Content vs. Structure', slug: 'figma-to-code/content-vs-structure' },
+            { label: '9.3. Section, Block, Snippet, or Fixed Markup?', slug: 'figma-to-code/section-block-snippet-or-fixed-markup' },
+            { label: '9.4. Planning Responsive Behavior', slug: 'figma-to-code/planning-responsive-behavior' },
+            { label: '9.5. Worked Example: One Figma Frame, Start to Finish', slug: 'figma-to-code/worked-example' },
+          ],
+        },
       ],
     }),
   ],

@@ -75,7 +75,7 @@ Audience throughout: someone who has never touched a Shopify theme before, but a
 - 8.3. Customer Forms (login, register, account)
 - 8.4. Contact & Newsletter Forms
 
-## 9. From Figma to Code: The Mental Model — `status: planned`
+## 9. From Figma to Code: The Mental Model — `status: live`
 
 - Overview
 - 9.1. Reading a Design Like a Developer

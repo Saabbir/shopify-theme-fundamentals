@@ -27,7 +27,7 @@ hero:
 | [6. Schema & Settings](/schema-and-settings/) | Every setting type, presets, `settings_schema.json` | Live |
 | [7. Design Tokens: Color, Type & Spacing](/design-tokens/) | Turning merchant settings into a consistent design system | Live |
 | [8. Forms](/forms/) | Product, cart, customer, and contact forms | Live |
-| 9. From Figma to Code: The Mental Model | Looking at a design and deciding what's a section, block, or snippet | Planned |
+| [9. From Figma to Code: The Mental Model](/figma-to-code/) | Looking at a design and deciding what's a section, block, or snippet | Live |
 | 10. CSS in Shopify Themes | `{% stylesheet %}`, scoping, responsive patterns | Planned |
 | 11. JavaScript in Shopify Themes | `{% javascript %}`, Web Components, theme editor events | Planned |
 | 12. Media & Assets | Images, video, 3D, icons | Planned |
@@ -37,7 +37,7 @@ See [`ROADMAP.md`](https://github.com/Saabbir/shopify-theme-fundamentals/blob/ma
 
 ## Where to start
 
-Read sections 1 through 8, in order — each one assumes you've read the last. After that, this site works as a reference: jump to whatever section answers your current question, or use search (**⌘K**).
+Read sections 1 through 9, in order — each one assumes you've read the last. After that, this site works as a reference: jump to whatever section answers your current question, or use search (**⌘K**).
 
 ## Is this the right place to start?
 
