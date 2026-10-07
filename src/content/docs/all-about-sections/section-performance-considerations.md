@@ -15,7 +15,7 @@ A section renders on the server, every time its page loads. The most common way 
 {% endfor %}
 ```
 
-If that collection holds 2,000 products, this section renders 2,000 product cards every single time the page loads — regardless of how many a shopper could usefully see at once. This is exactly why [Worked Example: Building a Simple Section](/sections-blocks-snippets/worked-example/) used `limit` from the start:
+If that collection holds 2,000 products, this section renders 2,000 product cards every single time the page loads — regardless of how many a shopper could usefully see at once. The fix is to always cap a loop like this with `limit` from the start:
 
 ```liquid
 {% for product in collection.products limit: 8 %}

@@ -227,10 +227,11 @@ export default defineConfig({
           label: '14. All About Sections',
           items: [
             { label: 'Overview', slug: 'all-about-sections' },
-            { label: '14.1. Restricting Where a Section Can Appear', slug: 'all-about-sections/restricting-where-a-section-can-appear' },
-            { label: '14.2. Limits: max_blocks and Schema Size', slug: 'all-about-sections/limits-max-blocks-and-schema-size' },
-            { label: '14.3. Section Performance Considerations', slug: 'all-about-sections/section-performance-considerations' },
-            { label: '14.4. Real-World Section Patterns', slug: 'all-about-sections/real-world-section-patterns' },
+            { label: '14.1. Section Fundamentals', slug: 'all-about-sections/section-fundamentals' },
+            { label: '14.2. Restricting Where a Section Can Appear', slug: 'all-about-sections/restricting-where-a-section-can-appear' },
+            { label: '14.3. Limits: max_blocks and Schema Size', slug: 'all-about-sections/limits-max-blocks-and-schema-size' },
+            { label: '14.4. Section Performance Considerations', slug: 'all-about-sections/section-performance-considerations' },
+            { label: '14.5. Real-World Section Patterns', slug: 'all-about-sections/real-world-section-patterns' },
           ],
         },
         {

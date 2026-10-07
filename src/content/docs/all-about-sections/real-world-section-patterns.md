@@ -5,7 +5,7 @@ description: Carousels, tabs, and split layouts — common, slightly harder patt
 
 **TL;DR:** Carousels, tabs, and split layouts — common, slightly harder patterns worked through.
 
-These three patterns show up constantly in real themes. Each one builds directly on ideas from earlier chapters — blocks as repeated items, Web Components for behavior — so if any of that feels unfamiliar, [What Is a Block?](/sections-blocks-snippets/what-is-a-block/) and [Web Components for Theme Behavior](/javascript-in-shopify-themes/web-components-for-theme-behavior/) are worth a re-read first.
+These three patterns show up constantly in real themes. Each one combines two ideas: blocks as repeated content items (see [Section Fundamentals](/all-about-sections/section-fundamentals/)), and a native Web Component — a custom HTML element registered with `customElements.define`, written in its own `assets/*.js` file — managing the interactive behavior on top of that markup.
 
 ## Pattern 1: a carousel, where blocks are slides
 
@@ -33,7 +33,7 @@ A carousel section's schema looks almost identical to any other section that rep
 }
 ```
 
-Each block renders as one slide, exactly like any other `{% content_for 'blocks' %}` loop from [What Is a Section?](/sections-blocks-snippets/what-is-a-section/). A Web Component wraps the whole thing and handles moving between slides:
+Each block renders as one slide, through the same `{% content_for 'blocks' %}` mechanism covered in [Section Fundamentals](/all-about-sections/section-fundamentals/). A Web Component wraps the whole thing and handles moving between slides:
 
 ```js
 class CarouselElement extends HTMLElement {
@@ -57,7 +57,7 @@ customElements.define('sol-carousel', CarouselElement);
 ```
 
 :::note[The markup must work before JavaScript loads]
-Per [Make sure the markup works before JavaScript loads](/javascript-in-shopify-themes/web-components-for-theme-behavior/), all slides should be visible (or stacked in a scrollable row) by default in plain HTML/CSS, with JavaScript only adding the "show one at a time with next/previous controls" behavior on top. A shopper with JavaScript disabled should still be able to see every slide's content.
+A Web Component should always enhance markup that already works without it — all slides should be visible (or stacked in a scrollable row) by default in plain HTML/CSS, with JavaScript only adding the "show one at a time with next/previous controls" behavior on top. A shopper with JavaScript disabled, or a slow connection where the script hasn't loaded yet, should still be able to see every slide's content.
 :::
 
 ## Pattern 2: tabs, where blocks are panels
