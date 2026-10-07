@@ -21,6 +21,7 @@ This chapter is a complete, standalone reference on typography — it starts fro
 | [Font-Loading Performance](/all-about-typography/font-loading-performance/) | `font-display`, preloading, and avoiding layout shift while a font loads |
 | [Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) | Building a full `clamp()`-based scale across every heading level |
 | [Font Fallback for Multi-Language Stores](/all-about-typography/font-fallback-for-multi-language-stores/) | What happens when a chosen font doesn't support every character a shopper's language needs |
+| [A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/) | One snippet merging typography, color, and spacing settings into CSS custom properties |
 
 ## Further reading
 

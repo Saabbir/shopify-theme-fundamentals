@@ -183,6 +183,14 @@ A different kind of chapter from the rest of Part 2: not a general mechanism tau
 
 Another chapter built ahead of groups 20–26, at explicit user request: a dedicated, deep treatment of the distinction between global theme settings and per-instance section/block settings ("theme content"), exactly where each one's data is actually stored (`settings_schema.json` vs. `settings_data.json` vs. the JSON template itself), and complete, realistic, copy-pasteable example files for every piece — a full `settings_schema.json`, its matching `settings_data.json`, a full JSON template showing where section/block settings really live, and a full locale file pair. Goes well beyond [settings_schema.json & settings_data.json](/schema-and-settings/settings-schema-and-settings-data/)'s intro-level single-page treatment in Part 1.
 
+## 29. All About CSS — `status: live`
+
+A third chapter built ahead of groups 20–26, at explicit user request, alongside group 30: everything about CSS mechanics in a Shopify theme, start to finish — where CSS lives (`{% stylesheet %}` vs. `{% style %}` vs. an asset stylesheet, in full, including the one-tag-per-file rule), BEM naming and the real `ValidScopedCSSClass` Theme Check rule that catches a cross-file dependency, CSS custom properties in depth (`var()` fallbacks, inheritance, `@property`) with explicit cross-links out to the Colors and Typography chapters' own token-system coverage rather than repeating it, container queries alongside viewport media queries, cascade layers for taming specificity against app-injected CSS, Shopify's real, documented CSS subsetting behavior (what's actually left to optimize once it's accounted for), RTL and print considerations, and a complete section stylesheet combining all of it at once. Goes well beyond [CSS in Shopify Themes](/css-in-shopify-themes/)'s three-page intro-level treatment in Part 1.
+
+## 30. All About JavaScript — `status: live`
+
+The fourth chapter built ahead of groups 20–26, at explicit user request: everything about theme JavaScript mechanics, start to finish — where JS lives (`{% javascript %}` in full, including its real per-file-type bundling into `scripts.js`/`block-scripts.js`/`snippet-scripts.js`), the full Web Component lifecycle (not just `connectedCallback`) and encapsulation without Shadow DOM, getting data from Liquid into JavaScript safely (data attributes up through JSON islands), every real theme editor event from Shopify's own reference table, custom-event-based communication between unrelated components, lazy-loading genuinely expensive component work, and a complete quantity-selector component combining all of it at once. Deliberately stops short of the Cart and Section Rendering AJAX APIs, reserved for groups 20–21. Goes well beyond [JavaScript in Shopify Themes](/javascript-in-shopify-themes/)'s three-page intro-level treatment in Part 1.
+
 ---
 
 ## Why this order

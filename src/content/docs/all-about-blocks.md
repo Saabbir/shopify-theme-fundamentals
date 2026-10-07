@@ -17,6 +17,7 @@ This chapter is a complete, standalone reference on blocks — it starts from ze
 | [@app and @theme Targeting in Full](/all-about-blocks/app-and-theme-targeting-in-full/) | Every way to control which block types a section or block accepts, beyond just "allow everything" |
 | [Block Limits](/all-about-blocks/block-limits/) | How many blocks and how much nesting a section can realistically hold |
 | [Advanced Preset Patterns](/all-about-blocks/advanced-preset-patterns/) | Presets that ship with nested blocks already configured, not just flat lists |
+| [A Complete Block Example](/all-about-blocks/a-complete-block-example/) | A full worked example combining nesting, a static block, and a nested preset at once |
 
 ## Further reading
 

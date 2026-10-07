@@ -16,6 +16,7 @@ This chapter is a complete, standalone reference on sections — it starts from 
 | [Limits: max_blocks and Schema Size](/all-about-sections/limits-max-blocks-and-schema-size/) | Capping how many blocks a section can hold, and the limits Shopify itself imposes |
 | [Section Performance Considerations](/all-about-sections/section-performance-considerations/) | What actually costs performance in a section, and a benefit you get for free |
 | [Real-World Section Patterns](/all-about-sections/real-world-section-patterns/) | Carousels, tabs, and split layouts — common, slightly harder patterns worked through |
+| [A Complete Section Example](/all-about-sections/a-complete-section-example/) | One full, copy-pasteable section file combining every concern above at once |
 
 ## Further reading
 

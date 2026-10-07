@@ -15,6 +15,7 @@ This chapter is a complete, standalone reference on snippets — it starts from 
 | [Recursive Snippets](/all-about-snippets/recursive-snippets/) | A snippet that renders itself, for genuinely recursive data like nested menus |
 | [Organizing a Large Snippet Library](/all-about-snippets/organizing-a-large-snippet-library/) | Keeping `snippets/` navigable once a theme has grown to dozens of them |
 | [Render Performance at Scale](/all-about-snippets/render-performance-at-scale/) | What actually costs performance when `render` is called a large number of times |
+| [A Complete Snippet Example](/all-about-snippets/a-complete-snippet-example/) | A full, documented snippet with defensive checks, called from two different places |
 
 ## Further reading
 

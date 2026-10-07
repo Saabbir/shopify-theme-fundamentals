@@ -17,6 +17,7 @@ This chapter is a complete, standalone reference on color — it starts from zer
 | [Dark Mode](/all-about-colors/dark-mode/) | Supporting `prefers-color-scheme` alongside (or instead of) a merchant-controlled scheme setting |
 | [Building a Token System: Primitive, Semantic, Component](/all-about-colors/building-a-token-system/) | The three-tier color architecture larger design systems use, and why one tier isn't enough |
 | [A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/) | Checking every color pairing a merchant can produce, not just the ones you tested by eye |
+| [A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) | A full `color_scheme_group`, the CSS-generation snippet it needs, and two sections consuming it |
 
 ## Further reading
 
