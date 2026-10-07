@@ -84,7 +84,7 @@ Audience throughout: someone who has never touched a Shopify theme before, but a
 - 9.4. Planning Responsive Behavior
 - 9.5. Worked Example: One Figma Frame, Start to Finish
 
-## 10. CSS in Shopify Themes — `status: planned`
+## 10. CSS in Shopify Themes — `status: live`
 
 - Overview
 - 10.1. `{% stylesheet %}` and `{% style %}`

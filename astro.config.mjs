@@ -186,6 +186,15 @@ export default defineConfig({
             { label: '9.5. Worked Example: One Figma Frame, Start to Finish', slug: 'figma-to-code/worked-example' },
           ],
         },
+        {
+          label: '10. CSS in Shopify Themes',
+          items: [
+            { label: 'Overview', slug: 'css-in-shopify-themes' },
+            { label: '10.1. {% stylesheet %} and {% style %}', slug: 'css-in-shopify-themes/stylesheet-and-style-tags' },
+            { label: '10.2. Naming & Scoping', slug: 'css-in-shopify-themes/naming-and-scoping' },
+            { label: '10.3. Responsive & Logical Properties', slug: 'css-in-shopify-themes/responsive-and-logical-properties' },
+          ],
+        },
       ],
     }),
   ],

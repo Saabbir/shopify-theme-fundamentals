@@ -7,7 +7,7 @@ description: Reading front to back versus using this site as a reference, and ho
 
 ## Two ways to use this site
 
-**The first time through, read front to back.** Sections 1 through 9 (and everything planned after them) are ordered deliberately — each one assumes you already understand the ones before it. Skipping ahead to "Sections, Blocks & Snippets" before reading "Theme Architecture & Files" means reading about blocks before you know what folder they live in or when Shopify even loads them.
+**The first time through, read front to back.** Sections 1 through 10 (and everything planned after them) are ordered deliberately — each one assumes you already understand the ones before it. Skipping ahead to "Sections, Blocks & Snippets" before reading "Theme Architecture & Files" means reading about blocks before you know what folder they live in or when Shopify even loads them.
 
 **After that, use it as a reference.** Once you've read through once, you don't need to re-read a whole section to answer one specific question. Jump straight to the sub-page that covers it, or use search (**⌘K** or **Ctrl+K**) to find a term.
 

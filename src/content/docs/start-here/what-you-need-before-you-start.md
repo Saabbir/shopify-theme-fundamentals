@@ -22,7 +22,7 @@ If those three are solid, you have everything you need. This site does not assum
 
 ## Accounts and tools you'll want
 
-You don't need any of these to read sections 2 through 9 of this site — they're conceptual and can be followed from the explanations and code samples alone. You'll want them once you start building a real theme:
+You don't need any of these to read sections 2 through 10 of this site — they're conceptual and can be followed from the explanations and code samples alone. You'll want them once you start building a real theme:
 
 | Tool | What it's for | Required to start? |
 |---|---|---|

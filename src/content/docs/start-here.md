@@ -24,8 +24,9 @@ A Shopify theme is the code that controls how a store's storefront looks and beh
 | 7 | [Design Tokens: Color, Type & Spacing](/design-tokens/) | Color schemes, loading a merchant-chosen font correctly, a spacing scale, and the CSS-variable technique that ties all three together. |
 | 8 | [Forms](/forms/) | The `{% form %}` tag, and the specific field names the product, cart, customer, and contact forms each expect. |
 | 9 | [From Figma to Code: The Mental Model](/figma-to-code/) | How to look at a finished design and decide what's a section, a block, a snippet, or just fixed markup — the chapter everything else in this site was leading up to. |
+| 10 | [CSS in Shopify Themes](/css-in-shopify-themes/) | The real difference between `{% stylesheet %}` and `{% style %}`, why nothing isolates your CSS automatically, and writing CSS that holds up responsively and across languages. |
 
-More sections are planned beyond these nine — CSS, JavaScript, media/assets, and a full reference section. See the [roadmap](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) in the repo for the complete plan. New sections get added here as they're written.
+More sections are planned beyond these ten — JavaScript, media/assets, and a full reference section. See the [roadmap](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) in the repo for the complete plan. New sections get added here as they're written.
 
 ## How this site is organized
 
