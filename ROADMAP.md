@@ -42,7 +42,7 @@ Audience throughout: someone who has never touched a Shopify theme before, but a
 - 4.7. Common Filters by Category (string, array, math, money, HTML/URL)
 - 4.8. Debugging Liquid
 
-## 5. Shopify's Global Objects — `status: planned`
+## 5. Shopify's Global Objects — `status: live`
 
 - Overview
 - 5.1. product, variant & collection

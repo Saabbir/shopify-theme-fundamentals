@@ -134,6 +134,16 @@ export default defineConfig({
             { label: '4.8. Debugging Liquid', slug: 'liquid-basics/debugging-liquid' },
           ],
         },
+        {
+          label: "5. Shopify's Global Objects",
+          items: [
+            { label: 'Overview', slug: 'global-objects' },
+            { label: '5.1. product, variant & collection', slug: 'global-objects/product-variant-and-collection' },
+            { label: '5.2. cart, customer & shop', slug: 'global-objects/cart-customer-and-shop' },
+            { label: '5.3. settings, section & block', slug: 'global-objects/settings-section-and-block' },
+            { label: '5.4. Other Useful Objects', slug: 'global-objects/other-useful-objects' },
+          ],
+        },
       ],
     }),
   ],
