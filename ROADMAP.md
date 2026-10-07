@@ -67,7 +67,7 @@ Audience throughout: someone who has never touched a Shopify theme before, but a
 - 7.3. Spacing & Layout Tokens
 - 7.4. Turning Settings into CSS Variables
 
-## 8. Forms — `status: planned`
+## 8. Forms — `status: live`
 
 - Overview
 - 8.1. The Product Form

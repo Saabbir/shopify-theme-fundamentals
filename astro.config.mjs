@@ -165,6 +165,16 @@ export default defineConfig({
             { label: '7.4. Turning Settings into CSS Variables', slug: 'design-tokens/turning-settings-into-css-variables' },
           ],
         },
+        {
+          label: '8. Forms',
+          items: [
+            { label: 'Overview', slug: 'forms' },
+            { label: '8.1. The Product Form', slug: 'forms/the-product-form' },
+            { label: '8.2. The Cart Form', slug: 'forms/the-cart-form' },
+            { label: '8.3. Customer Forms', slug: 'forms/customer-forms' },
+            { label: '8.4. Contact & Newsletter Forms', slug: 'forms/contact-and-newsletter-forms' },
+          ],
+        },
       ],
     }),
   ],
