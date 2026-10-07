@@ -25,13 +25,15 @@ More sections are planned beyond these three — Liquid syntax, Shopify's data o
 
 Each top-level section starts with an **Overview** page (you're reading one now), followed by numbered sub-pages that go deeper on one specific topic. Read a section's Overview first — it explains what the sub-pages cover and links to each one — then follow the sub-pages in order the first time through.
 
-Every page follows the same shape:
+Every page follows roughly the same shape:
 
 - A **TL;DR** line near the top, so you can tell at a glance whether the page answers your question.
 - The main explanation, with real code examples.
-- A **Do / Don't** table, where a common mistake is worth contrasting against the right approach.
+- An occasional **note, tip, or caution callout**, when one specific point is worth flagging separately from the main flow.
 - **Key takeaways**, on longer pages, summarizing the one or two things worth remembering.
 - **Further reading**, linking to Shopify's own documentation for anything this site doesn't cover in full.
+
+A page occasionally adds a **Do / Don't** table, but only when a common mistake genuinely needs a side-by-side contrast that the prose above it hasn't already made — most pages won't have one.
 
 ## Further reading
 
