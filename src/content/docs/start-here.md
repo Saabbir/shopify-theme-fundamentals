@@ -26,8 +26,9 @@ A Shopify theme is the code that controls how a store's storefront looks and beh
 | 9 | [From Figma to Code: The Mental Model](/figma-to-code/) | How to look at a finished design and decide what's a section, a block, a snippet, or just fixed markup — the chapter everything else in this site was leading up to. |
 | 10 | [CSS in Shopify Themes](/css-in-shopify-themes/) | The real difference between `{% stylesheet %}` and `{% style %}`, why nothing isolates your CSS automatically, and writing CSS that holds up responsively and across languages. |
 | 11 | [JavaScript in Shopify Themes](/javascript-in-shopify-themes/) | The `{% javascript %}` tag, Web Components as the standard pattern for anything bigger, and reacting correctly to the theme editor's live re-renders. |
+| 12 | [Media & Assets](/media-and-assets/) | A complete responsive image tag, video/3D rendering filters, and inline SVG vs. a sprite for icons. |
 
-More sections are planned beyond these eleven — media/assets and a full reference section. See the [roadmap](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) in the repo for the complete plan. New sections get added here as they're written.
+One more section is planned beyond these twelve — a full reference (tag reference, filter reference, glossary, cheatsheet). See the [roadmap](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) in the repo for the complete plan. New sections get added here as they're written.
 
 ## How this site is organized
 

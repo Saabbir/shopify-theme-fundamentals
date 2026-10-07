@@ -30,14 +30,14 @@ hero:
 | [9. From Figma to Code: The Mental Model](/figma-to-code/) | Looking at a design and deciding what's a section, block, or snippet | Live |
 | [10. CSS in Shopify Themes](/css-in-shopify-themes/) | `{% stylesheet %}`, scoping, responsive patterns | Live |
 | [11. JavaScript in Shopify Themes](/javascript-in-shopify-themes/) | `{% javascript %}`, Web Components, theme editor events | Live |
-| 12. Media & Assets | Images, video, 3D, icons | Planned |
+| [12. Media & Assets](/media-and-assets/) | Images, video, 3D, icons | Live |
 | 13. Reference | Tag reference, filter reference, glossary, cheatsheet | Planned |
 
 See [`ROADMAP.md`](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) in the repo for the full plan, including why the sections are ordered this way.
 
 ## Where to start
 
-Read sections 1 through 11, in order — each one assumes you've read the last. After that, this site works as a reference: jump to whatever section answers your current question, or use search (**⌘K**).
+Read sections 1 through 12, in order — each one assumes you've read the last. After that, this site works as a reference: jump to whatever section answers your current question, or use search (**⌘K**).
 
 ## Is this the right place to start?
 

@@ -98,7 +98,7 @@ Audience throughout: someone who has never touched a Shopify theme before, but a
 - 11.2. Web Components for Theme Behavior
 - 11.3. Theme Editor Events
 
-## 12. Media & Assets — `status: planned`
+## 12. Media & Assets — `status: live`
 
 - Overview
 - 12.1. Images & Responsive Image Tags

@@ -204,6 +204,15 @@ export default defineConfig({
             { label: '11.3. Theme Editor Events', slug: 'javascript-in-shopify-themes/theme-editor-events' },
           ],
         },
+        {
+          label: '12. Media & Assets',
+          items: [
+            { label: 'Overview', slug: 'media-and-assets' },
+            { label: '12.1. Images & Responsive Image Tags', slug: 'media-and-assets/images-and-responsive-image-tags' },
+            { label: '12.2. Video & 3D Media', slug: 'media-and-assets/video-and-3d-media' },
+            { label: '12.3. Icons & SVGs', slug: 'media-and-assets/icons-and-svgs' },
+          ],
+        },
       ],
     }),
   ],
