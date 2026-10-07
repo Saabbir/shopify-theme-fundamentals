@@ -29,7 +29,7 @@ hero:
 | [8. Forms](/forms/) | Product, cart, customer, and contact forms | Live |
 | [9. From Figma to Code: The Mental Model](/figma-to-code/) | Looking at a design and deciding what's a section, block, or snippet | Live |
 | [10. CSS in Shopify Themes](/css-in-shopify-themes/) | `{% stylesheet %}`, scoping, responsive patterns | Live |
-| 11. JavaScript in Shopify Themes | `{% javascript %}`, Web Components, theme editor events | Planned |
+| [11. JavaScript in Shopify Themes](/javascript-in-shopify-themes/) | `{% javascript %}`, Web Components, theme editor events | Live |
 | 12. Media & Assets | Images, video, 3D, icons | Planned |
 | 13. Reference | Tag reference, filter reference, glossary, cheatsheet | Planned |
 
@@ -37,7 +37,7 @@ See [`ROADMAP.md`](https://github.com/Saabbir/shopify-theme-fundamentals/blob/ma
 
 ## Where to start
 
-Read sections 1 through 10, in order — each one assumes you've read the last. After that, this site works as a reference: jump to whatever section answers your current question, or use search (**⌘K**).
+Read sections 1 through 11, in order — each one assumes you've read the last. After that, this site works as a reference: jump to whatever section answers your current question, or use search (**⌘K**).
 
 ## Is this the right place to start?
 

@@ -195,6 +195,15 @@ export default defineConfig({
             { label: '10.3. Responsive & Logical Properties', slug: 'css-in-shopify-themes/responsive-and-logical-properties' },
           ],
         },
+        {
+          label: '11. JavaScript in Shopify Themes',
+          items: [
+            { label: 'Overview', slug: 'javascript-in-shopify-themes' },
+            { label: '11.1. The {% javascript %} Tag', slug: 'javascript-in-shopify-themes/the-javascript-tag' },
+            { label: '11.2. Web Components for Theme Behavior', slug: 'javascript-in-shopify-themes/web-components-for-theme-behavior' },
+            { label: '11.3. Theme Editor Events', slug: 'javascript-in-shopify-themes/theme-editor-events' },
+          ],
+        },
       ],
     }),
   ],

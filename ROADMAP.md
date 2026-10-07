@@ -91,7 +91,7 @@ Audience throughout: someone who has never touched a Shopify theme before, but a
 - 10.2. Naming & Scoping
 - 10.3. Responsive & Logical Properties
 
-## 11. JavaScript in Shopify Themes — `status: planned`
+## 11. JavaScript in Shopify Themes — `status: live`
 
 - Overview
 - 11.1. The `{% javascript %}` Tag
