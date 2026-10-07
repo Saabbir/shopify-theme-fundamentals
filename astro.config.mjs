@@ -307,6 +307,18 @@ export default defineConfig({
             { label: '27.6. Using Horizon as a Skeleton for a New Theme', slug: 'horizon-codebase-tour/using-horizon-as-a-skeleton' },
           ],
         },
+        {
+          label: '28. All About Theme Settings',
+          items: [
+            { label: 'Overview', slug: 'all-about-theme-settings' },
+            { label: '28.1. Theme Settings Fundamentals', slug: 'all-about-theme-settings/theme-settings-fundamentals' },
+            { label: '28.2. Where Global Settings Data Actually Lives', slug: 'all-about-theme-settings/where-global-settings-data-lives' },
+            { label: '28.3. A Complete settings_schema.json Example', slug: 'all-about-theme-settings/a-complete-settings-schema-example' },
+            { label: '28.4. A Complete settings_data.json Example', slug: 'all-about-theme-settings/a-complete-settings-data-example' },
+            { label: '28.5. A Complete Template Example', slug: 'all-about-theme-settings/a-complete-template-example' },
+            { label: '28.6. A Complete Locale File Example', slug: 'all-about-theme-settings/a-complete-locale-file-example' },
+          ],
+        },
       ],
     }),
   ],

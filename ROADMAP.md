@@ -179,6 +179,10 @@ A practical, checklist-style capstone — and the natural bridge to the [Shopify
 
 A different kind of chapter from the rest of Part 2: not a general mechanism taught in the abstract, but a tour of one real, currently-shipping theme — Shopify's own Horizon — read directly from its public source. Covers Horizon's folder structure and the explicit Theme Store eligibility caveat in its README, a from-source walkthrough of how it sets up colors (`color-palette.liquid`, `contrast-override.liquid`) and typography/design tokens (`theme-styles-variables.liquid`), the naming conventions that repeat throughout its real code, an honest (non-exhaustive, explicitly sourced) overview of its sections/blocks/snippets/assets, and a practical step-by-step guide to using it as a starting skeleton for a new custom theme. Built ahead of groups 20–26 at explicit user request, since it directly answers "what does Shopify's own reference theme already give me to reuse."
 
+## 28. All About Theme Settings — `status: live`
+
+Another chapter built ahead of groups 20–26, at explicit user request: a dedicated, deep treatment of the distinction between global theme settings and per-instance section/block settings ("theme content"), exactly where each one's data is actually stored (`settings_schema.json` vs. `settings_data.json` vs. the JSON template itself), and complete, realistic, copy-pasteable example files for every piece — a full `settings_schema.json`, its matching `settings_data.json`, a full JSON template showing where section/block settings really live, and a full locale file pair. Goes well beyond [settings_schema.json & settings_data.json](/schema-and-settings/settings-schema-and-settings-data/)'s intro-level single-page treatment in Part 1.
+
 ---
 
 ## Why this order
