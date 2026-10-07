@@ -29,7 +29,7 @@ Grouping by a shared prefix (`product-`, `cart-`, `icon-`) means related snippet
 
 As a snippet library grows, it tends to split into two genuinely different kinds of snippet, worth naming so the difference is visible at a glance:
 
-- **Markup snippets** render actual HTML — `product-card.liquid`, `cart-item.liquid`. These are what most snippets are, and what [What Is a Snippet?](/sections-blocks-snippets/what-is-a-snippet/) already covered.
+- **Markup snippets** render actual HTML — `product-card.liquid`, `cart-item.liquid`. These are what most snippets are, and what [Snippet Fundamentals](/all-about-snippets/snippet-fundamentals/) covers.
 - **Logic-only snippets** compute or format a value and render no markup at all — something like a snippet that takes a price and a compare-at price and outputs just the right discount-percentage text. A prefix like `format-` or a dedicated `helpers/`-style naming group (still inside the same flat `snippets/` folder) makes these easy to spot as "not a visual component" at a glance.
 
 ## A snippet index, for themes that outgrow memory

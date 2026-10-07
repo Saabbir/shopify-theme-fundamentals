@@ -23,7 +23,7 @@ A recursive snippet (see [Recursive Snippets](/all-about-snippets/recursive-snip
 
 ## `{% render %}` vs. `{% include %}`
 
-Older Liquid code sometimes uses the deprecated `{% include %}` tag instead of `{% render %}`. Beyond the scope-isolation difference already covered in [What Is a Snippet?](/sections-blocks-snippets/what-is-a-snippet/)'s caution, `{% include %}` is also considered worse for performance in large themes, which is one of the reasons it's deprecated — always use `{% render %}` in new code, and treat any `{% include %}` found in an older codebase as worth migrating when you're already touching that file.
+Older Liquid code sometimes uses the deprecated `{% include %}` tag instead of `{% render %}`. Beyond the scope-isolation difference covered in [Snippet Fundamentals](/all-about-snippets/snippet-fundamentals/) — `{% include %}` shares the caller's full scope instead of isolating it, which is exactly the unpredictable behavior `{% render %}` was introduced to fix — `{% include %}` is also considered worse for performance in large themes, which is one of the reasons it's deprecated — always use `{% render %}` in new code, and treat any `{% include %}` found in an older codebase as worth migrating when you're already touching that file.
 
 ## Key takeaways
 
