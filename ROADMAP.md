@@ -125,23 +125,23 @@ This means a Part 2 chapter's early pages deliberately cover some of the same gr
 
 ## 14. All About Sections — `status: live`
 
-Everything about sections, start to finish, in one place: what a section is and how it's structured, schema and rendering from the ground up, `enabled_on`/`disabled_on`, `max_blocks`, practical schema-size limits, section-level performance considerations, and a wider set of real-world section patterns.
+Everything about sections, start to finish, in one place: what a section is and how it's structured, schema and rendering from the ground up, `enabled_on`/`disabled_on`, `max_blocks`, practical schema-size limits, section-level performance considerations, a wider set of real-world section patterns, and a complete, copy-pasteable section file combining every one of those concerns at once.
 
 ## 15. All About Blocks — `status: live`
 
-Everything about blocks, start to finish: what a block is, inline vs. standalone blocks, nesting, static blocks (`"static": true`), `@app`/`@theme` targeting rules in full, block count limits, and advanced preset patterns.
+Everything about blocks, start to finish: what a block is, inline vs. standalone blocks, nesting, static blocks (`"static": true`), `@app`/`@theme` targeting rules in full, block count limits, advanced preset patterns, and a complete worked example combining nesting, a static block, and a nested preset in one place.
 
 ## 16. All About Snippets — `status: live`
 
-Everything about snippets, start to finish: what a snippet is, `{% render %}` and scope isolation, recursive snippets, organizing a large snippet library as a theme grows, and the performance characteristics of `render` at scale.
+Everything about snippets, start to finish: what a snippet is, `{% render %}` and scope isolation, recursive snippets, organizing a large snippet library as a theme grows, the performance characteristics of `render` at scale, and a complete snippet with documented optional parameters and defensive checks, called from two different real call sites.
 
 ## 17. All About Colors — `status: live`
 
-Everything about color, start to finish: `color` and `color_scheme_group` settings from the ground up, color formats and conversions, every color filter in depth with before/after examples, dark mode (`prefers-color-scheme`), building a full primitive → semantic → component token system, and a real contrast-testing workflow.
+Everything about color, start to finish: `color` and `color_scheme_group` settings from the ground up, color formats and conversions, every color filter in depth with before/after examples, dark mode (`prefers-color-scheme`), building a full primitive → semantic → component token system, a real contrast-testing workflow, and a complete color-scheme example including the CSS-generation snippet every theme actually needs (and that Shopify doesn't generate for you).
 
 ## 18. All About Typography — `status: live`
 
-Everything about typography, start to finish: what fonts/weights/styles are, the `font_picker` setting and loading a font correctly, how Shopify's own Horizon theme structures its typography tokens, building a type-preset system, wiring font settings into sections and blocks, best practices, variable fonts, font-loading performance (`font-display`, preloading), fluid type scales in depth, and font fallback strategy for multi-language stores.
+Everything about typography, start to finish: what fonts/weights/styles are, the `font_picker` setting and loading a font correctly, how Shopify's own Horizon theme structures its typography tokens, building a type-preset system, wiring font settings into sections and blocks, best practices, variable fonts, font-loading performance (`font-display`, preloading), fluid type scales in depth, font fallback strategy for multi-language stores, and a complete design-tokens example merging typography, color, and spacing settings into one CSS custom-properties snippet.
 
 ## 19. Media Deep Dive — `status: live`
 
