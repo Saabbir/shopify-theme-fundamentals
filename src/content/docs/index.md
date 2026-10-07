@@ -22,7 +22,7 @@ hero:
 | [1. Start Here](/start-here/) | How to use this site, what you need before you start | Live |
 | [2. Theme Architecture & Files](/theme-architecture/) | What a theme is, the 8 required folders, how a page actually renders | Live |
 | [3. Sections, Blocks & Snippets](/sections-blocks-snippets/) | The three building blocks of every theme, nesting, and how to choose between them | Live |
-| 4. Liquid Language Basics | Tags, output, variables, conditionals, loops, filters | Planned |
+| [4. Liquid Language Basics](/liquid-basics/) | Tags, output, variables, conditionals, loops, filters | Live |
 | 5. Shopify's Global Objects | `product`, `cart`, `customer`, `settings`, and the rest | Planned |
 | 6. Schema & Settings | Every setting type, presets, `settings_schema.json` | Planned |
 | 7. Design Tokens: Color, Type & Spacing | Turning merchant settings into a consistent design system | Planned |
@@ -37,7 +37,7 @@ See [`ROADMAP.md`](https://github.com/Saabbir/shopify-theme-fundamentals/blob/ma
 
 ## Where to start
 
-Read section 1, then section 2, then section 3, in that order — each one assumes you've read the last. After that, this site works as a reference: jump to whatever section answers your current question, or use search (**⌘K**).
+Read sections 1 through 4, in order — each one assumes you've read the last. After that, this site works as a reference: jump to whatever section answers your current question, or use search (**⌘K**).
 
 ## Is this the right place to start?
 

@@ -18,8 +18,9 @@ A Shopify theme is the code that controls how a store's storefront looks and beh
 | 1 | You're here | What this site covers, what you need before you start. |
 | 2 | [Theme Architecture & Files](/theme-architecture/) | What files make up a theme, and in what order Shopify actually renders them. |
 | 3 | [Sections, Blocks & Snippets](/sections-blocks-snippets/) | The three reusable building blocks every theme is made of, and how to pick the right one. |
+| 4 | [Liquid Language Basics](/liquid-basics/) | The actual syntax rules behind every example you've read so far: tags, output, variables, conditionals, loops, and filters. |
 
-More sections are planned beyond these three — Liquid syntax, Shopify's data objects, settings and schema, design tokens, forms, the Figma-to-code mental model, CSS, JavaScript, and a full reference section. See the [roadmap](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) in the repo for the complete plan. New sections get added here as they're written.
+More sections are planned beyond these four — Shopify's data objects, settings and schema, design tokens, forms, the Figma-to-code mental model, CSS, JavaScript, and a full reference section. See the [roadmap](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) in the repo for the complete plan. New sections get added here as they're written.
 
 ## How this site is organized
 

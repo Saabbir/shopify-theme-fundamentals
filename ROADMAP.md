@@ -30,7 +30,7 @@ Audience throughout: someone who has never touched a Shopify theme before, but a
 - 3.6. Choosing the Right Piece: A Decision Guide
 - 3.7. Worked Example: Building a Simple Section
 
-## 4. Liquid Language Basics — `status: planned`
+## 4. Liquid Language Basics — `status: live`
 
 - Overview
 - 4.1. Syntax: Tags, Output & Comments
