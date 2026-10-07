@@ -213,6 +213,16 @@ export default defineConfig({
             { label: '12.3. Icons & SVGs', slug: 'media-and-assets/icons-and-svgs' },
           ],
         },
+        {
+          label: '13. Reference',
+          items: [
+            { label: 'Overview', slug: 'reference' },
+            { label: '13.1. Liquid Tag Reference', slug: 'reference/liquid-tag-reference' },
+            { label: '13.2. Liquid Filter Reference', slug: 'reference/liquid-filter-reference' },
+            { label: '13.3. Glossary', slug: 'reference/glossary' },
+            { label: '13.4. Cheatsheet', slug: 'reference/cheatsheet' },
+          ],
+        },
       ],
     }),
   ],

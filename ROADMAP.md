@@ -2,6 +2,8 @@
 
 The full long-term plan for this site, sidebar group by sidebar group. `Status: live` means the pages exist and are wired into `astro.config.mjs` today. `Status: planned` means the group is scoped but not written yet — do that work next, in order, following the same page conventions as the live groups (see "Page conventions" below).
 
+**All 13 originally planned groups are now live.** This roadmap's job isn't done, though — it's the place future groups get scoped before they're built. If a new topic comes up (a merchant-facing feature this site doesn't cover yet, a platform change worth teaching, a gap a reader points out), add it here as its own numbered group, `status: planned`, in the right position for the "Why this order" reasoning below — then build it the same way every group above it was built.
+
 Audience throughout: someone who has never touched a Shopify theme before, but already knows HTML, CSS, and JavaScript. Every example is generic — no theme-specific naming (no `sol-` prefixes, no references to a specific project's repo). That's what separates this site from the Shopify Theme Handbook, which assumes the reader already knows Shopify/Liquid and documents one specific theme's real codebase.
 
 ## 1. Start Here — `status: live`
@@ -105,7 +107,7 @@ Audience throughout: someone who has never touched a Shopify theme before, but a
 - 12.2. Video & 3D Media
 - 12.3. Icons & SVGs
 
-## 13. Reference — `status: planned`
+## 13. Reference — `status: live`
 
 - Overview
 - 13.1. Liquid Tag Reference

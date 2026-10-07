@@ -17,27 +17,27 @@ hero:
 
 ## What this site teaches
 
-| Section | Covers | Status |
-|---|---|---|
-| [1. Start Here](/start-here/) | How to use this site, what you need before you start | Live |
-| [2. Theme Architecture & Files](/theme-architecture/) | What a theme is, the 8 required folders, how a page actually renders | Live |
-| [3. Sections, Blocks & Snippets](/sections-blocks-snippets/) | The three building blocks of every theme, nesting, and how to choose between them | Live |
-| [4. Liquid Language Basics](/liquid-basics/) | Tags, output, variables, conditionals, loops, filters | Live |
-| [5. Shopify's Global Objects](/global-objects/) | `product`, `cart`, `customer`, `settings`, and the rest | Live |
-| [6. Schema & Settings](/schema-and-settings/) | Every setting type, presets, `settings_schema.json` | Live |
-| [7. Design Tokens: Color, Type & Spacing](/design-tokens/) | Turning merchant settings into a consistent design system | Live |
-| [8. Forms](/forms/) | Product, cart, customer, and contact forms | Live |
-| [9. From Figma to Code: The Mental Model](/figma-to-code/) | Looking at a design and deciding what's a section, block, or snippet | Live |
-| [10. CSS in Shopify Themes](/css-in-shopify-themes/) | `{% stylesheet %}`, scoping, responsive patterns | Live |
-| [11. JavaScript in Shopify Themes](/javascript-in-shopify-themes/) | `{% javascript %}`, Web Components, theme editor events | Live |
-| [12. Media & Assets](/media-and-assets/) | Images, video, 3D, icons | Live |
-| 13. Reference | Tag reference, filter reference, glossary, cheatsheet | Planned |
+| Section | Covers |
+|---|---|
+| [1. Start Here](/start-here/) | How to use this site, what you need before you start |
+| [2. Theme Architecture & Files](/theme-architecture/) | What a theme is, the 8 required folders, how a page actually renders |
+| [3. Sections, Blocks & Snippets](/sections-blocks-snippets/) | The three building blocks of every theme, nesting, and how to choose between them |
+| [4. Liquid Language Basics](/liquid-basics/) | Tags, output, variables, conditionals, loops, filters |
+| [5. Shopify's Global Objects](/global-objects/) | `product`, `cart`, `customer`, `settings`, and the rest |
+| [6. Schema & Settings](/schema-and-settings/) | Every setting type, presets, `settings_schema.json` |
+| [7. Design Tokens: Color, Type & Spacing](/design-tokens/) | Turning merchant settings into a consistent design system |
+| [8. Forms](/forms/) | Product, cart, customer, and contact forms |
+| [9. From Figma to Code: The Mental Model](/figma-to-code/) | Looking at a design and deciding what's a section, block, or snippet |
+| [10. CSS in Shopify Themes](/css-in-shopify-themes/) | `{% stylesheet %}`, scoping, responsive patterns |
+| [11. JavaScript in Shopify Themes](/javascript-in-shopify-themes/) | `{% javascript %}`, Web Components, theme editor events |
+| [12. Media & Assets](/media-and-assets/) | Images, video, 3D, icons |
+| [13. Reference](/reference/) | Tag reference, filter reference, glossary, cheatsheet |
 
-See [`ROADMAP.md`](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) in the repo for the full plan, including why the sections are ordered this way.
+All 13 sections are live — see [`ROADMAP.md`](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) in the repo for why they're ordered this way, and for where any future sections get scoped out before they're written.
 
 ## Where to start
 
-Read sections 1 through 12, in order — each one assumes you've read the last. After that, this site works as a reference: jump to whatever section answers your current question, or use search (**⌘K**).
+Read sections 1 through 13, in order — each one assumes you've read the last. After that, this site works as a reference: jump to whatever section answers your current question, or use search (**⌘K**).
 
 ## Is this the right place to start?
 
