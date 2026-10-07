@@ -143,7 +143,7 @@ Beyond [Color Settings & Color Schemes](/design-tokens/color-settings-and-color-
 
 Beyond [Typography & font_picker](/design-tokens/typography-and-font-picker/): variable fonts, font-loading performance (`font-display`, preloading), fluid type scales in depth, and font fallback strategy for multi-language stores.
 
-## 19. Media Deep Dive — `status: planned`
+## 19. Media Deep Dive — `status: live`
 
 Beyond [Media & Assets](/media-and-assets/): art direction with `<picture>` (different crops per breakpoint, not just different sizes of the same crop), video loading/autoplay strategy, image CDN transform parameters beyond `width`, and performance budgets for media-heavy pages.
 

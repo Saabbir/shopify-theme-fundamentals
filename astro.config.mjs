@@ -274,6 +274,16 @@ export default defineConfig({
             { label: '18.4. Font Fallback for Multi-Language Stores', slug: 'all-about-typography/font-fallback-for-multi-language-stores' },
           ],
         },
+        {
+          label: '19. Media Deep Dive',
+          items: [
+            { label: 'Overview', slug: 'media-deep-dive' },
+            { label: '19.1. Art Direction with picture', slug: 'media-deep-dive/art-direction-with-picture' },
+            { label: '19.2. Video Loading & Autoplay Strategy', slug: 'media-deep-dive/video-loading-and-autoplay-strategy' },
+            { label: '19.3. Image CDN Transform Parameters', slug: 'media-deep-dive/image-cdn-transform-parameters' },
+            { label: '19.4. Performance Budgets for Media-Heavy Pages', slug: 'media-deep-dive/performance-budgets-for-media-heavy-pages' },
+          ],
+        },
       ],
     }),
   ],
