@@ -5,7 +5,7 @@ description: Every way to control which block types a section or block accepts, 
 
 **TL;DR:** Every way to control which block types a section or block accepts, beyond just "allow everything."
 
-[What Is a Block?](/sections-blocks-snippets/what-is-a-block/) introduced `"@theme"` and `"@app"` as the two broad categories a section can allow. In practice, allowing literally everything of a given category is often not what you actually want — this page covers the finer-grained targeting underneath those two entries.
+[Block Fundamentals](/all-about-blocks/block-fundamentals/) introduced `"@theme"` and `"@app"` as the two broad categories a section can allow. In practice, allowing literally everything of a given category is often not what you actually want — this page covers the finer-grained targeting underneath those two entries.
 
 ## The broadest form: allow every theme or app block
 
@@ -18,7 +18,7 @@ description: Every way to control which block types a section or block accepts, 
 }
 ```
 
-This is the form from Part 1 — every standalone block defined anywhere in `blocks/` is allowed, plus any block any installed app wants to contribute. It's the right choice for a genuinely general-purpose container, but it means you're giving up control over what actually ends up inside.
+This is the broadest form — every standalone block defined anywhere in `blocks/` is allowed, plus any block any installed app wants to contribute. It's the right choice for a genuinely general-purpose container, but it means you're giving up control over what actually ends up inside.
 
 ## Allowing specific theme block types only
 

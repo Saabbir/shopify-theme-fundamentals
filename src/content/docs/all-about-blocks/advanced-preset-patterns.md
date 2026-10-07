@@ -28,7 +28,7 @@ This is what most presets look like — a flat list of block instances, each wit
 
 ## A preset with nested blocks
 
-Once a section or block supports nesting (see [Nesting Blocks Inside Blocks](/sections-blocks-snippets/nesting-blocks/)), a preset's `blocks` array can itself contain blocks that have their own nested `blocks` array, so the layout a merchant sees on first adding the section already reflects the intended nested structure, instead of a flat pile of blocks they'd have to manually group themselves:
+Once a section or block supports nesting (see [Block Fundamentals](/all-about-blocks/block-fundamentals/)), a preset's `blocks` array can itself contain blocks that have their own nested `blocks` array, so the layout a merchant sees on first adding the section already reflects the intended nested structure, instead of a flat pile of blocks they'd have to manually group themselves:
 
 ```json
 {

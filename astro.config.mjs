@@ -238,11 +238,12 @@ export default defineConfig({
           label: '15. All About Blocks',
           items: [
             { label: 'Overview', slug: 'all-about-blocks' },
-            { label: '15.1. Static Blocks', slug: 'all-about-blocks/static-blocks' },
-            { label: '15.2. Advanced Nested Block Patterns', slug: 'all-about-blocks/advanced-nested-block-patterns' },
-            { label: '15.3. @app and @theme Targeting in Full', slug: 'all-about-blocks/app-and-theme-targeting-in-full' },
-            { label: '15.4. Block Limits', slug: 'all-about-blocks/block-limits' },
-            { label: '15.5. Advanced Preset Patterns', slug: 'all-about-blocks/advanced-preset-patterns' },
+            { label: '15.1. Block Fundamentals', slug: 'all-about-blocks/block-fundamentals' },
+            { label: '15.2. Static Blocks', slug: 'all-about-blocks/static-blocks' },
+            { label: '15.3. Advanced Nested Block Patterns', slug: 'all-about-blocks/advanced-nested-block-patterns' },
+            { label: '15.4. @app and @theme Targeting in Full', slug: 'all-about-blocks/app-and-theme-targeting-in-full' },
+            { label: '15.5. Block Limits', slug: 'all-about-blocks/block-limits' },
+            { label: '15.6. Advanced Preset Patterns', slug: 'all-about-blocks/advanced-preset-patterns' },
           ],
         },
         {

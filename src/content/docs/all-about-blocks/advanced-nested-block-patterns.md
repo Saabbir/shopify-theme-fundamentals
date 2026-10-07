@@ -5,7 +5,7 @@ description: Real layout patterns built from nested blocks, and where nesting st
 
 **TL;DR:** Real layout patterns built from nested blocks, and where nesting stops being a good idea.
 
-[Nesting Blocks Inside Blocks](/sections-blocks-snippets/nesting-blocks/) introduced the mechanism with a single "group" block example. This page works through a few real patterns built on top of that mechanism, and where nesting starts costing more than it's worth.
+[Block Fundamentals](/all-about-blocks/block-fundamentals/) introduced block nesting with a single "group" block example. This page works through a few real patterns built on top of that mechanism, and where nesting starts costing more than it's worth.
 
 ## Pattern: rows and columns from one recursive block
 
