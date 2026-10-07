@@ -233,6 +233,17 @@ export default defineConfig({
             { label: '14.4. Real-World Section Patterns', slug: 'all-about-sections/real-world-section-patterns' },
           ],
         },
+        {
+          label: '15. All About Blocks',
+          items: [
+            { label: 'Overview', slug: 'all-about-blocks' },
+            { label: '15.1. Static Blocks', slug: 'all-about-blocks/static-blocks' },
+            { label: '15.2. Advanced Nested Block Patterns', slug: 'all-about-blocks/advanced-nested-block-patterns' },
+            { label: '15.3. @app and @theme Targeting in Full', slug: 'all-about-blocks/app-and-theme-targeting-in-full' },
+            { label: '15.4. Block Limits', slug: 'all-about-blocks/block-limits' },
+            { label: '15.5. Advanced Preset Patterns', slug: 'all-about-blocks/advanced-preset-patterns' },
+          ],
+        },
       ],
     }),
   ],

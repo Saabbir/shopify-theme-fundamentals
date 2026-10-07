@@ -127,7 +127,7 @@ Where a Part 2 topic already has an intro-level page in Part 1 (sections, blocks
 
 Everything [Sections, Blocks & Snippets](/sections-blocks-snippets/) didn't have room for: `enabled_on`/`disabled_on` (restricting a section to specific templates or groups), `max_blocks`, practical schema-size limits, section-level performance considerations, and a wider set of real-world section patterns.
 
-## 15. All About Blocks — `status: planned`
+## 15. All About Blocks — `status: live`
 
 Static blocks (`"static": true` — a block always present, not removable by a merchant), deeper nested-block patterns, `@app`/`@theme` targeting rules in full, block count limits, and advanced preset patterns.
 
