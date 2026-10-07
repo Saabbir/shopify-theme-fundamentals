@@ -175,6 +175,10 @@ Consolidates the "pick one consistent prefix" advice scattered across the CSS, J
 
 A practical, checklist-style capstone — and the natural bridge to the [Shopify Theme Handbook](https://saabbir.github.io/shopify-theme-handbook/), which covers real Theme Store submission requirements in full for a reader who's finished this entire site.
 
+## 27. Horizon Theme Codebase Tour — `status: live`
+
+A different kind of chapter from the rest of Part 2: not a general mechanism taught in the abstract, but a tour of one real, currently-shipping theme — Shopify's own Horizon — read directly from its public source. Covers Horizon's folder structure and the explicit Theme Store eligibility caveat in its README, a from-source walkthrough of how it sets up colors (`color-palette.liquid`, `contrast-override.liquid`) and typography/design tokens (`theme-styles-variables.liquid`), the naming conventions that repeat throughout its real code, an honest (non-exhaustive, explicitly sourced) overview of its sections/blocks/snippets/assets, and a practical step-by-step guide to using it as a starting skeleton for a new custom theme. Built ahead of groups 20–26 at explicit user request, since it directly answers "what does Shopify's own reference theme already give me to reuse."
+
 ---
 
 ## Why this order

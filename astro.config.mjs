@@ -295,6 +295,18 @@ export default defineConfig({
             { label: '19.5. Performance Budgets for Media-Heavy Pages', slug: 'media-deep-dive/performance-budgets-for-media-heavy-pages' },
           ],
         },
+        {
+          label: '27. Horizon Theme Codebase Tour',
+          items: [
+            { label: 'Overview', slug: 'horizon-codebase-tour' },
+            { label: '27.1. Folder Structure & Theme Store Caveat', slug: 'horizon-codebase-tour/folder-structure-and-theme-store-caveat' },
+            { label: '27.2. How Horizon Sets Up Colors', slug: 'horizon-codebase-tour/how-horizon-sets-up-colors' },
+            { label: '27.3. How Horizon Sets Up Typography & Design Tokens', slug: 'horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens' },
+            { label: '27.4. Naming & Code Conventions in Horizon', slug: 'horizon-codebase-tour/naming-and-code-conventions' },
+            { label: '27.5. Sections, Blocks, Snippets & Assets at a Glance', slug: 'horizon-codebase-tour/sections-blocks-snippets-and-assets' },
+            { label: '27.6. Using Horizon as a Skeleton for a New Theme', slug: 'horizon-codebase-tour/using-horizon-as-a-skeleton' },
+          ],
+        },
       ],
     }),
   ],
