@@ -5,9 +5,9 @@ description: Building a full clamp()-based scale across every heading level, not
 
 **TL;DR:** Building a full `clamp()`-based scale across every heading level, not just one example size.
 
-[Typography & font_picker](/design-tokens/typography-and-font-picker/) introduced `clamp()` with two example sizes. This page builds out a complete scale, and covers the reasoning behind the specific numbers you'd actually pick.
+A **type scale** is a small, fixed list of font sizes (for a heading, a subheading, body text, a caption) that every section pulls from, instead of each one choosing its own arbitrary size. A **fluid** type scale goes one step further: rather than a fixed pixel size, each size scales smoothly between a minimum and maximum as the viewport width changes, using CSS's `clamp()` function. This page builds out a complete fluid scale and covers the reasoning behind the specific numbers you'd actually pick.
 
-## A full scale, not just two sizes
+## A full scale, across every heading level
 
 ```css
 :root {

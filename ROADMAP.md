@@ -119,33 +119,33 @@ Audience throughout: someone who has never touched a Shopify theme before, but a
 
 # Part 2: Deep Dives
 
-Part 1 (groups 1–13 above) is a front-to-back path for someone who's never built a theme before — it stays exactly as it is, and nothing in Part 2 renumbers or disrupts it. Part 2 is a second, separate shelf of comprehensive, reference-depth chapters for after Part 1: each one goes much deeper on a single topic than Part 1 had room for, written for someone who already has the fundamentals and wants to go deep on one specific thing. Unlike Part 1, these don't need to be read in order relative to each other — each stands on its own, though every one still assumes all of Part 1.
+Part 1 (groups 1–13 above) is a front-to-back path for someone who's never built a theme before — it stays exactly as it is, and nothing in Part 2 renumbers or disrupts it. Part 2 is a second, separate shelf of **comprehensive, standalone references** — one per topic (sections, blocks, snippets, colors, typography, media, and so on). Each Part 2 chapter covers its topic completely on its own, starting from what the thing *is* and building all the way up to its most advanced corners, so a reader can land directly on "All About Typography" with zero prior context and come away knowing everything the site teaches about typography, without ever needing to have read Part 1 first.
 
-Where a Part 2 topic already has an intro-level page in Part 1 (sections, blocks, snippets, colors, typography, media), that Part 1 page is left alone — it's still the right on-ramp for a first-time reader, and it's cross-linked from dozens of other pages. The Part 2 chapter is an additional, standalone deep dive, not a replacement.
+This means a Part 2 chapter's early pages deliberately cover some of the same ground as the matching Part 1 page — that overlap is intentional, not a mistake to dedupe away. Part 1 teaches a topic once, briefly, in the order a first-time reader needs it, woven into the front-to-back path. Part 2 teaches the same topic again, on its own, in full — as deep and as complete as the topic actually goes, independent of what order Part 1 happened to introduce things in. A Part 2 chapter never says "as covered in Part 1" or assumes a reader has read anything else on the site; it only assumes the general web-development background stated in the site's own audience note (HTML/CSS/JS, no prior Shopify/Liquid experience). Cross-links to Part 1 or to other Part 2 chapters are for a reader who wants more, never a prerequisite for understanding the page they're on.
 
 ## 14. All About Sections — `status: live`
 
-Everything [Sections, Blocks & Snippets](/sections-blocks-snippets/) didn't have room for: `enabled_on`/`disabled_on` (restricting a section to specific templates or groups), `max_blocks`, practical schema-size limits, section-level performance considerations, and a wider set of real-world section patterns.
+Everything about sections, start to finish, in one place: what a section is and how it's structured, schema and rendering from the ground up, `enabled_on`/`disabled_on`, `max_blocks`, practical schema-size limits, section-level performance considerations, and a wider set of real-world section patterns.
 
 ## 15. All About Blocks — `status: live`
 
-Static blocks (`"static": true` — a block always present, not removable by a merchant), deeper nested-block patterns, `@app`/`@theme` targeting rules in full, block count limits, and advanced preset patterns.
+Everything about blocks, start to finish: what a block is, inline vs. standalone blocks, nesting, static blocks (`"static": true`), `@app`/`@theme` targeting rules in full, block count limits, and advanced preset patterns.
 
 ## 16. All About Snippets — `status: live`
 
-Recursive snippets, organizing a large snippet library as a theme grows, and the performance characteristics of `render` at scale.
+Everything about snippets, start to finish: what a snippet is, `{% render %}` and scope isolation, recursive snippets, organizing a large snippet library as a theme grows, and the performance characteristics of `render` at scale.
 
 ## 17. All About Colors — `status: live`
 
-Beyond [Color Settings & Color Schemes](/design-tokens/color-settings-and-color-schemes/): color formats and conversions, every color filter in depth with before/after examples, dark mode (`prefers-color-scheme`), building a full primitive → semantic → component token system, and a real contrast-testing workflow.
+Everything about color, start to finish: `color` and `color_scheme_group` settings from the ground up, color formats and conversions, every color filter in depth with before/after examples, dark mode (`prefers-color-scheme`), building a full primitive → semantic → component token system, and a real contrast-testing workflow.
 
 ## 18. All About Typography — `status: live`
 
-Beyond [Typography & font_picker](/design-tokens/typography-and-font-picker/): variable fonts, font-loading performance (`font-display`, preloading), fluid type scales in depth, and font fallback strategy for multi-language stores.
+Everything about typography, start to finish: what fonts/weights/styles are, the `font_picker` setting and loading a font correctly, how Shopify's own Horizon theme structures its typography tokens, building a type-preset system, wiring font settings into sections and blocks, best practices, variable fonts, font-loading performance (`font-display`, preloading), fluid type scales in depth, and font fallback strategy for multi-language stores.
 
 ## 19. Media Deep Dive — `status: live`
 
-Beyond [Media & Assets](/media-and-assets/): art direction with `<picture>` (different crops per breakpoint, not just different sizes of the same crop), video loading/autoplay strategy, image CDN transform parameters beyond `width`, and performance budgets for media-heavy pages.
+Everything about media, start to finish: images, video, and 3D media from the ground up, art direction with `<picture>` (different crops per breakpoint, not just different sizes of the same crop), video loading/autoplay strategy, image CDN transform parameters beyond `width`, and performance budgets for media-heavy pages.
 
 ## 20. The Section Rendering API — `status: planned`
 
@@ -195,4 +195,4 @@ Every content page follows the same shape used throughout the Shopify Theme Hand
 - A `## Further reading` list at the end, linking to shopify.dev and/or other pages on this site.
 - Every top-level sidebar group has its own `Overview` page (e.g. `theme-architecture.md`) that explains what the group covers and links to each sub-page, exactly like `getting-started.md` does in the handbook.
 - Generic examples only. No `sol-` prefixes, no references to any specific theme's repo or files. If an example needs a name, invent a plain one (`hero-banner`, `product-card`) rather than borrowing a real project's naming convention.
-- Every Part 2 group's Overview page opens with a `:::note[This is a Part 2 deep dive]` aside naming the specific Part 1 page it assumes the reader has already read, so a reader who lands on a Part 2 chapter directly knows where to go first if they haven't read Part 1 yet.
+- A Part 2 chapter is self-contained: no "assumes you've read Part 1" note, and no "as covered in [Part 1 page]" phrasing anywhere in its pages. Its first one or two sub-pages cover the topic's fundamentals from zero (what the thing is, the simplest working example), exactly as if Part 1 didn't exist, before building up through the same intermediate and advanced material the chapter always planned to cover. Overlap with Part 1 is expected and fine — a cross-link to a Part 1 page is offered as further reading, never as a prerequisite.

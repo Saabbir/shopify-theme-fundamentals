@@ -7,7 +7,7 @@ description: What happens when a merchant's chosen font doesn't support every ch
 
 ## The problem `fallback_families` alone doesn't fully solve
 
-`fallback_families`, covered in Part 1, handles the case where a font is still loading or fails to load at all. It doesn't handle a different, easy-to-miss problem: a font that loads perfectly fine, but simply doesn't include glyphs (character shapes) for every language a store sells in. A Latin-script display font, however beautifully it renders English headings, usually has no glyphs at all for Japanese, Arabic, or Cyrillic text — and a browser's behavior when a font is missing a specific character is to silently substitute a different font for just that character, which can look visually jarring mid-sentence.
+`fallback_families` — the ready-made list of substitute fonts covered in [Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) — handles the case where a font is still loading or fails to load at all. It doesn't handle a different, easy-to-miss problem: a font that loads perfectly fine, but simply doesn't include glyphs (character shapes) for every language a store sells in. A Latin-script display font, however beautifully it renders English headings, usually has no glyphs at all for Japanese, Arabic, or Cyrillic text — and a browser's behavior when a font is missing a specific character is to silently substitute a different font for just that character, which can look visually jarring mid-sentence.
 
 ## Where this actually bites in a Shopify theme
 

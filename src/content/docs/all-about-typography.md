@@ -1,23 +1,28 @@
 ---
 title: All About Typography
-description: Everything about typography that the introductory chapter didn't have room for.
+description: Everything about typography in Shopify themes, from what a font actually is to the most advanced loading and token strategies.
 ---
 
-**TL;DR:** Everything about typography that the introductory chapter didn't have room for.
+**TL;DR:** Everything about typography in Shopify themes, from what a font actually is to the most advanced loading and token strategies.
 
-:::note[This is a Part 2 deep dive]
-This chapter assumes you've already read [Typography & font_picker](/design-tokens/typography-and-font-picker/) — it doesn't repeat what `font_picker` returns, how `font_face` loads a font, or the basic idea of a type scale. If you haven't read Part 1 yet, start there; this chapter goes deep on one topic rather than introducing it.
-:::
+This chapter is a complete, standalone reference on typography — it starts from zero and builds all the way up to advanced territory, so it works whether this is the first page you've ever read on this site or the fiftieth. It assumes you know HTML, CSS, and JavaScript, same as the rest of this site, but nothing Shopify-specific beyond that.
 
 ## What's in this chapter
 
 | Page | Answers |
 |---|---|
+| [Typography Fundamentals](/all-about-typography/typography-fundamentals/) | What a font family, weight, and style actually are, and why a fallback stack matters |
+| [Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) | `font_picker`, the font object, and the filters that actually get a font onto the page |
+| [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) | A real, current theme's typography system, read directly from its source |
+| [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) | Turning a handful of font settings into a reusable, named system the whole theme draws from |
+| [Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/) | The concrete schema-to-CSS path, worked through end to end |
+| [Typography Best Practices](/all-about-typography/typography-best-practices/) | A practical checklist, distilled from everything else in this chapter |
 | [Variable Fonts](/all-about-typography/variable-fonts/) | One font file covering a whole range of weights, instead of loading a separate file per weight |
 | [Font-Loading Performance](/all-about-typography/font-loading-performance/) | `font-display`, preloading, and avoiding layout shift while a font loads |
-| [Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) | Building a full `clamp()`-based scale across every heading level, not just one example size |
-| [Font Fallback for Multi-Language Stores](/all-about-typography/font-fallback-for-multi-language-stores/) | What happens when a merchant's chosen font doesn't support every character a shopper's language needs |
+| [Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) | Building a full `clamp()`-based scale across every heading level |
+| [Font Fallback for Multi-Language Stores](/all-about-typography/font-fallback-for-multi-language-stores/) | What happens when a chosen font doesn't support every character a shopper's language needs |
 
 ## Further reading
 
+- [Fonts](https://shopify.dev/docs/storefronts/themes/architecture/settings/fonts) (shopify.dev)
 - [The `font_picker` setting](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#font-picker) (shopify.dev)

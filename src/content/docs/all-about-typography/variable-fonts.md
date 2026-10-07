@@ -13,7 +13,7 @@ A **variable font** packs an entire range of weights (and sometimes other proper
 
 ## What this looks like with `font_picker`
 
-`font_modify`, already covered in Part 1, is the exact mechanism that benefits most from this. Changing a font's weight with `font_modify` doesn't need a second font file to exist at all when the underlying font is variable — the single loaded file already covers that weight:
+`font_modify` — the filter that derives a variant (a different weight or style) of an already-chosen font object, covered in full on [Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) — is the exact mechanism that benefits most from this. Changing a font's weight with `font_modify` doesn't need a second font file to exist at all when the underlying font is variable — the single loaded file already covers that weight:
 
 ```liquid
 {% liquid
