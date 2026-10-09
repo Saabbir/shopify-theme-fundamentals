@@ -7,6 +7,10 @@ description: theme-styles-variables.liquid in full — font loading, fluid type 
 
 Everything on this page is read directly from one file: `snippets/theme-styles-variables.liquid`, 687 lines, rendered once and responsible for essentially every design token Horizon's components read from. If there's one file worth understanding deeply before reusing anything from Horizon, it's this one.
 
+## Preloading comes first, from a separate file
+
+Before `theme-styles-variables.liquid` ever runs, `layout/theme.liquid` renders a smaller, dedicated snippet — `snippets/fonts.liquid` — that preloads all four font roles with the `preload_tag` filter, skipping any role set to a system font and marking every preload `fetchpriority: 'low'`. The full file, and the reasoning behind each of its choices, is covered in [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) — worth reading alongside this page, since preloading and the actual `@font-face` loading covered below are deliberately split across two separate files rather than combined into one.
+
 ## Loading fonts without loading the same face twice
 
 [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) already covered the four font-role settings (`type_body_font`, `type_subheading_font`, `type_heading_font`, `type_accent_font`) and the CSS variables they resolve into. What that page didn't cover is a real problem this file solves: each of those four fonts needs up to four variants loaded (regular, bold, italic, bold-italic, via `font_modify`) — but if a merchant picks the *same* font for two different roles, loading it twice would waste a download.
@@ -102,4 +106,5 @@ Past typography, the same file defines CSS custom properties for nearly every ot
 ## Further reading
 
 - [`theme-styles-variables.liquid` (GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/theme-styles-variables.liquid)
+- [`fonts.liquid` (GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/fonts.liquid)
 - [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/)

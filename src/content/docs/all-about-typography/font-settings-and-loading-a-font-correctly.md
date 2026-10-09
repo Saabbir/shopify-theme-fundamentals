@@ -81,14 +81,75 @@ Always include `fallback_families` alongside `family`, never `family` alone — 
 
 ## A bolder or italic variant: `font_modify`
 
-```liquid
-{% liquid
-  assign bold_heading_font = settings.heading_font | font_modify: 'weight', 'bold'
-%}
-{{ bold_heading_font | font_face }}
+A merchant typically only picks one font per setting — but a design often needs more than one weight or style of that same family (a bold variant for emphasis, an italic variant for a pull quote). `font_modify` returns a new font object with one property changed, which you then load with `font_face` exactly like any other font object. This avoids asking a merchant to pick a second, separate font setting just to get a bold version of the font they already chose.
+
+## A complete example: body and heading, each normal and bold
+
+Here's the full pattern end to end — two font-role settings (Body, Heading), each needing a normal weight (whatever the merchant picked) and a bold weight (derived with `font_modify`), all four variants loaded exactly once and exposed as tokens:
+
+```json
+{ "type": "font_picker", "id": "type_body_font", "label": "t:labels.body_font", "default": "assistant_n4" },
+{ "type": "font_picker", "id": "type_heading_font", "label": "t:labels.heading_font", "default": "playfair_n7" }
 ```
 
-A merchant typically only picks one font per setting — but a design often needs more than one weight or style of that same family (a bold variant for emphasis, an italic variant for a pull quote). `font_modify` returns a new font object with one property changed, which you then load with `font_face` exactly like any other font object. This avoids asking a merchant to pick a second, separate font setting just to get a bold version of the font they already chose.
+```liquid
+{% comment %} snippets/font-loading.liquid — rendered once, near the top of layout/theme.liquid {% endcomment %}
+{% liquid
+  assign body_font = settings.type_body_font
+  assign body_font_bold = body_font | font_modify: 'weight', 'bold' | default: body_font
+
+  assign heading_font = settings.type_heading_font
+  assign heading_font_bold = heading_font | font_modify: 'weight', 'bold' | default: heading_font
+%}
+
+{% style %}
+  :root {
+    --font-body-family: {{ body_font.family }}, {{ body_font.fallback_families }};
+    --font-body-weight: {{ body_font.weight }};
+    --font-body-bold-weight: {{ body_font_bold.weight }};
+
+    --font-heading-family: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+    --font-heading-weight: {{ heading_font.weight }};
+    --font-heading-bold-weight: {{ heading_font_bold.weight }};
+  }
+
+  {{ body_font | font_face }}
+  {{ body_font_bold | font_face }}
+  {{ heading_font | font_face }}
+  {{ heading_font_bold | font_face }}
+{% endstyle %}
+```
+
+```css
+body {
+  font-family: var(--font-body-family);
+  font-weight: var(--font-body-weight);
+}
+
+strong,
+b {
+  font-weight: var(--font-body-bold-weight);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+}
+
+h1 strong,
+.heading--bold {
+  font-weight: var(--font-heading-bold-weight);
+}
+```
+
+Four `font_face` outputs, four distinct files, covering exactly the four variants this theme actually uses — no more. Two details worth noticing:
+
+- **`--font-body-bold-weight` reads `body_font_bold.weight`, not a hardcoded `700`.** `font_modify: 'weight', 'bold'` resolves to whichever weight that specific family actually defines as its real bold — commonly 700, but not guaranteed; some families ship a "bold" at 600 or 800 instead. Reading the resolved object's own `.weight` back out, rather than assuming `700`, keeps the CSS correct regardless of which exact weight the merchant's chosen font happens to use for its bold variant.
+- **`| default: body_font` guards every `font_modify` call**, per the `nil`-handling caution above — if a merchant's chosen font has no distinct bold variant at all, this falls back to the normal weight rather than silently producing nothing.
+
+This is precisely the pattern [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) shows at real scale — Horizon does this same normal/bold pair (plus italic and bold-italic) for all four of its font roles, not just two, with a dedup step added so a font picked for two different roles isn't downloaded twice.
 
 :::caution[`font_modify` can return `nil`]
 Not every font family has every weight or style as a real, available variant. If you ask `font_modify` for a variant that doesn't exist for that specific family, it returns `nil` rather than an error — and using a `nil` value directly (`{{ nil_font | font_face }}`) renders nothing, with nothing in the console to explain why. Always guard a `font_modify` result with the `default` filter, falling back to a weight you know the family actually has:
