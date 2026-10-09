@@ -61,6 +61,10 @@ This site's own worked examples — [Design Tokens & Type Presets](/all-about-ty
 Horizon's real, shipped source (quoted directly on [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/)) separates the role from the property with a **double dash** instead: `--font-heading--family`, `--font-heading--weight`. The double dash is a deliberate visual signal, grouping every property of one role under a shared, scannable prefix (`--font-heading--`) while keeping each one individually addressable — it reads slightly more explicitly once a token system has grown large. Neither convention is "more correct"; pick one for a given theme and use it everywhere in that theme. This site defaults its own generic examples to the simpler single-dash form; Horizon's double-dash form is worth adopting directly if a theme's token system is large enough that visually grouping a token family matters.
 :::
 
+:::tip[Why `type_` in settings but `--font-` in CSS — shouldn't they match?]
+They're solving different problems, so they're allowed to diverge. `type_` exists purely to group every typography **setting** together in `settings_schema.json` — "typography" as a category label, parallel to `palette_` for color settings. `--font-` exists so a developer who already knows CSS's own `font-family`, `font-weight`, and `font-style` properties recognizes a role token on sight, without translating "type" into "oh, this means font" — CSS itself has no such category. Nothing stops a CSS custom property from starting with `--type-` instead; the preset tokens below do exactly that. The difference is what each token maps to: a role token corresponds to one specific CSS property family, so naming it after that family is the more useful signal to whoever's writing the CSS that consumes it. A preset token, covered next, bundles several different properties at once, which is exactly why it reaches for the broader `type` label instead.
+:::
+
 ## Naming a type preset token
 
 ```css
@@ -80,6 +84,10 @@ Name a preset by **what it's for**, not what it looks like:
 ```
 
 A preset named `large` has nowhere to go once a theme needs something even larger — `--type-preset-h1`, `--type-preset-display`, or `--type-preset-eyebrow` all describe a *role* the preset plays, which stays meaningful no matter how many other presets get added around it later.
+
+:::note[Horizon actually extends `--font-`, not `--type-preset-`, for its own presets — both are legitimate]
+Horizon's real preset tokens (quoted in full on [How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/)) are `--font-h2--family`, `--font-h2--size`, `--font-h2--weight`, and so on — it extends the *same* `--font-` family used for role tokens to presets too, rather than introducing a separate prefix. That keeps every typography token, role or preset, under one shared `--font-` umbrella, at the cost of the name alone not telling you whether `h2` refers to a role or a preset (you have to already know Horizon's roles are Body/Subheading/Heading/Accent, not `h1`–`h6`, to tell them apart). This site recommends `--type-preset-{name}-{property}` instead because the distinction is visible in the prefix itself, with no prior knowledge required — but if a theme already follows Horizon's double-dash role tokens, extending that same family to presets, the way Horizon does, is an equally consistent choice. Pick one approach and apply it theme-wide, the same as the single-dash/double-dash decision above.
+:::
 
 ## Naming a section- or block-scoped font setting
 
@@ -120,7 +128,8 @@ One detail worth knowing if you ever read `theme-styles-variables.liquid` direct
 - A shared category prefix (`type_`) groups every typography setting together in `settings_schema.json` — the same instinct as `palette_` for color, confirmed at real production scale by Horizon.
 - When naming a setting that repeats across many similar levels (a size per heading level), put the shared property before the level (`type_size_h1`); when a property has one instance per named role (a font per role), put the role first (`type_heading_font`). Group by whichever axis has more members.
 - CSS token names can use a single dash (this site's own default, simpler) or Horizon's double dash (groups a token family more explicitly) — pick one per theme and stay consistent; both are legitimate.
-- A type preset gets its own fixed prefix (`--type-preset-`) and should be named by role or purpose, never by a relative description like "large" that breaks the moment something bigger is added.
+- `type_` (settings) and `--font-` (CSS) don't need to match — one groups a category of setting in `settings_schema.json`, the other mirrors CSS's own `font-*` property family so a role token reads naturally in the CSS that consumes it.
+- A type preset gets its own fixed prefix (`--type-preset-`) and should be named by role or purpose, never by a relative description like "large" that breaks the moment something bigger is added. Horizon itself extends `--font-` to its presets instead of using a separate prefix — both are legitimate; pick one per theme.
 - A section- or block-scoped font setting deliberately skips the `type_` prefix — that prefix specifically means "part of the theme-wide token system," which a scoped, component-specific setting isn't.
 
 ## Further reading
