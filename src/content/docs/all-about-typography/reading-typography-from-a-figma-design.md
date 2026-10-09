@@ -51,6 +51,12 @@ With the real inventory and its real distinct combinations in hand, assign each 
 
 Three roles, not five, because the eyebrow and the body text share a family and only differ by weight — exactly the normal/bold pattern [Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/)'s complete example covers with `font_modify`, rather than a fourth independent role. Collapsing the inventory this way, deliberately, is what keeps the eventual settings schema and token system small and maintainable instead of growing one role per screen the designer happened to draw.
 
+Here's that same collapsing applied to an actual mockup, rather than just a table — five visually distinct pieces of text, annotated back to just three underlying roles:
+
+![An annotated hero mockup with five numbered callouts: an eyebrow label and a CTA button both mapped to the Body role in bold, a headline mapped to the Heading role, a body paragraph mapped to the Body role in its normal weight, and a pull quote mapped to a separate Accent role. Each callout lists the exact font, size, line-height, and letter-spacing values read from Figma.](/images/figma-typography-annotation.svg)
+
+Notice ① and ⑤ — the eyebrow label and the CTA button — look nothing alike on the page, but both resolve to the exact same loaded variant (Inter, bold): no fifth role, and no extra font file downloaded for the button. That's the actual payoff of Step 2 and Step 3 together, made visible: a handful of genuinely distinct roles, reused everywhere a treatment repeats, however different those treatments look at a glance.
+
 ## Step 4: check whether each family is available through `font_picker`
 
 For each role's family, check it against Shopify's font library — the same lookup [Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) describes (pick a placeholder, save, read the real ID back out of `config/settings_data.json`), or search the [Available fonts](https://shopify.dev/docs/storefronts/themes/architecture/settings/fonts#available-fonts) table directly by name. Three outcomes are all common:
