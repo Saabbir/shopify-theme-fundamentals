@@ -84,12 +84,28 @@ Always include `fallback_families` alongside `family`, never `family` alone — 
 
 A merchant typically only picks one font per setting — but a design often needs more than one weight or style of that same family (a bold variant for emphasis, an italic variant for a pull quote). `font_modify` returns a new font object with one property changed, which you then load with `font_face` exactly like any other font object. This avoids asking a merchant to pick a second, separate font setting just to get a bold version of the font they already chose.
 
+:::caution[`font_modify` can return `nil`]
+Not every font family has every weight or style as a real, available variant. If you ask `font_modify` for a variant that doesn't exist for that specific family, it returns `nil` rather than an error — and using a `nil` value directly (`{{ nil_font | font_face }}`) renders nothing, with nothing in the console to explain why. Always guard a `font_modify` result with the `default` filter, falling back to a weight you know the family actually has:
+
+```liquid
+{% liquid
+  assign bold_heading_font = settings.heading_font | font_modify: 'weight', 'bold' | default: settings.heading_font
+%}
+```
+
+[Variable Fonts](/all-about-typography/variable-fonts/) covers a practical side effect of this: trying several `font_modify` weights and watching which ones come back `nil` is actually a decent way to probe whether a font behaves like a variable font with a wide weight range, versus a traditional family with only two or three fixed weights.
+:::
+
+## Two less common properties, for completeness
+
+Beyond `family`, `fallback_families`, `weight`, and `style`, the font object has two further documented properties, rarely needed but worth knowing exist: `baseline_ratio` (a decimal describing the font's baseline position, occasionally useful for precise vertical alignment across two different fonts) and `variants` (an array of every other weight/style combination Shopify's font library offers for that same family, which `font_modify` uses internally and which you can also loop over directly if you need to list every available variant rather than requesting one specific one).
+
 ## Key takeaways
 
 - `font_picker` returns a font object (`family`, `fallback_families`, `weight`, `style`, and more), not a plain string.
 - Referencing `.family` in CSS is not the same as loading the font — `font_face` (or a custom `@font-face` built from `font_url`) has to run once, globally, or the font never actually downloads, and this fails completely silently.
 - Always pair `.family` with `.fallback_families` when writing a `font-family` CSS value.
-- `font_modify` derives a variant (bold, italic) of an already-chosen font, without a second merchant-facing setting.
+- `font_modify` derives a variant (bold, italic) of an already-chosen font, without a second merchant-facing setting — but can return `nil` if that specific variant doesn't exist, so always guard it with `default`.
 
 ## Further reading
 
@@ -97,3 +113,4 @@ A merchant typically only picks one font per setting — but a design often need
 - [The `font_face` filter](https://shopify.dev/docs/api/liquid/filters/font_face) (shopify.dev)
 - [The `font_url` filter](https://shopify.dev/docs/api/liquid/filters/font_url) (shopify.dev)
 - [The `font_modify` filter](https://shopify.dev/docs/api/liquid/filters/font_modify) (shopify.dev)
+- [Liquid objects: `font`](https://shopify.dev/docs/api/liquid/objects/font) (shopify.dev)

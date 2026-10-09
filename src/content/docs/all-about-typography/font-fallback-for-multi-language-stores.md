@@ -22,8 +22,8 @@ Before shipping a decorative or display font as a theme default, it's worth chec
 Rather than trying to find one font that covers every script a global store might need, the more common real-world approach is scoping a distinctive display font to just the Latin-script content it was chosen for (a hero heading in English, say), and falling back to a broad, well-covered system font stack for everything else:
 
 ```css
---sol-font-display: 'Chosen Display Font', sans-serif;
---sol-font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
+--font-display-family: 'Chosen Display Font', sans-serif;
+--font-body-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
 ```
 
 `system-ui` and its related fallbacks resolve to whatever font the shopper's own operating system already uses as its default UI font — which is virtually guaranteed to already cover whatever script that operating system is configured for, since it's the same font the OS uses for its own menus and system text.

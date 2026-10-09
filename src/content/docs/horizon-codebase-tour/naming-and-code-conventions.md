@@ -66,5 +66,6 @@ Worth knowing if you read `theme-styles-variables.liquid` directly: internally, 
 
 ## Further reading
 
+- [Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/) — this same `type_`/double-dash convention, generalized into a reusable naming system for any theme
 - [`theme-styles-variables.liquid` (GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/theme-styles-variables.liquid)
 - [`contrast-override.liquid` (GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/contrast-override.liquid)

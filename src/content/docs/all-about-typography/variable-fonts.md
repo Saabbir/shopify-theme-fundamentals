@@ -34,13 +34,55 @@ Fewer font files downloaded is a direct, measurable performance win — each add
 Whether a given typeface is available as a variable font depends entirely on what the font's creator has published — it's not something you can convert yourself. When choosing a font for a theme that's expected to use several weights of the same family, checking whether a variable version exists is worth doing before committing to the regular, single-weight files.
 :::
 
+## How to tell whether a font picked with `font_picker` is variable
+
+This is a reasonable thing to want to know, and there's no single property on the `font` object that answers it directly — Shopify's documented `font` object properties are `family`, `fallback_families`, `weight`, `style`, `baseline_ratio`, `system?`, and `variants`; none of them is a `variable` boolean. The underlying question — "is this one file covering a range, or several separate files?" — is a detail of how Shopify's font library serves that specific family, not something exposed directly in Liquid. A few practical ways to actually find out:
+
+### Check the font's listing on Google Fonts
+
+Most of the non-system fonts in Shopify's font library are sourced from Google Fonts, and Google Fonts' own site explicitly labels which families are published as variable (showing the supported weight — and sometimes width — range as a slider in its UI). Searching for the font family name on [fonts.google.com](https://fonts.google.com) is the fastest way to check, before writing any code.
+
+### Probe it with `font_modify` and watch for `nil`
+
+```liquid
+{% liquid
+  assign test_weight_500 = settings.type_body_font | font_modify: 'weight', '500'
+  assign test_weight_600 = settings.type_body_font | font_modify: 'weight', '600'
+%}
+
+{{ test_weight_500 }}
+{{ test_weight_600 }}
+```
+
+`font_modify` returns `nil` if the specific variant it was asked for doesn't exist for that font family. A font that only ships as regular (400) and bold (700) static files returns `nil` for every weight in between; a font covering the full 100–900 range as one variable file returns a real font object for every weight requested. Trying a handful of in-between weights this way is a quick, practical signal — not a definitive test, but a useful one you can run directly in Liquid without downloading anything.
+
+:::caution[Always handle a `nil` result from `font_modify`]
+Because a requested variant might not exist, `font_modify` can silently return `nil` — using that result directly (`{{ nil_font | font_face }}`) renders nothing and fails quietly. Guard it with the `default` filter, falling back to a weight you know exists:
+
+```liquid
+{% liquid
+  assign bold_heading_font = settings.type_heading_font | font_modify: 'weight', 'bold' | default: settings.type_heading_font
+%}
+```
+:::
+
+### Inspect the actual served file
+
+For certainty, use the `font_url` filter to get the real file URL Shopify is serving, download it, and open it in a font inspection tool (such as [Wakamai Fondue](https://wakamaifondue.com/) or [Fontdrop.info](https://fontdrop.info/)) — a true variable font's file contains an `fvar` table; a static font's file doesn't. This is the only fully conclusive method, worth reaching for when it genuinely matters (deciding whether to invest in a larger set of `font_modify`-derived weights for a design) rather than for routine use.
+
+### Why it mostly doesn't matter day to day
+
+`font_modify` and `font_face` behave identically from Liquid's perspective regardless of which kind of file is actually being served — Shopify handles the difference for you. Knowing whether a font is variable mainly matters for performance awareness (one file instead of several, covered above) and for understanding *why* a wide range of `font_modify`-derived weights might "just work" for one font and come back `nil` for another.
+
 ## Key takeaways
 
 - A variable font packs a whole range of weights (and sometimes other properties) into one file, instead of a separate file per weight.
 - This directly reduces the number of font files a page has to download, which matters most for a design using several weights of the same family.
 - Not every font ships a variable version — check what the type foundry actually offers before assuming one exists.
+- The `font` object has no direct "is this variable" property — check the font on Google Fonts, probe it with `font_modify` and watch for `nil` results, or inspect the actual served file for certainty.
 
 ## Further reading
 
 - [Variable fonts guide (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_fonts/Variable_fonts_guide)
 - [The `font_modify` filter](https://shopify.dev/docs/api/liquid/filters/font_modify) (shopify.dev)
+- [Liquid objects: `font`](https://shopify.dev/docs/api/liquid/objects/font) (shopify.dev)

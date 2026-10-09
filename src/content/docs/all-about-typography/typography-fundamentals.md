@@ -45,14 +45,52 @@ A **web font** is a font file the browser has to download before it can render t
 A theme using only system fonts has zero font files to download — text renders the instant the page's CSS is parsed, with no loading delay and no risk of a visible font swap. This is a real, meaningful performance advantage, worth considering seriously for a theme that doesn't have a specific brand typeface it needs to use.
 :::
 
+A font chosen through `font_picker` carries this distinction as a real, checkable property — `font.system?` returns `true` if the merchant picked a system font, `false` otherwise:
+
+```liquid
+{% if settings.heading_font.system? %}
+  {% comment %} No font_face needed — the browser already has this font. {% endcomment %}
+{% else %}
+  {{ settings.heading_font | font_face }}
+{% endif %}
+```
+
+This is more than a curiosity — [Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) covers why every web font needs a matching `font_face` output somewhere, but a system font doesn't need one at all (there's no file to load). Checking `.system?` before deciding whether to output `font_face` avoids generating a pointless `@font-face` rule for a font the browser already has.
+
+## Line-height: why the value usually has no unit
+
+```css
+line-height: 1.5;    /* preferred: unitless */
+line-height: 1.5em;  /* avoid */
+line-height: 150%;   /* avoid */
+```
+
+A **unitless** `line-height` (just `1.5`, not `1.5em` or `150%`) is a multiplier of that element's own `font-size` — and critically, it's recalculated fresh for every descendant based on *that descendant's own* font size, rather than being fixed once and inherited as a flat pixel value. A `line-height: 1.5em` set on a parent, by contrast, inherits as a computed pixel value — so a smaller or larger child element inherits a line-height proportioned for the *parent's* font size, not its own, which usually produces text that's too cramped or too loose. Unitless `line-height` is the conventional default for exactly this reason: it stays proportionally correct no matter where in the document it ends up applying.
+
+## Letter-spacing and text-transform: smaller, often-forgotten levers
+
+Family, weight, style, and size get most of the attention, but two more properties round out a complete typographic treatment, especially for a type preset (per [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)):
+
+```css
+.eyebrow {
+  letter-spacing: 0.08em; /* also typically unitless-relative, via em */
+  text-transform: uppercase;
+}
+```
+
+`letter-spacing` is conventionally expressed in `em` (relative to that element's own font size, same reasoning as unitless `line-height`) rather than a fixed `px` value, for the same reason: it stays proportionally correct as font size changes. A small positive `letter-spacing` paired with `text-transform: uppercase` is a common combination for a small, label-like treatment (an "eyebrow" above a heading, a badge, a category label) — worth including as named properties in a preset's token set alongside family, weight, size, and line-height, rather than left as one-off inline styles wherever that treatment is needed.
+
 ## Key takeaways
 
 - A font family is a collection of related files, not one file — weight and style together determine which specific file within that family actually gets used.
 - Not every font ships every weight; requesting one it doesn't have causes a silent substitution to the nearest available weight.
 - Always write a `font-family` value as a fallback stack (specific font, then a reasonable alternative, then a generic system category) — never a single font name alone.
-- System fonts cost nothing to download and are the fastest typography option available; web fonts look exactly as designed but require a network request first.
+- System fonts cost nothing to download and are the fastest typography option available; web fonts look exactly as designed but require a network request first. `font.system?` checks this directly in Liquid — skip `font_face` entirely when it's `true`.
+- Write `line-height` unitless, not with `em` or `%` — a unitless value recalculates correctly for every descendant's own font size, instead of inheriting a value proportioned for the parent's.
+- `letter-spacing` and `text-transform` round out a full typographic treatment alongside family, weight, size, and line-height — worth naming as real properties in a preset's token set, not left as one-off inline styles.
 
 ## Further reading
 
 - [`font-family` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family)
 - [Fonts](https://shopify.dev/docs/storefronts/themes/architecture/settings/fonts) (shopify.dev)
+- [Liquid objects: `font`](https://shopify.dev/docs/api/liquid/objects/font) (shopify.dev)
