@@ -141,7 +141,7 @@ Everything about color, start to finish: `color` and `color_scheme_group` settin
 
 ## 18. All About Typography — `status: live`
 
-Everything about typography, start to finish: what fonts/weights/styles are, the `font_picker` setting and loading a font correctly, how Shopify's own Horizon theme structures its typography tokens, building a type-preset system, wiring font settings into sections and blocks, best practices, variable fonts, font-loading performance (`font-display`, preloading), fluid type scales in depth, font fallback strategy for multi-language stores, and a complete design-tokens example merging typography, color, and spacing settings into one CSS custom-properties snippet.
+Everything about typography, start to finish: what fonts/weights/styles are, reading a client's Figma handoff and turning it into font roles and settings before writing any code, the `font_picker` setting and loading a font correctly, how Shopify's own Horizon theme structures its typography tokens, building a type-preset system, wiring font settings into sections and blocks, a standalone naming-conventions page for settings/CSS variables/presets, best practices, variable fonts, font-loading performance (`font-display`, preloading), fluid type scales in depth, font fallback strategy for multi-language stores, and a complete design-tokens example merging typography, color, and spacing settings into one CSS custom-properties snippet.
 
 ## 19. Media Deep Dive — `status: live`
 

@@ -12,6 +12,7 @@ This chapter is a complete, standalone reference on typography — it starts fro
 | Page | Answers |
 |---|---|
 | [Typography Fundamentals](/all-about-typography/typography-fundamentals/) | What a font family, weight, and style actually are, and why a fallback stack matters |
+| [Reading Typography from a Figma Design](/all-about-typography/reading-typography-from-a-figma-design/) | Turning a client's Figma file into font roles, settings, and tokens, before writing any code |
 | [Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) | `font_picker`, the font object, and the filters that actually get a font onto the page |
 | [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) | A real, current theme's typography system, read directly from its source |
 | [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) | Turning a handful of font settings into a reusable, named system the whole theme draws from |

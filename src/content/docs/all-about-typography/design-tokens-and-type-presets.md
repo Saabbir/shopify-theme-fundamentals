@@ -117,5 +117,6 @@ Four font-role tokens are worth building in almost any theme past a trivial size
 
 ## Further reading
 
+- [Reading Typography from a Figma Design](/all-about-typography/reading-typography-from-a-figma-design/) — turning a client's actual text styles into this chapter's roles, before writing any settings
 - [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/)
 - [Building a Token System: Primitive, Semantic, Component](/all-about-colors/building-a-token-system/) — the same idea, applied to color

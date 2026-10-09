@@ -91,6 +91,7 @@ Family, weight, style, and size get most of the attention, but two more properti
 
 ## Further reading
 
+- [Reading Typography from a Figma Design](/all-about-typography/reading-typography-from-a-figma-design/) — applying weight, style, line-height, and letter-spacing to a real client handoff
 - [`font-family` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family)
 - [Fonts](https://shopify.dev/docs/storefronts/themes/architecture/settings/fonts) (shopify.dev)
 - [Liquid objects: `font`](https://shopify.dev/docs/api/liquid/objects/font) (shopify.dev)
