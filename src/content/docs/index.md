@@ -35,9 +35,28 @@ hero:
 
 All 13 sections are live — see [`ROADMAP.md`](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) in the repo for why they're ordered this way, and for where any future sections get scoped out before they're written.
 
+## Part 2: comprehensive, standalone references
+
+Once you've read Part 1 (or even if you haven't), each of these covers one topic completely on its own — from what the thing *is* up to its most advanced corners — so you can land directly on "All About Typography" with zero prior context and come away knowing everything this site teaches about typography.
+
+| Chapter | Covers |
+|---|---|
+| [14. All About Sections](/all-about-sections/) | Sections from zero to advanced patterns, plus a complete worked example |
+| [15. All About Blocks](/all-about-blocks/) | Static blocks, deep nesting, `@app`/`@theme` targeting, a complete worked example |
+| [16. All About Snippets](/all-about-snippets/) | Scope isolation, recursion, organizing a large snippet library |
+| [17. All About Colors](/all-about-colors/) | `color_scheme_group`, every color filter, token systems, contrast testing |
+| [18. All About Typography](/all-about-typography/) | `font_picker`, how Shopify's own Horizon theme loads type, design tokens, fluid scales |
+| [19. Media Deep Dive](/media-deep-dive/) | Art direction, video strategy, image CDN parameters, performance budgets |
+| [27. Horizon Theme Codebase Tour](/horizon-codebase-tour/) | A real, shipping theme's source, read directly — colors, typography, conventions |
+| [28. All About Theme Settings](/all-about-theme-settings/) | Global settings vs. per-instance section/block content, and where each is actually stored |
+| [29. All About CSS](/all-about-css/) | Cascade layers, container queries, custom properties, Shopify's real CSS loading behavior |
+| [30. All About JavaScript](/all-about-javascript/) | Web Components in depth, theme editor events, cross-component communication |
+
+Groups 20–26 (the Section Rendering API, the Cart AJAX API, collection filtering, and a handful of cross-cutting deep dives) are planned but not yet written — see [`ROADMAP.md`](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) for the full list and why they're scoped out for now.
+
 ## Where to start
 
-Read sections 1 through 13, in order — each one assumes you've read the last. After that, this site works as a reference: jump to whatever section answers your current question, or use search (**⌘K**).
+Read sections 1 through 13, in order — each one assumes you've read the last. After that, this site works as a reference: jump to whatever section answers your current question, use search (**⌘K**), or head straight into whichever Part 2 chapter matches what you're trying to do — Part 2 chapters don't need to be read in order, or read at all, to make sense of each other.
 
 ## Is this the right place to start?
 
