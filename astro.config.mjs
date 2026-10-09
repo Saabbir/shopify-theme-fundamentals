@@ -6,16 +6,19 @@ import { visit } from 'unist-util-visit';
 
 const base = '/shopify-theme-fundamentals';
 
-/** Prefix root-relative hrefs with Astro `base` (Starlight does not do this for Markdown). */
+/** Prefix root-relative hrefs and image srcs with Astro `base` (Starlight does not do this for
+ * plain Markdown links, and a root-relative `![]()` image path isn't run through Vite's asset
+ * pipeline either, so both need the same manual fix-up). */
 function rehypeBaseLinks() {
   return (tree) => {
     visit(tree, 'element', (node) => {
-      if (node.tagName !== 'a') return;
-      const href = node.properties?.href;
-      if (typeof href !== 'string') return;
-      if (!href.startsWith('/') || href.startsWith('//')) return;
-      if (href === base || href.startsWith(`${base}/`)) return;
-      node.properties.href = `${base}${href}`;
+      const attr = node.tagName === 'a' ? 'href' : node.tagName === 'img' ? 'src' : null;
+      if (!attr) return;
+      const value = node.properties?.[attr];
+      if (typeof value !== 'string') return;
+      if (!value.startsWith('/') || value.startsWith('//')) return;
+      if (value === base || value.startsWith(`${base}/`)) return;
+      node.properties[attr] = `${base}${value}`;
     });
   };
 }
@@ -29,8 +32,9 @@ export default defineConfig({
     // rel: noopener/noreferrer prevents the new tab from getting a handle
     // back to this page via window.opener (a known security/perf risk of
     // target="_blank").
-    // Root-relative internal links (/start-here/) are rewritten to include
-    // `base`, otherwise GitHub Pages would resolve them at saabbir.github.io/.
+    // Root-relative internal links (/start-here/) and image srcs (/images/foo.svg)
+    // are rewritten to include `base`, otherwise GitHub Pages would resolve them
+    // at saabbir.github.io/ instead of saabbir.github.io/shopify-theme-fundamentals/.
     rehypePlugins: [
       rehypeBaseLinks,
       [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
