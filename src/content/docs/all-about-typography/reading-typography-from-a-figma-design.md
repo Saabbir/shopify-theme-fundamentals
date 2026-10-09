@@ -53,7 +53,7 @@ Three roles, not five, because the eyebrow and the body text share a family and 
 
 Here's that same collapsing applied to an actual mockup, rather than just a table — five visually distinct pieces of text, annotated back to just three underlying roles:
 
-![An annotated hero mockup with five numbered callouts: an eyebrow label and a CTA button both mapped to the Body role in bold, a headline mapped to the Heading role, a body paragraph mapped to the Body role in its normal weight, and a pull quote mapped to a separate Accent role. Each callout lists the exact font, size, line-height, and letter-spacing values read from Figma.](/images/figma-typography-annotation.svg)
+![An annotated hero mockup with five numbered callouts: an eyebrow label and a CTA button both mapped to the Body role in bold, a headline mapped to the Heading role, a body paragraph mapped to the Body role in its normal weight, and a pull quote mapped to a separate Accent role. Each callout lists the exact font, size, line-height, and letter-spacing values read from Figma.](../../../assets/figma-typography-annotation.svg)
 
 Notice ① and ⑤ — the eyebrow label and the CTA button — look nothing alike on the page, but both resolve to the exact same loaded variant (Inter, bold): no fifth role, and no extra font file downloaded for the button. That's the actual payoff of Step 2 and Step 3 together, made visible: a handful of genuinely distinct roles, reused everywhere a treatment repeats, however different those treatments look at a glance.
 
