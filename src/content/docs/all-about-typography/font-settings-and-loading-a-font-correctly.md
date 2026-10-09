@@ -18,6 +18,12 @@ description: font_picker, the font object, and the filters that actually get a f
 
 A `font_picker` setting gives a merchant a searchable list of fonts in the theme editor, pulled from Shopify's own font library (a curated set of system fonts and licensed Google Fonts, free to use on any Shopify store). Unlike a `text` or `color` setting, `font_picker` doesn't return a simple string — it returns a whole **font object**, with its own set of properties: `family`, `fallback_families`, `style`, `weight`, and more.
 
+:::note[`default` is required — and the valid values aren't arbitrary]
+Shopify requires `default` on every `font_picker` setting; omitting it is a schema error. A valid value is a specific **font ID** from Shopify's font library, in the form `{font-slug}_{style}{weight-digit}` — `n` for normal or `i` for italic, and the weight digit is just the first digit of the standard 100–900 scale. `assistant_n4` is Assistant at normal/400; `playfair_n7` is Playfair Display at normal/700; `work_sans_n6` is Work Sans at normal/600.
+
+The full, current list lives at [Available fonts](https://shopify.dev/docs/storefronts/themes/architecture/settings/fonts#available-fonts) on shopify.dev — it's a live, searchable table, not something worth copying into a static reference, since Shopify genuinely adds and deprecates fonts over time (that same page has its own "Deprecated fonts" section). The most reliable way to get an exact ID for a specific font you want, without guessing: put any valid placeholder in `default` (a plain system font ID like `"arial"` is always safe), push the theme, pick the actual font visually from the theme editor's own picker, save, then read the real ID Shopify assigned back out of `config/settings_data.json` — either by pulling the theme (`shopify theme pull`) or opening it in the admin code editor. Copy that ID into `default`.
+:::
+
 ```liquid
 {{ settings.heading_font.family }}
 {% # => "Assistant" %}
@@ -103,6 +109,7 @@ Beyond `family`, `fallback_families`, `weight`, and `style`, the font object has
 ## Key takeaways
 
 - `font_picker` returns a font object (`family`, `fallback_families`, `weight`, `style`, and more), not a plain string.
+- `default` is required and must be a real font ID (`{slug}_{n|i}{weight-digit}`) from Shopify's font library — discover an exact ID by picking the font visually in the theme editor, then reading the real value back out of `config/settings_data.json`, rather than guessing.
 - Referencing `.family` in CSS is not the same as loading the font — `font_face` (or a custom `@font-face` built from `font_url`) has to run once, globally, or the font never actually downloads, and this fails completely silently.
 - Always pair `.family` with `.fallback_families` when writing a `font-family` CSS value.
 - `font_modify` derives a variant (bold, italic) of an already-chosen font, without a second merchant-facing setting — but can return `nil` if that specific variant doesn't exist, so always guard it with `default`.
@@ -110,6 +117,7 @@ Beyond `family`, `fallback_families`, `weight`, and `style`, the font object has
 ## Further reading
 
 - [The `font_picker` setting](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#font-picker) (shopify.dev)
+- [Available fonts in Shopify's font library](https://shopify.dev/docs/storefronts/themes/architecture/settings/fonts#available-fonts) (shopify.dev)
 - [The `font_face` filter](https://shopify.dev/docs/api/liquid/filters/font_face) (shopify.dev)
 - [The `font_url` filter](https://shopify.dev/docs/api/liquid/filters/font_url) (shopify.dev)
 - [The `font_modify` filter](https://shopify.dev/docs/api/liquid/filters/font_modify) (shopify.dev)
