@@ -195,9 +195,9 @@ The fourth chapter built ahead of groups 20–26, at explicit user request: ever
 
 A deep-dive companion to [Shopify's Global Objects](/global-objects/)'s intro-level Part 1 treatment: every documented property of `product`/`variant`/`collection` and `cart`/`customer`/`shop` in full (not just the handful introduced in Part 1), the `settings`/`section`/`block` objects in depth including `section.blocks` iteration and `block.shopify_attributes`, `request`/`routes`/`localization` and real metafield/metaobject access patterns, the lesser-known `search`/`predictive_search`/`recommendations` objects, a practical reference table of which objects actually exist on which template (a common source of silent `nil` bugs), and a complete worked example combining several objects with full nil-guards. All source information verified directly against shopify.dev's current Liquid object reference while writing this chapter.
 
-## 32. All About Products — `status: planned`
+## 32. All About Products — `status: live`
 
-Everything about the `product` object specifically, start to finish: the variants/options matrix and `options_with_values`, the media gallery (`product.media`, not just `product.featured_image`), selling plans and subscriptions, metafields on a product, availability and `compare_at_price` nuances, tags vs. collection filters, and quantity rules.
+Everything about the `product` object specifically, start to finish: the variants/options matrix and `options_with_values`, the media gallery (`product.media`, not just `product.featured_image`), selling plans and subscriptions, metafields on a product, availability and `compare_at_price` nuances, tags vs. collection filters, and quantity rules. All source information was verified directly against shopify.dev (the `product`, `variant`, `product_option`, `media`, `selling_plan*`, `quantity_rule`, and `taxonomy_category` objects) rather than from memory.
 
 ## 33. All About Product Cards — `status: planned`
 

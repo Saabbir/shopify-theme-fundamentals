@@ -52,8 +52,9 @@ Once you've read Part 1 (or even if you haven't), each of these covers one topic
 | [29. All About CSS](/all-about-css/) | Cascade layers, container queries, custom properties, Shopify's real CSS loading behavior |
 | [30. All About JavaScript](/all-about-javascript/) | Web Components in depth, theme editor events, cross-component communication |
 | [31. All About Global Objects](/all-about-global-objects/) | Every property of `product`, `cart`, `customer`, `shop` and more, plus which objects exist on which template |
+| [32. All About Products](/all-about-products/) | Variants and options, the media gallery, availability and pricing, selling plans, and product categorization — all in depth |
 
-Groups 20, 21, and 23–26 (the Section Rendering API, the Cart AJAX API, and a handful of cross-cutting deep dives) are planned but not yet written; groups 32–40 (Products, Product Cards, Product Reviews, Collection Filtering & Sorting, Buttons, Icons, Images, Videos, and Input Settings) are scoped and being built next — see [`ROADMAP.md`](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) for the full list and current status of each.
+Groups 20, 21, and 23–26 (the Section Rendering API, the Cart AJAX API, and a handful of cross-cutting deep dives) are planned but not yet written; groups 33–40 (Product Cards, Product Reviews, Collection Filtering & Sorting, Buttons, Icons, Images, Videos, and Input Settings) are scoped and being built next — see [`ROADMAP.md`](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) for the full list and current status of each.
 
 ## Where to start
 

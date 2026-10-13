@@ -162,3 +162,4 @@ Every store has an automatically generated collection containing literally every
 - [Liquid objects: product](https://shopify.dev/docs/api/liquid/objects/product) (shopify.dev)
 - [Liquid objects: variant](https://shopify.dev/docs/api/liquid/objects/variant) (shopify.dev)
 - [Liquid objects: collection](https://shopify.dev/docs/api/liquid/objects/collection) (shopify.dev)
+- [All About Products](/all-about-products/) — every property introduced here, covered in much greater depth
