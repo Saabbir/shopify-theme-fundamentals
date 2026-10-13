@@ -42,7 +42,7 @@ This is the `config/settings_data.json` that would actually result from a mercha
         }
       }
     },
-    "heading_font": "playfair_n7",
+    "heading_font": "playfair_display_n7",
     "body_font": "assistant_n4",
     "heading_scale": 110,
     "page_width": 1280,

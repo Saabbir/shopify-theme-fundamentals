@@ -46,7 +46,7 @@ This file stores what a specific merchant has actually set each of those setting
 ```json
 {
   "current": {
-    "heading_font": "playfair_n4"
+    "heading_font": "playfair_display_n4"
   },
   "presets": {
     "Default": {

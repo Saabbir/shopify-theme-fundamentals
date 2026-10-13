@@ -19,7 +19,9 @@ description: font_picker, the font object, and the filters that actually get a f
 A `font_picker` setting gives a merchant a searchable list of fonts in the theme editor, pulled from Shopify's own font library (a curated set of system fonts and licensed Google Fonts, free to use on any Shopify store). Unlike a `text` or `color` setting, `font_picker` doesn't return a simple string — it returns a whole **font object**, with its own set of properties: `family`, `fallback_families`, `style`, `weight`, and more.
 
 :::note[`default` is required — and the valid values aren't arbitrary]
-Shopify requires `default` on every `font_picker` setting; omitting it is a schema error. A valid value is a specific **font ID** from Shopify's font library, in the form `{font-slug}_{style}{weight-digit}` — `n` for normal or `i` for italic, and the weight digit is just the first digit of the standard 100–900 scale. `assistant_n4` is Assistant at normal/400; `playfair_n7` is Playfair Display at normal/700; `work_sans_n6` is Work Sans at normal/600.
+Shopify requires `default` on every `font_picker` setting; omitting it is a schema error. A valid value is a specific **font ID** from Shopify's font library, in the form `{font-slug}_{style}{weight-digit}` — `n` for normal or `i` for italic, and the weight digit is just the first digit of the standard 100–900 scale. `assistant_n4` is Assistant at normal/400; `playfair_display_n7` is Playfair Display at normal/700; `work_sans_n6` is Work Sans at normal/600; `work_sans_i6` would be Work Sans at italic/600, following the exact same pattern.
+
+The slug is usually just the font family name, lowercased, with underscores for spaces — `playfair_display` for Playfair Display, `work_sans` for Work Sans, `anonymous_pro` for Anonymous Pro. That's a genuinely useful mental model for *recognizing* an ID when you see one, but it's not something to rely on for *generating* one from scratch: it doesn't tell you which weights and styles a given family actually has available as a selectable entry in the library, and guessing wrong fails with no error — `default` just silently accepts a string, valid-looking or not, and Shopify only rejects it at the point a merchant actually opens the font picker. Treat the formula as a way to sanity-check an ID you already have, not a substitute for confirming it exists.
 
 The full, current list lives at [Available fonts](https://shopify.dev/docs/storefronts/themes/architecture/settings/fonts#available-fonts) on shopify.dev — it's a live, searchable table, not something worth copying into a static reference, since Shopify genuinely adds and deprecates fonts over time (that same page has its own "Deprecated fonts" section). The most reliable way to get an exact ID for a specific font you want, without guessing: put any valid placeholder in `default` (a plain system font ID like `"arial"` is always safe), push the theme, pick the actual font visually from the theme editor's own picker, save, then read the real ID Shopify assigned back out of `config/settings_data.json` — either by pulling the theme (`shopify theme pull`) or opening it in the admin code editor. Copy that ID into `default`.
 :::
@@ -89,7 +91,7 @@ Here's the full pattern end to end — two font-role settings (Body, Heading), e
 
 ```json
 { "type": "font_picker", "id": "type_body_font", "label": "t:labels.body_font", "default": "assistant_n4" },
-{ "type": "font_picker", "id": "type_heading_font", "label": "t:labels.heading_font", "default": "playfair_n7" }
+{ "type": "font_picker", "id": "type_heading_font", "label": "t:labels.heading_font", "default": "playfair_display_n7" }
 ```
 
 ```liquid

@@ -18,7 +18,7 @@ Everything on this page is an original, deliberately simple teaching example, bu
   "name": "t:settings.typography",
   "settings": [
     { "type": "font_picker", "id": "type_body_font", "label": "t:labels.body_font", "default": "assistant_n4" },
-    { "type": "font_picker", "id": "type_heading_font", "label": "t:labels.heading_font", "default": "playfair_n7" }
+    { "type": "font_picker", "id": "type_heading_font", "label": "t:labels.heading_font", "default": "playfair_display_n7" }
   ]
 }
 ```
