@@ -191,13 +191,53 @@ A third chapter built ahead of groups 20–26, at explicit user request, alongsi
 
 The fourth chapter built ahead of groups 20–26, at explicit user request: everything about theme JavaScript mechanics, start to finish — where JS lives (`{% javascript %}` in full, including its real per-file-type bundling into `scripts.js`/`block-scripts.js`/`snippet-scripts.js`), the full Web Component lifecycle (not just `connectedCallback`) and encapsulation without Shadow DOM, getting data from Liquid into JavaScript safely (data attributes up through JSON islands), every real theme editor event from Shopify's own reference table, custom-event-based communication between unrelated components, lazy-loading genuinely expensive component work, and a complete quantity-selector component combining all of it at once. Deliberately stops short of the Cart and Section Rendering AJAX APIs, reserved for groups 20–21. Goes well beyond [JavaScript in Shopify Themes](/javascript-in-shopify-themes/)'s three-page intro-level treatment in Part 1.
 
+## 31. All About Global Objects — `status: planned`
+
+A deep-dive companion to [Shopify's Global Objects](/global-objects/)'s intro-level Part 1 treatment: every documented property of `product`/`variant`/`collection` and `cart`/`customer`/`shop` in full (not just the handful introduced in Part 1), the `settings`/`section`/`block` objects in depth including `section.blocks` iteration and `block.shopify_attributes`, `request`/`routes`/`localization` and real metafield/metaobject access patterns, the lesser-known `search`/`predictive_search`/`recommendations` objects, a practical reference table of which objects actually exist on which template (a common source of silent `nil` bugs), and a complete worked example combining several objects with full nil-guards.
+
+## 32. All About Products — `status: planned`
+
+Everything about the `product` object specifically, start to finish: the variants/options matrix and `options_with_values`, the media gallery (`product.media`, not just `product.featured_image`), selling plans and subscriptions, metafields on a product, availability and `compare_at_price` nuances, tags vs. collection filters, and quantity rules.
+
+## 33. All About Product Cards — `status: planned`
+
+A UI-composition chapter tying several other chapters together: the image and hover/secondary image, badges (sale, sold out, custom tags), price formatting (regular vs. compare-at vs. a range across variants), color/size swatches, quick add, and a ratings summary — built from group 32 (All About Products), [All About Colors](/all-about-colors/), and group 34 (All About Product Reviews) rather than repeating their content.
+
+## 34. All About Product Reviews — `status: planned`
+
+How reviews actually surface in a theme, since Liquid has no native reviews object: the Shopify Product Reviews app's metafields, how third-party review apps typically expose data (app blocks vs. metafields), rendering a star rating accessibly, `AggregateRating` schema.org markup for SEO, and placement patterns on both the product card and the product page.
+
+## 35. All About Collection Filtering & Sorting — `status: planned`
+
+Supersedes the original group 22 stub below with a full Part 2-style chapter: `collection.filters` in depth, `sort_by`, a manual tag-based fallback for stores without Search & Discovery, and how theme-side filtering interacts with the Search & Discovery app.
+
+## 36. All About Buttons — `status: planned`
+
+A UI-component chapter: button variants (primary/secondary/text/icon-only), every interactive state (hover/focus/active/disabled/loading) including accessible loading-state patterns, settings-driven styling that reuses this site's existing design-token chapters rather than inventing a new one, and icon+text composition.
+
+## 37. All About Icons — `status: planned`
+
+A UI-component chapter, distinct from [Media Deep Dive](/media-deep-dive/)'s platform-mechanics angle: inline SVG vs. a sprite-sheet system, a reusable icon snippet pattern, sizing and coloring icons through CSS custom properties (`currentColor`), and accessibility (`aria-hidden`, `<title>`, decorative vs. meaningful icons).
+
+## 38. All About Images (Components) — `status: planned`
+
+A UI-component chapter, distinct from [Media Deep Dive](/media-deep-dive/)'s platform-mechanics angle (art direction, CDN params, performance budgets): a reusable image snippet pattern, aspect-ratio wrapper techniques, lazy-load/loading-state patterns, and badge/overlay composition on top of an image.
+
+## 39. All About Videos (Components) — `status: planned`
+
+A UI-component chapter, distinct from [Media Deep Dive](/media-deep-dive/)'s video-loading-and-autoplay-strategy angle: play/pause UI patterns, poster-image states, inline vs. modal/lightbox video, and captioning/accessibility.
+
+## 40. All About Input Settings — `status: planned`
+
+A deep-dive companion to [Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/)'s intro-level enumeration: for every `settings_schema` input type, the exact value type it returns in Liquid (a `select` returns its `value`, not its `label`; `product`/`collection`/`image_picker`/`video` return full resource objects, not IDs), real default-value requirements, Theme Store validation gotchas, and what happens when a referenced resource (a linked product, a picked image) is later deleted.
+
 ---
 
 ## Why this order
 
 Groups 2–3 come before Liquid syntax (group 4) on purpose. Learning "a theme is made of these pieces, rendered in this order" first gives every later Liquid example somewhere to live — a `{% for %}` loop means more once you've seen the section it would loop inside. Groups 5–8 build outward from there: the data you render (objects), the settings merchants control (schema), and the two systems most requests are actually about (design tokens, forms). Group 9 (Figma to code) is placed after the reader has vocabulary for sections/blocks/snippets/settings, since that page's whole job is mapping a visual design onto those exact terms — it wouldn't land earlier. Groups 10–12 (CSS, JS, media) are deliberately last: important, but every example written so far already stood on its own without them, consistent with building for someone reading front-to-back for the first time rather than reference-hopping.
 
-Part 2's groups (14+) don't follow this same "each depends on the last" logic — they're independent deep dives, not a continued front-to-back path, so their relative order only reflects how closely each one follows from Part 1 (architecture deep dives first, then the two AJAX APIs and filtering, then the three cross-cutting concerns, ending on the capstone that bridges to the Handbook).
+Part 2's groups (14+) don't follow this same "each depends on the last" logic — they're independent deep dives, not a continued front-to-back path, so their relative order only reflects how closely each one follows from Part 1 (architecture deep dives first, then the two AJAX APIs and filtering, then the three cross-cutting concerns, ending on the capstone that bridges to the Handbook). Groups 31–40 were scoped together at explicit user request and are being built in dependency order within that batch: the data-layer chapters first (Global Objects, then Products specifically, since the product-composition chapters need it), then the product-composition chapters that build on them (Product Cards, Product Reviews, Collection Filtering), then the standalone UI-component chapters (Buttons, Icons, Images, Videos), ending on the self-contained reference chapter (Input Settings) that doesn't depend on any of the others.
 
 ## Page conventions (match these exactly in every new page)
 
