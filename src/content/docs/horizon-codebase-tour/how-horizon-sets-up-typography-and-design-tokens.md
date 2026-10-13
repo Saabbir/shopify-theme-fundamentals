@@ -105,6 +105,7 @@ Past typography, the same file defines CSS custom properties for nearly every ot
 
 ## Further reading
 
+- [Horizon's Typography System by the Numbers](/horizon-codebase-tour/horizons-typography-system-by-the-numbers/) — exactly how many settings, variants, tokens, and presets this adds up to
 - [`theme-styles-variables.liquid` (GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/theme-styles-variables.liquid)
 - [`fonts.liquid` (GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/fonts.liquid)
 - [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/)

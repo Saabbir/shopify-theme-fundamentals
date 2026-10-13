@@ -18,6 +18,7 @@ The pages on colors and typography in this chapter quote real code fetched direc
 | [Horizon's Folder Structure & the Theme Store Caveat](/horizon-codebase-tour/folder-structure-and-theme-store-caveat/) | The top-level map of the repo, and a rule Shopify states explicitly that changes how you should use this theme |
 | [How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) | `color-palette.liquid`, `contrast-override.liquid`, and the automatic hover/contrast system, read from source |
 | [How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/) | `theme-styles-variables.liquid` in full — font loading, fluid type presets, and the entire token system |
+| [Horizon's Typography System by the Numbers](/horizon-codebase-tour/horizons-typography-system-by-the-numbers/) | The real settings count, variant count, token count, and preset count — verified against current source |
 | [Naming & Code Conventions in Horizon](/horizon-codebase-tour/naming-and-code-conventions/) | The patterns that repeat throughout the real code — worth copying even if nothing else is |
 | [Sections, Blocks, Snippets & Assets at a Glance](/horizon-codebase-tour/sections-blocks-snippets-and-assets/) | What kind of content lives in each remaining folder, and how to explore it yourself |
 | [Using Horizon as a Skeleton for a New Theme](/horizon-codebase-tour/using-horizon-as-a-skeleton/) | A practical, step-by-step plan for what to keep, strip, and rebuild |

@@ -321,9 +321,10 @@ export default defineConfig({
             { label: '27.1. Folder Structure & Theme Store Caveat', slug: 'horizon-codebase-tour/folder-structure-and-theme-store-caveat' },
             { label: '27.2. How Horizon Sets Up Colors', slug: 'horizon-codebase-tour/how-horizon-sets-up-colors' },
             { label: '27.3. How Horizon Sets Up Typography & Design Tokens', slug: 'horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens' },
-            { label: '27.4. Naming & Code Conventions in Horizon', slug: 'horizon-codebase-tour/naming-and-code-conventions' },
-            { label: '27.5. Sections, Blocks, Snippets & Assets at a Glance', slug: 'horizon-codebase-tour/sections-blocks-snippets-and-assets' },
-            { label: '27.6. Using Horizon as a Skeleton for a New Theme', slug: 'horizon-codebase-tour/using-horizon-as-a-skeleton' },
+            { label: "27.4. Horizon's Typography System by the Numbers", slug: 'horizon-codebase-tour/horizons-typography-system-by-the-numbers' },
+            { label: '27.5. Naming & Code Conventions in Horizon', slug: 'horizon-codebase-tour/naming-and-code-conventions' },
+            { label: '27.6. Sections, Blocks, Snippets & Assets at a Glance', slug: 'horizon-codebase-tour/sections-blocks-snippets-and-assets' },
+            { label: '27.7. Using Horizon as a Skeleton for a New Theme', slug: 'horizon-codebase-tour/using-horizon-as-a-skeleton' },
           ],
         },
         {
