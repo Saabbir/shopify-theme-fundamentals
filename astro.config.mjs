@@ -72,6 +72,13 @@ export default defineConfig({
           tag: 'script',
           attrs: { src: `${base}/scripts/checklist.js`, defer: true },
         },
+        // Scrolls the left sidebar so the active page's link is visible on
+        // load, since Starlight only restores a scroll position when one was
+        // already saved earlier in the tab session. See public/scripts/sidebar-scroll.js.
+        {
+          tag: 'script',
+          attrs: { src: `${base}/scripts/sidebar-scroll.js`, defer: true },
+        },
       ],
       customCss: ['./src/styles/custom.css'],
       components: {
