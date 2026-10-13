@@ -211,9 +211,9 @@ How reviews actually surface in a theme, since Liquid has no native reviews obje
 
 Supersedes the original group 22 stub below with a full Part 2-style chapter: `collection.filters` in depth, `sort_by`, a manual tag-based fallback for stores without Search & Discovery, and how theme-side filtering interacts with the Search & Discovery app.
 
-## 36. All About Buttons — `status: planned`
+## 36. All About Buttons — `status: live`
 
-A UI-component chapter: button variants (primary/secondary/text/icon-only), every interactive state (hover/focus/active/disabled/loading) including accessible loading-state patterns, settings-driven styling that reuses this site's existing design-token chapters rather than inventing a new one, and icon+text composition.
+A UI-component chapter: button variants (primary/secondary/text/icon-only), every interactive state (hover/focus/active/disabled/loading) including accessible loading-state patterns, settings-driven styling that reuses this site's existing design-token chapters rather than inventing a new one, and icon+text composition. Built ahead of groups 33–35 at the user's explicit request; several pages quote Horizon's real `blocks/button.liquid`, `snippets/button-custom-styles.liquid`, `snippets/resolve-custom-hover.liquid`, and `snippets/size-style.liquid`, fetched fresh rather than from memory.
 
 ## 37. All About Icons — `status: planned`
 
