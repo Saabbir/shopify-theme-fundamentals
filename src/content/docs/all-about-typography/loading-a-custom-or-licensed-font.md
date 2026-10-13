@@ -17,6 +17,10 @@ A real web font license typically includes the file formats browsers need direct
 
 Get a separate file for every weight and style the design actually needs (Regular, Bold, Italic), rather than one file and a hope that `font-weight: 700` alone will make a non-bold file look bold — browsers only synthesize a passable fake bold/italic when no real matching file exists, and the result is visibly worse than a real bold-cut file.
 
+:::tip[Check whether the license is actually for a variable font first]
+Everything from here assumes separate static files per weight. If the foundry's license page says the release is "Variable," one file can cover a whole weight range instead — [Variable Fonts](/all-about-typography/variable-fonts/) covers how to tell (and how the `@font-face` rule changes) for exactly this self-hosted case, where there's no `font` object or `font_modify` to probe with.
+:::
+
 ## Two places to host the files: theme asset vs. Shopify Files
 
 ```liquid
