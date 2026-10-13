@@ -106,9 +106,8 @@ A `variant` is one specific, purchasable combination of a product's options (a s
 {{ variant.inventory_quantity }}
 {{ variant.inventory_policy }}
 {{ variant.inventory_management }}
-{{ variant.option1 }}
-{{ variant.option2 }}
-{{ variant.option3 }}
+{{ variant.options }}
+{{ variant.options_with_values }}
 {{ variant.selected_selling_plan_allocation }}
 {{ variant.requires_selling_plan }}
 {{ variant.featured_image }}
@@ -116,7 +115,7 @@ A `variant` is one specific, purchasable combination of a product's options (a s
 {{ variant.taxable }}
 ```
 
-`variant.title` is every option value joined together (`"Large / Blue"`) — for a single-option product, it's just that one value. `option1`/`option2`/`option3` are the raw, positional values (Shopify stores up to three options per product), which matters if you ever need to match a variant against a specific option combination directly rather than reading the combined title. `variant.available` is the one to check for a specific variant's purchasability — it's `true` when `inventory_quantity` is greater than zero, `inventory_policy` is `continue` (oversell allowed), or `inventory_management` is `nil` (inventory isn't tracked for this variant at all).
+`variant.title` is every option value joined together with `/` (`"Large / Blue"`) — for a single-option product, it's just that one value. `variant.options_with_values` is the modern, preferred way to match a variant against a specific option combination directly: an array of `{ name, value }` pairs, one per product option, always present even for a single-default-variant product (check `product.has_only_default_variant` first if you need to know whether to skip rendering an option picker at all). The older `variant.option1`/`option2`/`option3` properties still exist but are deprecated in favor of `variant.options` (the plain array of values) and `options_with_values` — prefer the newer pair in new code. `variant.available` is the one to check for a specific variant's purchasability — it's `true` when `inventory_quantity` is greater than zero, `inventory_policy` is `continue` (oversell allowed), or `inventory_management` is `nil` (inventory isn't tracked for this variant at all).
 
 :::tip[A variant's own image, if it has one]
 `variant.featured_image` is `nil` unless that specific variant has its own image assigned (a "Blue" variant with its own blue product photo, say) — falling back to `product.featured_image` when it's `nil` is the usual pattern for a gallery that should update when a shopper picks a different color.
