@@ -7,7 +7,7 @@ description: Turning a handful of font settings into a reusable, named system th
 
 ## The problem a token system solves
 
-A theme with one `font_picker` setting and a handful of `{{ settings.font.family }}` references scattered through its CSS works fine at a small scale. It stops working well the moment a theme grows past a handful of components: every place that wants "the heading font" has to independently know to write `settings.heading_font.family, settings.heading_font.fallback_families`, correctly, every time — and if a theme later adds a second heading-style font (for subheadings, say), every one of those scattered references has to be found and updated individually.
+A theme with one `font_picker` setting and a handful of `{{ settings.font.family }}` references scattered through its CSS works fine at a small scale. It stops working well the moment a theme grows past a handful of components: every place that wants "the heading font" has to independently know to write `settings.type_heading_font.family, settings.type_heading_font.fallback_families`, correctly, every time — and if a theme later adds a second heading-style font (for subheadings, say), every one of those scattered references has to be found and updated individually.
 
 A **design token** is a named variable that stands in for a design decision, so every component references the name instead of re-deriving the value itself. [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) showed a real, production example of exactly this pattern for typography; this page generalizes it into something you can build in any theme.
 

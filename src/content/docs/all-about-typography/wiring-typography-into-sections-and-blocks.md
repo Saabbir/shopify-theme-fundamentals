@@ -58,7 +58,7 @@ When a section has more than one plausible typography treatment (a large display
   .section-heading--h2 {
     font-family: var(--type-preset-h2-font-family);
     font-size: var(--type-preset-h2-font-size);
-    line-height: var(--type-preset-h2-font-size);
+    line-height: var(--type-preset-h2-line-height);
   }
 {% endstylesheet %}
 ```

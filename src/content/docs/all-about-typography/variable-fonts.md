@@ -17,7 +17,7 @@ A **variable font** packs an entire range of weights (and sometimes other proper
 
 ```liquid
 {% liquid
-  assign heading_font = settings.heading_font
+  assign heading_font = settings.type_heading_font
   assign heading_font_medium = heading_font | font_modify: 'weight', '500'
 %}
 

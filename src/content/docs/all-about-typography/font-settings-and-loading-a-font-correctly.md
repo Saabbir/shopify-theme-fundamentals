@@ -10,7 +10,7 @@ description: font_picker, the font object, and the filters that actually get a f
 ```json
 {
   "type": "font_picker",
-  "id": "heading_font",
+  "id": "type_heading_font",
   "label": "t:labels.heading_font",
   "default": "assistant_n4"
 }
@@ -25,19 +25,19 @@ The full, current list lives at [Available fonts](https://shopify.dev/docs/store
 :::
 
 ```liquid
-{{ settings.heading_font.family }}
+{{ settings.type_heading_font.family }}
 {% # => "Assistant" %}
 
-{{ settings.heading_font.weight }}
+{{ settings.type_heading_font.weight }}
 {% # => 400 %}
 
-{{ settings.heading_font.style }}
+{{ settings.type_heading_font.style }}
 {% # => "normal" %}
 ```
 
 ## Having the font object isn't the same as loading the font
 
-This is the single most important thing to understand about theme typography, and the thing most commonly gotten wrong: `settings.heading_font.family` is just a string. Writing `font-family: {{ settings.heading_font.family }}` into your CSS tells the browser what name to look for, but doesn't make the actual font file available — if the browser doesn't already have a font by that name, it silently falls back to its default, with no error anywhere.
+This is the single most important thing to understand about theme typography, and the thing most commonly gotten wrong: `settings.type_heading_font.family` is just a string. Writing `font-family: {{ settings.type_heading_font.family }}` into your CSS tells the browser what name to look for, but doesn't make the actual font file available — if the browser doesn't already have a font by that name, it silently falls back to its default, with no error anywhere.
 
 ## Actually loading the font: `font_face`
 
@@ -45,20 +45,20 @@ The `font_face` filter generates the complete, correct `@font-face` CSS rule for
 
 ```liquid
 {% style %}
-  {{ settings.heading_font | font_face }}
+  {{ settings.type_heading_font | font_face }}
 {% endstyle %}
 ```
 
 This needs to run exactly once per font, somewhere global — typically in `theme.liquid`, so it loads on every page regardless of which section ends up using that font. Repeating it inside every section that happens to reference the font doesn't break anything, but it's wasted output; once is enough.
 
 :::caution[The most common typography bug: using a font without loading it]
-Writing `font-family: {{ settings.heading_font.family }};` somewhere in your CSS, without ever outputting `{{ settings.heading_font | font_face }}` anywhere on the page, doesn't produce an error. The browser just quietly falls back to its generic default font. If a chosen font isn't showing up and nothing in the console explains why, this is the first thing to check — search the rendered page for whether `font_face`'s `@font-face` rule actually made it out anywhere.
+Writing `font-family: {{ settings.type_heading_font.family }};` somewhere in your CSS, without ever outputting `{{ settings.type_heading_font | font_face }}` anywhere on the page, doesn't produce an error. The browser just quietly falls back to its generic default font. If a chosen font isn't showing up and nothing in the console explains why, this is the first thing to check — search the rendered page for whether `font_face`'s `@font-face` rule actually made it out anywhere.
 :::
 
 ## Using the font once it's loaded
 
 ```liquid
-<h1 style="font-family: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};">
+<h1 style="font-family: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};">
   {{ page_title }}
 </h1>
 ```
@@ -71,7 +71,7 @@ Always include `fallback_families` alongside `family`, never `family` alone — 
 {% style %}
   @font-face {
     font-family: 'CustomHeadingFont';
-    src: url({{ settings.heading_font | font_url }}) format('woff2');
+    src: url({{ settings.type_heading_font | font_url }}) format('woff2');
     font-display: swap;
   }
 {% endstyle %}
@@ -156,7 +156,7 @@ Not every font family has every weight or style as a real, available variant. If
 
 ```liquid
 {% liquid
-  assign bold_heading_font = settings.heading_font | font_modify: 'weight', 'bold' | default: settings.heading_font
+  assign bold_heading_font = settings.type_heading_font | font_modify: 'weight', 'bold' | default: settings.type_heading_font
 %}
 ```
 

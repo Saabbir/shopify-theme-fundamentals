@@ -48,10 +48,10 @@ A theme using only system fonts has zero font files to download — text renders
 A font chosen through `font_picker` carries this distinction as a real, checkable property — `font.system?` returns `true` if the merchant picked a system font, `false` otherwise:
 
 ```liquid
-{% if settings.heading_font.system? %}
+{% if settings.type_heading_font.system? %}
   {% comment %} No font_face needed — the browser already has this font. {% endcomment %}
 {% else %}
-  {{ settings.heading_font | font_face }}
+  {{ settings.type_heading_font | font_face }}
 {% endif %}
 ```
 
