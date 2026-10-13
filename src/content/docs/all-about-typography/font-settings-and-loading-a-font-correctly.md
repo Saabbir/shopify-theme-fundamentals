@@ -177,6 +177,7 @@ Beyond `family`, `fallback_families`, `weight`, and `style`, the font object has
 
 ## Further reading
 
+- [Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) — when the font isn't in Shopify's library at all, and `font_picker` isn't an option
 - [The `font_picker` setting](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#font-picker) (shopify.dev)
 - [Available fonts in Shopify's font library](https://shopify.dev/docs/storefronts/themes/architecture/settings/fonts#available-fonts) (shopify.dev)
 - [The `font_face` filter](https://shopify.dev/docs/api/liquid/filters/font_face) (shopify.dev)

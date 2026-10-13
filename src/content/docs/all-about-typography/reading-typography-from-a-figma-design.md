@@ -63,7 +63,7 @@ For each role's family, check it against Shopify's font library — the same loo
 
 - **The exact family is available** (Inter is, for instance) — use it directly as the role's `font_picker` default.
 - **The exact family isn't available, but a close match is.** Licensed, curated font libraries never cover every typeface a designer might choose — a Canela-style serif might not exist by that name. Flag this to the client rather than silently substituting; a reasonable fallback is a design decision, not a developer one.
-- **The client needs the exact brand font and it's genuinely not in the library.** That's a real font file the client owns a license for, loaded with a hand-written `@font-face` (via `font_url` and a custom-hosted file, or an uploaded theme asset) instead of `font_picker` — a different, less flexible path than everything else in this chapter, since a merchant can no longer change it from the theme editor. Worth treating as the exception, not the default.
+- **The client needs the exact brand font and it's genuinely not in the library.** That's a real font file the client owns a license for, loaded with a hand-written `@font-face` instead of `font_picker` — a different, less flexible path than everything else in this chapter, since a merchant can no longer change it from the theme editor. [Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) covers this exact scenario end to end. Worth treating as the exception, not the default.
 
 ## Step 5: convert Figma's line-height and letter-spacing into CSS correctly
 
