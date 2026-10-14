@@ -399,6 +399,19 @@ export default defineConfig({
           ],
         },
         {
+          label: '33. All About Product Cards',
+          items: [
+            { label: 'Overview', slug: 'all-about-product-cards' },
+            { label: '33.1. Product Card Fundamentals', slug: 'all-about-product-cards/product-card-fundamentals' },
+            { label: '33.2. The Image & Hover/Secondary Image', slug: 'all-about-product-cards/the-image-and-hover-secondary-image' },
+            { label: '33.3. Badges: Sale, Sold Out & Custom Tags', slug: 'all-about-product-cards/badges-sale-sold-out-and-custom-tags' },
+            { label: '33.4. Price Formatting: Single, Compare-At & Ranges', slug: 'all-about-product-cards/price-formatting-single-compare-at-and-ranges' },
+            { label: '33.5. Color & Size Swatches', slug: 'all-about-product-cards/color-and-size-swatches' },
+            { label: '33.6. Quick Add', slug: 'all-about-product-cards/quick-add' },
+            { label: '33.7. A Complete Example', slug: 'all-about-product-cards/a-complete-example' },
+          ],
+        },
+        {
           label: '34. All About Product Reviews',
           items: [
             { label: 'Overview', slug: 'all-about-product-reviews' },

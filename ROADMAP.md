@@ -199,9 +199,9 @@ A deep-dive companion to [Shopify's Global Objects](/global-objects/)'s intro-le
 
 Everything about the `product` object specifically, start to finish: the variants/options matrix and `options_with_values`, the media gallery (`product.media`, not just `product.featured_image`), selling plans and subscriptions, metafields on a product, availability and `compare_at_price` nuances, tags vs. collection filters, and quantity rules. All source information was verified directly against shopify.dev (the `product`, `variant`, `product_option`, `media`, `selling_plan*`, `quantity_rule`, and `taxonomy_category` objects) rather than from memory.
 
-## 33. All About Product Cards — `status: planned`
+## 33. All About Product Cards — `status: live`
 
-A UI-composition chapter tying several other chapters together: the image and hover/secondary image, badges (sale, sold out, custom tags), price formatting (regular vs. compare-at vs. a range across variants), color/size swatches, quick add, and a ratings summary — built from group 32 (All About Products), [All About Colors](/all-about-colors/), and group 34 (All About Product Reviews) rather than repeating their content.
+A UI-composition chapter tying several other chapters together: what a card actually needs versus a full product page, the real convention for a hover/secondary image (the product's own second image, swapped with CSS and `:focus-within` alone — there's no dedicated field), badges derived from real data (`product.available`, `compare_at_price_min > price_min`) plus a `badge:`-tag convention for merchant-controlled custom badges, price formatting for the plain/sale/range/combined cases, Shopify's real native `product_option_value.swatch` object for color swatches (verified directly against shopify.dev, including why a size option almost never has swatch data), a quick-add button built as a real `<form>` first with a `fetch`-based enhancement that falls back correctly, and a complete example combining all of it plus the reviews chapter's shared rating snippet. Built from group 32 (All About Products), [All About Colors](/all-about-colors/), and group 34 (All About Product Reviews) rather than repeating their content.
 
 ## 34. All About Product Reviews — `status: live`
 
