@@ -354,6 +354,7 @@ export default defineConfig({
             { label: '29.7. Critical CSS & Loading Performance', slug: 'all-about-css/critical-css-and-loading-performance' },
             { label: '29.8. RTL, Print & Other Rendering Contexts', slug: 'all-about-css/rtl-print-and-other-rendering-contexts' },
             { label: '29.9. A Complete CSS Example', slug: 'all-about-css/a-complete-css-example' },
+            { label: '29.10. Old Patterns vs. New CSS Features', slug: 'all-about-css/old-patterns-vs-new-css-features' },
           ],
         },
         {

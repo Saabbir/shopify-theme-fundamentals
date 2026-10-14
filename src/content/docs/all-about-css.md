@@ -22,6 +22,7 @@ This chapter covers CSS *mechanics* — where it lives, how it's scoped, how it 
 | [Critical CSS & Loading Performance](/all-about-css/critical-css-and-loading-performance/) | Shopify's real CSS subsetting behavior, and what's actually left for you to optimize |
 | [RTL, Print & Other Rendering Contexts](/all-about-css/rtl-print-and-other-rendering-contexts/) | What changes once a store ships a right-to-left language, or a page gets printed |
 | [A Complete CSS Example](/all-about-css/a-complete-css-example/) | One section's stylesheet combining tokens, layers, container queries, and logical properties at once |
+| [Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) | `:has()`, native nesting, `aspect-ratio`, `gap`, `subgrid`, `color-mix()`, `@starting-style`, scroll-driven animations, `@scope`, `text-wrap` — each against the old workaround it replaces, with real browser support |
 
 ## Further reading
 

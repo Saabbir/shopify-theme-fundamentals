@@ -103,5 +103,6 @@ A full primitive → semantic → component tier breakdown is covered once, gene
 
 - [Building a Token System: Primitive, Semantic, Component](/all-about-colors/building-a-token-system/)
 - [A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/)
+- [Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) — `color-mix()` and relative color syntax (`oklch(from ...)`), for deriving one token's variants from another at runtime
 - [CSS custom properties (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)
 - [`@property` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/@property)

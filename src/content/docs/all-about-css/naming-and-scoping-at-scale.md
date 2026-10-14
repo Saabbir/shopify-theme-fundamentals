@@ -108,5 +108,6 @@ A few habits make collisions both less likely and easier to spot when they do ha
 ## Further reading
 
 - [BEM methodology](https://getbem.com/)
+- [Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) — including why `@scope` doesn't change the BEM recommendation here, and why native CSS nesting isn't a reason to bring back descendant-chain selectors
 - [Stylesheet content subsetting](https://shopify.dev/docs/storefronts/themes/best-practices/performance/stylesheet-subsetting) (shopify.dev)
 - [Theme Check](https://shopify.dev/docs/storefronts/themes/tools/theme-check) (shopify.dev)
