@@ -93,4 +93,5 @@ Nothing about typography tokens changes depending on whether they're consumed by
 
 - [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
 - [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — the select-between-presets pattern above, in full
+- [Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) — the decision tree for picking a role token, a preset, or neither
 - [Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/)

@@ -257,6 +257,7 @@ Because the override is scoped to `.hero`, every other element reading `--type-p
 
 ## Further reading
 
+- [Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) — the quick-reference recap of everything on this page, with good/bad examples for day-to-day use
 - [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — the role-token layer presets are built on top of
 - [How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/) — the real Liquid behind every claim in the case study above
 - [Horizon's Typography System by the Numbers](/horizon-codebase-tour/horizons-typography-system-by-the-numbers/) — every setting, variant, token, and preset counted directly from source

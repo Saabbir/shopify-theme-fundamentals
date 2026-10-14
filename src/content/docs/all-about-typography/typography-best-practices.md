@@ -17,7 +17,7 @@ This page doesn't introduce new mechanisms — every item below is covered in fu
 ## Structure
 
 - **Always write a fallback stack**, never a bare font name: `family, fallback_families`, not `family` alone. See [Typography Fundamentals](/all-about-typography/typography-fundamentals/).
-- **Resolve settings into tokens once**, and have every component read the token — never scatter `settings.some_font.family` references throughout a theme's CSS. See [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/).
+- **Resolve settings into tokens once**, and have every component read a role token or apply a preset class — never scatter `settings.some_font.family` references, and never reconstruct a preset's properties by hand in a component's own stylesheet. See [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) and the [day-to-day decision tree](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) for exactly which one to reach for.
 - **Default to the global tokens**; add a section- or block-scoped font setting only when a component genuinely needs to deviate. See [Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/).
 - **Offer named presets, not raw controls**, when a merchant needs to choose between typographic treatments — a bounded `select` between tested combinations beats independent font/size/weight settings a merchant could combine into something broken.
 
