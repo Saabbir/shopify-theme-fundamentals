@@ -146,7 +146,11 @@ For the full, source-quoted detail behind every number above — the actual Liqu
 
 ## Using a preset in a section or block setting
 
-Once presets exist, the most common way a section or block actually uses one is a bounded `select` setting that chooses between them — never a free-form font/size control, for the same reason [Spacing settings](/design-tokens/spacing-and-layout-tokens/) and [color schemes](/design-tokens/color-settings-and-color-schemes/) stay bounded, named choices rather than unbounded ones:
+Once presets exist, the most common way a section or block actually uses one is a bounded `select` setting that chooses between them — never a free-form font/size control, for the same reason [Spacing settings](/design-tokens/spacing-and-layout-tokens/) and [color schemes](/design-tokens/color-settings-and-color-schemes/) stay bounded, named choices rather than unbounded ones.
+
+:::tip[Name the preset by purpose, not by heading level, when a setting lets a merchant decouple size from tag]
+A heading-level preset name (`.h1`, `.h2`) reads fine applied to its matching tag, or to a non-heading element like `<p>` or `<span>` — neither looks like a mismatch. It reads oddly applied to a *different* heading-level tag: `<h2 class="h1">` looks like a typo to anyone reading the rendered markup later, even though it's working exactly as designed. The specific scenario this section covers — a setting that exists precisely so a merchant can pick a visual size independent of the semantic tag — is exactly where that confusion shows up, so name those presets by purpose instead. Per [Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/#naming-a-type-preset-token), name by *what the preset is for*, not a relative comparison — `display`/`standard`/`compact` describe a role and stay meaningful no matter how many other presets get added later; `large`/`small` would immediately raise "large compared to what?" the moment a bigger one shows up. Decision 5 still applies identically: one global class per preset, named after the preset, applied directly in markup — just with a name that doesn't imply a heading level that isn't actually there. (One trade-off worth knowing: a short, purpose-named class like `.compact` is still a fairly generic word, so it carries a slightly higher chance of colliding with an unrelated utility class elsewhere in a large theme than a more specific name like `.h1` would — worth a quick check against a theme's existing class names before adopting it.)
+:::
 
 ```json
 {
@@ -154,11 +158,11 @@ Once presets exist, the most common way a section or block actually uses one is 
   "id": "heading_style",
   "label": "t:labels.heading_style",
   "options": [
-    { "value": "h1", "label": "t:options.display" },
-    { "value": "h2", "label": "t:options.large" },
-    { "value": "h3", "label": "t:options.standard" }
+    { "value": "display", "label": "t:options.display" },
+    { "value": "standard", "label": "t:options.standard" },
+    { "value": "compact", "label": "t:options.compact" }
   ],
-  "default": "h2"
+  "default": "standard"
 }
 ```
 
@@ -171,17 +175,20 @@ Once presets exist, the most common way a section or block actually uses one is 
 {% stylesheet %}
   .section-heading {
     /* Only what's actually specific to this section — spacing, alignment.
-       No font-family, weight, size, or line-height here: the global .h1 /
-       .h2 / .h3 class (applied above via heading_style) already supplies
-       all of that, from the one place it's defined. */
+       No font-family, weight, size, or line-height here: the global
+       .display / .standard / .compact class (applied above via
+       heading_style) already supplies all of that, from the one place
+       it's defined. */
     margin-block-end: var(--space-sm);
   }
 {% endstylesheet %}
 ```
 
-Notice two things this version deliberately does *not* do, compared to redeclaring `font-family`/`font-weight`/`font-size`/`line-height` inside `.section-heading`'s own stylesheet: it doesn't duplicate the preset-to-property mapping Decision 5 already defined once, globally, and it doesn't need a `.section-heading--h1`/`--h2`/`--h3` variant class at all — `heading_style` resolves directly to the real, global `.h1`/`.h2`/`.h3` class. `.section-heading`'s own stylesheet is now free to own only what's genuinely specific to this section.
+Notice `heading_style`'s setting values (`display`, `standard`, `compact`) are the exact same strings as the global class names — there's no translation step converting one into the other. That matters as much as the naming itself: if the setting's values didn't already match the real class names, something would have to map one onto the other (a Liquid `case` statement, say), which is exactly the kind of redeclared, per-component logic Decision 5 exists to avoid. Pick a select setting's `value`s to *be* the class names a preset is actually called, not something that needs converting into them.
 
-Also notice the `<h2>` tag and the `heading_style` value are independent — a merchant can render visually large "Display" typography (the `.h1` class) on an element that's still semantically an `<h2>` for document-outline purposes. The setting controls *appearance*, not the HTML tag; keep those two decisions separate, since picking the heading tag should follow the page's actual document structure (see [Typography Fundamentals](/all-about-typography/typography-fundamentals/)), not whichever preset happens to look right.
+This also sidesteps the duplication a scoped variant class like `.section-heading--h1`/`--h2`/`--h3` would reintroduce: `.section-heading`'s own stylesheet is free to own only what's genuinely specific to this section (spacing, alignment), because the global class already supplies every typography property.
+
+Also notice the `<h2>` tag and the `heading_style` value are still fully independent — a merchant can render "Display" typography on an element that's still semantically an `<h2>` for document-outline purposes. The setting controls *appearance*, not the HTML tag; keep those two decisions separate, since picking the heading tag should follow the page's actual document structure (see [Typography Fundamentals](/all-about-typography/typography-fundamentals/)), not whichever preset happens to look right.
 
 ## Using a preset directly in CSS, with no setting at all
 
@@ -244,6 +251,7 @@ Because the override is scoped to `.hero`, every other element reading `--type-p
 - Presets should reference small, shared, named scales (a line-height scale, a letter-spacing scale) rather than owning raw values directly, so adjusting "tight" or "loose" once updates every preset built on it.
 - Map each preset onto a class named after itself (`.h1`, `.h2`, `.paragraph`) exactly once, in one global stylesheet — paired with the matching bare tag selector in the same rule, so a real `<h1>` works with zero markup and the class exists only to apply that look elsewhere. Confirmed directly in Horizon's own `assets/base.css`, including its `.h1.h1` specificity-doubling trick.
 - Expose a preset choice as a bounded `select` setting only when a section genuinely has more than one plausible treatment and a merchant should pick; most components should just apply the global class directly in markup, never redeclare the preset's properties in their own stylesheet.
+- Name a preset by heading level (`.h1`) when it's meant to pair with a matching tag, or by purpose (`.display`, `.compact`, never a relative name like `.large`) when a setting exists specifically to let a merchant decouple visual size from semantic tag — `<h2 class="h1">` reads like a mismatch to a developer later, `<h2 class="display">` reads as a deliberate choice. Either way, a select setting's option `value`s should be the real class names directly, never a separate vocabulary that needs translating into them.
 - Reach for a preset's raw tokens directly in a component's own CSS only when there's genuinely no element to attach the class to (a `::before`/`::after` pseudo-element) — treat it as a rare exception, not a default.
 - Override one property of a preset locally with a scoped custom-property override, rather than inventing a near-duplicate preset for a one-off tweak.
 
