@@ -219,9 +219,9 @@ A UI-component chapter: button variants (primary/secondary/text/icon-only), ever
 
 A UI-component chapter, distinct from [Icons & SVGs](/media-and-assets/icons-and-svgs/)'s intro-level treatment: the real trade-off between inline SVG and a sprite system (repeated markup vs. setup cost, not extra network requests), a reusable icon-dispatcher snippet pattern quoted directly from Shopify's real Horizon theme source (`snippets/icon.liquid`, including its own comment anticipating a future native icon static block), sizing and coloring icons through one `--sol-icon-size` custom property and `currentColor`/`stroke="currentColor"`, and accessibility in depth (`aria-hidden`+`focusable="false"` for decorative icons, labeling the containing control vs. a real `<title>`+`role="img"` for a standalone icon, and why icon fonts are a structural accessibility hazard rather than just outdated).
 
-## 38. All About Images (Components) — `status: planned`
+## 38. All About Images (Components) — `status: live`
 
-A UI-component chapter, distinct from [Media Deep Dive](/media-deep-dive/)'s platform-mechanics angle (art direction, CDN params, performance budgets): a reusable image snippet pattern, aspect-ratio wrapper techniques, lazy-load/loading-state patterns, and badge/overlay composition on top of an image.
+A UI-component chapter, distinct from [Media Deep Dive](/media-deep-dive/)'s platform-mechanics angle (art direction, CDN params, performance budgets): why a shared image snippet beats inline `<img>` tags repeated across sections, `aspect-ratio` plus `object-fit` for a forced ratio (with a merchant-facing ratio setting as a named `select`, and the one real remaining reason for the old padding-hack wrapper), `loading="lazy"` by default versus `fetchpriority="high"` for the single most important image on a page, a CSS-only loading-state placeholder with no blur-up complexity, badge/overlay positioning anchored on the wrapper rather than the `<img>` itself, and a complete example tying all of it into one snippet including a `:has()`-based fix for the priority-image fade-in edge case.
 
 ## 39. All About Videos (Components) — `status: planned`
 

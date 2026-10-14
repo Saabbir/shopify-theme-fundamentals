@@ -447,6 +447,17 @@ export default defineConfig({
             { label: '37.5. A Complete Example', slug: 'all-about-icons/a-complete-example' },
           ],
         },
+        {
+          label: '38. All About Images',
+          items: [
+            { label: 'Overview', slug: 'all-about-images' },
+            { label: '38.1. Image Fundamentals: What Belongs in a Reusable Snippet', slug: 'all-about-images/image-fundamentals-what-belongs-in-a-reusable-snippet' },
+            { label: '38.2. Aspect-Ratio Wrapper Techniques', slug: 'all-about-images/aspect-ratio-wrapper-techniques' },
+            { label: '38.3. Lazy-Load & Loading-State Patterns', slug: 'all-about-images/lazy-load-and-loading-state-patterns' },
+            { label: '38.4. Badge & Overlay Composition', slug: 'all-about-images/badge-and-overlay-composition' },
+            { label: '38.5. A Complete Example', slug: 'all-about-images/a-complete-example' },
+          ],
+        },
       ],
     }),
   ],
