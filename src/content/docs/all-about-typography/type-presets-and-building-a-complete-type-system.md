@@ -74,6 +74,61 @@ Once a system has more than two or three presets, a specific trap appears: five 
 
 This is the same primitive/semantic/component tiering [Building a Token System: Primitive, Semantic, Component](/all-about-colors/building-a-token-system/) teaches for color, applied to typography: a shared scale is the primitive layer, and a preset is the semantic layer built from it. Adjusting "tight" once updates every preset that points at it, instead of requiring an edit everywhere `1.1` happens to appear.
 
+### Decision 5: one global class per preset, not a redeclaration per component
+
+A preset's properties get mapped onto an actual CSS selector exactly once, in one global stylesheet (a `base.css`-style asset, or a snippet rendered once in `theme.liquid`), as a class named after the preset itself:
+
+```css
+/* A global stylesheet, loaded on every page — never per-section */
+h1,
+.h1 {
+  font-family: var(--type-preset-h1-font-family);
+  font-weight: var(--type-preset-h1-font-weight);
+  font-size: var(--type-preset-h1-font-size);
+  line-height: var(--type-preset-h1-line-height);
+}
+
+h2,
+.h2 {
+  font-family: var(--type-preset-h2-font-family);
+  font-weight: var(--type-preset-h2-font-weight);
+  font-size: var(--type-preset-h2-font-size);
+  line-height: var(--type-preset-h2-line-height);
+}
+```
+
+Two deliberate details here, both worth copying directly:
+
+- **The class is named exactly after the preset — `.h1`, `.h2`, `.paragraph`** — not `.type-preset-h1` or anything longer. A preset token gets the longer, namespaced name (`--type-preset-h1-font-family`) because it needs to be unambiguous sitting among hundreds of other custom properties; a *class* doesn't have that problem, since CSS classes are scoped by how they're used, not by a shared global namespace the way custom properties are. The short name is also what makes it pleasant to actually type in a `class` attribute.
+- **The bare tag selector (`h1`) and the equivalent class (`.h1`) are styled in the very same rule.** This means a real `<h1>` element gets correct typography automatically, with zero markup required — and the `.h1` class exists purely for the case where the visual treatment and the semantic tag need to diverge (a `<div>` that should *look* like an H1 without actually being one, or an `<h3>` in the document outline that should carry H1-sized display typography). [Typography Best Practices](/all-about-typography/typography-best-practices/) already warns against picking a heading tag for its visual size rather than its place in the document outline — this pairing is what makes that advice practical to follow, since the tag and the look are no longer forced to agree.
+
+Every section, block, and component in the theme then does one of two things — never a third option where it quietly reinvents this mapping itself:
+
+1. **Use the real tag, and get the styling for free** — a section that renders an actual `<h2>` needs no typography CSS of its own at all.
+2. **Apply the class directly**, when the tag and the desired look need to differ — covered in the next two sections.
+
+:::note[Confirmed directly in Horizon's real `assets/base.css`]
+This is exactly Horizon's own pattern, not a simplification invented for this page:
+
+```css
+h1,
+.h1.h1,
+.text-block.h1 > *,
+.text-block.h1 :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-h1--family);
+  font-style: var(--font-h1--style);
+  font-weight: var(--font-h1--weight);
+  font-size: var(--font-h1--size);
+  line-height: var(--font-h1--line-height);
+  letter-spacing: var(--font-h1--letter-spacing);
+  text-transform: var(--font-h1--case);
+  color: var(--color);
+}
+```
+
+The same pattern repeats for `h2` through `h6`, plus a `.paragraph` class for body text. Two things worth noticing in the real version: `.h1.h1` (the class written twice) is a deliberate specificity trick — doubling a class selector raises its specificity without reaching for `!important`, which matters here because `.h1` needs to reliably win against other single-class component selectors it might collide with. And `.text-block.h1 > *` / `.text-block.h1 :is(h1, h2, h3, h4, h5, h6)` handle a container being given the `.h1` class directly, cascading the treatment to whatever's actually inside it. This whole ruleset lives in one static CSS file, loaded once, site-wide — never redeclared inside an individual section or block's own stylesheet.
+:::
+
 ## Case study: how Horizon built its type system
 
 Horizon — Shopify's current flagship reference theme — takes the per-level-settings, shared-scales approach from Decisions 3 and 4 above, built at real production scale. The short version, verified directly against its current source:
@@ -83,6 +138,7 @@ Horizon — Shopify's current flagship reference theme — takes the per-level-s
 - **Each heading preset carries 7 properties** (weight, letter-spacing, size, family, style, case, line-height); the `paragraph` preset carries only 6 — it has no letter-spacing property at all, because no corresponding setting exists to drive one.
 - **Every preset is built from shared scales, not raw values** — dedicated letter-spacing and line-height scales (`display`/`heading`/`body`, each with tight/normal/loose variants), a max-width (measure) scale, and a computed fluid font-size per level. Changing a per-level setting from Normal to Tight doesn't write a new number; it just points that preset's token at a different, already-defined scale value.
 - **Font sizes are computed, not hand-picked `clamp()` values.** Each size's fluid minimum is derived from the next-smaller size in the scale, and sizes below a 48px cutoff get a plain fixed value instead of `clamp()` — the same "reserve fluid scaling for what needs it" rule from [Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/), applied programmatically rather than picked by hand per size.
+- **Each preset is mapped onto a global class exactly once**, in `assets/base.css` — `.h1` through `.h6` and `.paragraph`, each rule also styling the matching bare tag selector (`h1`, `h2`, and so on) so a real heading tag gets correct typography with zero markup. This is the real source behind [Decision 5](#decision-5-one-global-class-per-preset-not-a-redeclaration-per-component) above, not a simplification invented for this page.
 
 This is a direct, real-world illustration of why Decision 3 matters: Horizon chose the more flexible, higher-effort path because it ships to thousands of independent merchants who each need to tune their own type system without a developer's help — the 32 extra settings are the cost of that flexibility, paid once, by Shopify's own team, rather than by every merchant individually.
 
@@ -110,65 +166,73 @@ Once presets exist, the most common way a section or block actually uses one is 
 {% liquid
   assign heading_style = section.settings.heading_style
 %}
-<h2 class="section-heading section-heading--{{ heading_style }}">{{ section.settings.heading }}</h2>
+<h2 class="section-heading {{ heading_style }}">{{ section.settings.heading }}</h2>
 
 {% stylesheet %}
-  .section-heading--h1 {
-    font-family: var(--type-preset-h1-font-family);
-    font-weight: var(--type-preset-h1-font-weight);
-    font-size: var(--type-preset-h1-font-size);
-    line-height: var(--type-preset-h1-line-height);
-  }
-
-  .section-heading--h2 {
-    font-family: var(--type-preset-h2-font-family);
-    font-weight: var(--type-preset-h2-font-weight);
-    font-size: var(--type-preset-h2-font-size);
-    line-height: var(--type-preset-h2-line-height);
-  }
-
-  .section-heading--h3 {
-    font-family: var(--type-preset-h3-font-family);
-    font-weight: var(--type-preset-h3-font-weight);
-    font-size: var(--type-preset-h3-font-size);
-    line-height: var(--type-preset-h3-line-height);
+  .section-heading {
+    /* Only what's actually specific to this section — spacing, alignment.
+       No font-family, weight, size, or line-height here: the global .h1 /
+       .h2 / .h3 class (applied above via heading_style) already supplies
+       all of that, from the one place it's defined. */
+    margin-block-end: var(--space-sm);
   }
 {% endstylesheet %}
 ```
 
-Notice the `<h2>` tag and the `heading_style` value are independent — a merchant can render visually large "Display" typography on an element that's still semantically an `<h2>` for document-outline purposes. The setting controls *appearance*, not the HTML tag; keep those two decisions separate, since picking the heading tag should follow the page's actual document structure (see [Typography Fundamentals](/all-about-typography/typography-fundamentals/)), not whichever preset happens to look right.
+Notice two things this version deliberately does *not* do, compared to redeclaring `font-family`/`font-weight`/`font-size`/`line-height` inside `.section-heading`'s own stylesheet: it doesn't duplicate the preset-to-property mapping Decision 5 already defined once, globally, and it doesn't need a `.section-heading--h1`/`--h2`/`--h3` variant class at all — `heading_style` resolves directly to the real, global `.h1`/`.h2`/`.h3` class. `.section-heading`'s own stylesheet is now free to own only what's genuinely specific to this section.
+
+Also notice the `<h2>` tag and the `heading_style` value are independent — a merchant can render visually large "Display" typography (the `.h1` class) on an element that's still semantically an `<h2>` for document-outline purposes. The setting controls *appearance*, not the HTML tag; keep those two decisions separate, since picking the heading tag should follow the page's actual document structure (see [Typography Fundamentals](/all-about-typography/typography-fundamentals/)), not whichever preset happens to look right.
 
 ## Using a preset directly in CSS, with no setting at all
 
-Most components shouldn't expose a preset choice as a setting — they should simply commit to one preset, the same way a product card title is "always H3-styled" regardless of merchant input:
+Most components shouldn't expose a preset choice as a setting — they should simply commit to one preset, the same way a product card title is "always H3-styled" regardless of merchant input. Per Decision 5, that means applying the global class directly in markup, not re-deriving the mapping in the component's own stylesheet:
+
+```liquid
+<h3 class="product-card__title h3">{{ product.title }}</h3>
+```
 
 ```css
 .product-card__title {
-  font-family: var(--type-preset-h3-font-family);
-  font-weight: var(--type-preset-h3-font-weight);
-  font-size: var(--type-preset-h3-font-size);
-  line-height: var(--type-preset-h3-line-height);
+  /* Only product-card-specific concerns — no typography properties at
+     all. The h3 class (defined once, globally) already supplies those. */
+  margin-block-end: var(--space-xs);
 }
 ```
 
 This is the right default for the vast majority of components. Reserve the `select`-setting pattern above for the specific cases where a section genuinely has more than one plausible typographic treatment and a merchant should be the one choosing between them — adding a setting "just in case" produces a theme editor cluttered with choices that don't meaningfully change anything.
 
+### The rare exception: when there's no element to put a class on
+
+Referencing a preset's individual tokens directly (`font-family: var(--type-preset-h3-font-family)`, and so on) inside a component's own stylesheet is occasionally still the right call — specifically when there's no markup element available to add a second class to. A generated `::before`/`::after` pseudo-element is the clearest example:
+
+```css
+.price-badge::before {
+  content: 'Sale';
+  font-family: var(--type-preset-h6-font-family);
+  font-weight: var(--type-preset-h6-font-weight);
+  font-size: var(--type-preset-h6-font-size);
+}
+```
+
+Treat this as the exception, not an alternative default — reach for it only when the global class genuinely has nothing to attach to, not as a shortcut to avoid adding a class in markup.
+
 ## Overriding one property of a preset, locally, without breaking the system
 
 Occasionally one specific section wants a preset's typography with one property tweaked — a hero that wants the H1 preset, but noticeably larger, only in that one section. The right fix is a scoped CSS custom property override, not a new preset and not an inline style:
 
-```css
-.hero {
-  --type-preset-h1-font-size: clamp(2.5rem, 2rem + 3vw, 4.5rem);
-}
+```liquid
+<div class="hero">
+  <h1 class="hero__heading h1">{{ section.settings.heading }}</h1>
+</div>
 
-.hero__heading {
-  font-family: var(--type-preset-h1-font-family);
-  font-weight: var(--type-preset-h1-font-weight);
-  font-size: var(--type-preset-h1-font-size);
-  line-height: var(--type-preset-h1-line-height);
-}
+{% stylesheet %}
+  .hero {
+    --type-preset-h1-font-size: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  }
+{% endstylesheet %}
 ```
+
+Notice `hero__heading` still carries the global `.h1` class, and still gets `font-family`, `font-weight`, and `line-height` from it exactly as before — only `font-size` changes, because that's the only custom property `.hero` overrides. There's no need to redeclare the other three properties anywhere; they were never redefined, just inherited from the one global rule Decision 5 already set up.
 
 Because the override is scoped to `.hero`, every other element reading `--type-preset-h1-font-size` elsewhere on the page is completely unaffected — only descendants of `.hero` see the larger value. This is the same "override at the token level, scoped to where it should apply" technique [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) shows for overriding a font globally, just scoped to one section instead of the whole page. Resist the temptation to invent a second preset (`h1-large`) for a one-off size tweak like this — a scoped override keeps the preset system itself small and meaningful, reserving a genuinely new preset for a treatment that actually recurs across more than one place.
 
@@ -178,7 +242,9 @@ Because the override is scoped to `.hero`, every other element reading `--type-p
 - Decide how many presets a theme needs by how many distinct, recurring text treatments its real designs use — not an arbitrary round number. Decide what belongs in each preset by whether a property is part of that treatment's identity (include) or contextual to where it's placed (leave out, like color and margin).
 - The biggest design fork: hardcode preset values directly (simple, zero flexibility) versus driving them from per-level merchant settings (more settings to build, real flexibility) — Horizon's real system, with 36 settings behind 7 presets, is a production example of choosing the flexible path.
 - Presets should reference small, shared, named scales (a line-height scale, a letter-spacing scale) rather than owning raw values directly, so adjusting "tight" or "loose" once updates every preset built on it.
-- Expose a preset choice as a bounded `select` setting only when a section genuinely has more than one plausible treatment and a merchant should pick; most components should just commit to one preset directly in their CSS.
+- Map each preset onto a class named after itself (`.h1`, `.h2`, `.paragraph`) exactly once, in one global stylesheet — paired with the matching bare tag selector in the same rule, so a real `<h1>` works with zero markup and the class exists only to apply that look elsewhere. Confirmed directly in Horizon's own `assets/base.css`, including its `.h1.h1` specificity-doubling trick.
+- Expose a preset choice as a bounded `select` setting only when a section genuinely has more than one plausible treatment and a merchant should pick; most components should just apply the global class directly in markup, never redeclare the preset's properties in their own stylesheet.
+- Reach for a preset's raw tokens directly in a component's own CSS only when there's genuinely no element to attach the class to (a `::before`/`::after` pseudo-element) — treat it as a rare exception, not a default.
 - Override one property of a preset locally with a scoped custom-property override, rather than inventing a near-duplicate preset for a one-off tweak.
 
 ## Further reading
@@ -190,3 +256,4 @@ Because the override is scoped to `.hero`, every other element reading `--type-p
 - [Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/) — the broader section/block consumption patterns this page's select-setting example is part of
 - [Building a Token System: Primitive, Semantic, Component](/all-about-colors/building-a-token-system/) — the same shared-scale idea, applied to color
 - [Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) — the `clamp()` mechanics behind a preset's font-size property
+- [`assets/base.css` (GitHub)](https://github.com/Shopify/horizon/blob/main/assets/base.css) — the real global `.h1`-`.h6`/`.paragraph` class rules quoted in Decision 5

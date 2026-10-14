@@ -89,6 +89,20 @@ A preset named `large` has nowhere to go once a theme needs something even large
 Horizon's real preset tokens (quoted in full on [How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/)) are `--font-h2--family`, `--font-h2--size`, `--font-h2--weight`, and so on — it extends the *same* `--font-` family used for role tokens to presets too, rather than introducing a separate prefix. That keeps every typography token, role or preset, under one shared `--font-` umbrella, at the cost of the name alone not telling you whether `h2` refers to a role or a preset (you have to already know Horizon's roles are Body/Subheading/Heading/Accent, not `h1`–`h6`, to tell them apart). This site recommends `--type-preset-{name}-{property}` instead because the distinction is visible in the prefix itself, with no prior knowledge required — but if a theme already follows Horizon's double-dash role tokens, extending that same family to presets, the way Horizon does, is an equally consistent choice. Pick one approach and apply it theme-wide, the same as the single-dash/double-dash decision above.
 :::
 
+## Naming a preset's reusable CSS class
+
+```css
+.h1 { ... }
+.h2 { ... }
+.paragraph { ... }
+```
+
+**Pattern: the class is named exactly the same as the preset itself — no prefix at all.** This is a deliberate departure from every other pattern on this page: a setting gets `type_`, a role token gets `--font-`, a preset token gets `--type-preset-` — each prefix exists so that identifier stays unambiguous sitting among many others of the same kind (dozens of settings, dozens of custom properties). A preset's reusable class doesn't have that problem: [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/#decision-5-one-global-class-per-preset-not-a-redeclaration-per-component) covers why — it's defined exactly once, in one global stylesheet, so there's nothing for a short name to collide with. Keeping it short is also what makes it pleasant to actually type into a `class` attribute, which happens constantly once a preset system is wired into real markup.
+
+:::note[Horizon confirms this directly]
+Horizon's real `assets/base.css` names its preset classes exactly `.h1` through `.h6` and `.paragraph` — unprefixed, identical to the preset name — even though its CSS custom properties for those same presets use the longer, namespaced `--font-h1--family` form. The two naming surfaces (token vs. class) are allowed to diverge for the same reason `type_` (settings) and `--font-` (CSS) diverge elsewhere on this page: they solve different problems, so they don't need to look alike.
+:::
+
 ## Naming a section- or block-scoped font setting
 
 ```json
@@ -105,6 +119,7 @@ When a specific section genuinely needs its own font setting, independent of the
 | Theme-wide per-level setting (many instances of one property) | `{category}_{property}_{level}` | `type_size_h1` |
 | Role token (CSS custom property) | `--font-{role}-{property}` (or Horizon's `--font-{role}--{property}`) | `--font-heading-family` |
 | Type preset token | `--type-preset-{name}-{property}` | `--type-preset-h1-font-size` |
+| Preset's reusable CSS class | `.{name}` (no prefix at all) | `.h1`, `.paragraph` |
 | Section/block-scoped font setting | `{component}_font` (no category prefix) | `story_font` |
 
 ## Case study: Horizon's naming, in full
