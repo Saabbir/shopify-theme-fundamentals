@@ -470,6 +470,18 @@ export default defineConfig({
             { label: '39.6. A Complete Example', slug: 'all-about-videos/a-complete-example' },
           ],
         },
+        {
+          label: '35. All About Collection Filtering & Sorting',
+          items: [
+            { label: 'Overview', slug: 'all-about-collection-filtering-and-sorting' },
+            { label: '35.1. collection.filters in Depth', slug: 'all-about-collection-filtering-and-sorting/collection-filters-in-depth-types-values-and-url-parameters' },
+            { label: '35.2. Rendering Filters: list, price_range & boolean', slug: 'all-about-collection-filtering-and-sorting/rendering-filters-list-price-range-and-boolean' },
+            { label: '35.3. Sorting: collection.sort_options & sort_by', slug: 'all-about-collection-filtering-and-sorting/sorting-collection-sort_options-and-sort_by' },
+            { label: '35.4. A Manual Tag-Based Fallback', slug: 'all-about-collection-filtering-and-sorting/a-manual-tag-based-fallback' },
+            { label: '35.5. How Theme-Side Filtering Interacts With Search & Discovery', slug: 'all-about-collection-filtering-and-sorting/how-theme-side-filtering-interacts-with-search-and-discovery' },
+            { label: '35.6. A Complete Example', slug: 'all-about-collection-filtering-and-sorting/a-complete-example' },
+          ],
+        },
       ],
     }),
   ],
