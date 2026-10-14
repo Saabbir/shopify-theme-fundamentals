@@ -482,6 +482,17 @@ export default defineConfig({
             { label: '35.6. A Complete Example', slug: 'all-about-collection-filtering-and-sorting/a-complete-example' },
           ],
         },
+        {
+          label: '40. All About Input Settings',
+          items: [
+            { label: 'Overview', slug: 'all-about-input-settings' },
+            { label: '40.1. Exact Return Types, Verified', slug: 'all-about-input-settings/exact-return-types-verified' },
+            { label: '40.2. Resource Pickers: Full Objects, Not IDs', slug: 'all-about-input-settings/resource-pickers-full-objects-not-ids' },
+            { label: '40.3. Default-Value Requirements & Validation Gotchas', slug: 'all-about-input-settings/default-value-requirements-and-validation-gotchas' },
+            { label: '40.4. What Happens When a Referenced Resource Is Deleted', slug: 'all-about-input-settings/what-happens-when-a-referenced-resource-is-deleted' },
+            { label: '40.5. A Complete Example', slug: 'all-about-input-settings/a-complete-example' },
+          ],
+        },
       ],
     }),
   ],
