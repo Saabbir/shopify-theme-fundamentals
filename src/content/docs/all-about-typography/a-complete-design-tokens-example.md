@@ -161,6 +161,10 @@ Three different kinds of setting, three different resolution strategies, all end
 }
 ```
 
+:::note[Both headings here use role tokens only, on purpose — but notice what's missing]
+`.callout__heading` and `.product-card__title` read `--font-heading-family`/`--font-heading-weight` directly rather than applying a preset class — consistent with this page's point (three different settings types all resolving into `var()` output), but neither one gets a `font-size` from anywhere, since a role token doesn't carry one. A real theme would almost certainly want a complete treatment here instead — applying an `.h2`/`.h3`-style preset class per [Decision 5 of Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/#decision-5-one-global-class-per-preset-not-a-redeclaration-per-component) — rather than the role-token-only pattern shown here, which [Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) reserves for text that deliberately has no prescribed size.
+:::
+
 Neither stylesheet above references a single Liquid setting directly — every value is `var(--something)`. A merchant changing the Heading font, picking a different color scheme on the callout, or (if the theme ever exposed it) adjusting the spacing scale all flow through automatically, with zero changes needed to either component's CSS.
 
 ## Why one file, here, but several in a real theme

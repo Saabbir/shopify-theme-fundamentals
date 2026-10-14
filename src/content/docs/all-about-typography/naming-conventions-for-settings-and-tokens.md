@@ -111,7 +111,7 @@ Horizon's real `assets/base.css` names its preset classes exactly `.h1` through 
 
 When a specific section genuinely needs its own font setting, independent of the global tokens — the `story_font` example from [Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/) — it deliberately does **not** get the `type_` prefix. That prefix means "part of the theme-wide typography token system"; a component-scoped setting isn't part of that system, and naming it as if it were would mislead anyone trying to find every theme-wide typography setting by searching for `type_`. Name a scoped setting after the component it belongs to instead (`story_font` for the "Brand Story" section), the same way any other section-specific setting is named.
 
-## A quick reference, all four patterns together
+## A quick reference, every pattern together
 
 | What it is | Pattern | Example |
 |---|---|---|

@@ -146,6 +146,10 @@ h1 strong,
 }
 ```
 
+:::note[This CSS deliberately stops at family and weight]
+`h1, h2, h3` here only get `font-family` and `font-weight` — no `font-size` or `line-height`, because this page is specifically about the normal/bold `font_modify` loading pattern, not complete heading typography. A role token never carries a size to begin with (it's `family`/`weight`/`style` only); a real theme would also want each heading's size and line-height, supplied by a type preset layered on top of this. [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) and [Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) cover that layer, and exactly when a component needs it.
+:::
+
 Four `font_face` outputs, four distinct files, covering exactly the four variants this theme actually uses — no more. Two details worth noticing:
 
 - **`--font-body-bold-weight` reads `body_font_bold.weight`, not a hardcoded `700`.** `font_modify: 'weight', 'bold'` resolves to whichever weight that specific family actually defines as its real bold — commonly 700, but not guaranteed; some families ship a "bold" at 600 or 800 instead. Reading the resolved object's own `.weight` back out, rather than assuming `700`, keeps the CSS correct regardless of which exact weight the merchant's chosen font happens to use for its bold variant.

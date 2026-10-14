@@ -102,6 +102,10 @@ h3 {
 }
 ```
 
+:::note[This CSS deliberately stops at family and weight]
+Same as elsewhere in this chapter: a role token carries `family`/`weight`/`style` only, never a size — `h1, h2, h3` here would also want a `font-size` and `line-height` in a real theme, supplied by a type preset layered on top. See [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) and [Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/).
+:::
+
 The CSS consuming `--font-heading-family` looks identical either way — it has no way to tell, and doesn't need to, whether the value behind it came from a merchant's `font_picker` choice or a hardcoded brand font. This is the real payoff of keeping settings and tokens as separate layers in the first place.
 
 :::caution[A merchant can no longer change this font from the theme editor]
