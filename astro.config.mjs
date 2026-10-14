@@ -436,6 +436,17 @@ export default defineConfig({
             { label: '36.7. A Complete Example', slug: 'all-about-buttons/a-complete-example' },
           ],
         },
+        {
+          label: '37. All About Icons',
+          items: [
+            { label: 'Overview', slug: 'all-about-icons' },
+            { label: '37.1. Icon Fundamentals: Inline SVG vs. a Sprite System', slug: 'all-about-icons/icon-fundamentals-inline-svg-vs-a-sprite-system' },
+            { label: '37.2. A Reusable Icon Snippet Pattern', slug: 'all-about-icons/a-reusable-icon-snippet-pattern' },
+            { label: '37.3. Sizing & Coloring Icons with CSS Custom Properties', slug: 'all-about-icons/sizing-and-coloring-icons-with-css-custom-properties' },
+            { label: '37.4. Icon Accessibility: Decorative vs. Meaningful', slug: 'all-about-icons/icon-accessibility-decorative-vs-meaningful' },
+            { label: '37.5. A Complete Example', slug: 'all-about-icons/a-complete-example' },
+          ],
+        },
       ],
     }),
   ],

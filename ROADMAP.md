@@ -215,9 +215,9 @@ Supersedes the original group 22 stub below with a full Part 2-style chapter: `c
 
 A UI-component chapter: button variants (primary/secondary/text/icon-only), every interactive state (hover/focus/active/disabled/loading) including accessible loading-state patterns, settings-driven styling that reuses this site's existing design-token chapters rather than inventing a new one, and icon+text composition. Built ahead of groups 33–35 at the user's explicit request; several pages quote Horizon's real `blocks/button.liquid`, `snippets/button-custom-styles.liquid`, `snippets/resolve-custom-hover.liquid`, and `snippets/size-style.liquid`, fetched fresh rather than from memory.
 
-## 37. All About Icons — `status: planned`
+## 37. All About Icons — `status: live`
 
-A UI-component chapter, distinct from [Media Deep Dive](/media-deep-dive/)'s platform-mechanics angle: inline SVG vs. a sprite-sheet system, a reusable icon snippet pattern, sizing and coloring icons through CSS custom properties (`currentColor`), and accessibility (`aria-hidden`, `<title>`, decorative vs. meaningful icons).
+A UI-component chapter, distinct from [Icons & SVGs](/media-and-assets/icons-and-svgs/)'s intro-level treatment: the real trade-off between inline SVG and a sprite system (repeated markup vs. setup cost, not extra network requests), a reusable icon-dispatcher snippet pattern quoted directly from Shopify's real Horizon theme source (`snippets/icon.liquid`, including its own comment anticipating a future native icon static block), sizing and coloring icons through one `--sol-icon-size` custom property and `currentColor`/`stroke="currentColor"`, and accessibility in depth (`aria-hidden`+`focusable="false"` for decorative icons, labeling the containing control vs. a real `<title>`+`role="img"` for a standalone icon, and why icon fonts are a structural accessibility hazard rather than just outdated).
 
 ## 38. All About Images (Components) — `status: planned`
 
