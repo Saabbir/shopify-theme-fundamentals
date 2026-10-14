@@ -82,6 +82,10 @@ The browser's Web Components spec includes Shadow DOM, which gives an element a 
 
 A plain custom element (`class extends HTMLElement`, no `attachShadow` call) renders its children directly into the normal document tree — "light DOM." It gets its scoping instead from the same BEM-plus-prefix naming discipline used everywhere else in a theme's CSS, covered in [Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/), rather than from the browser enforcing isolation. That trade — giving up hard style isolation in exchange for every component automatically inheriting the theme's design tokens — is almost always the right one for a storefront theme, where consistent, settings-driven styling across every component matters more than one component being fully sealed off from the rest of the page.
 
+:::tip["Almost always" — a few real exceptions are covered next]
+A component that genuinely needs to survive a CSS environment this theme doesn't control — one shipped across multiple themes or stores, or one wrapping untrusted third-party markup — is the actual case for Shadow DOM, `<slot>`, and `::part()`. [Shadow DOM, Slots & ::part(): When You'd Actually Reach for Them](/all-about-javascript/shadow-dom-slots-and-part/) covers exactly what crosses the isolation boundary (custom properties do; classes don't) and walks through a real component built with it.
+:::
+
 ## Why a custom tag name needs its own prefix
 
 `customElements.define` registers a tag name in one global registry shared across the entire page, including anything an installed app also defines. Prefixing every custom element this theme defines (`my-announcement-bar`, `my-quantity-selector`, one consistent prefix) avoids colliding with a tag name an app happens to choose too — the same instinct as the CSS class prefix and the design-token variable prefix covered elsewhere in this site.
