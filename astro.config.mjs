@@ -399,6 +399,18 @@ export default defineConfig({
           ],
         },
         {
+          label: '34. All About Product Reviews',
+          items: [
+            { label: 'Overview', slug: 'all-about-product-reviews' },
+            { label: '34.1. Review Data Fundamentals', slug: 'all-about-product-reviews/review-data-fundamentals' },
+            { label: "34.2. The Shopify Product Reviews App's Standard Metafields", slug: 'all-about-product-reviews/the-shopify-product-reviews-apps-standard-metafields' },
+            { label: '34.3. Third-Party Review Apps: App Blocks vs. Metafields', slug: 'all-about-product-reviews/third-party-review-apps-app-blocks-vs-metafields' },
+            { label: '34.4. Rendering an Accessible Star Rating', slug: 'all-about-product-reviews/rendering-an-accessible-star-rating' },
+            { label: '34.5. AggregateRating Schema.org Markup for SEO', slug: 'all-about-product-reviews/aggregaterating-schema-for-seo' },
+            { label: '34.6. A Complete Example', slug: 'all-about-product-reviews/a-complete-example' },
+          ],
+        },
+        {
           label: '36. All About Buttons',
           items: [
             { label: 'Overview', slug: 'all-about-buttons' },

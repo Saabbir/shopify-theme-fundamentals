@@ -203,9 +203,9 @@ Everything about the `product` object specifically, start to finish: the variant
 
 A UI-composition chapter tying several other chapters together: the image and hover/secondary image, badges (sale, sold out, custom tags), price formatting (regular vs. compare-at vs. a range across variants), color/size swatches, quick add, and a ratings summary — built from group 32 (All About Products), [All About Colors](/all-about-colors/), and group 34 (All About Product Reviews) rather than repeating their content.
 
-## 34. All About Product Reviews — `status: planned`
+## 34. All About Product Reviews — `status: live`
 
-How reviews actually surface in a theme, since Liquid has no native reviews object: the Shopify Product Reviews app's metafields, how third-party review apps typically expose data (app blocks vs. metafields), rendering a star rating accessibly, `AggregateRating` schema.org markup for SEO, and placement patterns on both the product card and the product page.
+How reviews actually surface in a theme, since Liquid has no native reviews object: why review data always comes from an app (metafields a theme reads directly, vs. an app block it can only place), the Shopify Product Reviews app's real, verified `reviews.rating` (a `rating`-type metafield, not a plain number — `.value.rating`/`.value.scale_min`/`.value.scale_max`) and `reviews.rating_count` metafields, how to confirm what a specific third-party app actually exposes rather than assuming it matches, a CSS-only accessible star rating (`role="img"`/`aria-label` plus a percentage-width clip for partial stars, no JavaScript or SVG masking), `AggregateRating` JSON-LD for SEO with the self-serving-reviews guard that must gate it, and a complete example reusing one rating snippet as both a compact card placement and a full product-page placement with schema on the page only. Built from scratch with real metafield structure verified directly against shopify.dev's `rating` Liquid object reference.
 
 ## 35. All About Collection Filtering & Sorting — `status: planned`
 
