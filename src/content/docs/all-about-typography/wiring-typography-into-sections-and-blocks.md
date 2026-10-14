@@ -27,43 +27,7 @@ No typography-specific setting is needed here — the section simply opts into "
 
 ## Letting a merchant choose between type presets
 
-When a section has more than one plausible typography treatment (a large display heading versus a smaller, standard one, say), offer a `select` setting that chooses between your named type presets, rather than exposing raw font/size controls directly:
-
-```json
-{
-  "type": "select",
-  "id": "heading_style",
-  "label": "t:labels.heading_style",
-  "options": [
-    { "value": "h1", "label": "t:options.large" },
-    { "value": "h2", "label": "t:options.medium" }
-  ],
-  "default": "h2"
-}
-```
-
-```liquid
-{% liquid
-  assign heading_style = section.settings.heading_style
-%}
-<h2 class="section-heading section-heading--{{ heading_style }}">{{ section.settings.heading }}</h2>
-
-{% stylesheet %}
-  .section-heading--h1 {
-    font-family: var(--type-preset-h1-font-family);
-    font-size: var(--type-preset-h1-font-size);
-    line-height: var(--type-preset-h1-line-height);
-  }
-
-  .section-heading--h2 {
-    font-family: var(--type-preset-h2-font-family);
-    font-size: var(--type-preset-h2-font-size);
-    line-height: var(--type-preset-h2-line-height);
-  }
-{% endstylesheet %}
-```
-
-This gives a merchant a meaningful, design-safe choice ("large" or "medium" heading) without exposing raw typographic controls that could produce an inconsistent result — the same reasoning [Spacing settings](/design-tokens/spacing-and-layout-tokens/) and [color schemes](/design-tokens/color-settings-and-color-schemes/) both apply to their own settings: a bounded, named choice beats an unbounded free-form one.
+When a section has more than one plausible typography treatment (a large display heading versus a smaller, standard one, say), offer a `select` setting that chooses between your named type presets, rather than exposing raw font/size controls directly — the same reasoning [Spacing settings](/design-tokens/spacing-and-layout-tokens/) and [color schemes](/design-tokens/color-settings-and-color-schemes/) both apply to their own settings: a bounded, named choice beats an unbounded free-form one. [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/#using-a-preset-in-a-section-or-block-setting) covers this exact pattern in full, with a complete worked example.
 
 ## When a section genuinely needs its own font setting
 
@@ -128,4 +92,5 @@ Nothing about typography tokens changes depending on whether they're consumed by
 ## Further reading
 
 - [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
+- [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — the select-between-presets pattern above, in full
 - [Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/)

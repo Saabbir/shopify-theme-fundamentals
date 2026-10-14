@@ -73,7 +73,7 @@ They're solving different problems, so they're allowed to diverge. `type_` exist
 --type-preset-h1-line-height
 ```
 
-**Pattern: `--type-preset-{name}-{property}`.** `type-preset` as a fixed prefix distinguishes a preset token (a bundle of several properties under one named style, covered in [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)) from a role token (`--font-heading-family`) at a glance — they look related, because they are, but not identical, because a preset composes several role tokens together rather than being one itself.
+**Pattern: `--type-preset-{name}-{property}`.** `type-preset` as a fixed prefix distinguishes a preset token (a bundle of several properties under one named style, covered in full on [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/)) from a role token (`--font-heading-family`) at a glance — they look related, because they are, but not identical, because a preset composes several role tokens together rather than being one itself.
 
 Name a preset by **what it's for**, not what it looks like:
 
@@ -136,4 +136,5 @@ One detail worth knowing if you ever read `theme-styles-variables.liquid` direct
 
 - [Naming & Code Conventions in Horizon](/horizon-codebase-tour/naming-and-code-conventions/)
 - [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
+- [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/)
 - [Color Fundamentals](/all-about-colors/color-fundamentals/) — the same `palette_` prefix convention, applied to color

@@ -69,7 +69,7 @@ A **unitless** `line-height` (just `1.5`, not `1.5em` or `150%`) is a multiplier
 
 ## Letter-spacing and text-transform: smaller, often-forgotten levers
 
-Family, weight, style, and size get most of the attention, but two more properties round out a complete typographic treatment, especially for a type preset (per [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)):
+Family, weight, style, and size get most of the attention, but two more properties round out a complete typographic treatment, especially for a type preset (per [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/)):
 
 ```css
 .eyebrow {

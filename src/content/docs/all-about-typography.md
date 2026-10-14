@@ -17,6 +17,7 @@ This chapter is a complete, standalone reference on typography — it starts fro
 | [Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) | What to do when a client's exact brand font isn't in Shopify's font library |
 | [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) | A real, current theme's typography system, read directly from its source |
 | [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) | Turning a handful of font settings into a reusable, named system the whole theme draws from |
+| [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) | Designing a full preset system, how Horizon built its own, and using presets properly in sections, blocks, and CSS |
 | [Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/) | The concrete schema-to-CSS path, worked through end to end |
 | [Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/) | A consistent way to name every setting, CSS variable, and preset — and how Horizon really does it |
 | [Typography Best Practices](/all-about-typography/typography-best-practices/) | A practical checklist, distilled from everything else in this chapter |

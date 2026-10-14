@@ -77,9 +77,9 @@ Notice this single snippet does two jobs at once: it defines the CSS custom prop
 
 From here on, no section or block CSS should reference `settings.type_heading_font` directly — it reads `var(--font-heading-family)` instead. This is the entire payoff: a merchant changing the Heading font setting updates every component that reads `--font-heading-family`, automatically, with zero code changes anywhere else.
 
-## Beyond fonts: a full type preset
+## Beyond fonts: type presets, briefly
 
-A **type preset** extends the same idea beyond just which font to use — it bundles font family, weight, size, and line-height together under one name, the same way a "Heading 1" style works in a design tool like Figma:
+A **type preset** extends this same idea beyond just which font to use — it bundles font family, weight, size, and line-height together under one name, the same way a "Heading 1" style works in a design tool like Figma:
 
 ```css
 :root {
@@ -87,11 +87,6 @@ A **type preset** extends the same idea beyond just which font to use — it bun
   --type-preset-h1-font-weight: 700;
   --type-preset-h1-font-size: clamp(2rem, 1.5rem + 2vw, 3.5rem);
   --type-preset-h1-line-height: 1.1;
-
-  --type-preset-body-font-family: var(--font-body-family);
-  --type-preset-body-font-weight: 400;
-  --type-preset-body-font-size: 1rem;
-  --type-preset-body-line-height: 1.6;
 }
 
 .h1 {
@@ -102,21 +97,19 @@ A **type preset** extends the same idea beyond just which font to use — it bun
 }
 ```
 
-A type preset is a composition of tokens, not a replacement for them — notice `--type-preset-h1-font-family` still points at `--font-heading-family` rather than hardcoding a font directly. Changing the underlying Heading font setting still cascades through, exactly as before; the preset layer only adds size and line-height as additional, bundled decisions on top. (Sizing a preset with `clamp()`, specifically, is covered in full on [Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/).)
+Notice `--type-preset-h1-font-family` still points at `--font-heading-family` rather than hardcoding a font directly — a preset is a composition of tokens, not a replacement for them. Changing the underlying Heading font setting still cascades through; the preset layer only adds size and line-height as additional, bundled decisions on top.
 
-## When the extra preset layer is worth it
-
-Four font-role tokens are worth building in almost any theme past a trivial size. A full preset system (naming and bundling specific size/weight/line-height combinations) is worth the extra layer once a theme has enough distinct, recurring text treatments — several heading levels, a few different body-text contexts, a caption style — that writing out `font-size` and `line-height` by hand in every component's CSS starts producing visible inconsistency between components that were supposed to look the same.
+Building a *complete* preset system — how many presets a theme actually needs, what properties belong in one, whether to hardcode preset values or drive them from per-level merchant settings, and how Shopify's own Horizon theme answers all three at real production scale — is involved enough to deserve its own page: see [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/).
 
 ## Key takeaways
 
 - A token is a named variable standing in for a design decision; every component reads the token, never the original setting, so a single change cascades everywhere automatically.
 - Define typography by role (Body, Heading, Subheading, Accent, or whatever set a design actually needs), one `font_picker` setting per role, resolved into CSS custom properties exactly once.
-- A type preset builds on top of font-role tokens, bundling size and line-height alongside family/weight/style under one named style, the way a design tool's text styles work.
-- Font-role tokens pay off in almost any theme; a full preset system pays off once a theme has enough distinct, recurring text treatments to risk visible inconsistency without one.
+- Font-role tokens pay off in almost any theme — they're the foundation a full preset system builds on top of, covered in full on [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/).
 
 ## Further reading
 
+- [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — designing a full preset system, and how Horizon built its own
 - [Reading Typography from a Figma Design](/all-about-typography/reading-typography-from-a-figma-design/) — turning a client's actual text styles into this chapter's roles, before writing any settings
 - [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/)
 - [Building a Token System: Primitive, Semantic, Component](/all-about-colors/building-a-token-system/) — the same idea, applied to color
