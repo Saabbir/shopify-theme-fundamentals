@@ -14,6 +14,7 @@ This chapter covers CSS *mechanics* — where it lives, how it's scoped, how it 
 | Page | Answers |
 |---|---|
 | [CSS Fundamentals in a Shopify Theme](/all-about-css/css-fundamentals/) | Where CSS lives, `{% stylesheet %}` and `{% style %}` in full, and the one-tag-per-file rule |
+| [Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/) | rem vs. em vs. px, viewport units (vw, dvh, svh), ch, lh, and when to reach for `clamp()` instead of a fixed value |
 | [Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) | BEM in depth, and the real linter check that catches a cross-file CSS dependency |
 | [CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/) | `var()` fallbacks, inheritance, `@property`, and where the token tiers actually live on this site |
 | [Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/) | Breakpoints vs. container queries, and writing CSS that doesn't assume left-to-right |

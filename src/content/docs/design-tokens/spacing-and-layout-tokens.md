@@ -55,4 +55,5 @@ Reaching for one of these named values, instead of a fresh arbitrary number ever
 
 ## Further reading
 
+- [Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/) — why this page's settings use `px` while its generated scale uses `rem`, and the desktop/mobile pattern as an alternative to `clamp()`
 - [The `range` setting](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#range) (shopify.dev)

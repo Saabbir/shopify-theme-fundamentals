@@ -90,6 +90,7 @@ Most CSS tutorials teach physical properties — `margin-left`, `padding-top`, `
 
 ## Further reading
 
+- [Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/) — vw/vh and their dvh/svh/lvh variants, and the full rem/em/px decision
 - [CSS container queries (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)
 - [CSS logical properties (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values)
 - [Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/)

@@ -264,4 +264,5 @@ Because the override is scoped to `.hero`, every other element reading `--type-p
 - [Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/) — the broader section/block consumption patterns this page's select-setting example is part of
 - [Building a Token System: Primitive, Semantic, Component](/all-about-colors/building-a-token-system/) — the same shared-scale idea, applied to color
 - [Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) — the `clamp()` mechanics behind a preset's font-size property
+- [Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/) — when a preset's font-size genuinely needs `clamp()`, versus a fixed `rem` value
 - [`assets/base.css` (GitHub)](https://github.com/Shopify/horizon/blob/main/assets/base.css) — the real global `.h1`-`.h6`/`.paragraph` class rules quoted in Decision 5
