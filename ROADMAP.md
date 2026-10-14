@@ -223,9 +223,9 @@ A UI-component chapter, distinct from [Icons & SVGs](/media-and-assets/icons-and
 
 A UI-component chapter, distinct from [Media Deep Dive](/media-deep-dive/)'s platform-mechanics angle (art direction, CDN params, performance budgets): why a shared image snippet beats inline `<img>` tags repeated across sections, `aspect-ratio` plus `object-fit` for a forced ratio (with a merchant-facing ratio setting as a named `select`, and the one real remaining reason for the old padding-hack wrapper), `loading="lazy"` by default versus `fetchpriority="high"` for the single most important image on a page, a CSS-only loading-state placeholder with no blur-up complexity, badge/overlay positioning anchored on the wrapper rather than the `<img>` itself, and a complete example tying all of it into one snippet including a `:has()`-based fix for the priority-image fade-in edge case.
 
-## 39. All About Videos (Components) — `status: planned`
+## 39. All About Videos (Components) — `status: live`
 
-A UI-component chapter, distinct from [Media Deep Dive](/media-deep-dive/)'s video-loading-and-autoplay-strategy angle: play/pause UI patterns, poster-image states, inline vs. modal/lightbox video, and captioning/accessibility.
+A UI-component chapter, distinct from [Media Deep Dive](/media-deep-dive/)'s video-loading-and-autoplay-strategy angle: `video_tag` for the common case versus why captions require abandoning it and building the `<video>` tag by hand from `media.sources` (verified directly against shopify.dev's `video`/`video_source` objects), a custom play/pause Web Component that syncs its button to the video's own real `play`/`pause` events rather than maintaining separate state, poster-image sourcing (`media.preview_image`, with a merchant override setting) and syncing a custom overlay to the native poster-to-playback transition, inline versus a native-`<dialog>`-based modal/lightbox with the shared pause-on-tab-hide rule, and captioning sourced from a real `file_reference` metafield's `generic_file.url` (since Shopify never generates captions automatically) plus the rest of what video accessibility requires beyond captions alone.
 
 ## 40. All About Input Settings — `status: planned`
 

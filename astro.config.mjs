@@ -458,6 +458,18 @@ export default defineConfig({
             { label: '38.5. A Complete Example', slug: 'all-about-images/a-complete-example' },
           ],
         },
+        {
+          label: '39. All About Videos',
+          items: [
+            { label: 'Overview', slug: 'all-about-videos' },
+            { label: '39.1. Video Fundamentals', slug: 'all-about-videos/video-fundamentals-video_tag-vs-building-your-own-tag' },
+            { label: '39.2. Play/Pause UI Patterns', slug: 'all-about-videos/play-pause-ui-patterns' },
+            { label: '39.3. Poster-Image States', slug: 'all-about-videos/poster-image-states' },
+            { label: '39.4. Inline vs. Modal/Lightbox Video', slug: 'all-about-videos/inline-vs-modal-lightbox-video' },
+            { label: '39.5. Captioning & Accessibility', slug: 'all-about-videos/captioning-and-accessibility' },
+            { label: '39.6. A Complete Example', slug: 'all-about-videos/a-complete-example' },
+          ],
+        },
       ],
     }),
   ],
