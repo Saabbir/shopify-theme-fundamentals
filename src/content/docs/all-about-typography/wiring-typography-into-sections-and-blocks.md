@@ -7,9 +7,9 @@ description: The concrete schema-to-CSS path, worked through end to end.
 
 [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) built the token layer, theme-wide. This page works through how an individual section or block actually consumes that layer, plus the two situations where a section needs typography control beyond what the global tokens provide.
 
-## The simple case: a section just uses the global tokens
+## The simple case: a section just uses the real tag
 
-Most of the time, a section needs no typography settings of its own at all — it just uses whichever global token fits:
+Most of the time, a section needs no typography CSS of its own at all. Per [Decision 5 of Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/#decision-5-one-global-class-per-preset-not-a-redeclaration-per-component), a real heading tag is already paired with its matching preset in one global stylesheet — so a section that renders an actual `<h2>` gets full, correct H2 typography automatically, with nothing typography-related in its own `{% stylesheet %}` at all:
 
 ```liquid
 {% comment %} sections/featured-collection.liquid {% endcomment %}
@@ -17,13 +17,20 @@ Most of the time, a section needs no typography settings of its own at all — i
 
 {% stylesheet %}
   .featured-collection__heading {
-    font-family: var(--font-heading-family);
-    font-weight: var(--font-heading-weight);
+    /* Nothing typography-related here, on purpose — the real <h2> tag
+       already gets its font-family, weight, size, and line-height
+       from the global h2 { ... } rule. Only something genuinely
+       specific to this section belongs here. */
+    margin-block-end: var(--space-sm);
   }
 {% endstylesheet %}
 ```
 
-No typography-specific setting is needed here — the section simply opts into "Heading" typography by using the token, the same way every other heading-styled element in the theme does. This should be the default for most sections; only add a dedicated typography setting when a section genuinely needs to deviate from the theme-wide tokens.
+No typography-specific setting, class, or CSS is needed here — the section simply renders a real heading tag and the rest follows automatically. This should be the default for most sections; only add a dedicated typography setting when a section genuinely needs to deviate from the theme-wide tokens.
+
+:::note[Not every element wants the full preset — that's a different, narrower case]
+Sometimes a component genuinely wants to borrow just a role's `font-family` (and maybe `style`), with no opinion on size at all — the testimonial block further down this page is exactly that case. Reaching for a role token directly, instead of a preset, is correct *there* specifically because the text isn't meant to carry a prescribed size — not because declaring family/weight without size is a smaller, simpler version of the pattern above. [Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/#the-decision-tree) covers exactly how to tell the two cases apart.
+:::
 
 ## Letting a merchant choose between type presets
 

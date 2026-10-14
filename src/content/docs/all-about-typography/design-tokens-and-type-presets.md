@@ -77,6 +77,10 @@ Notice this single snippet does two jobs at once: it defines the CSS custom prop
 
 From here on, no section or block CSS should reference `settings.type_heading_font` directly — it reads `var(--font-heading-family)` instead. This is the entire payoff: a merchant changing the Heading font setting updates every component that reads `--font-heading-family`, automatically, with zero code changes anywhere else.
 
+:::note[Notice what's missing: a font-size]
+A role token resolves `family`, `weight`, and `style` only — never a size. `.product-card__title` above is deliberately incomplete as written; a real product title needs an actual `font-size` and `line-height` from somewhere, and a role token has neither to give it. That's exactly the gap a type preset exists to fill — covered next, and in full on [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/).
+:::
+
 ## Beyond fonts: type presets, briefly
 
 A **type preset** extends this same idea beyond just which font to use — it bundles font family, weight, size, and line-height together under one name, the same way a "Heading 1" style works in a design tool like Figma:
