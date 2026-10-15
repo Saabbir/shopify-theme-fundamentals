@@ -38,6 +38,12 @@ Whether a given typeface is available as a variable font depends entirely on wha
 
 This is a reasonable thing to want to know, and there's no single property on the `font` object that answers it directly — Shopify's documented `font` object properties are `family`, `fallback_families`, `weight`, `style`, `baseline_ratio`, `system?`, and `variants`; none of them is a `variable` boolean. The underlying question — "is this one file covering a range, or several separate files?" — is a detail of how Shopify's font library serves that specific family, not something exposed directly in Liquid. A few practical ways to actually find out:
 
+| Method | How | Conclusive? |
+|---|---|---|
+| Check Google Fonts | Search the family on fonts.google.com; a variable font shows a weight (and sometimes width) range slider | No — a quick first check |
+| Probe with `font_modify` | Request a few in-between weights, watch for `nil` | No — a useful signal, not definitive |
+| Inspect the served file | Download via `font_url`, check for an `fvar` table in a font inspection tool | Yes — the only fully conclusive method |
+
 ### Check the font's listing on Google Fonts
 
 Most of the non-system fonts in Shopify's font library are sourced from Google Fonts, and Google Fonts' own site explicitly labels which families are published as variable (showing the supported weight — and sometimes width — range as a slider in its UI). Searching for the font family name on [fonts.google.com](https://fonts.google.com) is the fastest way to check, before writing any code.
@@ -78,9 +84,11 @@ For certainty, use the `font_url` filter to get the real file URL Shopify is ser
 
 Everything above assumes a `font_picker`-sourced font — a real `font` object exists to call `font_modify` on. [Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) covers the other case: a brand font the client licensed directly, self-hosted as a theme asset or Shopify File, with no `font_picker` setting and no `font` object anywhere. Two of the three detection methods above need adjusting for that case, and one doesn't change at all:
 
-- **The "check it on Google Fonts" step generalizes, but might not apply.** A licensed brand font often isn't on Google Fonts at all — check wherever it was actually licensed from instead. A type foundry's own product or license page almost always states outright whether a release is "Variable" (sometimes sold as a separate product from the individual static weight cuts), so this is usually the fastest way to find out before touching any code.
-- **Probing with `font_modify` doesn't apply at all.** There's no `font` object for a self-hosted font to call it on — this method is specific to `font_picker`, not a general technique. Don't reach for it here; it has nothing to probe.
-- **Inspecting the actual file still works, unchanged.** The `fvar`-table check (via [Wakamai Fondue](https://wakamaifondue.com/) or [Fontdrop.info](https://fontdrop.info/)) looks at the font file itself, not at how it was loaded — it's actually the more useful method here, since it gives a definitive answer even when a foundry's marketing language is ambiguous about what "variable" means for that specific release.
+| Method | For a self-hosted font |
+|---|---|
+| Check Google Fonts | Generalizes, but might not apply — a licensed brand font often isn't on Google Fonts at all. Check the foundry's own product or license page instead; it almost always states outright whether a release is "Variable." |
+| Probe with `font_modify` | Doesn't apply at all — there's no `font` object for a self-hosted font to call it on. |
+| Inspect the actual file | Still works unchanged — actually the more useful method here, since it gives a definitive answer even when a foundry's marketing language is ambiguous. |
 
 ### If the custom font turns out to be variable, the loading pattern changes
 

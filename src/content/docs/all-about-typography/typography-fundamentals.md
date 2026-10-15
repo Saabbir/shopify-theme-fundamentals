@@ -41,6 +41,13 @@ A `font-family` value is a comma-separated list, not a single name, and that's d
 
 A **web font** is a font file the browser has to download before it can render text in that font — this is what a merchant picking a custom brand font from `font_picker` results in. A **system font** is a font already installed on the shopper's own device, which costs nothing to download because the browser already has it. `system-ui`, `sans-serif`, `serif`, and `monospace` are *generic* system font keywords — not an actual specific font, but an instruction to the browser to use whatever real font it considers the system default for that category, which varies by operating system.
 
+| | System font | Web font |
+|---|---|---|
+| Needs downloading | No — already on the shopper's device | Yes — fetched over the network |
+| Loading delay or visible swap | None | Possible, until the file arrives |
+| `font.system?` | `true` | `false` |
+| Needs a `font_face` output | No — there's no file to load | Yes |
+
 :::tip[System fonts are the fastest typography choice there is]
 A theme using only system fonts has zero font files to download — text renders the instant the page's CSS is parsed, with no loading delay and no risk of a visible font swap. This is a real, meaningful performance advantage, worth considering seriously for a theme that doesn't have a specific brand typeface it needs to use.
 :::
@@ -65,7 +72,13 @@ line-height: 1.5em;  /* avoid */
 line-height: 150%;   /* avoid */
 ```
 
-A **unitless** `line-height` (just `1.5`, not `1.5em` or `150%`) is a multiplier of that element's own `font-size` — and critically, it's recalculated fresh for every descendant based on *that descendant's own* font size, rather than being fixed once and inherited as a flat pixel value. A `line-height: 1.5em` set on a parent, by contrast, inherits as a computed pixel value — so a smaller or larger child element inherits a line-height proportioned for the *parent's* font size, not its own, which usually produces text that's too cramped or too loose. Unitless `line-height` is the conventional default for exactly this reason: it stays proportionally correct no matter where in the document it ends up applying.
+A **unitless** `line-height` (just `1.5`, not `1.5em` or `150%`) is a multiplier of that element's own `font-size` — and critically, it's recalculated fresh for every descendant based on *that descendant's own* font size, rather than being fixed once and inherited as a flat pixel value. A `line-height: 1.5em` set on a parent, by contrast, inherits as a computed pixel value — so a smaller or larger child element inherits a line-height proportioned for the *parent's* font size, not its own, which usually produces text that's too cramped or too loose.
+
+| Value | How it inherits | Recommended |
+|---|---|---|
+| `1.5` (unitless) | Recalculated per descendant, from that descendant's own font size | Yes — stays proportionally correct everywhere |
+| `1.5em` | Computed once on the parent, inherited as a fixed pixel value | No — wrong for a child with a different font size |
+| `150%` | Same issue as `em` — computed once, inherited as a fixed pixel value | No |
 
 ## Letter-spacing and text-transform: smaller, often-forgotten levers
 

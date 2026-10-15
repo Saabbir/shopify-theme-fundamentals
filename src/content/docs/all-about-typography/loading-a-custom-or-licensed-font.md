@@ -28,9 +28,12 @@ Everything from here assumes separate static files per weight. If the foundry's 
 {{ 'canela-regular.woff2' | file_url }}
 ```
 
-**A theme asset** (the file lives in the theme's own `assets/` folder) is versioned together with the rest of the theme's code — it ships with every theme push and pull, and works correctly in a development theme or preview exactly like any other asset. This is the right default for most projects.
-
-**A Shopify Files upload** (via Admin → Content → Files, read back with the `file_url` filter) lives at the store level instead of inside any one theme — useful specifically when the same licensed font needs to be shared across multiple themes on the same store (a seasonal theme and the main theme, say), since it only needs uploading once rather than copied into each theme's `assets/` folder.
+| | Theme asset (`asset_url`) | Shopify Files (`file_url`) |
+|---|---|---|
+| Lives | In the theme's own `assets/` folder | At the store level, outside any one theme |
+| Versioned with the theme's code | Yes — ships with every push and pull | No |
+| Uploaded via | The theme's own file structure | Admin → Content → Files |
+| Best for | The right default for most projects | Sharing the same licensed font across multiple themes on one store (a seasonal theme and the main theme, say) — upload once instead of copying into each theme's `assets/` folder |
 
 :::note[A font file is a binary asset, not source code]
 A `.woff2` file committed into a theme's Git repository is a real, unreadable binary blob sitting in version control forever, unlike every other asset this site usually discusses. This is normal and fine for a reasonably sized font file, but it's worth being deliberate about committing only the actual files needed (the specific weights/styles in use), not every file a client happened to hand over.

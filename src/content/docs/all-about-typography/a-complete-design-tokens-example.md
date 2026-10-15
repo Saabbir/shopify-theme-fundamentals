@@ -102,7 +102,13 @@ Two `font_picker` settings for the typography roles, and one `color_scheme_group
 </head>
 ```
 
-Three different kinds of setting, three different resolution strategies, all ending up as the same kind of output (a CSS custom property): a `font_picker`'s font object gets read field by field; a flat spacing scale gets hardcoded directly, since nothing about it is merchant-configurable; and a `color_scheme_group` gets looped, because — unlike typography — color needs more than one simultaneous value (a merchant can have a section in a light scheme right next to one in a dark scheme on the very same page).
+Three different kinds of setting, three different resolution strategies, all ending up as the same kind of output (a CSS custom property):
+
+| Setting type | Resolution strategy | Why |
+|---|---|---|
+| `font_picker` (typography) | Read field by field (`.family`, `.weight`, `.style`) | Each role resolves to one value |
+| A flat spacing scale | Hardcoded directly | Nothing about it is merchant-configurable |
+| `color_scheme_group` (color) | Looped, one class per scheme | Unlike typography, color needs more than one simultaneous value — a merchant can have a section in a light scheme right next to one in a dark scheme on the same page |
 
 ## Two components, consuming all three token categories at once
 

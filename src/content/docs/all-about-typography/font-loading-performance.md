@@ -13,9 +13,11 @@ A font file, even a small one, takes real time to download. Browsers have to dec
 
 `font_face` generates the `@font-face` rule, but you can control its `font-display` behavior, which decides how the browser handles the gap between "text is ready" and "custom font has loaded":
 
-- `swap` — show a fallback font immediately, then swap to the real font once it loads. The most common choice for storefronts: text is readable right away, at the cost of a visible font swap once loading finishes.
-- `block` — show nothing (an invisible placeholder) for a short period, then swap in the real font. Avoids a visible swap, but means text is briefly invisible, which is rarely the better trade for actual store content.
-- `optional` — the browser is free to skip the font swap entirely if the download isn't fast enough, keeping the fallback instead. Best for a font that's a nice-to-have detail rather than important to the brand.
+| Value | During the gap | Trade-off | Best for |
+|---|---|---|---|
+| `swap` | Shows a fallback font immediately, swaps to the real font once it loads | A visible font swap once loading finishes | Most storefronts — the sensible default |
+| `block` | Shows nothing (an invisible placeholder) briefly, then swaps in the real font | Text is briefly invisible | Rarely the better trade for real store content |
+| `optional` | May skip the swap entirely if the download isn't fast enough, keeping the fallback | No guarantee the real font ever shows | A nice-to-have detail, not brand-critical |
 
 :::tip[swap is the right default for most storefronts]
 Unless there's a specific reason not to, `swap` is the sensible default — reading or shopping is rarely worth delaying for a specific typeface, and a brief font swap is a smaller problem than text that's invisible while loading.

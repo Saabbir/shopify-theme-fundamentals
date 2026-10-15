@@ -15,10 +15,12 @@ A **design token** is a named variable that stands in for a design decision, so 
 
 Before writing any code, decide what roles your theme's typography actually needs to fill. Horizon's four — **Body**, **Subheading**, **Heading**, **Accent** — are a reasonable, proven starting point, but the right set depends on the design:
 
-- **Body** — the default font for paragraphs, product descriptions, most running text.
-- **Heading** — section titles, product titles, anything acting as a headline.
-- **Subheading** — a secondary heading role, often a lighter or more condensed companion to Heading.
-- **Accent** — a distinct, often more expressive font for a small amount of text that's meant to stand out (a badge, a kicker label, a pull quote).
+| Role | Used for |
+|---|---|
+| Body | The default font for paragraphs, product descriptions, most running text |
+| Heading | Section titles, product titles, anything acting as a headline |
+| Subheading | A secondary heading role, often a lighter or more condensed companion to Heading |
+| Accent | A distinct, often more expressive font for a small amount of text meant to stand out (a badge, a kicker label, a pull quote) |
 
 A smaller theme might only need Body and Heading. A theme with a strong editorial design voice might need all four, or even more. The number of roles is a design decision, not a fixed requirement.
 

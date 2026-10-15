@@ -16,7 +16,17 @@ description: font_picker, the font object, and the filters that actually get a f
 }
 ```
 
-A `font_picker` setting gives a merchant a searchable list of fonts in the theme editor, pulled from Shopify's own font library (a curated set of system fonts and licensed Google Fonts, free to use on any Shopify store). Unlike a `text` or `color` setting, `font_picker` doesn't return a simple string — it returns a whole **font object**, with its own set of properties: `family`, `fallback_families`, `style`, `weight`, and more.
+A `font_picker` setting gives a merchant a searchable list of fonts in the theme editor, pulled from Shopify's own font library (a curated set of system fonts and licensed Google Fonts, free to use on any Shopify store). Unlike a `text` or `color` setting, `font_picker` doesn't return a simple string — it returns a whole **font object**, with its own set of properties:
+
+| Property | What it is |
+|---|---|
+| `family` | The font family name, e.g. `"Assistant"` |
+| `fallback_families` | A ready-made, comma-separated list of reasonable substitutes |
+| `weight` | The numeric weight, e.g. `400` |
+| `style` | `"normal"` or `"italic"` |
+| `system?` | `true` if the merchant picked a system font — no `font_face` needed |
+| `baseline_ratio` | A decimal describing the font's baseline position, occasionally useful for precise vertical alignment across two different fonts |
+| `variants` | An array of every other weight/style combination available for that family — what `font_modify` uses internally |
 
 :::note[`default` is required — and the valid values aren't arbitrary]
 Shopify requires `default` on every `font_picker` setting; omitting it is a schema error. A valid value is a specific **font ID** from Shopify's font library, in the form `{font-slug}_{style}{weight-digit}` — `n` for normal or `i` for italic, and the weight digit is just the first digit of the standard 100–900 scale. `assistant_n4` is Assistant at normal/400; `playfair_display_n7` is Playfair Display at normal/700; `work_sans_n6` is Work Sans at normal/600; `work_sans_i6` would be Work Sans at italic/600, following the exact same pattern.
@@ -84,6 +94,14 @@ Always include `fallback_families` alongside `family`, never `family` alone — 
 ## A bolder or italic variant: `font_modify`
 
 A merchant typically only picks one font per setting — but a design often needs more than one weight or style of that same family (a bold variant for emphasis, an italic variant for a pull quote). `font_modify` returns a new font object with one property changed, which you then load with `font_face` exactly like any other font object. This avoids asking a merchant to pick a second, separate font setting just to get a bold version of the font they already chose.
+
+## Quick reference: three filters, three different jobs
+
+| Filter | What it does | Reach for it when |
+|---|---|---|
+| `font_face` | Builds the complete `@font-face` rule, with sensible defaults | The default choice — nearly all the time |
+| `font_url` | Returns just the font file's CDN URL | You need to write a custom `@font-face` rule by hand, usually to control `font-display` or another property `font_face` doesn't expose |
+| `font_modify` | Returns a new font object with one property (weight or style) changed | A design needs a bold or italic variant without a second merchant-facing setting |
 
 ## A complete example: body and heading, each normal and bold
 
@@ -168,10 +186,6 @@ Not every font family has every weight or style as a real, available variant. If
 
 [Variable Fonts](/all-about-typography/variable-fonts/) covers a practical side effect of this: trying several `font_modify` weights and watching which ones come back `nil` is actually a decent way to probe whether a font behaves like a variable font with a wide weight range, versus a traditional family with only two or three fixed weights.
 :::
-
-## Two less common properties, for completeness
-
-Beyond `family`, `fallback_families`, `weight`, and `style`, the font object has two further documented properties, rarely needed but worth knowing exist: `baseline_ratio` (a decimal describing the font's baseline position, occasionally useful for precise vertical alignment across two different fonts) and `variants` (an array of every other weight/style combination Shopify's font library offers for that same family, which `font_modify` uses internally and which you can also loop over directly if you need to list every available variant rather than requesting one specific one).
 
 ## Key takeaways
 
