@@ -16,11 +16,11 @@ This page doesn't introduce anything new — it's every earlier page in this cha
   assign gallery_media = current_variant.featured_media | default: product.featured_media
 %}
 
-<div class="sol-product">
+<div class="product">
   {% # --- Media gallery: covered in "The Media Gallery" --- %}
-  <div class="sol-product__gallery">
+  <div class="product__gallery">
     {% for item in product.media %}
-      <div class="sol-product__media" {% if item == gallery_media %}data-active{% endif %}>
+      <div class="product__media" {% if item == gallery_media %}data-active{% endif %}>
         {% case item.media_type %}
           {% when 'image' %}
             {{ item | image_url: width: 800 | image_tag }}
@@ -35,16 +35,16 @@ This page doesn't introduce anything new — it's every earlier page in this cha
     {% endfor %}
   </div>
 
-  <div class="sol-product__info">
+  <div class="product__info">
     <h1>{{ product.title }}</h1>
 
     {% # --- Pricing: covered in "Availability, Pricing & Compare-At in Depth" --- %}
-    <div class="sol-product__price">
+    <div class="product__price">
       {% if product.price_varies %}
         From {{ product.price_min | money }}
       {% else %}
         {% if current_variant.compare_at_price > current_variant.price %}
-          <span class="sol-product__sale-badge">Sale</span>
+          <span class="product__sale-badge">Sale</span>
           <s>{{ current_variant.compare_at_price | money }}</s>
         {% endif %}
         {{ current_variant.price | money }}
@@ -78,7 +78,7 @@ This page doesn't introduce anything new — it's every earlier page in this cha
 
     {% # --- Selling plans: covered in "Selling Plans, Subscriptions & Quantity Rules" --- %}
     {% if product.selling_plan_groups.size > 0 %}
-      <fieldset class="sol-product__selling-plans">
+      <fieldset class="product__selling-plans">
         <legend>Purchase options</legend>
         <label>
           <input type="radio" name="selling_plan" value="" checked>

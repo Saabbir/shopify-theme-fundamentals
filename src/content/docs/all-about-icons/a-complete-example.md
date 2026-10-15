@@ -20,10 +20,10 @@ description: One icon-rendering snippet combining the dispatcher pattern, custom
 %}
 
 <svg
-  class="sol-icon"
+  class="icon"
   viewBox="0 0 20 20"
   fill="currentColor"
-  style="--sol-icon-size: {{ size }};"
+  style="--icon-size: {{ size }};"
   {% if label %}
     role="img"
   {% else %}
@@ -37,9 +37,9 @@ description: One icon-rendering snippet combining the dispatcher pattern, custom
 ```
 
 ```css
-svg.sol-icon {
-  width: var(--sol-icon-size, 1.25rem);
-  height: var(--sol-icon-size, 1.25rem);
+svg.icon {
+  width: var(--icon-size, 1.25rem);
+  height: var(--icon-size, 1.25rem);
   flex-shrink: 0;
 }
 ```
@@ -47,7 +47,7 @@ svg.sol-icon {
 ## Using it decoratively, next to visible text
 
 ```liquid
-<button class="sol-button">
+<button class="button">
   {% render 'icon-render', icon: 'heart' %}
   {{ 'products.add_to_wishlist' | t }}
 </button>
@@ -58,7 +58,7 @@ No `label` is passed — the icon renders `aria-hidden="true"`, correctly silent
 ## Using it as the only label, inside an icon-only button
 
 ```liquid
-<button class="sol-button sol-button--icon-only" aria-label="{{ 'products.add_to_wishlist' | t }}">
+<button class="button button--icon-only" aria-label="{{ 'products.add_to_wishlist' | t }}">
   {% render 'icon-render', icon: 'heart' %}
 </button>
 ```
@@ -68,7 +68,7 @@ Still no `label` passed to the snippet — even here, the icon itself stays deco
 ## Using it standalone, with no containing control at all
 
 ```liquid
-<span class="sol-order-status">
+<span class="order-status">
   {% render 'icon-render', icon: 'error', label: 'products.status.backordered' | t, size: '1rem' %}
   {{ 'products.status.backordered' | t }}
 </span>

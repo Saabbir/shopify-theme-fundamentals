@@ -37,7 +37,7 @@ A merchant uploading a product video rarely gets to choose which exact frame Sho
 ## The poster has to disappear the instant playback starts, not before
 
 ```css
-.sol-video-player {
+.video-player {
   position: relative;
 }
 ```
@@ -49,13 +49,13 @@ this.video.addEventListener('play', () => {
 ```
 
 ```css
-.sol-video-player__button {
+.video-player__button {
   position: absolute;
   inset: 0;
   margin: auto;
 }
 
-.sol-video-player.is-playing .sol-video-player__button {
+.video-player.is-playing .video-player__button {
   opacity: 0;
   pointer-events: none;
 }

@@ -25,47 +25,47 @@ A star rating shows up in two genuinely different places in a typical theme — 
 %}
 
 {% if rating and rating_count > 0 %}
-  <div class="sol-product-rating sol-product-rating--{{ size }}" role="img" aria-label="Rated {{ rating }} out of {{ scale_max }} stars, from {{ rating_count }} {{ rating_count | pluralize: 'review', 'reviews' }}">
-    <div class="sol-product-rating__track" aria-hidden="true">
-      <div class="sol-product-rating__fill" style="--sol-product-rating-percent: {{ rating | divided_by: scale_max | times: 100.0 }}%;">
+  <div class="product-rating product-rating--{{ size }}" role="img" aria-label="Rated {{ rating }} out of {{ scale_max }} stars, from {{ rating_count }} {{ rating_count | pluralize: 'review', 'reviews' }}">
+    <div class="product-rating__track" aria-hidden="true">
+      <div class="product-rating__fill" style="--product-rating-percent: {{ rating | divided_by: scale_max | times: 100.0 }}%;">
         ★★★★★
       </div>
       ☆☆☆☆☆
     </div>
     {% if size == 'standard' %}
-      <span class="sol-product-rating__count">({{ rating_count }} {{ rating_count | pluralize: 'review', 'reviews' }})</span>
+      <span class="product-rating__count">({{ rating_count }} {{ rating_count | pluralize: 'review', 'reviews' }})</span>
     {% endif %}
   </div>
 {% endif %}
 ```
 
 ```css
-.sol-product-rating {
+.product-rating {
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
 }
 
-.sol-product-rating__track {
+.product-rating__track {
   position: relative;
   display: inline-grid;
   color: var(--color-border);
 }
 
-.sol-product-rating--compact .sol-product-rating__track {
+.product-rating--compact .product-rating__track {
   font-size: 0.75rem;
 }
 
-.sol-product-rating__fill {
+.product-rating__fill {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  width: var(--sol-product-rating-percent);
+  width: var(--product-rating-percent);
   color: var(--color-accent);
   white-space: nowrap;
 }
 
-.sol-product-rating__count {
+.product-rating__count {
   font-size: 0.875rem;
   color: var(--color-text-secondary);
 }
@@ -77,11 +77,11 @@ The `nil`/zero-review guard from [34.2. The Shopify Product Reviews App's Standa
 
 ```liquid
 {% comment %} snippets/product-card.liquid {% endcomment %}
-<div class="sol-product-card">
+<div class="product-card">
   <img src="{{ card_product.featured_image | image_url: width: 400 }}" alt="{{ card_product.featured_image.alt | escape }}" loading="lazy">
-  <h3 class="sol-product-card__title">{{ card_product.title }}</h3>
+  <h3 class="product-card__title">{{ card_product.title }}</h3>
   {% render 'product-rating', product: card_product, size: 'compact' %}
-  <p class="sol-product-card__price">{{ card_product.price | money }}</p>
+  <p class="product-card__price">{{ card_product.price | money }}</p>
 </div>
 ```
 
@@ -91,10 +91,10 @@ On a card, space is tight and there are often dozens of cards on one collection 
 
 ```liquid
 {% comment %} sections/product.liquid {% endcomment %}
-<div class="sol-product">
+<div class="product">
   <h1>{{ product.title }}</h1>
   {% render 'product-rating', product: product, size: 'standard' %}
-  <p class="sol-product__price">{{ product.price | money }}</p>
+  <p class="product__price">{{ product.price | money }}</p>
 </div>
 
 {% render 'product-schema', product: product %}

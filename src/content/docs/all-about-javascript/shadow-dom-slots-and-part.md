@@ -16,26 +16,26 @@ Nothing here changes the recommendation that most theme components should stay i
 Before deciding whether Shadow DOM is worth it for a given component, it matters to know exactly what isolation really means — it's not all-or-nothing.
 
 ```html
-<sol-rating-input style="--color-accent: #2c6e5c;">
+<rating-input style="--color-accent: #2c6e5c;">
   #shadow-root
     <style>
       .star { color: var(--color-accent); }
     </style>
     <span class="star">★</span>
-</sol-rating-input>
+</rating-input>
 ```
 
-**Inherited CSS properties cross the boundary automatically.** `color`, `font-family`, and — critically — custom properties like `--color-accent` are *inherited* properties, and inheritance follows the host element into the shadow tree, same as it follows any other element into its children. The `--color-accent` set on `<sol-rating-input>` in the markup above really is readable as `var(--color-accent)` inside that component's own shadow styles.
+**Inherited CSS properties cross the boundary automatically.** `color`, `font-family`, and — critically — custom properties like `--color-accent` are *inherited* properties, and inheritance follows the host element into the shadow tree, same as it follows any other element into its children. The `--color-accent` set on `<rating-input>` in the markup above really is readable as `var(--color-accent)` inside that component's own shadow styles.
 
-**Everything else does not.** A global class selector (`.h1`, `.sol-button`), a global `:root` rule, a theme-wide reset, a cascade layer — none of these reach inside a shadow root, because selector matching happens separately within each shadow tree's own stylesheets. This is the real cost 30.2 weighs against isolation: a component inside Shadow DOM gets the theme's custom-property *values* for free, but needs its own, separately written `<style>` (inside the shadow root) to actually turn those values into the theme's typography presets, button styles, or any other class-based pattern — none of that transfers automatically.
+**Everything else does not.** A global class selector (`.h1`, `.button`), a global `:root` rule, a theme-wide reset, a cascade layer — none of these reach inside a shadow root, because selector matching happens separately within each shadow tree's own stylesheets. This is the real cost 30.2 weighs against isolation: a component inside Shadow DOM gets the theme's custom-property *values* for free, but needs its own, separately written `<style>` (inside the shadow root) to actually turn those values into the theme's typography presets, button styles, or any other class-based pattern — none of that transfers automatically.
 
 ## `<slot>`: letting the outside world provide content, without breaking isolation
 
 A Shadow DOM component can't just read `this.innerHTML` the way a light-DOM component does — its internal markup is in a separate tree. `<slot>` is the mechanism for still accepting content from outside anyway.
 
 ```js
-// assets/sol-callout.js
-class SolCallout extends HTMLElement {
+// assets/callout.js
+class Callout extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = `
@@ -52,17 +52,17 @@ class SolCallout extends HTMLElement {
   }
 }
 
-customElements.define('sol-callout', SolCallout);
+customElements.define('callout', Callout);
 ```
 
 ```liquid
 {% comment %} Anything written here is "light DOM" content, projected into the <slot> above {% endcomment %}
-<sol-callout>
+<callout>
   <p>{{ block.settings.text }}</p>
-</sol-callout>
+</callout>
 ```
 
-The `<p>` above never actually moves into the shadow tree — it stays exactly where it was written, in the page's normal light DOM, and the browser visually projects it into wherever `<slot>` appears inside the shadow root. This is why `<slot>`-based content still works with `document.querySelector`, still participates in normal accessibility APIs, and still renders even before `SolCallout`'s JavaScript runs (the same progressive-enhancement requirement 30.2 covers for light-DOM components applies here too).
+The `<p>` above never actually moves into the shadow tree — it stays exactly where it was written, in the page's normal light DOM, and the browser visually projects it into wherever `<slot>` appears inside the shadow root. This is why `<slot>`-based content still works with `document.querySelector`, still participates in normal accessibility APIs, and still renders even before `Callout`'s JavaScript runs (the same progressive-enhancement requirement 30.2 covers for light-DOM components applies here too).
 
 ### Named slots: more than one hole to fill
 
@@ -79,11 +79,11 @@ this.shadowRoot.innerHTML = `
 ```
 
 ```liquid
-<sol-product-card>
+<product-card>
   <img slot="media" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.featured_image.alt | escape }}">
   <h3 slot="heading">{{ product.title }}</h3>
   <p>{{ product.description | strip_html | truncate: 100 }}</p>
-</sol-product-card>
+</product-card>
 ```
 
 A `slot` attribute on the light-DOM child routes it to the matching `name` inside the shadow tree; anything with no `slot` attribute falls through to the one unnamed `<slot>`. This is the Shadow DOM equivalent of the `content_for 'blocks'` pattern covered in [15. All About Blocks](/all-about-blocks/) — a defined set of content holes, filled from outside.
@@ -115,7 +115,7 @@ this.shadowRoot.innerHTML = `
 ```css
 /* Written OUTSIDE the component, in a normal {% stylesheet %} tag —
    this works precisely because "increment-button" was marked as a part */
-sol-quantity-stepper::part(increment-button) {
+quantity-stepper::part(increment-button) {
   background: var(--color-accent);
 }
 ```
@@ -132,17 +132,17 @@ Every example above calls `attachShadow()` from JavaScript — which means, same
 
 ```liquid
 {% comment %} Liquid renders this template tag directly — no JavaScript required for the shadow tree to exist {% endcomment %}
-<sol-rating-display>
+<rating-display>
   <template shadowrootmode="open">
     <style>
       .stars { color: var(--color-accent); }
     </style>
     <span class="stars">{{ product.metafields.reviews.rating | default: '★★★★★' }}</span>
   </template>
-</sol-rating-display>
+</rating-display>
 ```
 
-The browser parses `<template shadowrootmode="open">` and attaches it as a real shadow root immediately, during HTML parsing — before `sol-rating-display.js` has even been requested, let alone executed. A custom element's own JavaScript can still run afterward to add interactivity, but the actual content and its isolated styling are present from the first paint, same as any other server-rendered Liquid markup.
+The browser parses `<template shadowrootmode="open">` and attaches it as a real shadow root immediately, during HTML parsing — before `rating-display.js` has even been requested, let alone executed. A custom element's own JavaScript can still run afterward to add interactivity, but the actual content and its isolated styling are present from the first paint, same as any other server-rendered Liquid markup.
 
 :::note[Browser support: safe to use without a fallback]
 Declarative Shadow DOM reached cross-browser Baseline in August 2024 — Chrome/Edge 111+, Safari 16.4+, Firefox 125+.
@@ -161,8 +161,8 @@ A typical product card, announcement bar, or quantity selector — anything buil
 ## A worked example: a self-contained rating widget
 
 ```js
-// assets/sol-rating-stepper.js
-class SolRatingStepper extends HTMLElement {
+// assets/rating-stepper.js
+class RatingStepper extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = `
@@ -198,19 +198,19 @@ class SolRatingStepper extends HTMLElement {
   }
 }
 
-customElements.define('sol-rating-stepper', SolRatingStepper);
+customElements.define('rating-stepper', RatingStepper);
 ```
 
 ```liquid
-<sol-rating-stepper style="--color-accent: var(--color-accent);">
+<rating-stepper style="--color-accent: var(--color-accent);">
   <span slot="label">reviews found helpful</span>
-</sol-rating-stepper>
+</rating-stepper>
 ```
 
 ```css
 /* In a normal {% stylesheet %} tag, outside the component entirely */
-sol-rating-stepper::part(increment-button),
-sol-rating-stepper::part(decrement-button) {
+rating-stepper::part(increment-button),
+rating-stepper::part(decrement-button) {
   background: var(--color-accent);
   border-radius: 999px;
 }

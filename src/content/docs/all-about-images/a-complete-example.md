@@ -20,10 +20,10 @@ description: One image snippet combining the aspect-ratio wrapper, lazy-loading 
   assign widths = '400,600,900,1200,1600'
 %}
 
-<div class="sol-image-wrapper" style="--sol-image-aspect-ratio: {{ aspect_ratio }};">
+<div class="image-wrapper" style="--image-aspect-ratio: {{ aspect_ratio }};">
   {% if image %}
     <img
-      class="sol-image"
+      class="image"
       src="{{ image | image_url: width: 600 }}"
       srcset="
         {%- for w in widths | split: ',' -%}
@@ -37,7 +37,7 @@ description: One image snippet combining the aspect-ratio wrapper, lazy-loading 
         fetchpriority="high"
       {% else %}
         loading="lazy"
-        onload="this.closest('.sol-image-wrapper').classList.add('is-loaded')"
+        onload="this.closest('.image-wrapper').classList.add('is-loaded')"
       {% endif %}
       width="600"
       height="{{ 600 | divided_by: aspect_ratio }}"
@@ -48,14 +48,14 @@ description: One image snippet combining the aspect-ratio wrapper, lazy-loading 
 ```
 
 ```css
-.sol-image-wrapper {
+.image-wrapper {
   position: relative;
   overflow: hidden;
   background: var(--color-border);
-  aspect-ratio: var(--sol-image-aspect-ratio, 1 / 1);
+  aspect-ratio: var(--image-aspect-ratio, 1 / 1);
 }
 
-.sol-image {
+.image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -64,13 +64,13 @@ description: One image snippet combining the aspect-ratio wrapper, lazy-loading 
   transition: opacity 0.3s ease;
 }
 
-.sol-image-wrapper.is-loaded .sol-image,
-.sol-image-wrapper:has(.sol-image[loading="eager"]) .sol-image {
+.image-wrapper.is-loaded .image,
+.image-wrapper:has(.image[loading="eager"]) .image {
   opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sol-image {
+  .image {
     transition: none;
   }
 }
@@ -79,18 +79,18 @@ description: One image snippet combining the aspect-ratio wrapper, lazy-loading 
 ## Calling it from a product card, with a badge layered on top
 
 ```liquid
-<div class="sol-product-card__media">
+<div class="product-card__media">
   {% render 'image', image: card_product.featured_image, aspect_ratio: 1, sizes_attr: '(min-width: 990px) 25vw, 50vw' %}
-  <span class="sol-product-card__badge">{{ 'products.badges.sale' | t }}</span>
+  <span class="product-card__badge">{{ 'products.badges.sale' | t }}</span>
 </div>
 ```
 
-The badge is rendered by the *caller*, as a sibling inside its own wrapping element around `{% render 'image' %}` — not as a parameter the image snippet itself understands. This keeps the image snippet generically reusable (a hero banner calling it has no reason to know what a product badge even is) while still letting [38.4. Badge & Overlay Composition](/all-about-images/badge-and-overlay-composition/)'s positioning technique work exactly the same way, since `position: relative` lives on the same `.sol-image-wrapper` class either way.
+The badge is rendered by the *caller*, as a sibling inside its own wrapping element around `{% render 'image' %}` — not as a parameter the image snippet itself understands. This keeps the image snippet generically reusable (a hero banner calling it has no reason to know what a product badge even is) while still letting [38.4. Badge & Overlay Composition](/all-about-images/badge-and-overlay-composition/)'s positioning technique work exactly the same way, since `position: relative` lives on the same `.image-wrapper` class either way.
 
 ## Reading the `:has()` rule
 
 ```css
-.sol-image-wrapper:has(.sol-image[loading="eager"]) .sol-image {
+.image-wrapper:has(.image[loading="eager"]) .image {
   opacity: 1;
 }
 ```

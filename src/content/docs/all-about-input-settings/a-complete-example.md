@@ -64,9 +64,9 @@ description: One section's schema and Liquid, deliberately exercising every gotc
 %}
 
 {% if featured_product %}
-  <div class="sol-featured-product sol-featured-product--{{ layout }}" style="--sol-featured-product-image-width: {{ image_width }}%;">
+  <div class="featured-product featured-product--{{ layout }}" style="--featured-product-image-width: {{ image_width }}%;">
     <img src="{{ featured_product.featured_image | image_url: width: 800 }}" alt="{{ featured_product.featured_image.alt | escape }}" loading="lazy">
-    <div class="sol-featured-product__content">
+    <div class="featured-product__content">
       <h2>{{ featured_product.title }}</h2>
       {% if show_price %}
         <p>{{ featured_product.price | money }}</p>
@@ -74,13 +74,13 @@ description: One section's schema and Liquid, deliberately exercising every gotc
     </div>
   </div>
 {% else %}
-  <p class="sol-empty-state">{{ 'sections.featured-product.empty_state' | t }}</p>
+  <p class="empty-state">{{ 'sections.featured-product.empty_state' | t }}</p>
 {% endif %}
 ```
 
 ## Every gotcha from this chapter, present and correctly handled
 
-- **`layout` is compared by `value`, never `label`** (`sol-featured-product--image_first`, matching the schema's own `value` strings) — the mistake covered in [40.1. Exact Return Types, Verified](/all-about-input-settings/exact-return-types-verified/).
+- **`layout` is compared by `value`, never `label`** (`featured-product--image_first`, matching the schema's own `value` strings) — the mistake covered in [40.1. Exact Return Types, Verified](/all-about-input-settings/exact-return-types-verified/).
 - **`image_width`'s `default` of `50` sits within its declared `min: 30`/`max: 70`** — the invalid-schema mistake covered in [40.3. Default-Value Requirements & Validation Gotchas](/all-about-input-settings/default-value-requirements-and-validation-gotchas/).
 - **`featured_product` has no `default` key at all**, since `product`-type settings don't support one — per [40.2. Resource Pickers: Full Objects, Not IDs](/all-about-input-settings/resource-pickers-full-objects-not-ids/) — and the `{% if featured_product %}` guard around the entire section body is what correctly handles both "never selected" and "selected, then later deleted," per [40.4. What Happens When a Referenced Resource Is Deleted](/all-about-input-settings/what-happens-when-a-referenced-resource-is-deleted/).
 - **`show_price` is checked directly as a boolean**, with no string comparison.

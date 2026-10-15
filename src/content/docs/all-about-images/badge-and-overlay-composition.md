@@ -10,19 +10,19 @@ description: A positioning context on the wrapper, not the image itself, is what
 ## The wrapper owns the positioning context, not the `<img>`
 
 ```liquid
-<div class="sol-image-wrapper">
-  <img class="sol-image" src="{{ image | image_url: width: 600 }}" alt="{{ image.alt | escape }}" loading="lazy">
-  <span class="sol-image-wrapper__badge">{{ 'products.badges.new' | t }}</span>
+<div class="image-wrapper">
+  <img class="image" src="{{ image | image_url: width: 600 }}" alt="{{ image.alt | escape }}" loading="lazy">
+  <span class="image-wrapper__badge">{{ 'products.badges.new' | t }}</span>
 </div>
 ```
 
 ```css
-.sol-image-wrapper {
+.image-wrapper {
   position: relative;
   overflow: hidden;
 }
 
-.sol-image-wrapper__badge {
+.image-wrapper__badge {
   position: absolute;
   inset-block-start: var(--space-sm);
   inset-inline-start: var(--space-sm);
@@ -34,7 +34,7 @@ description: A positioning context on the wrapper, not the image itself, is what
 ## A gradient overlay, for text legibility on top of a photo
 
 ```css
-.sol-image-wrapper--with-caption::after {
+.image-wrapper--with-caption::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -42,7 +42,7 @@ description: A positioning context on the wrapper, not the image itself, is what
   pointer-events: none;
 }
 
-.sol-image-wrapper__caption {
+.image-wrapper__caption {
   position: absolute;
   inset-block-end: var(--space-md);
   inset-inline: var(--space-md);
@@ -55,8 +55,8 @@ A `::after` pseudo-element, rather than a second real element in the markup, is 
 ## Stacking more than one overlay without them colliding
 
 ```css
-.sol-image-wrapper__badge { inset-block-start: var(--space-sm); inset-inline-start: var(--space-sm); }
-.sol-image-wrapper__quick-add { inset-block-end: var(--space-sm); inset-inline: var(--space-sm); }
+.image-wrapper__badge { inset-block-start: var(--space-sm); inset-inline-start: var(--space-sm); }
+.image-wrapper__quick-add { inset-block-end: var(--space-sm); inset-inline: var(--space-sm); }
 ```
 
 Once a wrapper has more than one overlay (a badge in a corner, a quick-add button along the bottom edge, as in [33. All About Product Cards](/all-about-product-cards/)'s complete example), each one needs its own distinct corner or edge — `inset-block-start`/`inset-inline-start` for one, `inset-block-end` for another — rather than letting two absolutely positioned elements default to the same position and overlap unintentionally.

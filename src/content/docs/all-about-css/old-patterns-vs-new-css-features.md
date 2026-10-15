@@ -288,7 +288,7 @@ requestAnimationFrame(() => {
 
 ```css
 /* New: the browser handles the timing itself */
-sol-drawer[open] {
+drawer[open] {
   transition: opacity 0.2s ease, display 0.2s allow-discrete;
 
   @starting-style {
@@ -296,7 +296,7 @@ sol-drawer[open] {
   }
 }
 
-sol-drawer {
+drawer {
   display: none;
   opacity: 1;
 

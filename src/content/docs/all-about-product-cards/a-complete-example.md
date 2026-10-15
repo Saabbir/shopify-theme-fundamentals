@@ -30,10 +30,10 @@ Every piece below was covered on its own page earlier in this chapter; this exam
   assign color_option = card_product.options_with_values | where: 'name', 'Color' | first
 %}
 
-<div class="sol-product-card">
-  <a href="{{ card_product.url }}" class="sol-product-card__media">
+<div class="product-card">
+  <a href="{{ card_product.url }}" class="product-card__media">
     <img
-      class="sol-product-card__image sol-product-card__image--primary"
+      class="product-card__image product-card__image--primary"
       src="{{ primary_image | image_url: width: 600 }}"
       alt="{{ primary_image.alt | escape }}"
       loading="lazy"
@@ -42,7 +42,7 @@ Every piece below was covered on its own page earlier in this chapter; this exam
     >
     {% if secondary_image %}
       <img
-        class="sol-product-card__image sol-product-card__image--secondary"
+        class="product-card__image product-card__image--secondary"
         src="{{ secondary_image | image_url: width: 600 }}"
         alt=""
         loading="lazy"
@@ -51,42 +51,42 @@ Every piece below was covered on its own page earlier in this chapter; this exam
       >
     {% endif %}
 
-    <div class="sol-product-card__badges">
+    <div class="product-card__badges">
       {% unless card_product.available %}
-        <span class="sol-product-card__badge sol-product-card__badge--sold-out">{{ 'products.badges.sold_out' | t }}</span>
+        <span class="product-card__badge product-card__badge--sold-out">{{ 'products.badges.sold_out' | t }}</span>
       {% else %}
         {% if on_sale %}
-          <span class="sol-product-card__badge sol-product-card__badge--sale">{{ 'products.badges.sale' | t }}</span>
+          <span class="product-card__badge product-card__badge--sale">{{ 'products.badges.sale' | t }}</span>
         {% endif %}
         {% if custom_badge %}
-          <span class="sol-product-card__badge sol-product-card__badge--custom">{{ custom_badge }}</span>
+          <span class="product-card__badge product-card__badge--custom">{{ custom_badge }}</span>
         {% endif %}
       {% endunless %}
     </div>
   </a>
 
-  <h3 class="sol-product-card__title">
+  <h3 class="product-card__title">
     <a href="{{ card_product.url }}">{{ card_product.title }}</a>
   </h3>
 
   {% render 'product-rating', product: card_product, size: 'compact' %}
 
-  <span class="sol-product-card__price">
+  <span class="product-card__price">
     {% if card_product.price_varies %}{{ 'products.price.from' | t }}{% endif %}
-    <span class="{% if on_sale %}sol-product-card__price--sale{% endif %}">{{ card_product.price_min | money }}</span>
+    <span class="{% if on_sale %}product-card__price--sale{% endif %}">{{ card_product.price_min | money }}</span>
     {% if on_sale %}
-      <s class="sol-product-card__price--compare">{{ card_product.compare_at_price_min | money }}</s>
+      <s class="product-card__price--compare">{{ card_product.compare_at_price_min | money }}</s>
     {% endif %}
   </span>
 
   {% if color_option %}
-    <ul class="sol-product-card__swatches" role="list">
+    <ul class="product-card__swatches" role="list">
       {% for value in color_option.values limit: 5 %}
         <li>
           <a
             href="{{ value.variant.url | default: value.product_url }}"
-            class="sol-swatch"
-            style="{% if value.swatch.color %}--sol-swatch-color: {{ value.swatch.color }};{% endif %}"
+            class="swatch"
+            style="{% if value.swatch.color %}--swatch-color: {{ value.swatch.color }};{% endif %}"
             aria-label="{{ value.name }}"
             {% unless value.available %}aria-disabled="true"{% endunless %}
           ></a>
@@ -95,10 +95,10 @@ Every piece below was covered on its own page earlier in this chapter; this exam
     </ul>
   {% endif %}
 
-  <product-form class="sol-quick-add">
+  <product-form class="quick-add">
     <form action="/cart/add" method="post" enctype="multipart/form-data">
       <input type="hidden" name="id" value="{{ card_product.selected_or_first_available_variant.id }}">
-      <button type="submit" class="sol-button" {% unless card_product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+      <button type="submit" class="button" {% unless card_product.selected_or_first_available_variant.available %}disabled{% endunless %}>
         {{ 'products.quick_add.add_to_cart' | t }}
       </button>
     </form>
@@ -108,7 +108,7 @@ Every piece below was covered on its own page earlier in this chapter; this exam
 
 ## Reading the composition, piece by piece
 
-- **Image and badges share one wrapper** (`sol-product-card__media`) because the badges are positioned relative to the image, not the card as a whole — this keeps a badge from drifting if the title below ever wraps to a different number of lines.
+- **Image and badges share one wrapper** (`product-card__media`) because the badges are positioned relative to the image, not the card as a whole — this keeps a badge from drifting if the title below ever wraps to a different number of lines.
 - **The sold-out/sale/custom badge priority** from [Badges](/all-about-product-cards/badges-sale-sold-out-and-custom-tags/) is preserved exactly: the `{% else %}` means a sold-out product never also shows "Sale," regardless of its actual compare-at price.
 - **The ratings summary is rendered via the shared snippet from [34. All About Product Reviews](/all-about-product-reviews/)**, passed `size: 'compact'`, rather than this chapter reimplementing star-rating markup — a card's rating display and a product page's should always come from the same source, never two parallel implementations.
 - **Swatches are capped at `limit: 5`** — a product with ten colors would otherwise overflow a card's limited width; a "+5 more" affordance or linking straight to the product page for the full set is a reasonable addition a real theme would likely want, left out here to keep the example focused.

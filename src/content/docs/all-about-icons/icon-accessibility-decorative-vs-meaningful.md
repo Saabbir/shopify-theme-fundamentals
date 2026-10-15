@@ -12,8 +12,8 @@ description: aria-hidden for an icon next to text that already says the same thi
 **Decorative** — an icon sitting next to text that already conveys the same meaning:
 
 ```liquid
-<button class="sol-button">
-  <svg class="sol-icon" aria-hidden="true" focusable="false">{% render 'icon', icon: 'heart' %}</svg>
+<button class="button">
+  <svg class="icon" aria-hidden="true" focusable="false">{% render 'icon', icon: 'heart' %}</svg>
   {{ 'products.add_to_wishlist' | t }}
 </button>
 ```
@@ -23,8 +23,8 @@ description: aria-hidden for an icon next to text that already says the same thi
 **Meaningful** — an icon that *is* the only label, with no accompanying visible text:
 
 ```liquid
-<button class="sol-button sol-button--icon-only" aria-label="{{ 'products.add_to_wishlist' | t }}">
-  <svg class="sol-icon" aria-hidden="true" focusable="false">{% render 'icon', icon: 'heart' %}</svg>
+<button class="button button--icon-only" aria-label="{{ 'products.add_to_wishlist' | t }}">
+  <svg class="icon" aria-hidden="true" focusable="false">{% render 'icon', icon: 'heart' %}</svg>
 </button>
 ```
 

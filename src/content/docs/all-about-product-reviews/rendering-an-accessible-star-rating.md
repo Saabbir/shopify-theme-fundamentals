@@ -16,7 +16,7 @@ A star rating is a genuinely easy component to get visually right and accessibly
   assign rating_count = product.metafields.reviews.rating_count.value | default: 0
 %}
 
-<div class="sol-star-rating" role="img" aria-label="Rated {{ rating }} out of {{ scale_max }} stars, from {{ rating_count }} {{ rating_count | pluralize: 'review', 'reviews' }}">
+<div class="star-rating" role="img" aria-label="Rated {{ rating }} out of {{ scale_max }} stars, from {{ rating_count }} {{ rating_count | pluralize: 'review', 'reviews' }}">
   {% comment %} visual stars go here, aria-hidden — see below {% endcomment %}
 </div>
 ```
@@ -26,9 +26,9 @@ A star rating is a genuinely easy component to get visually right and accessibly
 ## The visual stars, marked decorative
 
 ```liquid
-<div class="sol-star-rating" role="img" aria-label="Rated {{ rating }} out of {{ scale_max }} stars">
-  <div class="sol-star-rating__track" aria-hidden="true">
-    <div class="sol-star-rating__fill" style="--sol-star-rating-percent: {{ rating | divided_by: scale_max | times: 100.0 }}%;">
+<div class="star-rating" role="img" aria-label="Rated {{ rating }} out of {{ scale_max }} stars">
+  <div class="star-rating__track" aria-hidden="true">
+    <div class="star-rating__fill" style="--star-rating-percent: {{ rating | divided_by: scale_max | times: 100.0 }}%;">
       ★★★★★
     </div>
     ☆☆☆☆☆
@@ -37,17 +37,17 @@ A star rating is a genuinely easy component to get visually right and accessibly
 ```
 
 ```css
-.sol-star-rating__track {
+.star-rating__track {
   position: relative;
   display: inline-grid;
   color: var(--color-border);
 }
 
-.sol-star-rating__fill {
+.star-rating__fill {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  width: var(--sol-star-rating-percent);
+  width: var(--star-rating-percent);
   color: var(--color-accent);
   white-space: nowrap;
 }

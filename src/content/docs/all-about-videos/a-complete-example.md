@@ -17,7 +17,7 @@ description: One inline video player combining a hand-built <video> tag, custom 
   assign primary_source = media.sources | where: 'format', 'mp4' | first
 %}
 
-<sol-video-player class="sol-video-player">
+<video-player class="video-player">
   <video
     playsinline
     preload="metadata"
@@ -31,21 +31,21 @@ description: One inline video player combining a hand-built <video> tag, custom 
   </video>
   <button
     type="button"
-    data-sol-play-pause
-    class="sol-video-player__button"
+    data-play-pause
+    class="video-player__button"
     aria-label="{{ 'media.play_video' | t }}"
   >
     {% render 'icon-render', icon: 'play' %}
   </button>
-</sol-video-player>
+</video-player>
 ```
 
 ```js
-// assets/sol-video-player.js
-class SolVideoPlayer extends HTMLElement {
+// assets/video-player.js
+class VideoPlayer extends HTMLElement {
   connectedCallback() {
     this.video = this.querySelector('video');
-    this.button = this.querySelector('[data-sol-play-pause]');
+    this.button = this.querySelector('[data-play-pause]');
 
     this.button.addEventListener('click', () => this.togglePlayback());
     this.video.addEventListener('play', () => this.updateState(true));
@@ -71,21 +71,21 @@ class SolVideoPlayer extends HTMLElement {
   }
 }
 
-customElements.define('sol-video-player', SolVideoPlayer);
+customElements.define('video-player', VideoPlayer);
 ```
 
 ```css
-.sol-video-player {
+.video-player {
   position: relative;
   display: block;
 }
 
-.sol-video-player video {
+.video-player video {
   width: 100%;
   display: block;
 }
 
-.sol-video-player__button {
+.video-player__button {
   position: absolute;
   inset: 0;
   margin: auto;
@@ -96,13 +96,13 @@ customElements.define('sol-video-player', SolVideoPlayer);
   transition: opacity 0.2s ease;
 }
 
-.sol-video-player.is-playing .sol-video-player__button {
+.video-player.is-playing .video-player__button {
   opacity: 0;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sol-video-player__button {
+  .video-player__button {
     transition: none;
   }
 }

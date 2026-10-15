@@ -10,7 +10,7 @@ description: The three distinct price displays a card needs to handle correctly,
 ## Case 1: a single price, no sale
 
 ```liquid
-<span class="sol-product-card__price">{{ card_product.price | money }}</span>
+<span class="product-card__price">{{ card_product.price | money }}</span>
 ```
 
 The plain case — one variant, or variants that all share the same price, with no active compare-at price.
@@ -19,12 +19,12 @@ The plain case — one variant, or variants that all share the same price, with 
 
 ```liquid
 {% if on_sale %}
-  <span class="sol-product-card__price">
-    <span class="sol-product-card__price--sale">{{ card_product.price_min | money }}</span>
-    <s class="sol-product-card__price--compare">{{ card_product.compare_at_price_min | money }}</s>
+  <span class="product-card__price">
+    <span class="product-card__price--sale">{{ card_product.price_min | money }}</span>
+    <s class="product-card__price--compare">{{ card_product.compare_at_price_min | money }}</s>
   </span>
 {% else %}
-  <span class="sol-product-card__price">{{ card_product.price_min | money }}</span>
+  <span class="product-card__price">{{ card_product.price_min | money }}</span>
 {% endif %}
 ```
 
@@ -34,7 +34,7 @@ The plain case — one variant, or variants that all share the same price, with 
 
 ```liquid
 {% if card_product.price_varies %}
-  <span class="sol-product-card__price">
+  <span class="product-card__price">
     {{ 'products.price.from_html' | t: price: card_product.price_min | money }}
   </span>
 {% endif %}
@@ -56,11 +56,11 @@ The plain case — one variant, or variants that all share the same price, with 
   endif
 %}
 
-<span class="sol-product-card__price">
+<span class="product-card__price">
   {% if card_product.price_varies %}{{ 'products.price.from' | t }}{% endif %}
-  <span class="{% if on_sale %}sol-product-card__price--sale{% endif %}">{{ card_product.price_min | money }}</span>
+  <span class="{% if on_sale %}product-card__price--sale{% endif %}">{{ card_product.price_min | money }}</span>
   {% if on_sale %}
-    <s class="sol-product-card__price--compare">{{ card_product.compare_at_price_min | money }}</s>
+    <s class="product-card__price--compare">{{ card_product.compare_at_price_min | money }}</s>
   {% endif %}
 </span>
 ```

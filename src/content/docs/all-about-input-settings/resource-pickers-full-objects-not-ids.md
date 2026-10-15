@@ -60,7 +60,7 @@ A section's `presets` entry supplies real, sensible defaults the moment a mercha
 {% if section.settings.featured_product %}
   {% render 'product-card', card_product: section.settings.featured_product %}
 {% else %}
-  <p class="sol-empty-state">{{ 'sections.featured_product.empty_state' | t }}</p>
+  <p class="empty-state">{{ 'sections.featured_product.empty_state' | t }}</p>
 {% endif %}
 ```
 

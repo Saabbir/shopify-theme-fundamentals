@@ -10,15 +10,15 @@ description: Supporting prefers-color-scheme alongside (or instead of) a merchan
 ## Reading the shopper's system preference in CSS
 
 ```css
-.sol-card {
-  background: var(--sol-color-background);
-  color: var(--sol-color-text);
+.card {
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
 @media (prefers-color-scheme: dark) {
-  .sol-card {
-    --sol-color-background: #121212;
-    --sol-color-text: #ffffff;
+  .card {
+    --color-background: #121212;
+    --color-text: #ffffff;
   }
 }
 ```

@@ -30,34 +30,34 @@ A hero image, or any image that's virtually guaranteed to be the first thing vis
 ## A loading-state placeholder, without JavaScript
 
 ```liquid
-<div class="sol-image-wrapper">
+<div class="image-wrapper">
   <img
-    class="sol-image"
+    class="image"
     src="{{ image | image_url: width: 600 }}"
     alt="{{ image.alt | escape }}"
     loading="lazy"
-    onload="this.closest('.sol-image-wrapper').classList.add('is-loaded')"
+    onload="this.closest('.image-wrapper').classList.add('is-loaded')"
   >
 </div>
 ```
 
 ```css
-.sol-image-wrapper {
+.image-wrapper {
   background: var(--color-border);
   overflow: hidden;
 }
 
-.sol-image {
+.image {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.sol-image-wrapper.is-loaded .sol-image {
+.image-wrapper.is-loaded .image {
   opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sol-image {
+  .image {
     transition: none;
   }
 }

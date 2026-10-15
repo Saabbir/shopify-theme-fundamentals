@@ -11,10 +11,10 @@ description: A real, working <form> first — the AJAX enhancement that avoids a
 
 ```liquid
 {% comment %} snippets/product-card.liquid {% endcomment %}
-<product-form class="sol-quick-add">
+<product-form class="quick-add">
   <form action="/cart/add" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="{{ card_product.selected_or_first_available_variant.id }}">
-    <button type="submit" class="sol-button" {% unless card_product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+    <button type="submit" class="button" {% unless card_product.selected_or_first_available_variant.available %}disabled{% endunless %}>
       {{ 'products.quick_add.add_to_cart' | t }}
     </button>
   </form>
@@ -30,8 +30,8 @@ Unlike the product page, a card usually has no visible variant picker — there'
 ## The enhancement: intercepting submit to skip the navigation
 
 ```js
-// assets/sol-product-form.js
-class SolProductForm extends HTMLElement {
+// assets/product-form.js
+class ProductForm extends HTMLElement {
   connectedCallback() {
     this.form = this.querySelector('form');
     this.form.addEventListener('submit', (event) => this.handleSubmit(event));
@@ -65,7 +65,7 @@ class SolProductForm extends HTMLElement {
   }
 }
 
-customElements.define('product-form', SolProductForm);
+customElements.define('product-form', ProductForm);
 ```
 
 `event.preventDefault()` only stops the *default* browser navigation — the actual request still goes to the same `/cart/add` endpoint, just through `fetch` instead of a full page load, and to the `.js` variant of that endpoint specifically because it returns the added line item as JSON instead of a full cart-page HTML response. The `catch` block's fallback to a real `this.form.submit()` matters: if the fetch request fails for any reason (a network blip, an unexpected response), the component doesn't fail silently — it falls back to the exact behavior that would have happened if the script had never run.

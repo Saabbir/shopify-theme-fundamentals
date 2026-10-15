@@ -13,7 +13,7 @@ This chapter is a complete, standalone reference on icons in a Shopify theme —
 |---|---|
 | [37.1. Icon Fundamentals: Inline SVG vs. a Sprite System](/all-about-icons/icon-fundamentals-inline-svg-vs-a-sprite-system/) | The real trade-off (repeated markup, not extra requests) between the two approaches |
 | [37.2. A Reusable Icon Snippet Pattern](/all-about-icons/a-reusable-icon-snippet-pattern/) | One dispatcher snippet keyed by name, quoted directly from Horizon's real `snippets/icon.liquid` |
-| [37.3. Sizing & Coloring Icons with CSS Custom Properties](/all-about-icons/sizing-and-coloring-icons-with-css-custom-properties/) | `currentColor` for free theme-wide color matching, and `--sol-icon-size` instead of hardcoded `width`/`height` |
+| [37.3. Sizing & Coloring Icons with CSS Custom Properties](/all-about-icons/sizing-and-coloring-icons-with-css-custom-properties/) | `currentColor` for free theme-wide color matching, and `--icon-size` instead of hardcoded `width`/`height` |
 | [37.4. Icon Accessibility: Decorative vs. Meaningful](/all-about-icons/icon-accessibility-decorative-vs-meaningful/) | `aria-hidden`, labeling the control vs. a real `<title>`, and why icon fonts are a structural hazard |
 | [37.5. A Complete Example](/all-about-icons/a-complete-example/) | One icon-rendering snippet covering all three real accessibility situations at once |
 

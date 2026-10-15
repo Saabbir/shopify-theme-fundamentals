@@ -11,7 +11,7 @@ A product image's natural dimensions rarely match exactly across a merchant's wh
 
 ```liquid
 <img
-  class="sol-image"
+  class="image"
   src="{{ image | image_url: width: 600 }}"
   alt="{{ image.alt | escape }}"
   loading="lazy"
@@ -21,8 +21,8 @@ A product image's natural dimensions rarely match exactly across a merchant's wh
 ```
 
 ```css
-.sol-image {
-  aspect-ratio: var(--sol-image-aspect-ratio, 1 / 1);
+.image {
+  aspect-ratio: var(--image-aspect-ratio, 1 / 1);
   object-fit: cover;
   width: 100%;
   display: block;
@@ -41,8 +41,8 @@ The `width`/`height` HTML attributes above aren't redundant with the CSS `aspect
 {% liquid
   assign aspect_ratio = block.settings.image_aspect_ratio | default: 1
 %}
-<div class="sol-image-wrapper" style="--sol-image-aspect-ratio: {{ aspect_ratio }};">
-  <img class="sol-image" src="{{ image | image_url: width: 600 }}" alt="{{ image.alt | escape }}" loading="lazy">
+<div class="image-wrapper" style="--image-aspect-ratio: {{ aspect_ratio }};">
+  <img class="image" src="{{ image | image_url: width: 600 }}" alt="{{ image.alt | escape }}" loading="lazy">
 </div>
 ```
 
@@ -66,12 +66,12 @@ A merchant-facing ratio setting should offer a small, named set of options (`Squ
 
 ```css
 /* Only for a context the modern approach doesn't reach */
-.sol-image-wrapper--legacy {
+.image-wrapper--legacy {
   position: relative;
   padding-top: 56.25%;
 }
 
-.sol-image-wrapper--legacy img {
+.image-wrapper--legacy img {
   position: absolute;
   inset: 0;
   width: 100%;

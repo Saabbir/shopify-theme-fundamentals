@@ -10,14 +10,14 @@ A product demo video can play directly in the page's normal layout, or open in a
 ## Inline: simplest, and the right default for most placement
 
 ```liquid
-<sol-video-player>
+<video-player>
   <video playsinline preload="metadata" poster="{{ media.preview_image | image_url: width: 800 }}">
     <source src="{{ primary_source.url }}" type="{{ primary_source.mime_type }}">
   </video>
-  <button type="button" data-sol-play-pause class="sol-video-player__button" aria-label="{{ 'media.play_video' | t }}">
+  <button type="button" data-play-pause class="video-player__button" aria-label="{{ 'media.play_video' | t }}">
     {% render 'icon-render', icon: 'play' %}
   </button>
-</sol-video-player>
+</video-player>
 ```
 
 An inline video plays in its normal position in the page flow — nothing about the surrounding layout changes, no focus management is required beyond what [39.2. Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/) already covers, and a shopper can keep scrolling and reading the rest of the page while it plays. This is the right default whenever the video is one part of a richer page, rather than something that deserves the shopper's full, undivided attention.
@@ -25,13 +25,13 @@ An inline video plays in its normal position in the page flow — nothing about 
 ## Modal/lightbox: for a video that deserves full attention
 
 ```liquid
-<button type="button" data-sol-open-video-modal="{{ media.id }}" class="sol-video-thumbnail">
+<button type="button" data-open-video-modal="{{ media.id }}" class="video-thumbnail">
   <img src="{{ media.preview_image | image_url: width: 600 }}" alt="">
   {% render 'icon-render', icon: 'play', label: 'media.play_video' | t %}
 </button>
 
-<dialog class="sol-video-modal" id="video-modal-{{ media.id }}">
-  <button type="button" class="sol-video-modal__close" aria-label="{{ 'media.close' | t }}">
+<dialog class="video-modal" id="video-modal-{{ media.id }}">
+  <button type="button" class="video-modal__close" aria-label="{{ 'media.close' | t }}">
     {% render 'icon-render', icon: 'close' %}
   </button>
   <video playsinline controls>
@@ -41,14 +41,14 @@ An inline video plays in its normal position in the page flow — nothing about 
 ```
 
 ```js
-class SolVideoModalTrigger extends HTMLElement {
+class VideoModalTrigger extends HTMLElement {
   connectedCallback() {
-    this.button = this.querySelector('[data-sol-open-video-modal]');
+    this.button = this.querySelector('[data-open-video-modal]');
     this.button.addEventListener('click', () => this.openModal());
   }
 
   openModal() {
-    const mediaId = this.button.dataset.solOpenVideoModal;
+    const mediaId = this.button.dataset.openVideoModal;
     const dialog = document.getElementById(`video-modal-${mediaId}`);
     dialog.showModal();
     dialog.querySelector('video').play();
@@ -59,7 +59,7 @@ class SolVideoModalTrigger extends HTMLElement {
   }
 }
 
-customElements.define('sol-video-modal-trigger', SolVideoModalTrigger);
+customElements.define('video-modal-trigger', VideoModalTrigger);
 ```
 
 The native `<dialog>` element, opened with `showModal()`, is the right foundation here rather than a hand-built overlay — it automatically traps focus inside the dialog, is dismissible with <kbd>Escape</kbd>, and correctly removes the rest of the page from the accessibility tree while open, all without a theme needing to reimplement any of that behavior.

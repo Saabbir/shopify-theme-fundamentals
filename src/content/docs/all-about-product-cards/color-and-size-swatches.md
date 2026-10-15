@@ -34,13 +34,13 @@ A swatch's actual color or image is configured per option value in Shopify's adm
 %}
 
 {% if color_option %}
-  <ul class="sol-product-card__swatches" role="list">
+  <ul class="product-card__swatches" role="list">
     {% for value in color_option.values %}
       <li>
         <a
           href="{{ value.variant.url | default: value.product_url }}"
-          class="sol-swatch"
-          style="{% if value.swatch.color %}--sol-swatch-color: {{ value.swatch.color }};{% endif %}"
+          class="swatch"
+          style="{% if value.swatch.color %}--swatch-color: {{ value.swatch.color }};{% endif %}"
           aria-label="{{ value.name }}"
           {% unless value.available %}aria-disabled="true"{% endunless %}
         >
@@ -55,16 +55,16 @@ A swatch's actual color or image is configured per option value in Shopify's adm
 ```
 
 ```css
-.sol-swatch {
+.swatch {
   display: block;
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background: var(--sol-swatch-color, var(--color-border));
+  background: var(--swatch-color, var(--color-border));
   background-size: cover;
 }
 
-.sol-swatch[aria-disabled="true"] {
+.swatch[aria-disabled="true"] {
   opacity: 0.35;
   cursor: not-allowed;
 }
@@ -84,10 +84,10 @@ A swatch's actual color or image is configured per option value in Shopify's adm
 %}
 
 {% if size_option %}
-  <ul class="sol-product-card__size-chips" role="list">
+  <ul class="product-card__size-chips" role="list">
     {% for value in size_option.values %}
       <li>
-        <a href="{{ value.variant.url | default: value.product_url }}" class="sol-size-chip" {% unless value.available %}aria-disabled="true"{% endunless %}>
+        <a href="{{ value.variant.url | default: value.product_url }}" class="size-chip" {% unless value.available %}aria-disabled="true"{% endunless %}>
           {{ value.name }}
         </a>
       </li>

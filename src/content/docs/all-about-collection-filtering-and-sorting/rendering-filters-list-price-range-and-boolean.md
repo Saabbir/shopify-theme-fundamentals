@@ -11,7 +11,7 @@ description: A real {% case %} dispatch over filter.type, including presentation
 
 ```liquid
 {% for filter in collection.filters %}
-  <fieldset class="sol-filter-group">
+  <fieldset class="filter-group">
     <legend>{{ filter.label }}</legend>
 
     {% case filter.type %}
@@ -33,7 +33,7 @@ description: A real {% case %} dispatch over filter.type, including presentation
 ```liquid
 {% comment %} snippets/filter-list.liquid {% endcomment %}
 {% for value in filter.values %}
-  <label class="sol-filter-option">
+  <label class="filter-option">
     <input
       type="checkbox"
       name="{{ value.param_name }}"
@@ -43,7 +43,7 @@ description: A real {% case %} dispatch over filter.type, including presentation
     >
     {% case filter.presentation %}
       {% when 'swatch' %}
-        <span class="sol-swatch" style="--sol-swatch-color: {{ value.swatch.color }};"></span>
+        <span class="swatch" style="--swatch-color: {{ value.swatch.color }};"></span>
       {% when 'image' %}
         <img src="{{ value.image | image_url: width: 40 }}" alt="" width="40" height="40">
     {% endcase %}
@@ -59,7 +59,7 @@ description: A real {% case %} dispatch over filter.type, including presentation
 ```liquid
 {% comment %} snippets/filter-boolean.liquid {% endcomment %}
 {% if filter.true_value %}
-  <label class="sol-filter-option">
+  <label class="filter-option">
     <input
       type="checkbox"
       {% if filter.true_value.active %}checked{% endif %}
@@ -76,7 +76,7 @@ A `boolean` filter has exactly one meaningful on/off state in practice (shown vi
 
 ```liquid
 {% comment %} snippets/filter-price-range.liquid {% endcomment %}
-<div class="sol-filter-price-range">
+<div class="filter-price-range">
   <input type="number" min="0" max="{{ filter.range_max }}" value="{{ filter.min_value.value }}" placeholder="{{ 'collection.filters.price_min' | t }}">
   <input type="number" min="0" max="{{ filter.range_max }}" value="{{ filter.max_value.value }}" placeholder="{{ 'collection.filters.price_max' | t }}">
 </div>

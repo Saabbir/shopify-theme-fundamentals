@@ -25,9 +25,9 @@ Shopify has no concept of a dedicated "hover image" — `secondary_image` here i
 ## The swap, with CSS alone — no JavaScript needed
 
 ```liquid
-<a href="{{ card_product.url }}" class="sol-product-card__media">
+<a href="{{ card_product.url }}" class="product-card__media">
   <img
-    class="sol-product-card__image sol-product-card__image--primary"
+    class="product-card__image product-card__image--primary"
     src="{{ primary_image | image_url: width: 600 }}"
     alt="{{ primary_image.alt | escape }}"
     loading="lazy"
@@ -36,7 +36,7 @@ Shopify has no concept of a dedicated "hover image" — `secondary_image` here i
   >
   {% if secondary_image %}
     <img
-      class="sol-product-card__image sol-product-card__image--secondary"
+      class="product-card__image product-card__image--secondary"
       src="{{ secondary_image | image_url: width: 600 }}"
       alt=""
       loading="lazy"
@@ -48,25 +48,25 @@ Shopify has no concept of a dedicated "hover image" — `secondary_image` here i
 ```
 
 ```css
-.sol-product-card__media {
+.product-card__media {
   position: relative;
   display: block;
 }
 
-.sol-product-card__image--secondary {
+.product-card__image--secondary {
   position: absolute;
   inset: 0;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
-.sol-product-card__media:hover .sol-product-card__image--secondary,
-.sol-product-card__media:focus-within .sol-product-card__image--secondary {
+.product-card__media:hover .product-card__image--secondary,
+.product-card__media:focus-within .product-card__image--secondary {
   opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sol-product-card__image--secondary {
+  .product-card__image--secondary {
     transition: none;
   }
 }

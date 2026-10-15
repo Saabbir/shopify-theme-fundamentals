@@ -10,11 +10,11 @@ The native browser video controls (`controls` attribute) are accessible and func
 ## The component
 
 ```js
-// assets/sol-video-player.js
-class SolVideoPlayer extends HTMLElement {
+// assets/video-player.js
+class VideoPlayer extends HTMLElement {
   connectedCallback() {
     this.video = this.querySelector('video');
-    this.button = this.querySelector('[data-sol-play-pause]');
+    this.button = this.querySelector('[data-play-pause]');
 
     this.button.addEventListener('click', () => this.togglePlayback());
     this.video.addEventListener('play', () => this.updateButton());
@@ -38,18 +38,18 @@ class SolVideoPlayer extends HTMLElement {
   }
 }
 
-customElements.define('sol-video-player', SolVideoPlayer);
+customElements.define('video-player', VideoPlayer);
 ```
 
 ```liquid
-<sol-video-player data-play-label="{{ 'media.play_video' | t }}" data-pause-label="{{ 'media.pause_video' | t }}">
+<video-player data-play-label="{{ 'media.play_video' | t }}" data-pause-label="{{ 'media.pause_video' | t }}">
   <video playsinline preload="metadata" poster="{{ media.preview_image | image_url: width: 800 }}">
     <source src="{{ primary_source.url }}" type="{{ primary_source.mime_type }}">
   </video>
-  <button type="button" data-sol-play-pause class="sol-video-player__button" aria-label="{{ 'media.play_video' | t }}">
+  <button type="button" data-play-pause class="video-player__button" aria-label="{{ 'media.play_video' | t }}">
     {% render 'icon-render', icon: 'play' %}
   </button>
-</sol-video-player>
+</video-player>
 ```
 
 ## Why the button listens to the video's own events, not the other way around

@@ -38,10 +38,10 @@ Each block renders as one slide, through the same `{% content_for 'blocks' %}` m
 ```js
 class CarouselElement extends HTMLElement {
   connectedCallback() {
-    this.slides = this.querySelectorAll('[data-sol-carousel-slide]');
+    this.slides = this.querySelectorAll('[data-carousel-slide]');
     this.currentIndex = 0;
 
-    const nextButton = this.querySelector('[data-sol-carousel-next]');
+    const nextButton = this.querySelector('[data-carousel-next]');
     nextButton.addEventListener('click', () => this.showNextSlide());
   }
 
@@ -53,7 +53,7 @@ class CarouselElement extends HTMLElement {
   }
 }
 
-customElements.define('sol-carousel', CarouselElement);
+customElements.define('carousel', CarouselElement);
 ```
 
 :::note[The markup must work before JavaScript loads]
@@ -83,8 +83,8 @@ A tabs section follows the same block-per-item idea, but needs the Web Component
 ```js
 class TabsElement extends HTMLElement {
   connectedCallback() {
-    this.tabButtons = this.querySelectorAll('[data-sol-tab-button]');
-    this.tabPanels = this.querySelectorAll('[data-sol-tab-panel]');
+    this.tabButtons = this.querySelectorAll('[data-tab-button]');
+    this.tabPanels = this.querySelectorAll('[data-tab-panel]');
 
     this.tabButtons.forEach((button, index) => {
       button.addEventListener('click', () => this.showTab(index));
@@ -102,7 +102,7 @@ class TabsElement extends HTMLElement {
   }
 }
 
-customElements.define('sol-tabs', TabsElement);
+customElements.define('tabs', TabsElement);
 ```
 
 :::caution[This is simplified — real accessible tabs need more]

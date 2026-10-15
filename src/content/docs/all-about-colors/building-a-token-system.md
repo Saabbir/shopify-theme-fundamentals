@@ -14,10 +14,10 @@ A single flat list of colors — `blue`, `dark-blue`, `light-gray` — works fin
 Primitive tokens are the raw set of actual color values a theme has, named by what they look like, exactly like a flat palette:
 
 ```css
---sol-primitive-blue-500: #2c6e5c;
---sol-primitive-blue-700: #1a4238;
---sol-primitive-gray-100: #f5f5f5;
---sol-primitive-gray-900: #121212;
+--primitive-blue-500: #2c6e5c;
+--primitive-blue-700: #1a4238;
+--primitive-gray-100: #f5f5f5;
+--primitive-gray-900: #121212;
 ```
 
 Nothing uses these directly in a component's CSS — they're the raw materials, not the thing you reach for day to day.
@@ -27,24 +27,24 @@ Nothing uses these directly in a component's CSS — they're the raw materials, 
 Semantic tokens point at a primitive token, but are named by what role they play, not what they look like:
 
 ```css
---sol-color-accent: var(--sol-primitive-blue-500);
---sol-color-background: var(--sol-primitive-gray-100);
---sol-color-text: var(--sol-primitive-gray-900);
+--color-accent: var(--primitive-blue-500);
+--color-background: var(--primitive-gray-100);
+--color-text: var(--primitive-gray-900);
 ```
 
-This is the same instinct behind naming a color setting by its role rather than its appearance — name roles by what they're for (`accent`), not what they look like (`blue`) — just formalized as its own tier. Changing the brand's accent color later means repointing `--sol-color-accent` at a different primitive, with nothing that uses `--sol-color-accent` needing to change at all.
+This is the same instinct behind naming a color setting by its role rather than its appearance — name roles by what they're for (`accent`), not what they look like (`blue`) — just formalized as its own tier. Changing the brand's accent color later means repointing `--color-accent` at a different primitive, with nothing that uses `--color-accent` needing to change at all.
 
 ## Tier 3: component tokens — named by specific use
 
 For a large enough theme, even semantic tokens can be too broad. A component token narrows a semantic token down to one specific component's specific need:
 
 ```css
---sol-button-background: var(--sol-color-accent);
---sol-button-background-hover: var(--sol-primitive-blue-700);
---sol-card-border: var(--sol-color-background);
+--button-background: var(--color-accent);
+--button-background-hover: var(--primitive-blue-700);
+--card-border: var(--color-background);
 ```
 
-Now a design change scoped to just buttons — darkening the hover state, say — touches only `--sol-button-background-hover`, without any risk of accidentally affecting every other place `--sol-color-accent` is used.
+Now a design change scoped to just buttons — darkening the hover state, say — touches only `--button-background-hover`, without any risk of accidentally affecting every other place `--color-accent` is used.
 
 ## When each tier is actually worth it
 

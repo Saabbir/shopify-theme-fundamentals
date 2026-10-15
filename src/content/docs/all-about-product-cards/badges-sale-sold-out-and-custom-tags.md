@@ -11,7 +11,7 @@ A badge is a small label — "Sale," "Sold Out," "New" — overlaid on a product
 
 ```liquid
 {% unless card_product.available %}
-  <span class="sol-product-card__badge sol-product-card__badge--sold-out">
+  <span class="product-card__badge product-card__badge--sold-out">
     {{ 'products.badges.sold_out' | t }}
   </span>
 {% endunless %}
@@ -30,7 +30,7 @@ A badge is a small label — "Sale," "Sold Out," "New" — overlaid on a product
 %}
 
 {% if on_sale %}
-  <span class="sol-product-card__badge sol-product-card__badge--sale">
+  <span class="product-card__badge product-card__badge--sale">
     {{ 'products.badges.sale' | t }}
   </span>
 {% endif %}
@@ -57,7 +57,7 @@ Sale and sold-out are derived facts; something like "New" or "Staff Pick" is a m
 %}
 
 {% if custom_badge %}
-  <span class="sol-product-card__badge sol-product-card__badge--custom">
+  <span class="product-card__badge product-card__badge--custom">
     {{ custom_badge }}
   </span>
 {% endif %}
@@ -72,15 +72,15 @@ This `badge:` tag convention is deliberately the simplest option — it's one pl
 ## Layering more than one badge
 
 ```liquid
-<div class="sol-product-card__badges">
+<div class="product-card__badges">
   {% unless card_product.available %}
-    <span class="sol-product-card__badge sol-product-card__badge--sold-out">{{ 'products.badges.sold_out' | t }}</span>
+    <span class="product-card__badge product-card__badge--sold-out">{{ 'products.badges.sold_out' | t }}</span>
   {% else %}
     {% if on_sale %}
-      <span class="sol-product-card__badge sol-product-card__badge--sale">{{ 'products.badges.sale' | t }}</span>
+      <span class="product-card__badge product-card__badge--sale">{{ 'products.badges.sale' | t }}</span>
     {% endif %}
     {% if custom_badge %}
-      <span class="sol-product-card__badge sol-product-card__badge--custom">{{ custom_badge }}</span>
+      <span class="product-card__badge product-card__badge--custom">{{ custom_badge }}</span>
     {% endif %}
   {% endunless %}
 </div>

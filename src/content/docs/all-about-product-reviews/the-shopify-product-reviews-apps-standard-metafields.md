@@ -44,7 +44,7 @@ Unlike `reviews.rating`, the count is an ordinary `number_integer` metafield —
 %}
 
 {% if rating_metafield and rating_count > 0 %}
-  <p class="sol-product-rating">
+  <p class="product-rating">
     {{ rating_metafield.value.rating }} out of {{ rating_metafield.value.scale_max }}
     ({{ rating_count }} {{ rating_count | pluralize: 'review', 'reviews' }})
   </p>
