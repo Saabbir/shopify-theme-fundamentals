@@ -11,6 +11,9 @@ This page doesn't introduce new mechanisms — every item below is covered in fu
 
 - **Always pair a font with its load.** Every `font_picker` setting a theme uses needs a matching `font_face` (or custom `@font-face` via `font_url`) output somewhere global. See [18.3. Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/).
 - **Load each font exactly once**, not once per section that happens to use it. Resolving fonts into tokens in a single snippet, as covered in [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/), naturally produces this.
+- **Guard every `font_modify` call with `default`.** It returns `nil`, not an error, when the specific weight or style you asked for doesn't actually exist for that font — using the `nil` result directly renders nothing, silently. See [18.3. Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/).
+- **Confirm a license before hosting any font file that didn't come from Shopify's own library.** A desktop or app license doesn't automatically include web-embedding rights, and even an open-source font carries its own license terms worth checking. See [18.5. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/).
+- **Recognize a tuned open-source substitute when a client hands you one** — a comment referencing a README, class names that don't match their own `font-family`, oddly specific numeric values — and don't "clean up" those tuned values once you spot it; they're the result of real comparison work. See [18.6. Font Substitutes & Advanced Variable Axis Control](/all-about-typography/font-substitutes-and-advanced-variable-axis-control/).
 - **Set `font-display: swap`** (or build a custom `@font-face` that does) for all but the rarest cases. See [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/).
 - **Preload only the one or two fonts visible immediately on page load** — preloading every font a theme uses defeats the purpose.
 
@@ -20,6 +23,9 @@ This page doesn't introduce new mechanisms — every item below is covered in fu
 - **Resolve settings into tokens once**, and have every component read a role token or apply a preset class — never scatter `settings.some_font.family` references, and never reconstruct a preset's properties by hand in a component's own stylesheet. See [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) and the [day-to-day decision tree](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) for exactly which one to reach for.
 - **Default to the global tokens**; add a section- or block-scoped font setting only when a component genuinely needs to deviate. See [Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/).
 - **Offer named presets, not raw controls**, when a merchant needs to choose between typographic treatments — a bounded `select` between tested combinations beats independent font/size/weight settings a merchant could combine into something broken.
+- **A preset composes role tokens, never hardcodes a font directly** — and keeps color and margin out of it entirely; those belong to the color token system and to wherever the element actually sits on the page, not to a typography preset. See [18.11. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/).
+- **Reach for a scoped CSS custom-property override before inventing a near-duplicate preset** for a one-off size or weight tweak in a single section.
+- **Name every setting, token, and preset consistently** — a shared category prefix for settings (`type_`), a predictable pattern for role and preset tokens, and no prefix at all on a preset's reusable class. See [18.14. Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/).
 
 ## Scale and sizing
 
@@ -42,7 +48,7 @@ This page doesn't introduce new mechanisms — every item below is covered in fu
 ## Key takeaways
 
 - Nothing on this page is new — it's a single checklist pulling together every rule from the rest of this chapter, meant to be reread before shipping, not studied once.
-- The two mistakes worth watching for most: referencing a font without loading it (silent, no error), and scattering raw settings references through CSS instead of resolving them into tokens once.
+- The mistakes worth watching for most, because none of them throw an error: referencing a font without loading it, calling `font_modify` for a weight or style that doesn't exist, and scattering raw settings references through CSS instead of resolving them into tokens once.
 
 ## Further reading
 
