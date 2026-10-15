@@ -20,7 +20,7 @@ This chapter is a complete, standalone reference on typography — it starts fro
 | [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) | Designing a full preset system, how Horizon built its own, and using presets properly in sections, blocks, and CSS |
 | [Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/) | The concrete schema-to-CSS path, worked through end to end |
 | [18.9. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) | A decision tree and worked examples for what typography CSS belongs in a component's own stylesheet — and what should always come from a token or preset |
-| [18.10. Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/) | A consistent way to name every setting, CSS variable, and preset — and how Horizon really does it |
+| [18.10. Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/) | A consistent way to name every setting, CSS custom property, and preset — and how Horizon really does it |
 | [18.11. Typography Best Practices](/all-about-typography/typography-best-practices/) | A practical checklist, distilled from everything else in this chapter |
 | [18.12. Variable Fonts](/all-about-typography/variable-fonts/) | One font file covering a whole range of weights, instead of loading a separate file per weight |
 | [18.13. Font-Loading Performance](/all-about-typography/font-loading-performance/) | `font-display`, preloading, and avoiding layout shift while a font loads |

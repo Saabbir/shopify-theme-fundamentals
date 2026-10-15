@@ -67,7 +67,7 @@ Audience throughout: someone who has never touched a Shopify theme before, but a
 - 7.1. Color Settings & Color Schemes
 - 7.2. Typography & font_picker
 - 7.3. Spacing & Layout Tokens
-- 7.4. Turning Settings into CSS Variables
+- 7.4. Turning Settings into CSS Custom Properties
 
 ## 8. Forms — `status: live`
 

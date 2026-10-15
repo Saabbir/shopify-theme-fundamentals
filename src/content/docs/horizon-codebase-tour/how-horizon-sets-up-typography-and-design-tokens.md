@@ -13,7 +13,7 @@ Before `theme-styles-variables.liquid` ever runs, `layout/theme.liquid` renders 
 
 ## Loading fonts without loading the same face twice
 
-[How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) already covered the four font-role settings (`type_body_font`, `type_subheading_font`, `type_heading_font`, `type_accent_font`) and the CSS variables they resolve into. What that page didn't cover is a real problem this file solves: each of those four fonts needs up to four variants loaded (regular, bold, italic, bold-italic, via `font_modify`) — but if a merchant picks the *same* font for two different roles, loading it twice would waste a download.
+[How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) already covered the four font-role settings (`type_body_font`, `type_subheading_font`, `type_heading_font`, `type_accent_font`) and the CSS custom properties they resolve into. What that page didn't cover is a real problem this file solves: each of those four fonts needs up to four variants loaded (regular, bold, italic, bold-italic, via `font_modify`) — but if a merchant picks the *same* font for two different roles, loading it twice would waste a download.
 
 The file solves this by building a unique ID string for every font variant it's about to load, and tracking which ones it's already output:
 

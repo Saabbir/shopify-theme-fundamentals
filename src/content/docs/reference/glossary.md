@@ -13,9 +13,9 @@ description: Every term this site uses, defined in one line, linked back to wher
 | Block | A smaller, configurable, repeatable piece inside a section — see [3.2. What Is a Block?](/sections-blocks-snippets/what-is-a-block/) |
 | Collection | A group of products — see [5.1. product, variant & collection](/global-objects/product-variant-and-collection/) |
 | Color scheme | A bundle of several coordinated color roles a merchant picks as one unit — see [7.1. Color Settings & Color Schemes](/design-tokens/color-settings-and-color-schemes/) |
-| CSS custom property | A named, reusable CSS value (`--my-variable`), set with `style="--x: ...;"` and read with `var(--x)` — see [7.4. Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/) |
+| CSS custom property | A named, reusable CSS value (`--my-variable`), set with `style="--x: ...;"` and read with `var(--x)` — also informally called a **CSS variable**; this site uses "CSS custom property" consistently, since that's the term MDN and the CSS spec use — see [7.4. Turning Settings into CSS Custom Properties](/design-tokens/turning-settings-into-css-variables/) |
 | Design mode | Shopify's flag (`Shopify.designMode`) indicating code is running inside the theme editor — see [11.3. Theme Editor Events](/javascript-in-shopify-themes/theme-editor-events/) |
-| Design token | A named, reusable value (a specific color, spacing amount, or font) used consistently instead of repeating raw values — see [Design Tokens](/design-tokens/) |
+| Design token | A named, reusable value (a specific color, spacing amount, or font) used consistently instead of repeating raw values, almost always implemented as a CSS custom property; **role token** and **preset token** (below) are specific kinds of design token used for typography — see [Design Tokens](/design-tokens/) |
 | `forloop` | The object available inside a `for` loop, describing the current position (`index`, `first`, `last`, and more) — see [4.4. Loops](/liquid-basics/loops/) |
 | Layout | The outermost wrapper around every page (`layout/theme.liquid`) — see [2.4. theme.liquid Explained](/theme-architecture/theme-liquid-explained/) |
 | Liquid | Shopify's templating language, mixing plain HTML with logic and data — see [4. Liquid Language Basics](/liquid-basics/) |
@@ -24,8 +24,10 @@ description: Every term this site uses, defined in one line, linked back to wher
 | Metafield | Custom structured data attached to an object (a product, say) beyond its standard fields — see [5.4. Other Useful Objects](/global-objects/other-useful-objects/) |
 | Output | Liquid markup (`{{ }}`) that prints a value — see [4.1. Syntax: Tags, Output & Comments](/liquid-basics/syntax-tags-output-and-comments/) |
 | Preset | A named starting configuration for a section or block, overriding defaults and optionally pre-adding blocks — see [6.2. Presets & Defaults](/schema-and-settings/presets-and-defaults/) |
+| Preset token | A CSS custom property that's part of a named type preset, bundling several properties (family, size, weight, line-height) under one name — not the same as a preset (above), which configures a section or block, not typography — see [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) |
 | Progressive enhancement | Building markup that works before JavaScript runs, then enhancing it with behavior — see [11.2. Web Components for Theme Behavior](/javascript-in-shopify-themes/web-components-for-theme-behavior/) |
 | Responsive image | An `<img>` using `srcset`/`sizes` so the browser picks the right file size for its own viewport — see [12.1. Images & Responsive Image Tags](/media-and-assets/images-and-responsive-image-tags/) |
+| Role token | A CSS custom property that resolves one design role (Heading, Body, Accent) into its value — for typography, `family`/`weight`/`style` only, never a size; a preset token (above) is what adds the size — see [18.6. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) |
 | Section | A page-level, merchant-addable module — see [3.1. What Is a Section?](/sections-blocks-snippets/what-is-a-section/) |
 | Section group | A JSON file (`header-group.json`, `footer-group.json`) rendering sections from the layout rather than a page template — see [Section Groups](/sections-blocks-snippets/section-groups/) |
 | Setting | A merchant-configurable value, defined in a schema — see [6. Schema & Settings](/schema-and-settings/) |

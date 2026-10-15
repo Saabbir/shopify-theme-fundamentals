@@ -151,7 +151,7 @@ A simpler pattern: an image on one side and text on the other, where a single se
 }
 ```
 
-This is the same settings-driven-modifier-class idea from [7.4. Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/) — no new concept, just a common real-world use of it.
+This is the same settings-driven-modifier-class idea from [7.4. Turning Settings into CSS Custom Properties](/design-tokens/turning-settings-into-css-variables/) — no new concept, just a common real-world use of it.
 
 ## Key takeaways
 

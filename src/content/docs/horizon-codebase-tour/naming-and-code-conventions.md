@@ -59,7 +59,7 @@ Worth knowing if you read `theme-styles-variables.liquid` directly: internally, 
 
 ## Key takeaways
 
-- `--token--sub-property` (double dash) groups a family of related CSS variables while keeping each individually addressable.
+- `--token--sub-property` (double dash) groups a family of related CSS custom properties while keeping each individually addressable.
 - A `util-` prefix marks a snippet as pure logic, no markup — a concrete convention for the markup-vs-logic snippet split taught elsewhere on this site.
 - Dynamic per-instance class names let one shared snippet scope its CSS output independently across multiple instances of different components on the same page.
 - Settings grouped by a shared category prefix (`type_`, `palette_`) keep a large `settings_schema.json` navigable, the same instinct behind this site's own naming conventions, confirmed independently at real-world scale.

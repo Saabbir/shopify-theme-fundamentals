@@ -49,7 +49,7 @@ Reaching for one of these named values, instead of a fresh arbitrary number ever
 
 ## Key takeaways
 
-- Give every section independent desktop and mobile spacing settings (four `range` settings, not one shared value) — see [7.4. Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/) for how to wire the mobile override through CSS instead of Liquid.
+- Give every section independent desktop and mobile spacing settings (four `range` settings, not one shared value) — see [7.4. Turning Settings into CSS Custom Properties](/design-tokens/turning-settings-into-css-variables/) for how to wire the mobile override through CSS instead of Liquid.
 - Never decide mobile vs. desktop spacing inside Liquid based on a device check — it can't react to resizing, and it breaks the theme editor's live preview.
 - A small, named spacing scale reused everywhere produces a more consistent result than ad hoc pixel values chosen fresh in each file.
 

@@ -20,8 +20,8 @@ Both tags get CSS into a theme. They are not interchangeable, and the reason com
 
 Shopify collects every section and block's `{% stylesheet %}` content and compiles it into the theme's actual CSS asset — cached and served efficiently, the same way a hand-written `.css` file in `assets/` would be.
 
-:::caution[The fact that explains the CSS-variable pattern from Design Tokens]
-`{% stylesheet %}` does **not** evaluate Liquid. Writing `color: {{ section.settings.accent_color }};` inside a `{% stylesheet %}` block doesn't work — it's treated as literal, static CSS text, not rendered. This is exactly why the technique from [7.4. Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/) exists in the first place: since `{% stylesheet %}` can't read a setting directly, the setting's value has to arrive some other way — as an inline CSS custom property on the element itself, which `{% stylesheet %}` can then read with `var()`, because `var()` is just ordinary CSS, not Liquid.
+:::caution[The fact that explains the CSS-custom-property pattern from Design Tokens]
+`{% stylesheet %}` does **not** evaluate Liquid. Writing `color: {{ section.settings.accent_color }};` inside a `{% stylesheet %}` block doesn't work — it's treated as literal, static CSS text, not rendered. This is exactly why the technique from [7.4. Turning Settings into CSS Custom Properties](/design-tokens/turning-settings-into-css-variables/) exists in the first place: since `{% stylesheet %}` can't read a setting directly, the setting's value has to arrive some other way — as an inline CSS custom property on the element itself, which `{% stylesheet %}` can then read with `var()`, because `var()` is just ordinary CSS, not Liquid.
 :::
 
 ## `{% style %}`: Liquid-evaluated, inline, per-render

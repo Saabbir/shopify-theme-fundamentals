@@ -29,7 +29,7 @@ Since nothing enforces isolation automatically, avoiding collisions is entirely 
 .my-theme-hero-banner__heading { }
 ```
 
-This is the same instinct as the CSS custom property naming convention from [7.4. Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/) — one consistent prefix, applied everywhere, specifically because nothing else is protecting you from a collision.
+This is the same instinct as the CSS custom property naming convention from [7.4. Turning Settings into CSS Custom Properties](/design-tokens/turning-settings-into-css-variables/) — one consistent prefix, applied everywhere, specifically because nothing else is protecting you from a collision.
 
 ## Keep selectors simple
 

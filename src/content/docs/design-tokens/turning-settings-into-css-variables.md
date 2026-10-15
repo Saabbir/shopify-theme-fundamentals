@@ -1,5 +1,5 @@
 ---
-title: Turning Settings into CSS Variables
+title: Turning Settings into CSS Custom Properties
 description: The inline custom-property pattern, and why it's the only approach that keeps the theme editor's live preview working.
 ---
 

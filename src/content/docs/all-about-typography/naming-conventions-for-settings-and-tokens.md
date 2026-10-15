@@ -1,9 +1,9 @@
 ---
 title: Naming Conventions for Font Settings & Type Tokens
-description: A consistent way to name every font_picker setting, CSS variable, and type preset in a theme — plus how Horizon really does it.
+description: A consistent way to name every font_picker setting, CSS custom property, and type preset in a theme — plus how Horizon really does it.
 ---
 
-**TL;DR:** A consistent way to name every `font_picker` setting, CSS variable, and type preset in a theme — plus how Horizon really does it.
+**TL;DR:** A consistent way to name every `font_picker` setting, CSS custom property, and type preset in a theme — plus how Horizon really does it.
 
 Typography tends to accumulate more interrelated settings and tokens than almost any other part of a theme — a handful of font-role settings, a size for every heading level, a weight and style for each, and a preset layer bundling them together. Without a deliberate naming scheme, this grows into an unreadable mess fast: `heading_font`, `font_heading`, `headingFontSetting`, and `h_font` could all plausibly refer to the same thing in a theme that didn't decide on one pattern up front. This page is the single place that pattern is written down, start to finish.
 

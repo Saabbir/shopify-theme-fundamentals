@@ -7,7 +7,7 @@ description: Hex, RGB, and HSL — what a merchant's color picker actually gives
 
 ## What a `color` setting actually returns
 
-When a merchant picks a color in the theme editor, `section.settings.your_color_id` returns a plain string in hex format, like `#ff6600`. That's the one format you can always count on without converting anything — most of the time, printing it straight into an inline style or CSS variable is all you need:
+When a merchant picks a color in the theme editor, `section.settings.your_color_id` returns a plain string in hex format, like `#ff6600`. That's the one format you can always count on without converting anything — most of the time, printing it straight into an inline style or CSS custom property is all you need:
 
 ```liquid
 <div style="--sol-accent: {{ section.settings.accent_color }};">

@@ -108,7 +108,7 @@ In words: if the merchant explicitly picked a text color, use it. Otherwise, che
 
 ## The reusable `.color-custom-{id}` pattern
 
-`contrast-override.liquid` writes its output as CSS scoped to a class named from a `section_id` parameter — `.color-custom-popover`, `.color-custom-drawer`, and so on — applied to that specific component's outer element. This is the same "settings become CSS custom properties on the outer element" convention from [7.4. Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/), with one addition worth noting: the scoping class itself (`color-custom-{{ section_id }}`) is generated dynamically per call, which is what lets one shared snippet serve many different components (a popover, a drawer, a sale badge) without them interfering with each other.
+`contrast-override.liquid` writes its output as CSS scoped to a class named from a `section_id` parameter — `.color-custom-popover`, `.color-custom-drawer`, and so on — applied to that specific component's outer element. This is the same "settings become CSS custom properties on the outer element" convention from [7.4. Turning Settings into CSS Custom Properties](/design-tokens/turning-settings-into-css-variables/), with one addition worth noting: the scoping class itself (`color-custom-{{ section_id }}`) is generated dynamically per call, which is what lets one shared snippet serve many different components (a popover, a drawer, a sale badge) without them interfering with each other.
 
 ## Key takeaways
 

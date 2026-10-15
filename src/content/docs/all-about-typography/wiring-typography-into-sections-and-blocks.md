@@ -68,7 +68,7 @@ Occasionally a specific section really does need independent control — a "Bran
 {% endstylesheet %}
 ```
 
-Two things worth noting here, both already covered elsewhere but worth seeing applied together: `font_face` for a section-scoped font setting needs to run inside that section's own file (inside a `{% style %}` tag, since `{% stylesheet %}` can't evaluate Liquid — see [`{% stylesheet %}` and `{% style %}`](/css-in-shopify-themes/stylesheet-and-style-tags/)), and the resulting CSS variable is set directly on the section's own outer element, following the same "settings become CSS custom properties on the outer element" pattern every section and block in a well-built theme uses.
+Two things worth noting here, both already covered elsewhere but worth seeing applied together: `font_face` for a section-scoped font setting needs to run inside that section's own file (inside a `{% style %}` tag, since `{% stylesheet %}` can't evaluate Liquid — see [`{% stylesheet %}` and `{% style %}`](/css-in-shopify-themes/stylesheet-and-style-tags/)), and the resulting CSS custom property is set directly on the section's own outer element, following the same "settings become CSS custom properties on the outer element" pattern every section and block in a well-built theme uses.
 
 ## Wiring into a block
 
@@ -101,4 +101,4 @@ Nothing about typography tokens changes depending on whether they're consumed by
 - [18.6. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
 - [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — the select-between-presets pattern above, in full
 - [18.9. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) — the decision tree for picking a role token, a preset, or neither
-- [7.4. Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/)
+- [7.4. Turning Settings into CSS Custom Properties](/design-tokens/turning-settings-into-css-variables/)
