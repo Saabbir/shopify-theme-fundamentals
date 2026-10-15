@@ -5,7 +5,7 @@ description: The concrete schema-to-CSS path, worked through end to end.
 
 **TL;DR:** The concrete schema-to-CSS path, worked through end to end.
 
-[18.6. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) built the token layer, theme-wide. This page works through how an individual section or block actually consumes that layer, plus the two situations where a section needs typography control beyond what the global tokens provide.
+[18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) built the token layer, theme-wide. This page works through how an individual section or block actually consumes that layer, plus the two situations where a section needs typography control beyond what the global tokens provide.
 
 ## The simple case: a section just uses the real tag
 
@@ -29,12 +29,12 @@ Most of the time, a section needs no typography CSS of its own at all. Per [Deci
 No typography-specific setting, class, or CSS is needed here — the section simply renders a real heading tag and the rest follows automatically. This should be the default for most sections; only add a dedicated typography setting when a section genuinely needs to deviate from the theme-wide tokens.
 
 :::note[Not every element wants the full preset — that's a different, narrower case]
-Sometimes a component genuinely wants to borrow just a role's `font-family` (and maybe `style`), with no opinion on size at all — the testimonial block further down this page is exactly that case. Reaching for a role token directly, instead of a preset, is correct *there* specifically because the text isn't meant to carry a prescribed size — not because declaring family/weight without size is a smaller, simpler version of the pattern above. [18.9. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/#the-decision-tree) covers exactly how to tell the two cases apart.
+Sometimes a component genuinely wants to borrow just a role's `font-family` (and maybe `style`), with no opinion on size at all — the testimonial block further down this page is exactly that case. Reaching for a role token directly, instead of a preset, is correct *there* specifically because the text isn't meant to carry a prescribed size — not because declaring family/weight without size is a smaller, simpler version of the pattern above. [18.12. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/#the-decision-tree) covers exactly how to tell the two cases apart.
 :::
 
 ## Letting a merchant choose between type presets
 
-When a section has more than one plausible typography treatment (a large display heading versus a smaller, standard one, say), offer a `select` setting that chooses between your named type presets, rather than exposing raw font/size controls directly — the same reasoning [Spacing settings](/design-tokens/spacing-and-layout-tokens/) and [color schemes](/design-tokens/color-settings-and-color-schemes/) both apply to their own settings: a bounded, named choice beats an unbounded free-form one. [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/#using-a-preset-in-a-section-or-block-setting) covers this exact pattern in full, with a complete worked example.
+When a section has more than one plausible typography treatment (a large display heading versus a smaller, standard one, say), offer a `select` setting that chooses between your named type presets, rather than exposing raw font/size controls directly — the same reasoning [Spacing settings](/design-tokens/spacing-and-layout-tokens/) and [color schemes](/design-tokens/color-settings-and-color-schemes/) both apply to their own settings: a bounded, named choice beats an unbounded free-form one. [18.10. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/#using-a-preset-in-a-section-or-block-setting) covers this exact pattern in full, with a complete worked example.
 
 ## When a section genuinely needs its own font setting
 
@@ -98,7 +98,7 @@ Nothing about typography tokens changes depending on whether they're consumed by
 
 ## Further reading
 
-- [18.6. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
-- [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — the select-between-presets pattern above, in full
-- [18.9. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) — the decision tree for picking a role token, a preset, or neither
+- [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
+- [18.10. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — the select-between-presets pattern above, in full
+- [18.12. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) — the decision tree for picking a role token, a preset, or neither
 - [7.4. Turning Settings into CSS Custom Properties](/design-tokens/turning-settings-into-css-variables/)

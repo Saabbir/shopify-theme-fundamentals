@@ -82,7 +82,7 @@ For certainty, use the `font_url` filter to get the real file URL Shopify is ser
 
 ## What about a font loaded outside font_picker?
 
-Everything above assumes a `font_picker`-sourced font — a real `font` object exists to call `font_modify` on. [18.4. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) covers the other case: a brand font the client licensed directly, self-hosted as a theme asset or Shopify File, with no `font_picker` setting and no `font` object anywhere. Two of the three detection methods above need adjusting for that case, and one doesn't change at all:
+Everything above assumes a `font_picker`-sourced font — a real `font` object exists to call `font_modify` on. [18.5. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) covers the other case: a brand font the client licensed directly, self-hosted as a theme asset or Shopify File, with no `font_picker` setting and no `font` object anywhere. Two of the three detection methods above need adjusting for that case, and one doesn't change at all:
 
 | Method | For a self-hosted font |
 |---|---|
@@ -92,7 +92,7 @@ Everything above assumes a `font_picker`-sourced font — a real `font` object e
 
 ### If the custom font turns out to be variable, the loading pattern changes
 
-[18.4. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/)'s main example writes one `@font-face` rule per static weight/style file (a `canela-regular.woff2` and a separate `canela-bold.woff2`). A variable font replaces that with a single file and a `font-weight` **range**, letting the browser render any weight inside that range from the one file:
+[18.5. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/)'s main example writes one `@font-face` rule per static weight/style file (a `canela-regular.woff2` and a separate `canela-bold.woff2`). A variable font replaces that with a single file and a `font-weight` **range**, letting the browser render any weight inside that range from the one file:
 
 ```liquid
 {% style %}
