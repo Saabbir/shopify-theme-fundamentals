@@ -7,6 +7,19 @@ description: Everything about typography in Shopify themes, from what a font act
 
 This chapter is a complete, standalone reference on typography — it starts from zero and builds all the way up to advanced territory, so it works whether this is the first page you've ever read on this site or the fiftieth. It assumes you know HTML, CSS, and JavaScript, same as the rest of this site, but nothing Shopify-specific beyond that.
 
+## The vocabulary, before you hit it in context
+
+A handful of terms get used precisely and repeatedly throughout this chapter. They sound similar, but they're not interchangeable — worth a quick look here first, rather than piecing the distinction together one page at a time. Full definitions live in the [Glossary](/reference/glossary/); this is the fast version.
+
+| Term | What it actually is | Example |
+|---|---|---|
+| CSS custom property | The general CSS feature — a named, reusable value (`--x: value;`), read with `var(--x)`. Also informally called a **CSS variable**; this site always says "CSS custom property" | `--font-heading-family` |
+| Role token | A CSS custom property that resolves one font role (Body, Heading, Subheading, Accent) into its value — `family`/`weight`/`style` only, **never a size** | `--font-heading-family` |
+| Preset token | A CSS custom property that's part of a named type preset, bundling several properties — including a size — under one name | `--type-preset-h1-font-size` |
+| Preset class | The CSS class a component applies in its markup to get a full preset's typography at once, instead of referencing its tokens one by one | `.h1`, `.paragraph` |
+
+The short version: every role token and every preset token *is* a CSS custom property — "role token" and "preset token" just name which of the two jobs that particular custom property is doing. [18.6. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) builds up to this distinction from scratch if you want the full reasoning; [18.9. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) covers exactly when a component reaches for which.
+
 ## What's in this chapter
 
 | Page | Answers |
