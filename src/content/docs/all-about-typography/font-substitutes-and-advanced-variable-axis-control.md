@@ -1,9 +1,9 @@
 ---
 title: Font Substitutes & Advanced Variable Axis Control
-description: What it means when a client's font files aren't the real licensed typeface, and the font-variation-settings / font-feature-settings properties that kind of handoff usually leans on.
+description: What it means when a client's font files are tuned (or even spliced-together) open-source substitutes rather than the real licensed typeface, and the font-variation-settings / font-feature-settings properties that kind of handoff usually leans on.
 ---
 
-**TL;DR:** What it means when a client's font files aren't the real licensed typeface, and the `font-variation-settings` / `font-feature-settings` properties that kind of handoff usually leans on.
+**TL;DR:** What it means when a client's font files are tuned — or even spliced together from several open-source fonts — rather than the real licensed typeface, and the `font-variation-settings` / `font-feature-settings` properties that kind of handoff usually leans on.
 
 Sometimes a client sends over font files and a CSS file that, on first read, looks like a normal [18.5. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) situation — `@font-face` rules, some classes, done. Look closer and the file tells a different story. Here's a real shape of one, worth reading line by line before touching any code:
 
@@ -62,6 +62,22 @@ Three details give it away, and they're worth training your eye to catch before 
 The usual reason is licensing: a desktop or app license for a premium typeface doesn't automatically include web embedding rights, and a proper web license can be expensive or simply wasn't bought for this project. [18.5. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) covers confirming what a license actually allows — the same question applies here, just aimed at the *substitute* fonts instead of the originals. Open-source doesn't mean license-free; a font like Inter still ships under a real license (commonly SIL OFL), and it's worth confirming the specific terms allow embedding it in a theme repo the same way any other self-hosted font would need.
 :::
 
+## Sometimes the "substitute" isn't one font — it's several, spliced together
+
+A README accompanying a file like this can go further than a weight and an optical size. A real one, for the same handoff, described `.outer-sans-black`'s font like this:
+
+> Archivo variable font at width 122.5, weight 900, with: a, 1 and g from Hubot Sans; 4 from Unbounded 900; & from Anybody, the best & with a closed top loop like Outer Sans's; round i/j dots sized and placed like Outer Sans's dot. Borrowed glyphs are scaled to Archivo's cap height. Every character is then respaced so its sidebearings match Outer Sans Black's.
+
+That's not "pick a similar free font." It's a composite: one font (Archivo) as the base, with individual *letters* swapped in from three other open-source fonts, each one rescaled to match the base's cap height, because no single open-source font was a close enough match for the brand's licensed original on its own. A few things worth knowing before this kind of file crosses your desk:
+
+- **Width is a real variable axis too.** "Width 122.5" is the `wdth` axis — a third registered axis, alongside the `wght` and `opsz` axes covered below. Archivo ships `wdth` as a real, continuous axis; 122.5 is simply a value inside its range, matched the same way the `opsz`/`wght` values on Inter were — the same rule applies: confirm an axis actually exists in a given font before relying on it (more on that shortly).
+- **A single static file doesn't mean the source wasn't variable.** `OuterMix-Black.ttf` is loaded with a plain `font-weight: 900` and no `font-variation-settings` at all — unlike `Inter-Variable.ttf`, which keeps its full `100 900` range and needs `font-variation-settings` to pick a point inside it. That's a legitimate, different choice: when a project only ever needs *one* width/weight combination out of a variable font, it's reasonable to export (or "instance") just that one design as a static file, rather than ship the full variable font and pin it with CSS every time it's used. Both are correct; they're answering different questions — "do I need more than one point on this axis in the browser?"
+- **This is why combined fonts get renamed.** The SIL Open Font License — what Archivo, Hubot Sans, Unbounded, and Anybody all ship under — permits merging multiple OFL fonts into one derivative work, but its **Reserved Font Name** clause forbids a modified version from keeping a source's name without written permission. That's the real reason the font-family in the CSS is `"Outer Mix"` and not `"Hubot Sans"`: it's not a stylistic choice, it's a license requirement, and it's worth recognizing the same constraint if your own project ever combines or modifies an OFL font.
+
+:::caution[Check for documented coverage gaps before shipping]
+The same README noted: "Accented letters (à, â, ğ, í…) are still Archivo's own, so they don't match the swapped a, g, i and j yet." A composite like this is matched glyph by glyph, not swapped wholesale — so coverage can be incomplete in ways that only show up once real content (a French or Turkish product title, say) hits the page. [18.15. Font Fallback for Multi-Language Stores](/all-about-typography/font-fallback-for-multi-language-stores/) covers the broader version of this problem; here, the fix is simpler — read the README's own caveats before launch, and flag any gap it already documents rather than discovering it in production.
+:::
+
 ## Two font-weight numbers on the same property, and both are legitimate
 
 `font-weight: 419` and `font-weight: 675` aren't typos. The CSS spec allows any integer from 1 to 1000, not just the familiar named hundreds (400, 700, and so on) — those are just conventions, not a hard limit. A value like `419` is almost always the result of deliberate, careful tuning: someone compared the substitute against the original side by side and landed on the exact weight that visually matched, rather than picking the nearest round number.
@@ -110,27 +126,36 @@ letter-spacing: -0.0075em;  /* Inter, Semibold-equivalent */
 letter-spacing: 0;          /* Outer Mix — "spacing is built into the font" */
 ```
 
-These are tiny — a few thousandths of an em — which is itself a signal: this is fine correction, not a deliberate design choice of loose or tight tracking. [18.1. Typography Fundamentals](/all-about-typography/typography-fundamentals/#letter-spacing-and-text-transform-smaller-often-forgotten-levers) already covers why `letter-spacing` is conventionally written in `em` rather than a fixed pixel value — the same reasoning applies at this smaller scale. The `.outer-sans-black` comment is worth reading literally: a `letter-spacing: 0` with "spacing is built into the font" means the substitute's own natural tracking already matched the original closely enough that no correction was needed at all — not that spacing was overlooked.
+These are tiny — a few thousandths of an em — which is itself a signal: this is fine correction, not a deliberate design choice of loose or tight tracking. [18.1. Typography Fundamentals](/all-about-typography/typography-fundamentals/#letter-spacing-and-text-transform-smaller-often-forgotten-levers) already covers why `letter-spacing` is conventionally written in `em` rather than a fixed pixel value — the same reasoning applies at this smaller scale.
+
+`letter-spacing: 0` on `.outer-sans-black` isn't a sign spacing was overlooked — it's the result of a specific technique, worth understanding so it isn't "corrected" by accident. Once a composite like Outer Mix has its borrowed glyphs rescaled to match cap height (the previous section), the remaining mismatch is each character's *sidebearing* — the small gap built into a glyph on its left and right edge, which is what actually produces visual letter-spacing, independent of any CSS. A README documenting work like this will typically say every character was individually respaced so its sidebearings match the original font's, scaled to the same cap height — meaning the spacing correction already happened once, inside the font file itself, letter by letter. `letter-spacing: 0` is the correct CSS precisely because the real correction isn't a CSS property's job here.
+
+:::tip[A documented similarity score is worth trusting more than a fresh eyeball check]
+Font-matching work like this sometimes comes with a numeric score — something like "0.4 × shared ink + 0.3 × outline closeness + 0.3 × width match, averaged per character, with extra weight on the worst-matching 20%" is a plausible real formula, applied per glyph and then combined into one number per font. Whatever the exact formula, a documented score comparing the chosen substitute against the plainest alternative (an unmodified stock font, say) is evidence that a real comparison happened, not a guess — treat it the same way as the tuned numeric values: worth preserving as documentation, and a reason to re-run the same comparison rather than eyeball a replacement if the substitute ever needs to change.
+:::
 
 ## What to actually do with a file like this
 
 Once the file is understood correctly, handling it is mostly familiar ground from elsewhere in this chapter, plus a few things specific to a substitute:
 
-- **Confirm the substitute fonts' own license allows this**, the same check [18.5. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) already walks through for any self-hosted font — "open-source" and "web-embeddable, redistributable in this repo" aren't automatically the same thing, even for a well-known font like Inter.
+- **Confirm the substitute fonts' own license allows this**, the same check [18.5. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) already walks through for any self-hosted font — "open-source" and "web-embeddable, redistributable in this repo" aren't automatically the same thing, even for a well-known font like Inter. If a font is a composite built from several OFL sources, keep every source's copyright notice, don't sell the font file on its own, and don't use any source's Reserved Font Name for the result — which is almost certainly why the file is already named something generic ("Outer Mix") instead of one of its ingredients.
 - **Get real `.woff2` files.** The client's CSS only references `.ttf` — a much larger format with no legacy-browser fallback. Convert, following the same guidance as any other hand-loaded font, and confirm conversion is permitted under the substitute's license before doing it.
 - **Host and load them the normal way** — an asset via `asset_url` (or Shopify Files if the same substitute set needs sharing across themes), a hand-written `@font-face` per weight/style inside a `{% style %}` tag, same as any other self-hosted font.
-- **Leave the tuned values alone.** `font-weight: 419`, `"wght" 418.75`, `"opsz" 32`, `cv01`/`cv10`, and the fractional `letter-spacing` values are the actual deliverable here — the result of real comparison work against the original fonts. Treat them as a locked spec to carry over exactly, not a style to simplify.
+- **Leave the tuned values alone.** `font-weight: 419`, `"wght" 418.75`, `"opsz" 32`, `cv01`/`cv10`, the fractional `letter-spacing` values, and any axis value tied to a composite font's own construction (a `wdth` of `122.5`, say) are the actual deliverable here — the result of real comparison work against the original fonts. Treat them as a locked spec to carry over exactly, not a style to simplify.
 - **Wire the result into the theme's existing token system**, rather than leaving `.outer-sans-black`-style utility classes sitting outside it. [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) is the pattern to follow: decide which role (or preset) each substitute is actually standing in for, and resolve it into that role's tokens — `--font-heading-family`, `--font-heading-weight`, and so on — so every other component that already reads from the role-token system picks it up automatically, instead of needing to know these specific class names exist.
-- **Ask for the README.** It's referenced directly in the CSS and almost certainly documents the mapping and the reasoning — worth keeping with the project rather than letting it stay a dangling reference.
+- **Ask for the README, and read its caveats, not just its values.** It's referenced directly in the CSS and almost certainly documents the mapping, the reasoning, and anything the match doesn't cover yet (unmatched accented characters, for instance) — worth keeping with the project, and worth flagging any documented gap before launch rather than discovering it in production.
 - **Performance guidance doesn't change.** `font-display: swap` is already present and correct; preload only if one of these is used above the fold, same as [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/) covers for any other font.
 
 ## Key takeaways
 
 - A comment like "tuned against the originals," class names that don't match their own `font-family`, and a referenced-but-missing README are the tell that font files are a matched substitute, not the client's actual licensed typeface — ask for the README before writing theme code against the file.
+- A substitute can be a composite of several open-source fonts, not just one: one font as a base, individual glyphs swapped in from others, each rescaled to the base's cap height and respaced to match the original's sidebearings — which is also why `letter-spacing: 0` can be correct even on a hand-tuned font.
+- Combining or modifying OFL-licensed fonts is explicitly permitted, but the license's Reserved Font Name clause forbids keeping a source's name in the result — a likely reason a composite font ends up with a new, generic name.
 - `font-weight` accepts any integer 1–1000, not just the named hundreds; a non-round value on a variable font is usually deliberate visual-matching work, not an error to "fix."
 - `font-variation-settings` always overrides the equivalent standard property (`font-weight` for `"wght"`, and so on) when both are present, and every axis you want controlled has to be listed together in one declaration — an axis left out resets to the font's default, even if an earlier rule set it.
-- `opsz` (optical size) has no standalone CSS property for pinning a specific value — only `font-optical-sizing: auto | none`, a toggle, not a value setter — so precise control requires `font-variation-settings` directly, and only works if the font actually defines that axis.
+- `opsz` (optical size) and `wdth` (width) have no standalone CSS property for pinning a specific value the way `font-weight` does for `wght` — precise control requires `font-variation-settings` directly, and only works if the font actually defines that axis.
 - `font-feature-settings` fully replaces rather than merges with an inherited value; `font-variant-alternates` with `character-variant()` is the more maintainable modern alternative where it covers what's needed.
+- A README worth keeping documents more than values — read its caveats too (an unmatched character set, say) and flag them before launch.
 - Once understood, handle these exactly like any other self-hosted font — real `.woff2` files, proper hosting, a `{% style %}`-rendered `@font-face` — and then resolve them into the theme's existing role-token/preset system rather than leaving them as standalone utility classes.
 
 ## Further reading
@@ -138,7 +163,9 @@ Once the file is understood correctly, handling it is mostly familiar ground fro
 - [18.4. Variable Fonts](/all-about-typography/variable-fonts/)
 - [18.5. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/)
 - [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
+- [18.15. Font Fallback for Multi-Language Stores](/all-about-typography/font-fallback-for-multi-language-stores/)
 - [`font-variation-settings` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings)
 - [`font-feature-settings` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/font-feature-settings)
 - [`font-variant-alternates` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-alternates)
 - [OpenType Design-Variation Axis Tag Registry (Microsoft)](https://learn.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg)
+- [SIL Open Font License 1.1 FAQ](https://scripts.sil.org/OFL)
