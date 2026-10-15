@@ -127,7 +127,7 @@ This is the real, permanent trade-off of this whole approach. A `font_picker`-ba
 >
 ```
 
-Font preloading is already covered generally in [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/), but there's one detail that matters specifically here: a browser always fetches a preloaded font in anonymous CORS mode, by spec, even when the file is served from what looks like the same origin — omitting `crossorigin` means the preload fires, downloads the file, and the browser **discards it and downloads it again** when the actual `@font-face` rule needs it, silently wasting the entire preload. Since a theme asset is actually served from Shopify's CDN domain rather than the storefront's own domain, this isn't just a spec technicality here — it's a real cross-origin request, and `crossorigin` (empty value defaults to `anonymous`) is required for the preload to do anything useful at all.
+Font preloading is covered generally in [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/), but there's one detail that matters specifically here: a browser always fetches a preloaded font in anonymous CORS mode, by spec, even when the file is served from what looks like the same origin — omitting `crossorigin` means the preload fires, downloads the file, and the browser **discards it and downloads it again** when the actual `@font-face` rule needs it, silently wasting the entire preload. Since a theme asset is actually served from Shopify's CDN domain rather than the storefront's own domain, this isn't just a spec technicality here — it's a real cross-origin request, and `crossorigin` (empty value defaults to `anonymous`) is required for the preload to do anything useful at all.
 
 ## Key takeaways
 

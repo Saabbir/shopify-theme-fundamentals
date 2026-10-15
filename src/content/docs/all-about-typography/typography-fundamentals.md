@@ -41,6 +41,8 @@ A `font-family` value is a comma-separated list, not a single name, and that's d
 
 A **web font** is a font file the browser has to download before it can render text in that font — this is what a merchant picking a custom brand font from `font_picker` results in. A **system font** is a font already installed on the shopper's own device, which costs nothing to download because the browser already has it. `system-ui`, `sans-serif`, `serif`, and `monospace` are *generic* system font keywords — not an actual specific font, but an instruction to the browser to use whatever real font it considers the system default for that category, which varies by operating system.
 
+Two Shopify-specific names show up in the table below, ahead of their full explanation on [18.3. Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) — previewed here just enough to make the comparison concrete: `font_picker` is the setting type that lets a merchant choose a font, and `font_face` is the filter that actually downloads the chosen web font's file.
+
 | | System font | Web font |
 |---|---|---|
 | Needs downloading | No — already on the shopper's device | Yes — fetched over the network |
