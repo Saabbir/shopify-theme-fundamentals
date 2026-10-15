@@ -5,7 +5,7 @@ description: One snippet merging typography, color, and spacing settings into CS
 
 **TL;DR:** One snippet merging typography, color, and spacing settings into CSS custom properties, consumed by real components.
 
-[18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) built a token system for typography alone. This page widens that same idea to a whole small theme at once: one snippet that resolves font settings, color schemes, and a spacing scale into CSS custom properties, rendered exactly once, with two real components reading the result.
+[18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) built a token system for typography alone. This page widens that same idea to a whole small theme at once: one snippet that resolves font settings, color schemes, and a spacing scale into CSS custom properties, rendered exactly once, with two real components reading the result.
 
 :::note[A generic, from-scratch example — not a copy of any real theme]
 Everything on this page is an original, deliberately simple teaching example, built to show the *mechanism* clearly. It is not a copy of Dawn, Horizon, or any other real theme's actual files. For what this same idea looks like once it's grown to the scale of a real, shipped theme — split across several dedicated snippets instead of one — see [27.3. How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/) and [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/).
@@ -47,7 +47,7 @@ Both of these are entries within `settings_schema.json`'s top-level array, shown
 }
 ```
 
-Two `font_picker` settings for the typography roles, and one `color_scheme_group` for color — the exact same settings covered individually in [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) and [17.7. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/). Spacing, below, doesn't need a merchant-facing setting at all — it's a fixed scale, not something a merchant picks.
+Two `font_picker` settings for the typography roles, and one `color_scheme_group` for color — the exact same settings covered individually in [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) and [17.7. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/). Spacing, below, doesn't need a merchant-facing setting at all — it's a fixed scale, not something a merchant picks.
 
 ## The complete snippet: `snippets/design-tokens.liquid`
 
@@ -168,7 +168,7 @@ Three different kinds of setting, three different resolution strategies, all end
 ```
 
 :::note[Both headings here use role tokens only, on purpose — but notice what's missing]
-`.callout__heading` and `.product-card__title` read `--font-heading-family`/`--font-heading-weight` directly rather than applying a preset class — consistent with this page's point (three different settings types all resolving into `var()` output), but neither one gets a `font-size` from anywhere, since a role token doesn't carry one. A real theme would almost certainly want a complete treatment here instead — applying an `.h2`/`.h3`-style preset class per [Decision 5 of Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/#decision-5-one-global-class-per-preset-not-a-redeclaration-per-component) — rather than the role-token-only pattern shown here, which [18.12. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) reserves for text that deliberately has no prescribed size.
+`.callout__heading` and `.product-card__title` read `--font-heading-family`/`--font-heading-weight` directly rather than applying a preset class — consistent with this page's point (three different settings types all resolving into `var()` output), but neither one gets a `font-size` from anywhere, since a role token doesn't carry one. A real theme would almost certainly want a complete treatment here instead — applying an `.h2`/`.h3`-style preset class per [Decision 5 of Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/#decision-5-one-global-class-per-preset-not-a-redeclaration-per-component) — rather than the role-token-only pattern shown here, which [18.13. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) reserves for text that deliberately has no prescribed size.
 :::
 
 Neither stylesheet above references a single Liquid setting directly — every value is `var(--something)`. A merchant changing the Heading font, picking a different color scheme on the callout, or (if the theme ever exposed it) adjusting the spacing scale all flow through automatically, with zero changes needed to either component's CSS.
@@ -185,7 +185,7 @@ This page deliberately keeps typography, color, and spacing in one snippet, beca
 
 ## Further reading
 
-- [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
+- [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
 - [17.7. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/)
 - [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/)
 - [27. Horizon Theme Codebase Tour](/horizon-codebase-tour/) — the same idea, at real-theme scale

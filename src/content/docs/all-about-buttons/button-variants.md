@@ -5,7 +5,7 @@ description: Primary, secondary, text, and custom — a small, named set of butt
 
 **TL;DR:** Primary, secondary, text, and custom — a small, named set of button styles, not an unbounded one.
 
-A theme with twenty different button appearances scattered across twenty sections is a theme nobody can keep visually consistent. The fix is the same one [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) teaches for text: a small, named, reusable set of variants, not a fresh style invented per section.
+A theme with twenty different button appearances scattered across twenty sections is a theme nobody can keep visually consistent. The fix is the same one [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) teaches for text: a small, named, reusable set of variants, not a fresh style invented per section.
 
 ## Four variants cover nearly everything
 
@@ -86,5 +86,5 @@ A theme where every third button is set to Custom has, in effect, abandoned the 
 ## Further reading
 
 - [`blocks/button.liquid` (Horizon, GitHub)](https://github.com/Shopify/horizon/blob/main/blocks/button.liquid)
-- [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — the same small-named-set idea, for text styles
+- [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — the same small-named-set idea, for text styles
 - [36.6. Settings-Driven Styling in Depth](/all-about-buttons/settings-driven-styling-in-depth/)

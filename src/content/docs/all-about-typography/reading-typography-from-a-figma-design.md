@@ -17,7 +17,7 @@ Dev Mode shows precise values and lets you inspect without accidentally moving o
 
 ## Step 1: inventory every distinct text treatment, not just the named styles
 
-If the file has a published **text styles** library (a list like "Heading 1," "Heading 2," "Body," "Caption"), start there — it's the designer's own attempt at exactly the role system this chapter's [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) page describes. But don't stop at the named list: scan the actual screens for text that doesn't use any of the published styles. A hero headline that was sized by eye for one specific layout, a pull quote with hand-picked letter-spacing, a badge label — these exist in nearly every real handoff, and if you only implement the named styles, they'll quietly go unstyled or get approximated wrong later.
+If the file has a published **text styles** library (a list like "Heading 1," "Heading 2," "Body," "Caption"), start there — it's the designer's own attempt at exactly the role system this chapter's [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) page describes. But don't stop at the named list: scan the actual screens for text that doesn't use any of the published styles. A hero headline that was sized by eye for one specific layout, a pull quote with hand-picked letter-spacing, a badge label — these exist in nearly every real handoff, and if you only implement the named styles, they'll quietly go unstyled or get approximated wrong later.
 
 Build a plain table before writing anything else, one row per distinct treatment actually found, however small:
 
@@ -33,7 +33,7 @@ This inventory is the actual spec. Everything else on this page is about reducin
 
 ## Step 2: count how many font families and weights are genuinely in use
 
-Every distinct family-weight-style combination in the inventory is a separate file the browser has to download — [18.6. Font-Loading Performance](/all-about-typography/font-loading-performance/) covers why that cost adds up fast. Before mapping anything to settings, total up the real distinct combinations. The table above uses two families (Canela, Inter) and, counting carefully, four combinations: Canela 600, Canela 400 italic, Inter 400, Inter 600. That's a reasonable number for a theme. A file with six different accidental weights of the same family, each used in exactly one place because of how the designer happened to draw it, is a sign worth raising with the designer before building anything — not something to silently implement as six separate `font_modify` variants.
+Every distinct family-weight-style combination in the inventory is a separate file the browser has to download — [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/) covers why that cost adds up fast. Before mapping anything to settings, total up the real distinct combinations. The table above uses two families (Canela, Inter) and, counting carefully, four combinations: Canela 600, Canela 400 italic, Inter 400, Inter 600. That's a reasonable number for a theme. A file with six different accidental weights of the same family, each used in exactly one place because of how the designer happened to draw it, is a sign worth raising with the designer before building anything — not something to silently implement as six separate `font_modify` variants.
 
 :::note[A slightly-off size usually isn't intentional]
 If two rows in the inventory are nearly identical — a heading at `32px` in one place and `31px` in another, say — that's much more likely an accident of how the layer was drawn than a deliberate third size the theme needs to support. Worth a quick question to the designer rather than baking every pixel-level variation into its own preset.
@@ -41,7 +41,7 @@ If two rows in the inventory are nearly identical — a heading at `32px` in one
 
 ## Step 3: collapse the inventory into font roles
 
-With the real inventory and its real distinct combinations in hand, assign each one to a role — the same Body/Heading/Subheading/Accent idea from [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/), or whatever smaller or larger set of roles this specific design actually needs:
+With the real inventory and its real distinct combinations in hand, assign each one to a role — the same Body/Heading/Subheading/Accent idea from [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/), or whatever smaller or larger set of roles this specific design actually needs:
 
 | Role | Family | Normal weight | Bold/alt weight |
 |---|---|---|---|
@@ -89,7 +89,7 @@ line-height (px) ÷ font-size (px) = unitless line-height
 
 ## Step 6: capture responsive sizes as fluid-scale inputs, not a hard breakpoint
 
-Check whether the Figma file includes separate desktop and mobile frames for the same screen. If a heading is `64px` on the desktop frame and `40px` on the mobile frame, that's not an instruction to hard-switch the size at one breakpoint — it's the two endpoints [18.9. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) needs to build a `clamp()` that scales smoothly between them:
+Check whether the Figma file includes separate desktop and mobile frames for the same screen. If a heading is `64px` on the desktop frame and `40px` on the mobile frame, that's not an instruction to hard-switch the size at one breakpoint — it's the two endpoints [18.10. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) needs to build a `clamp()` that scales smoothly between them:
 
 ```css
 --font-size-h1: clamp(2.5rem, 2rem + 2.5vw, 4rem);
@@ -119,7 +119,7 @@ Treating the two frames as `clamp()` endpoints, rather than two fixed sizes sepa
 ## Further reading
 
 - [18.1. Typography Fundamentals](/all-about-typography/typography-fundamentals/) — why line-height is unitless and letter-spacing is `em`
-- [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — turning roles into a token system
+- [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — turning roles into a token system
 - [18.3. Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) — discovering a real font ID, and the normal/bold `font_modify` pattern
-- [18.9. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) — building a `clamp()` scale from two real endpoints
+- [18.10. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) — building a `clamp()` scale from two real endpoints
 - [Figma Dev Mode](https://help.figma.com/hc/en-us/articles/15023124644247-Guide-to-Dev-Mode) (Figma)

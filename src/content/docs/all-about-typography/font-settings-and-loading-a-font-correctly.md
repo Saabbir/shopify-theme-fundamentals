@@ -89,7 +89,7 @@ Always include `fallback_families` alongside `family`, never `family` alone — 
 {% endstyle %}
 ```
 
-`font_face` builds the whole `@font-face` rule for you, with sensible defaults. `font_url` instead gives you just the font file's CDN URL, for when you need to write a custom `@font-face` rule yourself — most commonly because you want to control `font-display` or another property `font_face`'s defaults don't expose. (Font-loading performance, including `font-display`, has its own full page — see [18.6. Font-Loading Performance](/all-about-typography/font-loading-performance/).)
+`font_face` builds the whole `@font-face` rule for you, with sensible defaults. `font_url` instead gives you just the font file's CDN URL, for when you need to write a custom `@font-face` rule yourself — most commonly because you want to control `font-display` or another property `font_face`'s defaults don't expose. (Font-loading performance, including `font-display`, has its own full page — see [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/).)
 
 ## A bolder or italic variant: `font_modify`
 
@@ -165,7 +165,7 @@ h1 strong,
 ```
 
 :::note[This CSS deliberately stops at family and weight]
-`h1, h2, h3` here only get `font-family` and `font-weight` — no `font-size` or `line-height`, because this page is specifically about the normal/bold `font_modify` loading pattern, not complete heading typography. A role token never carries a size to begin with (it's `family`/`weight`/`style` only); a real theme would also want each heading's size and line-height, supplied by a type preset layered on top of this. [18.10. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) and [18.12. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) cover that layer, and exactly when a component needs it.
+`h1, h2, h3` here only get `font-family` and `font-weight` — no `font-size` or `line-height`, because this page is specifically about the normal/bold `font_modify` loading pattern, not complete heading typography. A role token never carries a size to begin with (it's `family`/`weight`/`style` only); a real theme would also want each heading's size and line-height, supplied by a type preset layered on top of this. [18.11. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) and [18.13. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) cover that layer, and exactly when a component needs it.
 :::
 
 Four `font_face` outputs, four distinct files, covering exactly the four variants this theme actually uses — no more. Two details worth noticing:

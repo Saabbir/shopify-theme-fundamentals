@@ -17,7 +17,7 @@ This page originally covered the token-resolution step only. It now also covers 
 
 ## Four font roles, not one
 
-Horizon doesn't offer a single "theme font" setting. Its theme settings define four separate `font_picker` settings, each covering a different typographic role: **Body** (`type_body_font`), **Subheading** (`type_subheading_font`), **Heading** (`type_heading_font`), and **Accent** (`type_accent_font`). A merchant picks a font for each role independently — the same four-role split this chapter's [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) page generalizes into a reusable pattern for any theme.
+Horizon doesn't offer a single "theme font" setting. Its theme settings define four separate `font_picker` settings, each covering a different typographic role: **Body** (`type_body_font`), **Subheading** (`type_subheading_font`), **Heading** (`type_heading_font`), and **Accent** (`type_accent_font`). A merchant picks a font for each role independently — the same four-role split this chapter's [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) page generalizes into a reusable pattern for any theme.
 
 ## Step 1: preloading, before anything else loads
 
@@ -52,7 +52,7 @@ Three details worth noticing, each a real answer to a question this chapter rais
 
 - **`.system?` skips the preload entirely for a system font** — exactly the property covered in [18.1. Typography Fundamentals](/all-about-typography/typography-fundamentals/). There's no file to preload for a font the browser already has, so Horizon checks first rather than emitting a pointless (or broken) preload tag.
 - **`preload_tag` generates the `<link rel="preload">` tag**, given a URL from `font_url` plus `as`/`type` — rather than Horizon hand-writing the `<link>` tag itself. This is the filter to reach for any time a theme needs to preload a resource Liquid already has a URL for.
-- **`fetchpriority: 'low'`, on every single one.** [18.6. Font-Loading Performance](/all-about-typography/font-loading-performance/) advises preloading only the one or two fonts visible immediately — Horizon takes a different, equally defensible approach: it preloads all four roles unconditionally, but marks every one of them low-priority, so they compete for bandwidth behind whatever the browser considers more urgent (the page's own HTML, critical CSS) rather than against each other at full priority. Preloading four fonts at `fetchpriority: 'low'` and preloading one or two at the default priority are two different, reasonable answers to the same underlying problem — pick the one that matches how certain you are, ahead of time, about which fonts a given page actually needs.
+- **`fetchpriority: 'low'`, on every single one.** [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/) advises preloading only the one or two fonts visible immediately — Horizon takes a different, equally defensible approach: it preloads all four roles unconditionally, but marks every one of them low-priority, so they compete for bandwidth behind whatever the browser considers more urgent (the page's own HTML, critical CSS) rather than against each other at full priority. Preloading four fonts at `fetchpriority: 'low'` and preloading one or two at the default priority are two different, reasonable answers to the same underlying problem — pick the one that matches how certain you are, ahead of time, about which fonts a given page actually needs.
 
 ## Step 2: loading every variant Horizon might need — for real
 
@@ -82,7 +82,7 @@ Preloading only hints; it doesn't load a usable font. The actual `@font-face` de
 {{ tertiary_font_bold_italic | font_face: font_display: 'swap' }}
 ```
 
-(Horizon's internal variable names here — `primary_font` for Body, `tertiary_font` for Heading — are the same internal-vs-setting-vs-output naming mismatch covered on [18.13. Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/).)
+(Horizon's internal variable names here — `primary_font` for Body, `tertiary_font` for Heading — are the same internal-vs-setting-vs-output naming mismatch covered on [18.14. Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/).)
 
 ### Avoiding a duplicate download when two roles share a font
 
@@ -104,7 +104,7 @@ If a merchant picks the same font for two different roles — Subheading and Acc
 (Simplified slightly from Horizon's actual `replace`-based ID construction, for readability — the mechanism is identical: build an ID, check `contains`, skip if already rendered, append if not.) Every one of the sixteen possible variants (four roles × four variants each) goes through this same check before being loaded, which is exactly what makes it safe for Horizon to unconditionally attempt all sixteen regardless of how many fonts a merchant actually picked distinctly.
 
 :::note[`font_display: 'swap'`, passed explicitly]
-Every single `font_face` call above passes `font_display: 'swap'` explicitly — the same default [18.6. Font-Loading Performance](/all-about-typography/font-loading-performance/) recommends for most storefronts, confirmed here as Horizon's actual, real choice rather than just this site's own general advice.
+Every single `font_face` call above passes `font_display: 'swap'` explicitly — the same default [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/) recommends for most storefronts, confirmed here as Horizon's actual, real choice rather than just this site's own general advice.
 :::
 
 ## Step 3: turning the same four settings into CSS custom properties
@@ -129,7 +129,7 @@ Loading the font files (Step 2) is necessary but not sufficient — a component 
 --font-accent--weight: {{ settings.type_accent_font.weight }};
 ```
 
-This single snippet is rendered once, early, and every one of Horizon's hundreds of section and block files then reads from these twelve variables instead of touching `settings.type_*_font` directly. This is precisely the "resolve once, consume everywhere" token pattern from [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — Horizon is a real, shipping example of that exact idea, not a theoretical one.
+This single snippet is rendered once, early, and every one of Horizon's hundreds of section and block files then reads from these twelve variables instead of touching `settings.type_*_font` directly. This is precisely the "resolve once, consume everywhere" token pattern from [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — Horizon is a real, shipping example of that exact idea, not a theoretical one.
 
 ## Consuming the tokens in a component
 
@@ -146,7 +146,7 @@ A component that wants heading typography just reads the token — it never re-d
 Any component in the theme that wants "heading" typography uses the same three variables, which is what keeps every heading-styled element in the theme consistent automatically — a merchant changing the Heading font setting once, in the theme editor, updates every single one of them, with nothing further to touch.
 
 :::note[These three role variables carry no size — real Horizon headings get that from a preset instead]
-`--font-heading--family`, `--font-heading--style`, and `--font-heading--weight` are the complete role token — there's no `--font-heading--size` to go with them, by design. A real product title in Horizon isn't actually styled by these three alone; it also carries (or inherits, via its tag) one of the `.h1`–`.h6` preset classes covered in [27.3. How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/), which is what supplies `font-size` and `line-height`. The `.product-title` example above isolates the role-token layer specifically to show how it resolves — [18.12. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) covers exactly when a component should stop at the role token versus reach for a full preset.
+`--font-heading--family`, `--font-heading--style`, and `--font-heading--weight` are the complete role token — there's no `--font-heading--size` to go with them, by design. A real product title in Horizon isn't actually styled by these three alone; it also carries (or inherits, via its tag) one of the `.h1`–`.h6` preset classes covered in [27.3. How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/), which is what supplies `font-size` and `line-height`. The `.product-title` example above isolates the role-token layer specifically to show how it resolves — [18.13. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) covers exactly when a component should stop at the role token versus reach for a full preset.
 :::
 
 ## The practical upshot for overriding or debugging

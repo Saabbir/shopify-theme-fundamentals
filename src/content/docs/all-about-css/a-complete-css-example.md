@@ -82,7 +82,7 @@ Every other page in this chapter looked at one CSS concern at a time. This page 
 
 - **Co-located `{% stylesheet %}` tags**, one per file, exactly as covered in [29.1. CSS Fundamentals in a Shopify Theme](/all-about-css/css-fundamentals/) — no Liquid output inside either block, since `{% stylesheet %}` doesn't evaluate it.
 - **BEM naming** — `product-card`, `product-card__title`, `product-card__price`, per [29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/). Nothing here risks a cross-file dependency: `product-grid` only styles its own outer element, and `product-card`'s classes are defined in the same file that uses them.
-- **Design tokens, never a hardcoded value** — `var(--space-md)`, `var(--color-background)`, `var(--font-heading-family)` throughout, resolved once by the snippet shown in full on [18.16. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/).
+- **Design tokens, never a hardcoded value** — `var(--space-md)`, `var(--color-background)`, `var(--font-heading-family)` throughout, resolved once by the snippet shown in full on [18.17. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/).
 - **A container query, not a viewport media query** — `product-grid` becomes a size-query container, and its own `@container` rule decides the column count based on the grid's actual available width, per [29.5. Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/). This is also why `product-card`'s own styling never needs to know how many columns it's sitting in.
 - **Logical properties** — `padding-inline`, `padding-block`, `margin-block-end`, and `text-align: start` throughout, per [29.5. Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/) — this section's spacing survives a merchant adding a right-to-left language with zero extra code, per [29.8. RTL, Print & Other Rendering Contexts](/all-about-css/rtl-print-and-other-rendering-contexts/).
 - **A cascade layer** — both stylesheets declare their rules inside `@layer components`, per [29.6. Cascade Layers & Managing Specificity](/all-about-css/cascade-layers-and-managing-specificity/), so a theme-wide utility class (declared in a later `utilities` layer) can still override either of them when needed, without a specificity fight.
@@ -98,4 +98,4 @@ Every other page in this chapter looked at one CSS concern at a time. This page 
 
 - [14.6. A Complete Section Example](/all-about-sections/a-complete-section-example/)
 - [16.5. A Complete Snippet Example](/all-about-snippets/a-complete-snippet-example/)
-- [18.16. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/)
+- [18.17. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/)

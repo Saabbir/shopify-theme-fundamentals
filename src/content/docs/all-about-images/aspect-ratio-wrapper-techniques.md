@@ -60,7 +60,7 @@ The `width`/`height` HTML attributes above aren't redundant with the CSS `aspect
 }
 ```
 
-A merchant-facing ratio setting should offer a small, named set of options (`Square`, `Portrait`, `Landscape`) rather than a free-form number input — the actual numeric values (`1`, `0.8`, `1.78`) are an implementation detail a merchant shouldn't need to know or type, consistent with [18.13. Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/)'s broader point about naming settings by what they mean, not their raw value.
+A merchant-facing ratio setting should offer a small, named set of options (`Square`, `Portrait`, `Landscape`) rather than a free-form number input — the actual numeric values (`1`, `0.8`, `1.78`) are an implementation detail a merchant shouldn't need to know or type, consistent with [18.14. Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/)'s broader point about naming settings by what they mean, not their raw value.
 
 ## The one real reason to still use the old padding-hack wrapper
 

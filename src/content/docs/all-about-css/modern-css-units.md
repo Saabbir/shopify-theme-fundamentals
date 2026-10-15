@@ -120,7 +120,7 @@ A line of body text that's too wide is measurably harder to read — the eye los
 
 ## `clamp()` vs. a fixed `rem`: the actual decision
 
-[18.9. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) already covers `clamp()`'s mechanics in full — this is the decision that page doesn't spell out explicitly: *when* to reach for it at all, versus just picking one `rem` value.
+[18.10. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) already covers `clamp()`'s mechanics in full — this is the decision that page doesn't spell out explicitly: *when* to reach for it at all, versus just picking one `rem` value.
 
 **Default to a fixed `rem` value.** Most sizes in a theme — body text, most spacing, most component dimensions — don't need to visually scale smoothly across every possible viewport width. A fixed `1rem` body text size, or a `--space-md: 1rem` spacing token, is simpler to reason about, easier to debug (the computed value is always the same number), and exactly as accessible as a `clamp()`-based one.
 
@@ -155,8 +155,8 @@ A line of body text that's too wide is measurably harder to read — the eye los
 ## Further reading
 
 - [18.1. Typography Fundamentals](/all-about-typography/typography-fundamentals/) — unitless line-height, and `em` for letter-spacing, covered in full
-- [18.9. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) — `clamp()` mechanics, and choosing real min/max values
-- [18.10. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — the same `clamp()` pattern applied programmatically across a full preset scale
+- [18.10. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) — `clamp()` mechanics, and choosing real min/max values
+- [18.11. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — the same `clamp()` pattern applied programmatically across a full preset scale
 - [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) — why spacing settings use `px` while the generated tokens use `rem`, and the desktop/mobile pattern as an alternative to `clamp()`
 - [29.5. Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/) — `clamp()` applied beyond font-size, and viewport vs. container queries
 - [Small, Large, and Dynamic viewport units (caniuse)](https://caniuse.com/viewport-unit-variants)

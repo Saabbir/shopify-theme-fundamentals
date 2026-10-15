@@ -9,7 +9,7 @@ Typography tends to accumulate more interrelated settings and tokens than almost
 
 ## The three things that need names, and why they're different
 
-By the time a theme has a working typography system, per [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/), it has three distinct layers, and each one is named differently on purpose:
+By the time a theme has a working typography system, per [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/), it has three distinct layers, and each one is named differently on purpose:
 
 | Layer | Example | Lives in |
 |---|---|---|
@@ -55,7 +55,7 @@ Both are valid `type_`-prefixed names, and Horizon's own real settings actually 
 --font-heading-style
 ```
 
-This site's own worked examples — [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) and [18.16. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/) — use **single-dash kebab-case** throughout. Horizon's real, shipped source (quoted directly on [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/)) separates the role from the property with a **double dash** instead. Neither is "more correct" — pick one per theme and use it everywhere in that theme:
+This site's own worked examples — [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) and [18.17. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/) — use **single-dash kebab-case** throughout. Horizon's real, shipped source (quoted directly on [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/)) separates the role from the property with a **double dash** instead. Neither is "more correct" — pick one per theme and use it everywhere in that theme:
 
 | | This site | Horizon |
 |---|---|---|
@@ -80,7 +80,7 @@ They're solving different problems, so they're allowed to diverge. `type_` exist
 --type-preset-h1-line-height
 ```
 
-**Pattern: `--type-preset-{name}-{property}`.** `type-preset` as a fixed prefix distinguishes a preset token (a bundle of several properties under one named style, covered in full on [18.10. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/)) from a role token (`--font-heading-family`) at a glance — they look related, because they are, but not identical, because a preset composes several role tokens together rather than being one itself.
+**Pattern: `--type-preset-{name}-{property}`.** `type-preset` as a fixed prefix distinguishes a preset token (a bundle of several properties under one named style, covered in full on [18.11. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/)) from a role token (`--font-heading-family`) at a glance — they look related, because they are, but not identical, because a preset composes several role tokens together rather than being one itself.
 
 Name a preset by **what it's for**, not what it looks like:
 
@@ -113,7 +113,7 @@ Horizon's shared `--font-` umbrella comes at the cost of the name alone not tell
 .paragraph { ... }
 ```
 
-**Pattern: the class is named exactly the same as the preset itself — no prefix at all.** This is a deliberate departure from every other pattern on this page: a setting gets `type_`, a role token gets `--font-`, a preset token gets `--type-preset-` — each prefix exists so that identifier stays unambiguous sitting among many others of the same kind (dozens of settings, dozens of custom properties). A preset's reusable class doesn't have that problem: [18.10. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/#decision-5-one-global-class-per-preset-not-a-redeclaration-per-component) covers why — it's defined exactly once, in one global stylesheet, so there's nothing for a short name to collide with. Keeping it short is also what makes it pleasant to actually type into a `class` attribute, which happens constantly once a preset system is wired into real markup.
+**Pattern: the class is named exactly the same as the preset itself — no prefix at all.** This is a deliberate departure from every other pattern on this page: a setting gets `type_`, a role token gets `--font-`, a preset token gets `--type-preset-` — each prefix exists so that identifier stays unambiguous sitting among many others of the same kind (dozens of settings, dozens of custom properties). A preset's reusable class doesn't have that problem: [18.11. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/#decision-5-one-global-class-per-preset-not-a-redeclaration-per-component) covers why — it's defined exactly once, in one global stylesheet, so there's nothing for a short name to collide with. Keeping it short is also what makes it pleasant to actually type into a `class` attribute, which happens constantly once a preset system is wired into real markup.
 
 :::note[Horizon confirms this directly]
 Horizon's real `assets/base.css` names its preset classes exactly `.h1` through `.h6` and `.paragraph` — unprefixed, identical to the preset name — even though its CSS custom properties for those same presets use the longer, namespaced `--font-h1--family` form. The two naming surfaces (token vs. class) are allowed to diverge for the same reason `type_` (settings) and `--font-` (CSS) diverge elsewhere on this page: they solve different problems, so they don't need to look alike.
@@ -178,6 +178,6 @@ One detail worth knowing if you ever read `theme-styles-variables.liquid` direct
 ## Further reading
 
 - [27.5. Naming & Code Conventions in Horizon](/horizon-codebase-tour/naming-and-code-conventions/)
-- [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
-- [18.10. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/)
+- [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
+- [18.11. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/)
 - [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) — the same `palette_` prefix convention, applied to color

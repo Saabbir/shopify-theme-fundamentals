@@ -25,7 +25,7 @@ The deepest-covered folder in this chapter: beyond the color and typography file
 
 ## `assets/`
 
-CSS and JavaScript, plus any other static files (icons as SVGs, if not inlined directly in snippets). Horizon is confirmed to include dedicated JavaScript for scroll-triggered animations and media interactions, separate from its base styling — reflecting the "animation layers" the theme is known for beyond a more minimal theme's JavaScript footprint. Expect most interactive behavior here to follow the Web Component pattern from [18.11. Wiring Typography into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/)'s JavaScript counterpart — one custom element per interactive piece, registered with `customElements.define`, each in its own file.
+CSS and JavaScript, plus any other static files (icons as SVGs, if not inlined directly in snippets). Horizon is confirmed to include dedicated JavaScript for scroll-triggered animations and media interactions, separate from its base styling — reflecting the "animation layers" the theme is known for beyond a more minimal theme's JavaScript footprint. Expect most interactive behavior here to follow the Web Component pattern from [18.12. Wiring Typography into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/)'s JavaScript counterpart — one custom element per interactive piece, registered with `customElements.define`, each in its own file.
 
 ## `locales/`
 

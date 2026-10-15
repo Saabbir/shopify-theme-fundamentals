@@ -70,7 +70,7 @@ Unlike a `font_picker`-based font, there's no font object here, and no `font_fac
 
 Two real `@font-face` rules, both named `'Canela'`, distinguished only by `font-weight` — this is exactly how the browser knows which file to actually download when CSS asks for `font-weight: 700` on text set in `font-family: 'Canela', ...`. Getting `font-weight`/`font-style` wrong on one of these rules (writing `400` on the bold file, say) doesn't error; it just makes the browser apply the wrong file to the wrong weight, silently.
 
-`font-display: swap` here means the same thing it does for a `font_picker`-based font — see [18.6. Font-Loading Performance](/all-about-typography/font-loading-performance/) for the full reasoning behind that choice, and for layout-shift and preloading guidance that applies here too.
+`font-display: swap` here means the same thing it does for a `font_picker`-based font — see [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/) for the full reasoning behind that choice, and for layout-shift and preloading guidance that applies here too.
 
 ## There's no fallback_families — write the stack yourself
 
@@ -80,11 +80,11 @@ Two real `@font-face` rules, both named `'Canela'`, distinguished only by `font-
 </h1>
 ```
 
-A `font_picker`-based font comes with a ready-made `fallback_families` string. A hand-loaded font doesn't — the fallback stack has to be chosen and written manually, same as plain CSS anywhere else. Pick a fallback with a similar overall character (a serif-for-serif, geometric-sans-for-geometric-sans) rather than a generic default, for the same layout-shift reasons [18.6. Font-Loading Performance](/all-about-typography/font-loading-performance/) covers.
+A `font_picker`-based font comes with a ready-made `fallback_families` string. A hand-loaded font doesn't — the fallback stack has to be chosen and written manually, same as plain CSS anywhere else. Pick a fallback with a similar overall character (a serif-for-serif, geometric-sans-for-geometric-sans) rather than a generic default, for the same layout-shift reasons [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/) covers.
 
 ## Still wiring it into the same token system
 
-The rest of the theme doesn't need to know this font was loaded differently — it can still be exposed as a normal design token, following [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)'s pattern, just with a hardcoded value instead of one read from `settings`:
+The rest of the theme doesn't need to know this font was loaded differently — it can still be exposed as a normal design token, following [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)'s pattern, just with a hardcoded value instead of one read from `settings`:
 
 ```liquid
 {% style %}
@@ -106,7 +106,7 @@ h3 {
 ```
 
 :::note[This CSS deliberately stops at family and weight]
-Same as elsewhere in this chapter: a role token carries `family`/`weight`/`style` only, never a size — `h1, h2, h3` here would also want a `font-size` and `line-height` in a real theme, supplied by a type preset layered on top. See [18.10. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) and [18.12. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/).
+Same as elsewhere in this chapter: a role token carries `family`/`weight`/`style` only, never a size — `h1, h2, h3` here would also want a `font-size` and `line-height` in a real theme, supplied by a type preset layered on top. See [18.11. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) and [18.13. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/).
 :::
 
 The CSS consuming `--font-heading-family` looks identical either way — it has no way to tell, and doesn't need to, whether the value behind it came from a merchant's `font_picker` choice or a hardcoded brand font. This is the real payoff of keeping settings and tokens as separate layers in the first place.
@@ -127,7 +127,7 @@ This is the real, permanent trade-off of this whole approach. A `font_picker`-ba
 >
 ```
 
-Font preloading is already covered generally in [18.6. Font-Loading Performance](/all-about-typography/font-loading-performance/), but there's one detail that matters specifically here: a browser always fetches a preloaded font in anonymous CORS mode, by spec, even when the file is served from what looks like the same origin — omitting `crossorigin` means the preload fires, downloads the file, and the browser **discards it and downloads it again** when the actual `@font-face` rule needs it, silently wasting the entire preload. Since a theme asset is actually served from Shopify's CDN domain rather than the storefront's own domain, this isn't just a spec technicality here — it's a real cross-origin request, and `crossorigin` (empty value defaults to `anonymous`) is required for the preload to do anything useful at all.
+Font preloading is already covered generally in [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/), but there's one detail that matters specifically here: a browser always fetches a preloaded font in anonymous CORS mode, by spec, even when the file is served from what looks like the same origin — omitting `crossorigin` means the preload fires, downloads the file, and the browser **discards it and downloads it again** when the actual `@font-face` rule needs it, silently wasting the entire preload. Since a theme asset is actually served from Shopify's CDN domain rather than the storefront's own domain, this isn't just a spec technicality here — it's a real cross-origin request, and `crossorigin` (empty value defaults to `anonymous`) is required for the preload to do anything useful at all.
 
 ## Key takeaways
 
@@ -146,5 +146,5 @@ Font preloading is already covered generally in [18.6. Font-Loading Performance]
 - [The `file_url` filter](https://shopify.dev/docs/api/liquid/filters/file_url) (shopify.dev)
 - [Theme architecture: assets](https://shopify.dev/docs/storefronts/themes/architecture#assets) (shopify.dev)
 - [`@font-face` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face)
-- [18.6. Font-Loading Performance](/all-about-typography/font-loading-performance/)
-- [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
+- [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/)
+- [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)

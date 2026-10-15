@@ -18,7 +18,7 @@ A handful of terms get used precisely and repeatedly throughout this chapter. Th
 | Preset token | A CSS custom property that's part of a named type preset, bundling several properties — including a size — under one name | `--type-preset-h1-font-size` |
 | Preset class | The CSS class a component applies in its markup to get a full preset's typography at once, instead of referencing its tokens one by one | `.h1`, `.paragraph` |
 
-The short version: every role token and every preset token *is* a CSS custom property — "role token" and "preset token" just name which of the two jobs that particular custom property is doing. [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) builds up to this distinction from scratch if you want the full reasoning; [18.12. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) covers exactly when a component reaches for which.
+The short version: every role token and every preset token *is* a CSS custom property — "role token" and "preset token" just name which of the two jobs that particular custom property is doing. [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) builds up to this distinction from scratch if you want the full reasoning; [18.13. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) covers exactly when a component reaches for which.
 
 ## What's in this chapter
 
@@ -29,17 +29,18 @@ The short version: every role token and every preset token *is* a CSS custom pro
 | [18.3. Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) | `font_picker`, the font object, and the filters that actually get a font onto the page |
 | [18.4. Variable Fonts](/all-about-typography/variable-fonts/) | One font file covering a whole range of weights, instead of loading a separate file per weight |
 | [18.5. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) | What to do when a client's exact brand font isn't in Shopify's font library |
-| [18.6. Font-Loading Performance](/all-about-typography/font-loading-performance/) | `font-display`, preloading, and avoiding layout shift while a font loads |
-| [18.7. How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) | A real, current theme's typography system, read directly from its source |
-| [18.8. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) | Turning a handful of font settings into a reusable, named system the whole theme draws from |
-| [18.9. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) | Building a full `clamp()`-based scale across every heading level |
-| [18.10. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) | Designing a full preset system, how Horizon built its own, and using presets properly in sections, blocks, and CSS |
-| [18.11. Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/) | The concrete schema-to-CSS path, worked through end to end |
-| [18.12. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) | A decision tree and worked examples for what typography CSS belongs in a component's own stylesheet — and what should always come from a token or preset |
-| [18.13. Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/) | A consistent way to name every setting, CSS custom property, and preset — and how Horizon really does it |
-| [18.14. Font Fallback for Multi-Language Stores](/all-about-typography/font-fallback-for-multi-language-stores/) | What happens when a chosen font doesn't support every character a shopper's language needs |
-| [18.15. Typography Best Practices](/all-about-typography/typography-best-practices/) | A practical checklist, distilled from everything else in this chapter |
-| [18.16. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/) | One snippet merging typography, color, and spacing settings into CSS custom properties |
+| [18.6. Font Substitutes & Advanced Variable Axis Control](/all-about-typography/font-substitutes-and-advanced-variable-axis-control/) | What it means when a client's font files are tuned open-source substitutes, not the real licensed font, and the `font-variation-settings` / `font-feature-settings` properties that kind of file leans on |
+| [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/) | `font-display`, preloading, and avoiding layout shift while a font loads |
+| [18.8. How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) | A real, current theme's typography system, read directly from its source |
+| [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) | Turning a handful of font settings into a reusable, named system the whole theme draws from |
+| [18.10. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) | Building a full `clamp()`-based scale across every heading level |
+| [18.11. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) | Designing a full preset system, how Horizon built its own, and using presets properly in sections, blocks, and CSS |
+| [18.12. Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/) | The concrete schema-to-CSS path, worked through end to end |
+| [18.13. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) | A decision tree and worked examples for what typography CSS belongs in a component's own stylesheet — and what should always come from a token or preset |
+| [18.14. Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/) | A consistent way to name every setting, CSS custom property, and preset — and how Horizon really does it |
+| [18.15. Font Fallback for Multi-Language Stores](/all-about-typography/font-fallback-for-multi-language-stores/) | What happens when a chosen font doesn't support every character a shopper's language needs |
+| [18.16. Typography Best Practices](/all-about-typography/typography-best-practices/) | A practical checklist, distilled from everything else in this chapter |
+| [18.17. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/) | One snippet merging typography, color, and spacing settings into CSS custom properties |
 
 ## Further reading
 
