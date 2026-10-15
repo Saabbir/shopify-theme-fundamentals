@@ -55,10 +55,17 @@ Both are valid `type_`-prefixed names, and Horizon's own real settings actually 
 --font-heading-style
 ```
 
-This site's own worked examples — [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) and [A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/) — use **single-dash kebab-case** throughout: `--font-{role}-{property}`. It's the simpler of two valid conventions, and the right default for most themes.
+This site's own worked examples — [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) and [A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/) — use **single-dash kebab-case** throughout. Horizon's real, shipped source (quoted directly on [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/)) separates the role from the property with a **double dash** instead. Neither is "more correct" — pick one per theme and use it everywhere in that theme:
+
+| | This site | Horizon |
+|---|---|---|
+| Pattern | `--font-{role}-{property}` | `--font-{role}--{property}` |
+| Font family | `--font-heading-family` | `--font-heading--family` |
+| Font weight | `--font-heading-weight` | `--font-heading--weight` |
+| Font style | `--font-heading-style` | `--font-heading--style` |
 
 :::note[Horizon uses a double dash instead — both are legitimate]
-Horizon's real, shipped source (quoted directly on [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/)) separates the role from the property with a **double dash** instead: `--font-heading--family`, `--font-heading--weight`. The double dash is a deliberate visual signal, grouping every property of one role under a shared, scannable prefix (`--font-heading--`) while keeping each one individually addressable — it reads slightly more explicitly once a token system has grown large. Neither convention is "more correct"; pick one for a given theme and use it everywhere in that theme. This site defaults its own generic examples to the simpler single-dash form; Horizon's double-dash form is worth adopting directly if a theme's token system is large enough that visually grouping a token family matters.
+The double dash is a deliberate visual signal, grouping every property of one role under a shared, scannable prefix (`--font-heading--`) while keeping each one individually addressable — it reads slightly more explicitly once a token system has grown large. This site defaults its own generic examples to the simpler single-dash form; Horizon's double-dash form is worth adopting directly if a theme's token system is large enough that visually grouping a token family matters.
 :::
 
 :::tip[Why `type_` in settings but `--font-` in CSS — shouldn't they match?]
@@ -85,8 +92,17 @@ Name a preset by **what it's for**, not what it looks like:
 
 A preset named `large` has nowhere to go once a theme needs something even larger — `--type-preset-h1`, `--type-preset-display`, or `--type-preset-eyebrow` all describe a *role* the preset plays, which stays meaningful no matter how many other presets get added around it later.
 
+This site gives a preset token its own fixed prefix. Horizon's real preset tokens (quoted in full on [How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/)) take the opposite approach — it extends the *same* `--font-` family used for role tokens to presets too, rather than introducing a separate prefix:
+
+| | This site | Horizon |
+|---|---|---|
+| Pattern | `--type-preset-{name}-{property}` | `--font-{role}--{property}` |
+| H2 preset, font family | `--type-preset-h2-font-family` | `--font-h2--family` |
+| H2 preset, font size | `--type-preset-h2-font-size` | `--font-h2--size` |
+| H2 preset, font weight | `--type-preset-h2-font-weight` | `--font-h2--weight` |
+
 :::note[Horizon takes the other approach — and that's equally legitimate]
-Horizon's real preset tokens (quoted in full on [How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/)) are `--font-h2--family`, `--font-h2--size`, `--font-h2--weight`, and so on — it extends the *same* `--font-` family used for role tokens to presets too, rather than introducing a separate prefix. That keeps every typography token, role or preset, under one shared `--font-` umbrella, at the cost of the name alone not telling you whether `h2` refers to a role or a preset (you have to already know Horizon's roles are Body/Subheading/Heading/Accent, not `h1`–`h6`, to tell them apart). This site recommends `--type-preset-{name}-{property}` instead because the distinction is visible in the prefix itself, with no prior knowledge required — but if a theme already follows Horizon's double-dash role tokens, extending that same family to presets, the way Horizon does, is an equally consistent choice. Pick one approach and apply it theme-wide, the same as the single-dash/double-dash decision above.
+Horizon's shared `--font-` umbrella comes at the cost of the name alone not telling you whether `h2` refers to a role or a preset — you have to already know Horizon's roles are Body/Subheading/Heading/Accent, not `h1`–`h6`, to tell them apart. This site recommends `--type-preset-{name}-{property}` instead because the distinction is visible in the prefix itself, with no prior knowledge required — but if a theme already follows Horizon's double-dash role tokens, extending that same family to presets, the way Horizon does, is an equally consistent choice. Pick one approach and apply it theme-wide, the same as the single-dash/double-dash decision above.
 :::
 
 ## Naming a preset's reusable CSS class

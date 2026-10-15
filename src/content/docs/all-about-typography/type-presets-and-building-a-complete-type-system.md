@@ -129,6 +129,18 @@ h1,
 The same pattern repeats for `h2` through `h6`, plus a `.paragraph` class for body text. Two things worth noticing in the real version: `.h1.h1` (the class written twice) is a deliberate specificity trick — doubling a class selector raises its specificity without reaching for `!important`, which matters here because `.h1` needs to reliably win against other single-class component selectors it might collide with. And `.text-block.h1 > *` / `.text-block.h1 :is(h1, h2, h3, h4, h5, h6)` handle a container being given the `.h1` class directly, cascading the treatment to whatever's actually inside it. This whole ruleset lives in one static CSS file, loaded once, site-wide — never redeclared inside an individual section or block's own stylesheet.
 :::
 
+| Property | This site's token | Horizon's real token |
+|---|---|---|
+| Font family | `--type-preset-{level}-font-family` | `--font-{level}--family` |
+| Font style | *(not part of this page's basic example)* | `--font-{level}--style` |
+| Font weight | `--type-preset-{level}-font-weight` | `--font-{level}--weight` |
+| Font size | `--type-preset-{level}-font-size` | `--font-{level}--size` |
+| Line height | `--type-preset-{level}-line-height` | `--font-{level}--line-height` |
+| Letter spacing | *(not part of this page's basic example)* | `--font-{level}--letter-spacing` |
+| Text transform (case) | *(not part of this page's basic example)* | `--font-{level}--case` |
+
+Horizon's real preset carries three more properties than this page's simplified example — letter spacing, text-transform (case), and a `color` reference — which is why its selector list is also longer: it's handling a container being handed the class directly (`.text-block.h1 > *`), not just the bare tag and an exact-match class.
+
 ## Case study: how Horizon built its type system
 
 Horizon — Shopify's current flagship reference theme — takes the per-level-settings, shared-scales approach from Decisions 3 and 4 above, built at real production scale. The short version, verified directly against its current source:
