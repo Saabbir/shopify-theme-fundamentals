@@ -72,11 +72,11 @@ Two `font_picker` settings for the typography roles, and one `color_scheme_group
     --font-heading-style: {{ settings.type_heading_font.style }};
 
     /* Spacing tokens — a fixed scale, not driven by any setting */
-    --space-xs: 0.5rem;
-    --space-sm: 1rem;
-    --space-md: 1.5rem;
-    --space-lg: 2.5rem;
-    --space-xl: 4rem;
+    --space-xs: 0.5rem;  /* 8px */
+    --space-sm: 1rem;    /* 16px */
+    --space-md: 1.5rem;  /* 24px */
+    --space-lg: 2.5rem;  /* 40px */
+    --space-xl: 4rem;    /* 64px */
   }
 
   {{ settings.type_body_font | font_face }}
