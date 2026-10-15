@@ -14,7 +14,7 @@ A merchant picks a product for a `product`-type setting, ships the section, and 
 {% comment %} nil, the moment the referenced product is deleted {% endcomment %}
 ```
 
-There's no error, no broken object with some properties still populated and others missing — the setting reverts to exactly the same `nil` state as a merchant who never picked anything in the first place. This is actually the simplest possible outcome to design around: the empty-state handling [Resource Pickers: Full Objects, Not IDs](/all-about-input-settings/resource-pickers-full-objects-not-ids/) already requires for the unselected case is the *same* code path that correctly handles a since-deleted resource — there's no separate "deleted" state to detect or handle differently.
+There's no error, no broken object with some properties still populated and others missing — the setting reverts to exactly the same `nil` state as a merchant who never picked anything in the first place. This is actually the simplest possible outcome to design around: the empty-state handling [40.2. Resource Pickers: Full Objects, Not IDs](/all-about-input-settings/resource-pickers-full-objects-not-ids/) already requires for the unselected case is the *same* code path that correctly handles a since-deleted resource — there's no separate "deleted" state to detect or handle differently.
 
 ```liquid
 {% if section.settings.featured_product %}
@@ -48,6 +48,6 @@ A deleted collection, a removed image, or a deleted navigation menu all behave i
 
 ## Further reading
 
-- [Resource Pickers: Full Objects, Not IDs](/all-about-input-settings/resource-pickers-full-objects-not-ids/)
-- [Default-Value Requirements & Validation Gotchas](/all-about-input-settings/default-value-requirements-and-validation-gotchas/)
-- [Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/)
+- [40.2. Resource Pickers: Full Objects, Not IDs](/all-about-input-settings/resource-pickers-full-objects-not-ids/)
+- [40.3. Default-Value Requirements & Validation Gotchas](/all-about-input-settings/default-value-requirements-and-validation-gotchas/)
+- [6.1. Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/)

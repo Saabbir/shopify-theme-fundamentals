@@ -14,7 +14,7 @@ description: product, collection, image_picker, and video all return the real, u
 {{ section.settings.image.alt }}
 ```
 
-A `product`-type setting doesn't return a product ID that then needs a second lookup — `section.settings.featured_product` already *is* a full `product` object, with every property covered in [All About Products](/all-about-products/) available immediately. The same is true for `collection`, `image_picker` (a real `image` object, same shape as `product.featured_image`), `blog`, `page`, and every other resource-picker type. There's no `{% assign product = all_products[section.settings.featured_product_handle] %}` lookup step required or expected — if a theme is doing that, it's almost certainly working around a misunderstanding of what the setting already returns.
+A `product`-type setting doesn't return a product ID that then needs a second lookup — `section.settings.featured_product` already *is* a full `product` object, with every property covered in [32. All About Products](/all-about-products/) available immediately. The same is true for `collection`, `image_picker` (a real `image` object, same shape as `product.featured_image`), `blog`, `page`, and every other resource-picker type. There's no `{% assign product = all_products[section.settings.featured_product_handle] %}` lookup step required or expected — if a theme is doing that, it's almost certainly working around a misunderstanding of what the setting already returns.
 
 ## No schema-level `default` for any resource picker
 
@@ -75,6 +75,6 @@ Since a resource picker genuinely cannot have a default, every section or block 
 
 ## Further reading
 
-- [Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/)
-- [All About Products](/all-about-products/)
-- [What Happens When a Referenced Resource Is Deleted](/all-about-input-settings/what-happens-when-a-referenced-resource-is-deleted/)
+- [6.1. Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/)
+- [32. All About Products](/all-about-products/)
+- [40.4. What Happens When a Referenced Resource Is Deleted](/all-about-input-settings/what-happens-when-a-referenced-resource-is-deleted/)

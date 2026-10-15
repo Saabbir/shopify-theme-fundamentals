@@ -66,4 +66,4 @@ Every `filter_value` already carries its own ready-made URLs — `url_to_add` (t
 - [`filter` (shopify.dev)](https://shopify.dev/docs/api/liquid/objects/filter)
 - [`filter_value` (shopify.dev)](https://shopify.dev/docs/api/liquid/objects/filter_value)
 - [Support storefront filtering (shopify.dev)](https://shopify.dev/docs/storefronts/themes/navigation-search/filtering/storefront-filtering/support-storefront-filtering)
-- [Rendering Filters: list, price_range & boolean](/all-about-collection-filtering-and-sorting/rendering-filters-list-price-range-and-boolean/)
+- [35.2. Rendering Filters: list, price_range & boolean](/all-about-collection-filtering-and-sorting/rendering-filters-list-price-range-and-boolean/)

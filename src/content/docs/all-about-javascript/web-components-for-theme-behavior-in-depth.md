@@ -52,7 +52,7 @@ class Countdown extends HTMLElement {
 }
 ```
 
-`disconnectedCallback` matters specifically because the theme editor can remove a section's markup and re-render it, covered in [Theme Editor Events in Depth](/all-about-javascript/theme-editor-events-in-depth/) — a component that starts an interval or attaches a global event listener in `connectedCallback` but never cleans it up in `disconnectedCallback` leaks a running timer or listener every time a merchant edits that section, even though the original element is gone.
+`disconnectedCallback` matters specifically because the theme editor can remove a section's markup and re-render it, covered in [30.5. Theme Editor Events in Depth](/all-about-javascript/theme-editor-events-in-depth/) — a component that starts an interval or attaches a global event listener in `connectedCallback` but never cleans it up in `disconnectedCallback` leaks a running timer or listener every time a merchant edits that section, even though the original element is gone.
 
 ## Observed attributes: reacting to an attribute changing in place
 
@@ -78,12 +78,12 @@ class QuantitySelector extends HTMLElement {
 
 ## Encapsulation without Shadow DOM
 
-The browser's Web Components spec includes Shadow DOM, which gives an element a genuinely isolated internal DOM tree with its own scoped styles. Most theme components deliberately skip it: Shadow DOM's style isolation cuts both ways — it also blocks a theme's own design tokens (the custom properties from [CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/)) from reaching inside the shadow boundary, unless they're explicitly inherited, which they aren't by default for anything beyond a plain custom property's natural inheritance.
+The browser's Web Components spec includes Shadow DOM, which gives an element a genuinely isolated internal DOM tree with its own scoped styles. Most theme components deliberately skip it: Shadow DOM's style isolation cuts both ways — it also blocks a theme's own design tokens (the custom properties from [29.4. CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/)) from reaching inside the shadow boundary, unless they're explicitly inherited, which they aren't by default for anything beyond a plain custom property's natural inheritance.
 
-A plain custom element (`class extends HTMLElement`, no `attachShadow` call) renders its children directly into the normal document tree — "light DOM." It gets its scoping instead from the same BEM-plus-prefix naming discipline used everywhere else in a theme's CSS, covered in [Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/), rather than from the browser enforcing isolation. That trade — giving up hard style isolation in exchange for every component automatically inheriting the theme's design tokens — is almost always the right one for a storefront theme, where consistent, settings-driven styling across every component matters more than one component being fully sealed off from the rest of the page.
+A plain custom element (`class extends HTMLElement`, no `attachShadow` call) renders its children directly into the normal document tree — "light DOM." It gets its scoping instead from the same BEM-plus-prefix naming discipline used everywhere else in a theme's CSS, covered in [29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/), rather than from the browser enforcing isolation. That trade — giving up hard style isolation in exchange for every component automatically inheriting the theme's design tokens — is almost always the right one for a storefront theme, where consistent, settings-driven styling across every component matters more than one component being fully sealed off from the rest of the page.
 
 :::tip["Almost always" — a few real exceptions are covered next]
-A component that genuinely needs to survive a CSS environment this theme doesn't control — one shipped across multiple themes or stores, or one wrapping untrusted third-party markup — is the actual case for Shadow DOM, `<slot>`, and `::part()`. [Shadow DOM, Slots & ::part(): When You'd Actually Reach for Them](/all-about-javascript/shadow-dom-slots-and-part/) covers exactly what crosses the isolation boundary (custom properties do; classes don't) and walks through a real component built with it.
+A component that genuinely needs to survive a CSS environment this theme doesn't control — one shipped across multiple themes or stores, or one wrapping untrusted third-party markup — is the actual case for Shadow DOM, `<slot>`, and `::part()`. [30.3. Shadow DOM, Slots & ::part(): When You'd Actually Reach for Them](/all-about-javascript/shadow-dom-slots-and-part/) covers exactly what crosses the isolation boundary (custom properties do; classes don't) and walks through a real component built with it.
 :::
 
 ## Why a custom tag name needs its own prefix
@@ -128,5 +128,5 @@ A component's accessibility isn't finished once its initial markup has the right
 ## Further reading
 
 - [Using custom elements (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements)
-- [Theme Editor Events in Depth](/all-about-javascript/theme-editor-events-in-depth/)
-- [Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/)
+- [30.5. Theme Editor Events in Depth](/all-about-javascript/theme-editor-events-in-depth/)
+- [29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/)

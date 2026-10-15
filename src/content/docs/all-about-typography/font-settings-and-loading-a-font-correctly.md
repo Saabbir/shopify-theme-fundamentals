@@ -75,7 +75,7 @@ Writing `font-family: {{ settings.type_heading_font.family }};` somewhere in you
 </h1>
 ```
 
-Always include `fallback_families` alongside `family`, never `family` alone — per [Typography Fundamentals](/all-about-typography/typography-fundamentals/), a font-family value should always be a fallback stack. `fallback_families` is a ready-made, comma-separated list of reasonable substitutes Shopify provides for each font in its library, used automatically while the chosen font is still loading, or if it fails to load at all.
+Always include `fallback_families` alongside `family`, never `family` alone — per [18.1. Typography Fundamentals](/all-about-typography/typography-fundamentals/), a font-family value should always be a fallback stack. `fallback_families` is a ready-made, comma-separated list of reasonable substitutes Shopify provides for each font in its library, used automatically while the chosen font is still loading, or if it fails to load at all.
 
 ## Getting the raw font URL: `font_url`
 
@@ -89,7 +89,7 @@ Always include `fallback_families` alongside `family`, never `family` alone — 
 {% endstyle %}
 ```
 
-`font_face` builds the whole `@font-face` rule for you, with sensible defaults. `font_url` instead gives you just the font file's CDN URL, for when you need to write a custom `@font-face` rule yourself — most commonly because you want to control `font-display` or another property `font_face`'s defaults don't expose. (Font-loading performance, including `font-display`, has its own full page — see [Font-Loading Performance](/all-about-typography/font-loading-performance/).)
+`font_face` builds the whole `@font-face` rule for you, with sensible defaults. `font_url` instead gives you just the font file's CDN URL, for when you need to write a custom `@font-face` rule yourself — most commonly because you want to control `font-display` or another property `font_face`'s defaults don't expose. (Font-loading performance, including `font-display`, has its own full page — see [18.13. Font-Loading Performance](/all-about-typography/font-loading-performance/).)
 
 ## A bolder or italic variant: `font_modify`
 
@@ -165,7 +165,7 @@ h1 strong,
 ```
 
 :::note[This CSS deliberately stops at family and weight]
-`h1, h2, h3` here only get `font-family` and `font-weight` — no `font-size` or `line-height`, because this page is specifically about the normal/bold `font_modify` loading pattern, not complete heading typography. A role token never carries a size to begin with (it's `family`/`weight`/`style` only); a real theme would also want each heading's size and line-height, supplied by a type preset layered on top of this. [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) and [Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) cover that layer, and exactly when a component needs it.
+`h1, h2, h3` here only get `font-family` and `font-weight` — no `font-size` or `line-height`, because this page is specifically about the normal/bold `font_modify` loading pattern, not complete heading typography. A role token never carries a size to begin with (it's `family`/`weight`/`style` only); a real theme would also want each heading's size and line-height, supplied by a type preset layered on top of this. [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) and [18.9. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) cover that layer, and exactly when a component needs it.
 :::
 
 Four `font_face` outputs, four distinct files, covering exactly the four variants this theme actually uses — no more. Two details worth noticing:
@@ -184,7 +184,7 @@ Not every font family has every weight or style as a real, available variant. If
 %}
 ```
 
-[Variable Fonts](/all-about-typography/variable-fonts/) covers a practical side effect of this: trying several `font_modify` weights and watching which ones come back `nil` is actually a decent way to probe whether a font behaves like a variable font with a wide weight range, versus a traditional family with only two or three fixed weights.
+[18.12. Variable Fonts](/all-about-typography/variable-fonts/) covers a practical side effect of this: trying several `font_modify` weights and watching which ones come back `nil` is actually a decent way to probe whether a font behaves like a variable font with a wide weight range, versus a traditional family with only two or three fixed weights.
 :::
 
 ## Key takeaways
@@ -197,7 +197,7 @@ Not every font family has every weight or style as a real, available variant. If
 
 ## Further reading
 
-- [Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) — when the font isn't in Shopify's library at all, and `font_picker` isn't an option
+- [18.4. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) — when the font isn't in Shopify's library at all, and `font_picker` isn't an option
 - [The `font_picker` setting](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#font-picker) (shopify.dev)
 - [Available fonts in Shopify's font library](https://shopify.dev/docs/storefronts/themes/architecture/settings/fonts#available-fonts) (shopify.dev)
 - [The `font_face` filter](https://shopify.dev/docs/api/liquid/filters/font_face) (shopify.dev)

@@ -7,11 +7,11 @@ description: What happens when a merchant's chosen font doesn't support every ch
 
 ## The problem `fallback_families` alone doesn't fully solve
 
-`fallback_families` — the ready-made list of substitute fonts covered in [Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) — handles the case where a font is still loading or fails to load at all. It doesn't handle a different, easy-to-miss problem: a font that loads perfectly fine, but simply doesn't include glyphs (character shapes) for every language a store sells in. A Latin-script display font, however beautifully it renders English headings, usually has no glyphs at all for Japanese, Arabic, or Cyrillic text — and a browser's behavior when a font is missing a specific character is to silently substitute a different font for just that character, which can look visually jarring mid-sentence.
+`fallback_families` — the ready-made list of substitute fonts covered in [18.3. Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) — handles the case where a font is still loading or fails to load at all. It doesn't handle a different, easy-to-miss problem: a font that loads perfectly fine, but simply doesn't include glyphs (character shapes) for every language a store sells in. A Latin-script display font, however beautifully it renders English headings, usually has no glyphs at all for Japanese, Arabic, or Cyrillic text — and a browser's behavior when a font is missing a specific character is to silently substitute a different font for just that character, which can look visually jarring mid-sentence.
 
 ## Where this actually bites in a Shopify theme
 
-This matters most for any text a shopper controls or a translator provides, not just a merchant's own copy: a customer's name on an order confirmation, a translated storefront in a language the chosen display font wasn't designed for, or a product title entered in a different script. [Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) already covered translating a theme's own interface text — this is the follow-on concern once that translated text actually needs to render in a specific font.
+This matters most for any text a shopper controls or a translator provides, not just a merchant's own copy: a customer's name on an order confirmation, a translated storefront in a language the chosen display font wasn't designed for, or a product title entered in a different script. [6.5. Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) already covered translating a theme's own interface text — this is the follow-on concern once that translated text actually needs to render in a specific font.
 
 ## Checking whether a font actually covers what you need
 
@@ -36,5 +36,5 @@ Rather than trying to find one font that covers every script a global store migh
 
 ## Further reading
 
-- [Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/)
+- [6.5. Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/)
 - [`system-ui` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#syntax)

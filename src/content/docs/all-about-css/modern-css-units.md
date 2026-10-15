@@ -27,7 +27,7 @@ A `px` value never changes, no matter what font-size a shopper's browser is set 
 ```
 
 :::note[Shopify's merchant-facing range settings use px too — for a different reason]
-[Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) explains why a `padding_top` `range` setting is defined in `px`, even though the CSS it generates ultimately resolves to a `rem`-based scale: a merchant dragging a slider thinks in pixels, not root-relative units, and `px` is simply the more legible unit for *that* UI, independent of what the underlying token system does with it.
+[7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) explains why a `padding_top` `range` setting is defined in `px`, even though the CSS it generates ultimately resolves to a `rem`-based scale: a merchant dragging a slider thinks in pixels, not root-relative units, and `px` is simply the more legible unit for *that* UI, independent of what the underlying token system does with it.
 :::
 
 ### `rem`: the default for almost everything else
@@ -53,7 +53,7 @@ Use `rem` as the default unit for font sizes, spacing (margin, padding, gap), an
 }
 ```
 
-[Typography Fundamentals](/all-about-typography/typography-fundamentals/#letter-spacing-and-text-transform-smaller-often-forgotten-levers) already covers this exact case: `letter-spacing` in `em` stays proportionally correct as font-size changes, because it's relative to *that* text's own size — a `rem` value wouldn't track a locally larger or smaller font-size the same way.
+[18.1. Typography Fundamentals](/all-about-typography/typography-fundamentals/#letter-spacing-and-text-transform-smaller-often-forgotten-levers) already covers this exact case: `letter-spacing` in `em` stays proportionally correct as font-size changes, because it's relative to *that* text's own size — a `rem` value wouldn't track a locally larger or smaller font-size the same way.
 
 :::caution[`em` compounds when nested — `rem` doesn't]
 Because `em` is relative to the *current* element, nesting elements that each set their own `font-size` in `em` compounds: a `1.2em` inside another `1.2em` inside another `1.2em` multiplies together, producing a font-size nobody actually chose. This is the classic "nested list text keeps shrinking" bug. `rem` never has this problem — it's always relative to the root, no matter how many levels deep an element sits. Reach for `em` deliberately, for a property that should genuinely scale with one specific element's own size (`letter-spacing`, an icon sized relative to its button's text); default to `rem` everywhere else.
@@ -61,7 +61,7 @@ Because `em` is relative to the *current* element, nesting elements that each se
 
 ## Unitless `line-height`: already covered, still the rule
 
-`line-height` is its own case, covered in full on [Typography Fundamentals](/all-about-typography/typography-fundamentals/#line-height-why-the-value-usually-has-no-unit) — a bare number (`line-height: 1.5`), not `1.5em` or `150%`, because only the unitless form recalculates correctly for every descendant's own font-size instead of inheriting a value proportioned for the parent's.
+`line-height` is its own case, covered in full on [18.1. Typography Fundamentals](/all-about-typography/typography-fundamentals/#line-height-why-the-value-usually-has-no-unit) — a bare number (`line-height: 1.5`), not `1.5em` or `150%`, because only the unitless form recalculates correctly for every descendant's own font-size instead of inheriting a value proportioned for the parent's.
 
 ## Viewport units: vw, vh, and why plain vh breaks on mobile
 
@@ -104,7 +104,7 @@ Write the `vh` fallback first and `dvh` second — a browser that doesn't recogn
 }
 ```
 
-A line of body text that's too wide is measurably harder to read — the eye loses track of which line to return to. 50–75 characters per line is the generally accepted readable range for body text; `65ch` is a reasonable, commonly-used default. This is the same "measure" concept [Horizon's Typography System by the Numbers](/horizon-codebase-tour/horizons-typography-system-by-the-numbers/) references in its max-width scale — a real production theme maintaining exactly this kind of bound on several of its text presets.
+A line of body text that's too wide is measurably harder to read — the eye loses track of which line to return to. 50–75 characters per line is the generally accepted readable range for body text; `65ch` is a reasonable, commonly-used default. This is the same "measure" concept [27.4. Horizon's Typography System by the Numbers](/horizon-codebase-tour/horizons-typography-system-by-the-numbers/) references in its max-width scale — a real production theme maintaining exactly this kind of bound on several of its text presets.
 
 ## `lh`: a newer unit, useful but worth a fallback
 
@@ -120,7 +120,7 @@ A line of body text that's too wide is measurably harder to read — the eye los
 
 ## `clamp()` vs. a fixed `rem`: the actual decision
 
-[Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) already covers `clamp()`'s mechanics in full — this is the decision that page doesn't spell out explicitly: *when* to reach for it at all, versus just picking one `rem` value.
+[18.14. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) already covers `clamp()`'s mechanics in full — this is the decision that page doesn't spell out explicitly: *when* to reach for it at all, versus just picking one `rem` value.
 
 **Default to a fixed `rem` value.** Most sizes in a theme — body text, most spacing, most component dimensions — don't need to visually scale smoothly across every possible viewport width. A fixed `1rem` body text size, or a `--space-md: 1rem` spacing token, is simpler to reason about, easier to debug (the computed value is always the same number), and exactly as accessible as a `clamp()`-based one.
 
@@ -136,7 +136,7 @@ A line of body text that's too wide is measurably harder to read — the eye los
 | Font size (large display heading) | `clamp(rem, rem + vw, rem)` | Needs continuous scaling across a wide viewport range |
 | `letter-spacing` | `em` | Should track *this* element's own font-size |
 | `line-height` | unitless | Recalculates per descendant, doesn't inherit a fixed value |
-| Spacing (margin, padding, gap) | `rem`, or a settings-driven `px` scale per [Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) | Predictable, scales with root font-size |
+| Spacing (margin, padding, gap) | `rem`, or a settings-driven `px` scale per [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) | Predictable, scales with root font-size |
 | Border width, shadow offsets | `px` | A fixed visual detail, not a typographic one |
 | Full-viewport-height section | `100dvh` (with a `100vh` fallback) | Avoids the mobile address-bar jump |
 | Readable line length (measure) | `ch` | Proxies character count per line |
@@ -147,17 +147,17 @@ A line of body text that's too wide is measurably harder to read — the eye los
 - `px` is absolute and ignores a shopper's font-size preference — right only for fixed visual details (borders, shadows), not typography.
 - `rem` is relative to the root font-size and is the right default for nearly everything else; it respects a shopper's accessibility font-size preference and never compounds, unlike `em`.
 - `em` is relative to the *current* element's own font-size — the right choice for a property that should scale with that specific element (`letter-spacing`), but it compounds when nested, which `rem` never does.
-- `line-height` should stay unitless, not `em` or `%` — already covered on [Typography Fundamentals](/all-about-typography/typography-fundamentals/).
+- `line-height` should stay unitless, not `em` or `%` — already covered on [18.1. Typography Fundamentals](/all-about-typography/typography-fundamentals/).
 - `100vh` breaks on mobile because the browser's address bar changes the real visible height without a resize event; `100dvh` (with a `100vh` fallback) fixes this directly. `dvh`/`svh`/`lvh` and `lh` have all reached broad, Baseline browser support, but writing a fallback value first is still worth doing.
 - `ch` sizes by character width — the right unit for capping body text at a readable line length (`max-width: 65ch`).
 - Default to a fixed `rem` value; reach for `clamp()` only when a value genuinely needs continuous scaling across viewport widths and a fixed value plus a mobile override would look visibly worse — not as a blanket replacement for the simpler, already-established desktop/mobile settings pattern.
 
 ## Further reading
 
-- [Typography Fundamentals](/all-about-typography/typography-fundamentals/) — unitless line-height, and `em` for letter-spacing, covered in full
-- [Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) — `clamp()` mechanics, and choosing real min/max values
-- [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — the same `clamp()` pattern applied programmatically across a full preset scale
-- [Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) — why spacing settings use `px` while the generated tokens use `rem`, and the desktop/mobile pattern as an alternative to `clamp()`
-- [Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/) — `clamp()` applied beyond font-size, and viewport vs. container queries
+- [18.1. Typography Fundamentals](/all-about-typography/typography-fundamentals/) — unitless line-height, and `em` for letter-spacing, covered in full
+- [18.14. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) — `clamp()` mechanics, and choosing real min/max values
+- [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — the same `clamp()` pattern applied programmatically across a full preset scale
+- [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) — why spacing settings use `px` while the generated tokens use `rem`, and the desktop/mobile pattern as an alternative to `clamp()`
+- [29.5. Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/) — `clamp()` applied beyond font-size, and viewport vs. container queries
 - [Small, Large, and Dynamic viewport units (caniuse)](https://caniuse.com/viewport-unit-variants)
 - [`<length>` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/length)

@@ -168,19 +168,19 @@ This is a complete, realistic `config/settings_schema.json` — every group a ty
 
 - **`theme_info`** isn't optional and isn't a visible setting — every theme needs exactly one, for Shopify's own tooling to identify the theme's name, version, and support links.
 - **Logo** groups the one-time brand assets a merchant sets once and every layout file reads from — this is exactly the kind of setting that has to be global, since a store has one logo, not one per section.
-- **Colors** uses `color_scheme_group` rather than standalone color settings, per [Color Fundamentals](/all-about-colors/color-fundamentals/) — a full, production-realistic version of this appears on [A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/).
-- **Typography** holds the font-role settings covered throughout [All About Typography](/all-about-typography/), plus a single `heading_scale` range — a reasonable global knob, since "how large do headings feel overall" is a theme-wide decision, not a per-section one.
+- **Colors** uses `color_scheme_group` rather than standalone color settings, per [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) — a full, production-realistic version of this appears on [17.7. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/).
+- **Typography** holds the font-role settings covered throughout [18. All About Typography](/all-about-typography/), plus a single `heading_scale` range — a reasonable global knob, since "how large do headings feel overall" is a theme-wide decision, not a per-section one.
 - **Layout** holds structural decisions (overall page width, base grid spacing) that every section's CSS can read from as a shared token, rather than each section defining its own.
 - **Cart** is a good example of a setting that's genuinely global by necessity — a store has one cart behavior (drawer or full page), not a different one per page.
 - **Social media** links are classic global settings — a merchant sets their Instagram URL once, and every section or snippet that renders a social icon reads the same value.
 
 ## Key takeaways
 
-- A real settings_schema.json groups related settings under named panels, mixing many setting types from [Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/), not just one kind at a time.
+- A real settings_schema.json groups related settings under named panels, mixing many setting types from [6.1. Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/), not just one kind at a time.
 - Every theme needs exactly one `theme_info` entry — metadata, not a visible setting.
-- Every setting in this file should be something a merchant would only ever want one value for, theme-wide — per [Theme Settings Fundamentals](/all-about-theme-settings/theme-settings-fundamentals/), anything that should vary per-instance belongs in a section or block's own schema instead.
+- Every setting in this file should be something a merchant would only ever want one value for, theme-wide — per [28.1. Theme Settings Fundamentals](/all-about-theme-settings/theme-settings-fundamentals/), anything that should vary per-instance belongs in a section or block's own schema instead.
 
 ## Further reading
 
-- [A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/) — the matching data file for this exact schema
+- [28.4. A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/) — the matching data file for this exact schema
 - [Global theme settings](https://shopify.dev/docs/storefronts/themes/architecture/settings/global) (shopify.dev)

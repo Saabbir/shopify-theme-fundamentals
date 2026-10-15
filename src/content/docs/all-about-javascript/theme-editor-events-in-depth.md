@@ -54,7 +54,7 @@ document.addEventListener('shopify:section:unload', (event) => {
 });
 ```
 
-A component that starts an interval, attaches a `window`-level listener, or holds any other resource that outlives the element itself should clean it up here — the same reasoning as a Web Component's `disconnectedCallback`, covered in [Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/), just surfaced as a theme-editor-specific event instead of (or alongside) the standard lifecycle callback.
+A component that starts an interval, attaches a `window`-level listener, or holds any other resource that outlives the element itself should clean it up here — the same reasoning as a Web Component's `disconnectedCallback`, covered in [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/), just surfaced as a theme-editor-specific event instead of (or alongside) the standard lifecycle callback.
 
 ## Reacting to selection, when it's actually useful
 
@@ -93,4 +93,4 @@ Two related, narrower checks exist for specific editor states: `Shopify.inspectM
 
 - [Integrate sections and blocks with the theme editor](https://shopify.dev/docs/storefronts/themes/best-practices/editor/integrate-sections-and-blocks) (shopify.dev)
 - [Dawn's `theme-editor.js`](https://github.com/Shopify/dawn/blob/main/assets/theme-editor.js) — a real theme's handling of these events, linked directly from Shopify's own docs
-- [Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/)
+- [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/)

@@ -20,7 +20,7 @@ A product demo video can play directly in the page's normal layout, or open in a
 </sol-video-player>
 ```
 
-An inline video plays in its normal position in the page flow — nothing about the surrounding layout changes, no focus management is required beyond what [Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/) already covers, and a shopper can keep scrolling and reading the rest of the page while it plays. This is the right default whenever the video is one part of a richer page, rather than something that deserves the shopper's full, undivided attention.
+An inline video plays in its normal position in the page flow — nothing about the surrounding layout changes, no focus management is required beyond what [39.2. Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/) already covers, and a shopper can keep scrolling and reading the rest of the page while it plays. This is the right default whenever the video is one part of a richer page, rather than something that deserves the shopper's full, undivided attention.
 
 ## Modal/lightbox: for a video that deserves full attention
 
@@ -89,6 +89,6 @@ Whether inline or modal, a playing video should pause when the browser tab itsel
 
 ## Further reading
 
-- [Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/)
+- [39.2. Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/)
 - [The `dialog` element (MDN)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
 - [Page Visibility API (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API)

@@ -6,7 +6,7 @@ description: var() fallbacks, inheritance, @property, and where this site's toke
 **TL;DR:** `var()` fallbacks, inheritance, `@property`, and where this site's token-tier coverage actually lives.
 
 :::note[This page is about the CSS mechanism, not any one domain's tokens]
-Color tokens get their own full treatment in [Building a Token System: Primitive, Semantic, Component](/all-about-colors/building-a-token-system/), and typography tokens in [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — both driven by real Shopify settings, resolved into custom properties. This page doesn't repeat either; it covers how CSS custom properties themselves behave, as plain CSS, regardless of which domain's values they happen to hold.
+Color tokens get their own full treatment in [Building a Token System: Primitive, Semantic, Component](/all-about-colors/building-a-token-system/), and typography tokens in [18.6. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — both driven by real Shopify settings, resolved into custom properties. This page doesn't repeat either; it covers how CSS custom properties themselves behave, as plain CSS, regardless of which domain's values they happen to hold.
 :::
 
 ## A custom property is an ordinary CSS value, until it isn't
@@ -83,15 +83,15 @@ Most theme tokens — colors, spacing, font families — don't need `@property`;
 
 ## Where each tier of token actually lives on this site
 
-A full primitive → semantic → component tier breakdown is covered once, generically, in [Building a Token System](/all-about-colors/building-a-token-system/) — the same three-tier idea applies regardless of domain:
+A full primitive → semantic → component tier breakdown is covered once, generically, in [17.5. Building a Token System](/all-about-colors/building-a-token-system/) — the same three-tier idea applies regardless of domain:
 
 | Tier | What it is | Where it's covered in depth |
 |---|---|---|
-| Primitive | Raw values, named by appearance (`--primitive-blue-500`) | [Building a Token System](/all-about-colors/building-a-token-system/) |
-| Semantic | Named by purpose, pointing at a primitive (`--color-accent`) | [Building a Token System](/all-about-colors/building-a-token-system/), [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) |
-| Component | Narrowed to one component's specific need (`--button-background-hover`) | [Building a Token System](/all-about-colors/building-a-token-system/) |
+| Primitive | Raw values, named by appearance (`--primitive-blue-500`) | [17.5. Building a Token System](/all-about-colors/building-a-token-system/) |
+| Semantic | Named by purpose, pointing at a primitive (`--color-accent`) | [17.5. Building a Token System](/all-about-colors/building-a-token-system/), [18.6. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) |
+| Component | Narrowed to one component's specific need (`--button-background-hover`) | [17.5. Building a Token System](/all-about-colors/building-a-token-system/) |
 
-[A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/) shows color, typography, and spacing tokens merged into one real snippet, consumed by real components — the clearest single place to see the full mechanism end to end.
+[18.16. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/) shows color, typography, and spacing tokens merged into one real snippet, consumed by real components — the clearest single place to see the full mechanism end to end.
 
 ## Key takeaways
 
@@ -102,7 +102,7 @@ A full primitive → semantic → component tier breakdown is covered once, gene
 ## Further reading
 
 - [Building a Token System: Primitive, Semantic, Component](/all-about-colors/building-a-token-system/)
-- [A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/)
-- [Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) — `color-mix()` and relative color syntax (`oklch(from ...)`), for deriving one token's variants from another at runtime
+- [18.16. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/)
+- [29.10. Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) — `color-mix()` and relative color syntax (`oklch(from ...)`), for deriving one token's variants from another at runtime
 - [CSS custom properties (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)
 - [`@property` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/@property)

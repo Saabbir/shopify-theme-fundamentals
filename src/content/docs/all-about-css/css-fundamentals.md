@@ -36,10 +36,10 @@ Most of a theme's CSS should live in `{% stylesheet %}` tags, co-located with th
 {% endstylesheet %}
 ```
 
-Shopify collects the CSS from every `{% stylesheet %}` tag across the theme into one generated `styles.css` file, linked automatically through `content_for_header` — you never write that `<link>` tag yourself. [Critical CSS & Loading Performance](/all-about-css/critical-css-and-loading-performance/) covers exactly which CSS actually ships on a given page; it's less than "the whole theme's CSS, every time."
+Shopify collects the CSS from every `{% stylesheet %}` tag across the theme into one generated `styles.css` file, linked automatically through `content_for_header` — you never write that `<link>` tag yourself. [29.7. Critical CSS & Loading Performance](/all-about-css/critical-css-and-loading-performance/) covers exactly which CSS actually ships on a given page; it's less than "the whole theme's CSS, every time."
 
 :::caution[`{% stylesheet %}` does not evaluate Liquid]
-Writing `color: {{ section.settings.accent_color }};` inside a `{% stylesheet %}` block doesn't work — Liquid tags and output inside `{% stylesheet %}` are left as literal text, not rendered. This is exactly why the CSS-custom-property pattern exists: a setting's value gets written as an inline `style="--x: ...;"` attribute on the element itself (which *does* render Liquid, since it's ordinary HTML), and `{% stylesheet %}` reads it back with `var(--x)` — plain CSS, not Liquid. See [CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/) for the full pattern.
+Writing `color: {{ section.settings.accent_color }};` inside a `{% stylesheet %}` block doesn't work — Liquid tags and output inside `{% stylesheet %}` are left as literal text, not rendered. This is exactly why the CSS-custom-property pattern exists: a setting's value gets written as an inline `style="--x: ...;"` attribute on the element itself (which *does* render Liquid, since it's ordinary HTML), and `{% stylesheet %}` reads it back with `var(--x)` — plain CSS, not Liquid. See [29.4. CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/) for the full pattern.
 :::
 
 :::caution[One `{% stylesheet %}` tag per file]
@@ -60,7 +60,7 @@ Unlike `{% stylesheet %}`, `{% style %}` **does** evaluate Liquid, and renders a
 
 ## When to reach for an asset stylesheet instead
 
-A `.css` file in `assets/`, loaded with `stylesheet_tag`, is right for CSS that's genuinely global and shared across many unrelated files — a CSS reset, broad utility classes, or anything that doesn't belong to one specific component. [Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) covers exactly when this is the better choice over a `{% stylesheet %}` tag.
+A `.css` file in `assets/`, loaded with `stylesheet_tag`, is right for CSS that's genuinely global and shared across many unrelated files — a CSS reset, broad utility classes, or anything that doesn't belong to one specific component. [29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) covers exactly when this is the better choice over a `{% stylesheet %}` tag.
 
 ```liquid
 {% comment %} layout/theme.liquid {% endcomment %}

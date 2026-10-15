@@ -13,14 +13,14 @@ This chapter covers theme JavaScript as a mechanism — where it lives, how a co
 
 | Page | Answers |
 |---|---|
-| [JavaScript Fundamentals in a Shopify Theme](/all-about-javascript/javascript-fundamentals/) | Where JS lives, `{% javascript %}` in full, script loading, and the one-tag-per-file rule |
-| [Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) | Custom element lifecycle callbacks, observed attributes, and encapsulation without a build step |
+| [30.1. JavaScript Fundamentals in a Shopify Theme](/all-about-javascript/javascript-fundamentals/) | Where JS lives, `{% javascript %}` in full, script loading, and the one-tag-per-file rule |
+| [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) | Custom element lifecycle callbacks, observed attributes, and encapsulation without a build step |
 | [Shadow DOM, Slots & ::part()](/all-about-javascript/shadow-dom-slots-and-part/) | `<slot>`, `::slotted()`, `::part()`/`exportparts`, declarative Shadow DOM, and the real theme situations worth the isolation trade-off |
-| [Talking to Liquid: Data Attributes & JSON Islands](/all-about-javascript/talking-to-liquid-data-attributes-and-json-islands/) | Getting server-rendered data into JavaScript safely, beyond a single `data-*` attribute |
-| [Theme Editor Events in Depth](/all-about-javascript/theme-editor-events-in-depth/) | Every `shopify:section:*` and `shopify:block:*` event, and writing a component that survives live re-rendering |
-| [Custom Events & Cross-Component Communication](/all-about-javascript/custom-events-and-cross-component-communication/) | Letting two Web Components talk without either one knowing the other exists |
-| [Performance & Loading Strategy for Theme JS](/all-about-javascript/performance-and-loading-strategy-for-theme-js/) | Lazy-loading heavy components, and what `defer` already buys you for free |
-| [A Complete Web Component Example](/all-about-javascript/a-complete-web-component-example/) | One component combining lifecycle, ARIA state, theme editor events, and custom events at once |
+| [30.4. Talking to Liquid: Data Attributes & JSON Islands](/all-about-javascript/talking-to-liquid-data-attributes-and-json-islands/) | Getting server-rendered data into JavaScript safely, beyond a single `data-*` attribute |
+| [30.5. Theme Editor Events in Depth](/all-about-javascript/theme-editor-events-in-depth/) | Every `shopify:section:*` and `shopify:block:*` event, and writing a component that survives live re-rendering |
+| [30.6. Custom Events & Cross-Component Communication](/all-about-javascript/custom-events-and-cross-component-communication/) | Letting two Web Components talk without either one knowing the other exists |
+| [30.7. Performance & Loading Strategy for Theme JS](/all-about-javascript/performance-and-loading-strategy-for-theme-js/) | Lazy-loading heavy components, and what `defer` already buys you for free |
+| [30.8. A Complete Web Component Example](/all-about-javascript/a-complete-web-component-example/) | One component combining lifecycle, ARIA state, theme editor events, and custom events at once |
 
 ## Further reading
 

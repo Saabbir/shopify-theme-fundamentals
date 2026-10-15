@@ -5,7 +5,7 @@ description: A positioning context on the wrapper, not the image itself, is what
 
 **TL;DR:** A positioning context on the wrapper, not the image itself, is what lets a badge, gradient, or caption layer cleanly on top.
 
-[Badges: Sale, Sold Out & Custom Tags](/all-about-product-cards/badges-sale-sold-out-and-custom-tags/) covers *what* a badge says and when it should appear; this page covers the general layering mechanism any overlay on top of an image needs, whether it's a badge, a gradient for text legibility, or a caption.
+[33.3. Badges: Sale, Sold Out & Custom Tags](/all-about-product-cards/badges-sale-sold-out-and-custom-tags/) covers *what* a badge says and when it should appear; this page covers the general layering mechanism any overlay on top of an image needs, whether it's a badge, a gradient for text legibility, or a caption.
 
 ## The wrapper owns the positioning context, not the `<img>`
 
@@ -59,7 +59,7 @@ A `::after` pseudo-element, rather than a second real element in the markup, is 
 .sol-image-wrapper__quick-add { inset-block-end: var(--space-sm); inset-inline: var(--space-sm); }
 ```
 
-Once a wrapper has more than one overlay (a badge in a corner, a quick-add button along the bottom edge, as in [All About Product Cards](/all-about-product-cards/)'s complete example), each one needs its own distinct corner or edge — `inset-block-start`/`inset-inline-start` for one, `inset-block-end` for another — rather than letting two absolutely positioned elements default to the same position and overlap unintentionally.
+Once a wrapper has more than one overlay (a badge in a corner, a quick-add button along the bottom edge, as in [33. All About Product Cards](/all-about-product-cards/)'s complete example), each one needs its own distinct corner or edge — `inset-block-start`/`inset-inline-start` for one, `inset-block-end` for another — rather than letting two absolutely positioned elements default to the same position and overlap unintentionally.
 
 ## Key takeaways
 
@@ -69,6 +69,6 @@ Once a wrapper has more than one overlay (a badge in a corner, a quick-add butto
 
 ## Further reading
 
-- [Badges: Sale, Sold Out & Custom Tags](/all-about-product-cards/badges-sale-sold-out-and-custom-tags/)
-- [Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/)
-- [Aspect-Ratio Wrapper Techniques](/all-about-images/aspect-ratio-wrapper-techniques/)
+- [33.3. Badges: Sale, Sold Out & Custom Tags](/all-about-product-cards/badges-sale-sold-out-and-custom-tags/)
+- [29.5. Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/)
+- [38.2. Aspect-Ratio Wrapper Techniques](/all-about-images/aspect-ratio-wrapper-techniques/)

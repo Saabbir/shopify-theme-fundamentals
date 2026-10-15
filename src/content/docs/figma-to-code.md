@@ -13,11 +13,11 @@ Every previous chapter taught a piece: theme architecture, sections/blocks/snipp
 
 | Page | Answers |
 |---|---|
-| [Reading a Design Like a Developer](/figma-to-code/reading-a-design-like-a-developer/) | What to look for before writing any code — repetition, boundaries, what's content vs. pattern |
-| [Content vs. Structure](/figma-to-code/content-vs-structure/) | The single most useful question for not confusing "what this design happens to show" with "what the code needs to support" |
-| [Section, Block, Snippet, or Fixed Markup?](/figma-to-code/section-block-snippet-or-fixed-markup/) | Applying the decision guide from earlier in this site directly to a design, rather than to an abstract feature request |
-| [Planning Responsive Behavior](/figma-to-code/planning-responsive-behavior/) | Translating a separate mobile frame into CSS, and knowing what genuinely needs its own setting versus what's just CSS |
-| [Worked Example: One Figma Frame, Start to Finish](/figma-to-code/worked-example/) | The entire process, start to finish, on one concrete design |
+| [9.1. Reading a Design Like a Developer](/figma-to-code/reading-a-design-like-a-developer/) | What to look for before writing any code — repetition, boundaries, what's content vs. pattern |
+| [9.2. Content vs. Structure](/figma-to-code/content-vs-structure/) | The single most useful question for not confusing "what this design happens to show" with "what the code needs to support" |
+| [9.3. Section, Block, Snippet, or Fixed Markup?](/figma-to-code/section-block-snippet-or-fixed-markup/) | Applying the decision guide from earlier in this site directly to a design, rather than to an abstract feature request |
+| [9.4. Planning Responsive Behavior](/figma-to-code/planning-responsive-behavior/) | Translating a separate mobile frame into CSS, and knowing what genuinely needs its own setting versus what's just CSS |
+| [9.5. Worked Example: One Figma Frame, Start to Finish](/figma-to-code/worked-example/) | The entire process, start to finish, on one concrete design |
 
 ## Further reading
 

@@ -55,7 +55,7 @@ Horizon's own button block, read directly from its source, follows this exactly 
 ```
 
 :::note[What Horizon does when there's no link yet]
-Worth noticing: when a merchant hasn't filled in the block's link setting, Horizon doesn't just drop the `href` and leave the element looking clickable but silently doing nothing. It renders `role="link"` (keeping the correct semantic role even without an `href`) plus `aria-disabled="true"` — so a screen reader announces it as a disabled link, not a working one that mysteriously does nothing when activated. This is the same instinct [Interactive States](/all-about-buttons/interactive-states/) covers in full for buttons generally: a disabled-looking control should also *announce* as disabled.
+Worth noticing: when a merchant hasn't filled in the block's link setting, Horizon doesn't just drop the `href` and leave the element looking clickable but silently doing nothing. It renders `role="link"` (keeping the correct semantic role even without an `href`) plus `aria-disabled="true"` — so a screen reader announces it as a disabled link, not a working one that mysteriously does nothing when activated. This is the same instinct [36.3. Interactive States](/all-about-buttons/interactive-states/) covers in full for buttons generally: a disabled-looking control should also *announce* as disabled.
 :::
 
 ## The anatomy of a button's markup
@@ -69,7 +69,7 @@ Whichever element it's built from, a button's markup is usually just three thing
 </button>
 ```
 
-[Sizing & Icon+Text Composition](/all-about-buttons/sizing-and-icon-text-composition/) covers the icon-plus-label pairing, including the icon-only case, in full.
+[36.5. Sizing & Icon+Text Composition](/all-about-buttons/sizing-and-icon-text-composition/) covers the icon-plus-label pairing, including the icon-only case, in full.
 
 ## Key takeaways
 
@@ -83,4 +83,4 @@ Whichever element it's built from, a button's markup is usually just three thing
 - [Button accessibility (MDN)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)
 - [WAI-ARIA Authoring Practices: Button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/)
 - [`blocks/button.liquid` (Horizon, GitHub)](https://github.com/Shopify/horizon/blob/main/blocks/button.liquid)
-- [Interactive States](/all-about-buttons/interactive-states/)
+- [36.3. Interactive States](/all-about-buttons/interactive-states/)

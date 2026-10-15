@@ -11,10 +11,10 @@ Every form that actually does something on a Shopify store — adding to cart, l
 
 | Page | Answers |
 |---|---|
-| [The Product Form](/forms/the-product-form/) | Adding a specific variant to the cart, and showing a sold-out state |
-| [The Cart Form](/forms/the-cart-form/) | Updating line item quantities, and a 1-indexed detail easy to miss |
-| [Customer Forms](/forms/customer-forms/) | Login, registration, and account updates, plus reading form errors |
-| [Contact & Newsletter Forms](/forms/contact-and-newsletter-forms/) | The storefront contact form, and signing a shopper up for marketing |
+| [8.1. The Product Form](/forms/the-product-form/) | Adding a specific variant to the cart, and showing a sold-out state |
+| [8.2. The Cart Form](/forms/the-cart-form/) | Updating line item quantities, and a 1-indexed detail easy to miss |
+| [8.3. Customer Forms](/forms/customer-forms/) | Login, registration, and account updates, plus reading form errors |
+| [8.4. Contact & Newsletter Forms](/forms/contact-and-newsletter-forms/) | The storefront contact form, and signing a shopper up for marketing |
 
 ## What `{% form %}` does for you
 

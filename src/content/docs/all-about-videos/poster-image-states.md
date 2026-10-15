@@ -5,7 +5,7 @@ description: Shopify's auto-generated thumbnail works as a poster — but a merc
 
 **TL;DR:** Shopify's auto-generated thumbnail works as a poster — but a merchant-chosen cover image needs its own override, and the poster has to disappear exactly once playback begins.
 
-A poster image is what a shopper sees before pressing play — [Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/) already establishes that a non-autoplaying video always needs one, since a blank black box looks broken. This page covers where it actually comes from, and the one state transition worth getting right.
+A poster image is what a shopper sees before pressing play — [19.3. Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/) already establishes that a non-autoplaying video always needs one, since a blank black box looks broken. This page covers where it actually comes from, and the one state transition worth getting right.
 
 ## The default: Shopify's auto-generated thumbnail
 
@@ -61,7 +61,7 @@ this.video.addEventListener('play', () => {
 }
 ```
 
-The browser already handles the poster-to-video-frame swap automatically — a `<video>` element's `poster` attribute simply stops rendering the instant the video actually begins playing, with no theme code required for that part. What *does* need theme code is fading out the custom play button overlaying it (from [Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/)) in sync with that same moment — without the `is-playing` class toggle above, a large play button would otherwise sit visually on top of the now-playing video indefinitely, rather than disappearing once it's no longer needed.
+The browser already handles the poster-to-video-frame swap automatically — a `<video>` element's `poster` attribute simply stops rendering the instant the video actually begins playing, with no theme code required for that part. What *does* need theme code is fading out the custom play button overlaying it (from [39.2. Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/)) in sync with that same moment — without the `is-playing` class toggle above, a large play button would otherwise sit visually on top of the now-playing video indefinitely, rather than disappearing once it's no longer needed.
 
 ## Key takeaways
 
@@ -71,6 +71,6 @@ The browser already handles the poster-to-video-frame swap automatically — a `
 
 ## Further reading
 
-- [Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/)
-- [Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/)
+- [19.3. Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/)
+- [39.2. Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/)
 - [The `video` object (shopify.dev)](https://shopify.dev/docs/api/liquid/objects/video)

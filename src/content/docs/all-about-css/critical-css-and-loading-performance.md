@@ -21,7 +21,7 @@ Subsetting works by tracing the render tree, which means it only works correctly
 - **Parent-to-rendered-child styles** (a section defines a class a snippet it `{% render %}`s uses) are safe — the parent is always in the tree whenever the child is.
 - **Cross-file dependencies between unrelated files** (one section's CSS, used by a completely different section that doesn't render it) are unsafe — on a page that doesn't happen to render the defining file, the class silently loses its styling.
 
-[Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) covers this exact failure mode and the `shopify theme check` rule (`ValidScopedCSSClass`) that catches it — worth reading alongside this page, since the two are really the same concern from two different angles: one is about avoiding a collision, the other is about not silently relying on CSS that subsetting might not include.
+[29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) covers this exact failure mode and the `shopify theme check` rule (`ValidScopedCSSClass`) that catches it — worth reading alongside this page, since the two are really the same concern from two different angles: one is about avoiding a collision, the other is about not silently relying on CSS that subsetting might not include.
 
 ## What subsetting doesn't touch
 
@@ -53,7 +53,7 @@ Since page-level CSS bundling is already handled, the performance work that's ac
 
 - **Don't defeat subsetting yourself** — a cross-file dependency (covered above) doesn't just risk a visual bug, it specifically works against the mechanism that's supposed to be keeping your CSS payload small.
 - **Keep genuinely global CSS in an asset stylesheet, deliberately** — a reset or shared utility classes, loaded once via `stylesheet_tag`, is the right call precisely because subsetting doesn't (and shouldn't) try to subset something meant to apply everywhere.
-- **Watch selector and rule complexity**, independent of file size — a browser still has to parse and match every rule that does ship; deeply nested, over-specific selectors cost more to match than simple, flat, BEM-scoped ones, on top of the readability cost covered in [Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/).
+- **Watch selector and rule complexity**, independent of file size — a browser still has to parse and match every rule that does ship; deeply nested, over-specific selectors cost more to match than simple, flat, BEM-scoped ones, on top of the readability cost covered in [29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/).
 - **Respect `prefers-reduced-motion`** for any animation or transition — a performance and an accessibility consideration at once, since an unnecessary animation costs a frame budget a user who's opted out never wanted spent in the first place.
 
 :::note[Third-party "critical CSS" advice assumes a different starting point]

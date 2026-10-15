@@ -9,7 +9,7 @@ Shopify provides dedicated filters for each media type beyond a plain image, eac
 
 ## Video uploaded directly to Shopify
 
-A `video`-type setting (from [Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/)) returns a video object, rendered with a dedicated filter that builds a complete, working `<video>` element:
+A `video`-type setting (from [6.1. Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/)) returns a video object, rendered with a dedicated filter that builds a complete, working `<video>` element:
 
 ```liquid
 {{ section.settings.video | video_tag: controls: true }}
@@ -38,7 +38,7 @@ A product can have 3D model files among its media. Finding one, and rendering it
 {% endif %}
 ```
 
-`model_viewer_tag` generates a `<model-viewer>` element — a Web Component, in the same sense covered in [Web Components for Theme Behavior](/javascript-in-shopify-themes/web-components-for-theme-behavior/), just one Shopify provides for you rather than one you write yourself — letting a shopper rotate and (on a supporting device) view the model in AR.
+`model_viewer_tag` generates a `<model-viewer>` element — a Web Component, in the same sense covered in [11.2. Web Components for Theme Behavior](/javascript-in-shopify-themes/web-components-for-theme-behavior/), just one Shopify provides for you rather than one you write yourself — letting a shopper rotate and (on a supporting device) view the model in AR.
 
 :::note[Check exact filter options against current docs]
 Each of these filters accepts its own set of options (autoplay, loop, specific player controls, and similar) beyond what's shown here. The pattern — a dedicated filter per media type, rather than hand-building the tag — is the main thing worth internalizing; check [Shopify's filter reference](https://shopify.dev/docs/api/liquid/filters) for the full, current set of options each one accepts.

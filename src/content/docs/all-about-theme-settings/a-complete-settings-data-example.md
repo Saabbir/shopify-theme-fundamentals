@@ -5,7 +5,7 @@ description: The matching data file for the schema above, showing exactly what S
 
 **TL;DR:** The matching data file for the schema above, showing exactly what Shopify writes.
 
-This is the `config/settings_data.json` that would actually result from a merchant configuring every setting defined in [A Complete settings_schema.json Example](/all-about-theme-settings/a-complete-settings-schema-example/) — showing precisely what Shopify writes to this file as a merchant uses the theme editor.
+This is the `config/settings_data.json` that would actually result from a merchant configuring every setting defined in [28.3. A Complete settings_schema.json Example](/all-about-theme-settings/a-complete-settings-schema-example/) — showing precisely what Shopify writes to this file as a merchant uses the theme editor.
 
 ```json
 {
@@ -83,9 +83,9 @@ Everything in this file reflects a specific merchant's real, saved configuration
 
 - Every `current` key matches an `id` from `settings_schema.json` one-to-one — this file holds values, the schema file holds structure.
 - A merchant can add more entries to a `color_scheme_group` value (or any repeatable structure) beyond what the schema's own `default` shipped — those additions are saved here too.
-- `presets` in this file is a theme-level concept (complete, named, swappable style bundles) — unrelated to a section's own `presets` array covered in [Presets & Defaults](/schema-and-settings/presets-and-defaults/).
+- `presets` in this file is a theme-level concept (complete, named, swappable style bundles) — unrelated to a section's own `presets` array covered in [6.2. Presets & Defaults](/schema-and-settings/presets-and-defaults/).
 
 ## Further reading
 
-- [A Complete settings_schema.json Example](/all-about-theme-settings/a-complete-settings-schema-example/)
+- [28.3. A Complete settings_schema.json Example](/all-about-theme-settings/a-complete-settings-schema-example/)
 - [settings_data.json](https://shopify.dev/docs/storefronts/themes/architecture/config/settings-data-json) (shopify.dev)

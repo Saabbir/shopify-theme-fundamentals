@@ -120,5 +120,5 @@ A single rendered page typically draws from both files at once. A cart drawer, f
 
 ## Further reading
 
-- [Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/)
+- [6.5. Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/)
 - [Locale files](https://shopify.dev/docs/storefronts/themes/architecture/locales) (shopify.dev)

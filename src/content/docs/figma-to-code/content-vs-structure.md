@@ -26,7 +26,7 @@ Imagine the design shows exactly three feature callouts, each with a short, one-
 
 This technically reproduces the design exactly — but only the design's one specific example. The moment a merchant wants a fourth callout, or just two, or a description three lines long instead of one, the structure (three fixed, numbered settings) actively fights against it. The number "3" was content — a detail of this one design — mistakenly baked into the structure.
 
-The corrected version treats "a callout" as a block type a merchant can add as many of as they want (covered mechanically in [What Is a Block?](/sections-blocks-snippets/what-is-a-block/)), with no assumption at all about how many there will be:
+The corrected version treats "a callout" as a block type a merchant can add as many of as they want (covered mechanically in [3.2. What Is a Block?](/sections-blocks-snippets/what-is-a-block/)), with no assumption at all about how many there will be:
 
 ```liquid
 {% for block in section.blocks %}

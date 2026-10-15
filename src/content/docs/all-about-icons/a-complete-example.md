@@ -63,7 +63,7 @@ No `label` is passed — the icon renders `aria-hidden="true"`, correctly silent
 </button>
 ```
 
-Still no `label` passed to the snippet — even here, the icon itself stays decorative (`aria-hidden="true"`), because the *button* carries the real `aria-label`, per [Icon Accessibility: Decorative vs. Meaningful](/all-about-icons/icon-accessibility-decorative-vs-meaningful/)'s guidance to label the containing control rather than the icon, whenever a containing control exists.
+Still no `label` passed to the snippet — even here, the icon itself stays decorative (`aria-hidden="true"`), because the *button* carries the real `aria-label`, per [37.4. Icon Accessibility: Decorative vs. Meaningful](/all-about-icons/icon-accessibility-decorative-vs-meaningful/)'s guidance to label the containing control rather than the icon, whenever a containing control exists.
 
 ## Using it standalone, with no containing control at all
 
@@ -88,6 +88,6 @@ A single snippet that branches on whether `label` was passed (rather than `icon-
 
 ## Further reading
 
-- [Icon Fundamentals: Inline SVG vs. a Sprite System](/all-about-icons/icon-fundamentals-inline-svg-vs-a-sprite-system/)
-- [A Reusable Icon Snippet Pattern](/all-about-icons/a-reusable-icon-snippet-pattern/)
-- [Icon Accessibility: Decorative vs. Meaningful](/all-about-icons/icon-accessibility-decorative-vs-meaningful/)
+- [37.1. Icon Fundamentals: Inline SVG vs. a Sprite System](/all-about-icons/icon-fundamentals-inline-svg-vs-a-sprite-system/)
+- [37.2. A Reusable Icon Snippet Pattern](/all-about-icons/a-reusable-icon-snippet-pattern/)
+- [37.4. Icon Accessibility: Decorative vs. Meaningful](/all-about-icons/icon-accessibility-decorative-vs-meaningful/)

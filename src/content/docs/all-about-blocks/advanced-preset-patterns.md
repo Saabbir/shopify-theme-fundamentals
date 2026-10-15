@@ -5,7 +5,7 @@ description: Presets that ship with nested blocks already configured, not just f
 
 **TL;DR:** Presets that ship with nested blocks already configured, not just flat lists.
 
-[Presets & Defaults](/schema-and-settings/presets-and-defaults/) covered the basics: a `presets` entry gives a section sensible starting settings and blocks the moment a merchant adds it. This page covers a pattern that chapter didn't have room for — presets that pre-configure a nested block structure, not just a flat list of blocks.
+[6.2. Presets & Defaults](/schema-and-settings/presets-and-defaults/) covered the basics: a `presets` entry gives a section sensible starting settings and blocks the moment a merchant adds it. This page covers a pattern that chapter didn't have room for — presets that pre-configure a nested block structure, not just a flat list of blocks.
 
 ## A flat preset, as a reminder
 
@@ -28,7 +28,7 @@ This is what most presets look like — a flat list of block instances, each wit
 
 ## A preset with nested blocks
 
-Once a section or block supports nesting (see [Block Fundamentals](/all-about-blocks/block-fundamentals/)), a preset's `blocks` array can itself contain blocks that have their own nested `blocks` array, so the layout a merchant sees on first adding the section already reflects the intended nested structure, instead of a flat pile of blocks they'd have to manually group themselves:
+Once a section or block supports nesting (see [15.1. Block Fundamentals](/all-about-blocks/block-fundamentals/)), a preset's `blocks` array can itself contain blocks that have their own nested `blocks` array, so the layout a merchant sees on first adding the section already reflects the intended nested structure, instead of a flat pile of blocks they'd have to manually group themselves:
 
 ```json
 {
@@ -61,7 +61,7 @@ This preset gives a merchant a group block laid out as a row, containing an imag
 
 ## Why this matters more as nesting goes deeper
 
-The deeper a theme leans on nested, recursive blocks (per [Advanced Nested Block Patterns](/all-about-blocks/advanced-nested-block-patterns/)), the more a merchant benefits from starting somewhere sensible rather than an empty container they have to populate themselves. A recursive group block is powerful specifically because it's unopinionated — but that same lack of opinion means an empty one, added fresh, gives a merchant no hint about the layout it's capable of. A good preset is often the only place that intended structure is actually communicated.
+The deeper a theme leans on nested, recursive blocks (per [15.3. Advanced Nested Block Patterns](/all-about-blocks/advanced-nested-block-patterns/)), the more a merchant benefits from starting somewhere sensible rather than an empty container they have to populate themselves. A recursive group block is powerful specifically because it's unopinionated — but that same lack of opinion means an empty one, added fresh, gives a merchant no hint about the layout it's capable of. A good preset is often the only place that intended structure is actually communicated.
 
 ## Key takeaways
 
@@ -71,5 +71,5 @@ The deeper a theme leans on nested, recursive blocks (per [Advanced Nested Block
 
 ## Further reading
 
-- [Presets & Defaults](/schema-and-settings/presets-and-defaults/)
+- [6.2. Presets & Defaults](/schema-and-settings/presets-and-defaults/)
 - [Theme blocks](https://shopify.dev/docs/storefronts/themes/architecture/blocks) (shopify.dev)

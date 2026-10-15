@@ -15,7 +15,7 @@ description: "request, routes, image, and a first look at metafields."
 {{ request.locale.iso_code }}
 ```
 
-You've already seen `request.locale.iso_code` used in [theme.liquid Explained](/theme-architecture/theme-liquid-explained/), setting the page's `<html lang="">` attribute. `request.page_type` is handy for logic that should only apply on a specific kind of page:
+You've already seen `request.locale.iso_code` used in [2.4. theme.liquid Explained](/theme-architecture/theme-liquid-explained/), setting the page's `<html lang="">` attribute. `request.page_type` is handy for logic that should only apply on a specific kind of page:
 
 ```liquid
 {% if request.page_type == 'product' %}
@@ -50,7 +50,7 @@ Any image-type property (`product.featured_image`, `collection.image`, an `image
 {{ product.featured_image.height }}
 ```
 
-Combine this with `image_url` (covered in [Common Filters by Category](/liquid-basics/common-filters-by-category/)) to build the actual `<img>` tag — the image object's own properties (`alt`, `width`, `height`) are for the attributes around that URL, not the URL itself.
+Combine this with `image_url` (covered in [4.7. Common Filters by Category](/liquid-basics/common-filters-by-category/)) to build the actual `<img>` tag — the image object's own properties (`alt`, `width`, `height`) are for the attributes around that URL, not the URL itself.
 
 ```liquid
 <img
@@ -69,7 +69,7 @@ A **metafield** is a piece of custom structured data attached to an object — a
 {{ product.metafields.custom.material }}
 ```
 
-Metafields are read the same way as any other nested object property — `product.metafields.<namespace>.<key>`. If that specific metafield hasn't been set on a given product, the expression resolves to `nil`, silently, the same as any other missing property (see [Debugging Liquid](/liquid-basics/debugging-liquid/)) — so always check it's present before relying on it being there for every product.
+Metafields are read the same way as any other nested object property — `product.metafields.<namespace>.<key>`. If that specific metafield hasn't been set on a given product, the expression resolves to `nil`, silently, the same as any other missing property (see [4.8. Debugging Liquid](/liquid-basics/debugging-liquid/)) — so always check it's present before relying on it being there for every product.
 
 ```liquid
 {% if product.metafields.custom.material %}

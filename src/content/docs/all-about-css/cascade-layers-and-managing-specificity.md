@@ -36,7 +36,7 @@ The first line declares the layer order once — `reset`, then `tokens`, then `c
 ```
 
 - **`reset`** — base, unopinionated resets (box-sizing, margin resets).
-- **`tokens`** — the `:root` custom-property declarations from [CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/); layering tokens separately keeps them from accidentally being overridden by a later component rule that happens to also target `:root`.
+- **`tokens`** — the `:root` custom-property declarations from [29.4. CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/); layering tokens separately keeps them from accidentally being overridden by a later component rule that happens to also target `:root`.
 - **`components`** — the bulk of a theme's CSS: every section, block, and snippet's own `{% stylesheet %}` content.
 - **`utilities`** — small, single-purpose classes meant to override a component when applied (`.u-hidden`, `.u-text-center`).
 - **`overrides`** — a deliberate escape hatch, reserved for the rare case where something genuinely needs to win over everything else.
@@ -48,7 +48,7 @@ Because layer order beats selector specificity, a simple `.u-hidden` class in `u
 CSS that isn't declared inside any `@layer` block is treated as if it belongs to its own implicit layer, placed *after* every named layer — meaning unlayered CSS always wins over anything inside a named layer, regardless of specificity. This matters because an installed app's injected CSS is very unlikely to use your theme's layers at all; it will typically land unlayered, and therefore win over your own layered CSS by default.
 
 :::caution[Layers don't protect you from CSS you don't control]
-`@layer` only helps with CSS *you* write and *you* order. An app's unlayered CSS still sits above all of it in the cascade, by the behavior described above — the naming-prefix discipline from [Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) is still the real defense against an app's CSS accidentally matching one of your own selectors in the first place. Layers solve ordering *within* your own CSS; they don't solve collisions with CSS that was never layered to begin with.
+`@layer` only helps with CSS *you* write and *you* order. An app's unlayered CSS still sits above all of it in the cascade, by the behavior described above — the naming-prefix discipline from [29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) is still the real defense against an app's CSS accidentally matching one of your own selectors in the first place. Layers solve ordering *within* your own CSS; they don't solve collisions with CSS that was never layered to begin with.
 :::
 
 ## When the extra structure is worth it
@@ -64,4 +64,4 @@ A small theme with a handful of sections and no utility-class layer rarely needs
 ## Further reading
 
 - [CSS cascade layers (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer)
-- [Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/)
+- [29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/)

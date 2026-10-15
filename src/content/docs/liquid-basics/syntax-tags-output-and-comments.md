@@ -28,7 +28,7 @@ Output prints a value directly into the page. Anything inside `{{ }}` gets evalu
 {{ 1 | plus: 1 }}
 ```
 
-That last example evaluates to `2` and prints `2` — output isn't limited to printing a variable as-is; it can run the expression through filters first (covered in [Filters: An Overview](/liquid-basics/filters-an-overview/)).
+That last example evaluates to `2` and prints `2` — output isn't limited to printing a variable as-is; it can run the expression through filters first (covered in [4.6. Filters: An Overview](/liquid-basics/filters-an-overview/)).
 
 ## The one rule that explains most beginner confusion
 
@@ -54,7 +54,7 @@ A `{% liquid %}` block lets you write multiple tags without repeating the delimi
 %}
 ```
 
-This is exactly the pattern you saw throughout [Sections, Blocks & Snippets](/sections-blocks-snippets/) for assigning settings to variables at the top of a file. It's purely a convenience for writing several tags together — anything you can write with repeated `{% %}` tags, you can write inside one `{% liquid %}` block, and vice versa.
+This is exactly the pattern you saw throughout [3. Sections, Blocks & Snippets](/sections-blocks-snippets/) for assigning settings to variables at the top of a file. It's purely a convenience for writing several tags together — anything you can write with repeated `{% %}` tags, you can write inside one `{% liquid %}` block, and vice versa.
 
 ## Comments
 

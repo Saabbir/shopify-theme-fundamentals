@@ -58,7 +58,7 @@ customElements.define('product-form', ProductForm);
 
 Three things in this example map directly to the three problems above:
 
-- **`button.disabled = isLoading`** solves problem 1 — a disabled button can't be clicked again, so a second submit simply can't fire while the first is still in flight. (Using the native `disabled` attribute here, not `aria-disabled`, is deliberate: unlike [Interactive States](/all-about-buttons/interactive-states/)'s tooltip example, there's no explanation a keyboard user needs to reach while this button is briefly unavailable — it's back to normal in a second or two either way.)
+- **`button.disabled = isLoading`** solves problem 1 — a disabled button can't be clicked again, so a second submit simply can't fire while the first is still in flight. (Using the native `disabled` attribute here, not `aria-disabled`, is deliberate: unlike [36.3. Interactive States](/all-about-buttons/interactive-states/)'s tooltip example, there's no explanation a keyboard user needs to reach while this button is briefly unavailable — it's back to normal in a second or two either way.)
 - **The spinner, toggled via `hidden`**, solves problem 2 — visible proof to a sighted user that the click registered and something is happening.
 - **`aria-busy="true"`/`"false"`**, toggled on the button itself, solves problem 3 — a screen reader announces the busy state change, which a spinner alone never does.
 
@@ -89,5 +89,5 @@ A loading state needs a defined end on both the success path and the failure pat
 ## Further reading
 
 - [`aria-busy` (MDN)](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy)
-- [Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/)
-- [The Product Form](/forms/the-product-form/)
+- [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/)
+- [8.1. The Product Form](/forms/the-product-form/)

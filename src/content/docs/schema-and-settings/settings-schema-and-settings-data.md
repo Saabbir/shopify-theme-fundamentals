@@ -9,7 +9,7 @@ These two files, both in `config/`, work together to power the theme editor's gl
 
 ## `settings_schema.json`: what settings exist
 
-This file defines the global settings themselves — their types, labels, and grouping — using the same setting types covered in [Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/). It's an array of groups, each with a `name` and its own `settings` array.
+This file defines the global settings themselves — their types, labels, and grouping — using the same setting types covered in [6.1. Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/). It's an array of groups, each with a `name` and its own `settings` array.
 
 ```json
 [
@@ -37,7 +37,7 @@ This file defines the global settings themselves — their types, labels, and gr
 ]
 ```
 
-Each group becomes its own expandable panel in the theme editor's global settings. You read any of these values in Liquid through the `settings` object, covered in [settings, section & block](/global-objects/settings-section-and-block/) — `settings.heading_font`, `settings.social_instagram_link`.
+Each group becomes its own expandable panel in the theme editor's global settings. You read any of these values in Liquid through the `settings` object, covered in [5.3. settings, section & block](/global-objects/settings-section-and-block/) — `settings.heading_font`, `settings.social_instagram_link`.
 
 :::note[One special entry: `theme_info`]
 A theme typically includes one extra, non-visual entry at the top of this array — a `theme_info` block with the theme's name, author, version, and documentation URL. It doesn't render as a setting at all; it's metadata about the theme itself.
@@ -58,7 +58,7 @@ This file stores the current values a merchant has actually chosen for everythin
 
 ## The misconception worth clearing up directly
 
-It's tempting to assume `settings_data.json` is where *all* settings data lives — sections, blocks, everything. It isn't. It only stores values for the **global** settings defined in `settings_schema.json`. A section's own settings (`section.settings.*`) and a block's own settings (`block.settings.*`) are stored somewhere else entirely: inside the JSON template that placed that section (covered in [Templates: JSON vs. Liquid](/theme-architecture/templates-json-vs-liquid/)), or inside a section group file for the header/footer.
+It's tempting to assume `settings_data.json` is where *all* settings data lives — sections, blocks, everything. It isn't. It only stores values for the **global** settings defined in `settings_schema.json`. A section's own settings (`section.settings.*`) and a block's own settings (`block.settings.*`) are stored somewhere else entirely: inside the JSON template that placed that section (covered in [2.5. Templates: JSON vs. Liquid](/theme-architecture/templates-json-vs-liquid/)), or inside a section group file for the header/footer.
 
 | Settings for... | Values stored in |
 |---|---|

@@ -5,7 +5,7 @@ description: A decision tree and example set for what typography CSS belongs in 
 
 **TL;DR:** A decision tree and example set for what typography CSS belongs in a section, block, or snippet's own stylesheet — and what should always come from a token or preset instead.
 
-[Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/), [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/), and [Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/) each cover one piece of this mechanism in depth. This page doesn't introduce anything new — it's the practical recap, written for the moment you're actually writing a section's `{% stylesheet %}` and need a fast, concrete answer to "does this typography CSS belong here?"
+[18.6. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/), [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/), and [Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/) each cover one piece of this mechanism in depth. This page doesn't introduce anything new — it's the practical recap, written for the moment you're actually writing a section's `{% stylesheet %}` and need a fast, concrete answer to "does this typography CSS belong here?"
 
 ## The one rule
 
@@ -22,7 +22,7 @@ It's easy to blur these together, so it's worth being precise about what each on
 | How a component uses it | Referenced directly, inside the component's own `{% stylesheet %}` | Applied as a class in markup — **never** referenced property-by-property in a stylesheet |
 | Right for | A component that wants to "belong" to a font role, with no opinion on size (the surrounding context already controls that) | Any text that needs a complete, consistent typographic treatment |
 
-The detail most worth remembering: **a role token has no size property at all.** [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/#step-3-resolve-every-role-into-css-custom-properties-once) resolves each role into exactly three properties — family, weight, style. If a component reaches for a role token and then also needs a `font-size`, that's a sign it actually needs a *preset* (apply the class), not a role token with a hand-picked size bolted on.
+The detail most worth remembering: **a role token has no size property at all.** [18.6. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/#step-3-resolve-every-role-into-css-custom-properties-once) resolves each role into exactly three properties — family, weight, style. If a component reaches for a role token and then also needs a `font-size`, that's a sign it actually needs a *preset* (apply the class), not a role token with a hand-picked size bolted on.
 
 ## The decision tree
 
@@ -55,7 +55,7 @@ None of that is typography, and none of it has an equivalent "global class" the 
 
 ## `{% stylesheet %}` vs. `{% style %}`, for typography specifically
 
-[CSS Fundamentals in a Shopify Theme](/all-about-css/css-fundamentals/) covers the general difference; here's what it means for typography in particular:
+[29.1. CSS Fundamentals in a Shopify Theme](/all-about-css/css-fundamentals/) covers the general difference; here's what it means for typography in particular:
 
 - **`{% stylesheet %}`** is where a component applies a preset class in its markup and writes its own non-typography CSS. It can't evaluate Liquid, so it never contains a settings-driven value — which is exactly right, since a component consuming existing tokens and presets shouldn't need to.
 - **`{% style %}`** is for *defining* a token from a setting, not for *consuming* one. Its two legitimate typography uses are both covered elsewhere: the theme-wide token-resolution snippet rendered once near the top of `theme.liquid` ([Design Tokens & Type Presets, Step 3](/all-about-typography/design-tokens-and-type-presets/#step-3-resolve-every-role-into-css-custom-properties-once)), and a section- or block-scoped font setting that needs its own `font_face` output ([the `story_font` example](/all-about-typography/wiring-typography-into-sections-and-blocks/#when-a-section-genuinely-needs-its-own-font-setting)).
@@ -178,9 +178,9 @@ A raw size control lets a merchant land on a value that doesn't match any tested
 
 ## Further reading
 
-- [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — the role-token layer
-- [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — designing presets, and Decision 5's global-class pattern in full
+- [18.6. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — the role-token layer
+- [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — designing presets, and Decision 5's global-class pattern in full
 - [Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/) — the broader section/block consumption patterns, including the scoped-setting case
-- [Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/) — how every identifier referenced on this page got its name
-- [Typography Best Practices](/all-about-typography/typography-best-practices/) — the broader, chapter-wide checklist this page's narrower focus sits alongside
-- [CSS Fundamentals in a Shopify Theme](/all-about-css/css-fundamentals/) — the general `{% stylesheet %}` vs. `{% style %}` distinction
+- [18.10. Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/) — how every identifier referenced on this page got its name
+- [18.11. Typography Best Practices](/all-about-typography/typography-best-practices/) — the broader, chapter-wide checklist this page's narrower focus sits alongside
+- [29.1. CSS Fundamentals in a Shopify Theme](/all-about-css/css-fundamentals/) — the general `{% stylesheet %}` vs. `{% style %}` distinction

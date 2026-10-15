@@ -25,7 +25,7 @@ Find where one visually distinct region of the page ends and the next begins —
 
 ## Separate "this specific content" from "this kind of content"
 
-A design always shows you one specific, finished example — this exact headline, this exact photo, these exact three testimonials. Your job isn't to recreate that one example; it's to build something general enough to hold *any* content a merchant puts into it, including headlines, photos, and item counts the original design never showed you at all. Keep asking, the whole time you're reading: "is this specific thing I'm looking at the actual content, or just a convincing example of the kind of content this needs to hold?" The next page, [Content vs. Structure](/figma-to-code/content-vs-structure/), turns this question into a concrete test.
+A design always shows you one specific, finished example — this exact headline, this exact photo, these exact three testimonials. Your job isn't to recreate that one example; it's to build something general enough to hold *any* content a merchant puts into it, including headlines, photos, and item counts the original design never showed you at all. Keep asking, the whole time you're reading: "is this specific thing I'm looking at the actual content, or just a convincing example of the kind of content this needs to hold?" The next page, [9.2. Content vs. Structure](/figma-to-code/content-vs-structure/), turns this question into a concrete test.
 
 ## A short list of questions worth asking about every region of a design
 

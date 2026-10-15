@@ -11,10 +11,10 @@ A **design token** is just a named, reusable value — a specific color, a speci
 
 | Page | Answers |
 |---|---|
-| [Color Settings & Color Schemes](/design-tokens/color-settings-and-color-schemes/) | `color_scheme_group`, and why bundling related colors beats standalone ones |
-| [Typography & font_picker](/design-tokens/typography-and-font-picker/) | Loading a merchant-chosen font correctly, and the idea of a type scale |
-| [Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) | A consistent spacing scale, and handling mobile separately without breaking live preview |
-| [Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/) | The inline custom-property pattern, and why it's the only approach that keeps the theme editor's live preview working |
+| [7.1. Color Settings & Color Schemes](/design-tokens/color-settings-and-color-schemes/) | `color_scheme_group`, and why bundling related colors beats standalone ones |
+| [7.2. Typography & font_picker](/design-tokens/typography-and-font-picker/) | Loading a merchant-chosen font correctly, and the idea of a type scale |
+| [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) | A consistent spacing scale, and handling mobile separately without breaking live preview |
+| [7.4. Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/) | The inline custom-property pattern, and why it's the only approach that keeps the theme editor's live preview working |
 
 ## Further reading
 

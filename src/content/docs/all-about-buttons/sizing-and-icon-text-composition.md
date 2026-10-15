@@ -7,7 +7,7 @@ description: Button width is a different setting pattern from section padding â€
 
 ## Button width isn't a spacing setting
 
-[Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) established `padding_top`/`padding_bottom` as the standard pattern for a section or block's own spacing. A button's **width** is a genuinely different kind of setting, and Horizon's real pattern shows why:
+[7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) established `padding_top`/`padding_bottom` as the standard pattern for a section or block's own spacing. A button's **width** is a genuinely different kind of setting, and Horizon's real pattern shows why:
 
 ```json
 {
@@ -106,4 +106,4 @@ Hiding a purely decorative icon from assistive technology is the right call gene
 
 - [`snippets/size-style.liquid` (Horizon, GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/size-style.liquid)
 - [`blocks/button.liquid` (Horizon, GitHub)](https://github.com/Shopify/horizon/blob/main/blocks/button.liquid)
-- [Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/)
+- [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/)

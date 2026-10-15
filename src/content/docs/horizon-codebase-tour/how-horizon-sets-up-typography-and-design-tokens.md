@@ -31,11 +31,11 @@ The file solves this by building a unique ID string for every font variant it's 
 %}
 ```
 
-This pattern — build an ID from a font's family/weight/style, check whether that exact ID has already been output, skip if so — repeats for all sixteen font variants (four roles times four variants each). It's a direct, practical answer to the "load each font exactly once" rule from [Typography Best Practices](/all-about-typography/typography-best-practices/), handling the specific edge case where "once" isn't obvious because the same font might be assigned to more than one role. Notice also `font_display: 'swap'` passed explicitly to `font_face` — the exact setting [Font-Loading Performance](/all-about-typography/font-loading-performance/) recommends as the sensible default.
+This pattern — build an ID from a font's family/weight/style, check whether that exact ID has already been output, skip if so — repeats for all sixteen font variants (four roles times four variants each). It's a direct, practical answer to the "load each font exactly once" rule from [18.11. Typography Best Practices](/all-about-typography/typography-best-practices/), handling the specific edge case where "once" isn't obvious because the same font might be assigned to more than one role. Notice also `font_display: 'swap'` passed explicitly to `font_face` — the exact setting [18.13. Font-Loading Performance](/all-about-typography/font-loading-performance/) recommends as the sensible default.
 
 ## A real fluid type-preset algorithm
 
-[Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) showed hand-picked `clamp()` values for a handful of headings. Horizon instead *computes* a `clamp()` value for every size, from a single pixel number per size (`settings.type_size_h1`, `settings.type_size_h2`, and so on), using a consistent formula:
+[18.14. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) showed hand-picked `clamp()` values for a handful of headings. Horizon instead *computes* a `clamp()` value for every size, from a single pixel number per size (`settings.type_size_h1`, `settings.type_size_h2`, and so on), using a consistent formula:
 
 ```liquid
 {% liquid
@@ -55,7 +55,7 @@ This pattern — build an ID from a font's family/weight/style, check whether th
 %}
 ```
 
-Two things worth noticing: sizes below a cutoff (48px) get a plain fixed `rem` value, not a `clamp()` — the same "reserve fluid scaling for sizes that need it" guidance from [Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/), applied as an actual rule rather than a judgment call per size. And each size's fluid minimum is derived from the *next smaller size* in the scale, not an arbitrary fraction — keeping the whole scale internally consistent as a merchant adjusts individual sizes from the theme editor, rather than each size scaling independently and potentially overlapping or inverting relative to its neighbors.
+Two things worth noticing: sizes below a cutoff (48px) get a plain fixed `rem` value, not a `clamp()` — the same "reserve fluid scaling for sizes that need it" guidance from [18.14. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/), applied as an actual rule rather than a judgment call per size. And each size's fluid minimum is derived from the *next smaller size* in the scale, not an arbitrary fraction — keeping the whole scale internally consistent as a merchant adjusts individual sizes from the theme editor, rather than each size scaling independently and potentially overlapping or inverting relative to its neighbors.
 
 ## Type presets: bundling size with family, weight, case, and spacing
 
@@ -75,7 +75,7 @@ Beyond raw sizes, the file builds a complete preset per text role (`paragraph`, 
 %}
 ```
 
-This is precisely the type-preset idea from [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/), built for real: `--font-h2--family`, `--font-h2--size`, `--font-h2--weight`, `--font-h2--case`, `--font-h2--line-height` all exist as one named bundle a component reads from, rather than a component assembling those five decisions itself every time it needs "H2 styling." Notice each preset's font-family doesn't hardcode a font — it points at `var(--font-heading--family)` (one of the four role tokens from the typography chapter), so changing the Heading font setting still cascades through every preset built on top of it.
+This is precisely the type-preset idea from [18.6. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/), built for real: `--font-h2--family`, `--font-h2--size`, `--font-h2--weight`, `--font-h2--case`, `--font-h2--line-height` all exist as one named bundle a component reads from, rather than a component assembling those five decisions itself every time it needs "H2 styling." Notice each preset's font-family doesn't hardcode a font — it points at `var(--font-heading--family)` (one of the four role tokens from the typography chapter), so changing the Heading font setting still cascades through every preset built on top of it.
 
 ## The rest of the file: a full design-token system, not just type
 
@@ -105,7 +105,7 @@ Past typography, the same file defines CSS custom properties for nearly every ot
 
 ## Further reading
 
-- [Horizon's Typography System by the Numbers](/horizon-codebase-tour/horizons-typography-system-by-the-numbers/) — exactly how many settings, variants, tokens, and presets this adds up to
+- [27.4. Horizon's Typography System by the Numbers](/horizon-codebase-tour/horizons-typography-system-by-the-numbers/) — exactly how many settings, variants, tokens, and presets this adds up to
 - [`theme-styles-variables.liquid` (GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/theme-styles-variables.liquid)
 - [`fonts.liquid` (GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/fonts.liquid)
 - [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/)

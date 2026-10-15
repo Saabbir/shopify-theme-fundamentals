@@ -5,7 +5,7 @@ description: currentColor for free theme-wide color matching, and a --sol-icon-s
 
 **TL;DR:** `currentColor` for free theme-wide color matching, and a `--sol-icon-size` token instead of hardcoding width/height per use.
 
-[Icons & SVGs](/media-and-assets/icons-and-svgs/) introduces `fill: currentColor`; this page covers the full, systematic pattern — sizing through one custom property instead of a `width`/`height` attribute repeated at every use, and what to do with an icon that uses `stroke` instead of `fill`.
+[12.3. Icons & SVGs](/media-and-assets/icons-and-svgs/) introduces `fill: currentColor`; this page covers the full, systematic pattern — sizing through one custom property instead of a `width`/`height` attribute repeated at every use, and what to do with an icon that uses `stroke` instead of `fill`.
 
 ## Color: `currentColor` is almost always the right default
 
@@ -94,6 +94,6 @@ A different icon style (outline-style icons, common in some icon sets) draws its
 
 ## Further reading
 
-- [Icons & SVGs](/media-and-assets/icons-and-svgs/)
-- [CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/)
-- [A Reusable Icon Snippet Pattern](/all-about-icons/a-reusable-icon-snippet-pattern/)
+- [12.3. Icons & SVGs](/media-and-assets/icons-and-svgs/)
+- [29.4. CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/)
+- [37.2. A Reusable Icon Snippet Pattern](/all-about-icons/a-reusable-icon-snippet-pattern/)

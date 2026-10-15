@@ -61,4 +61,4 @@ Mixing `collection.filters` and manual tag-based URLs on the same collection pag
 
 - [Filter collections by tag (shopify.dev)](https://shopify.dev/docs/storefronts/themes/navigation-search/filtering/tag-filtering)
 - [`link_to_add_tag` (shopify.dev)](https://shopify.dev/docs/api/liquid/filters/link_to_add_tag)
-- [collection.filters in Depth](/all-about-collection-filtering-and-sorting/collection-filters-in-depth-types-values-and-url-parameters/)
+- [35.1. collection.filters in Depth](/all-about-collection-filtering-and-sorting/collection-filters-in-depth-types-values-and-url-parameters/)

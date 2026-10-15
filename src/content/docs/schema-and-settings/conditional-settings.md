@@ -32,7 +32,7 @@ Some settings only make sense in combination with another one. A "custom color" 
 
 ## The syntax is a Liquid expression, as a string
 
-`visible_if`'s value is a string containing an actual Liquid condition, referencing the current scope — `section.settings.*` inside a section, `block.settings.*` inside a block. It supports the same comparison operators covered in [Operators & Conditionals](/liquid-basics/operators-and-conditionals/):
+`visible_if`'s value is a string containing an actual Liquid condition, referencing the current scope — `section.settings.*` inside a section, `block.settings.*` inside a block. It supports the same comparison operators covered in [4.3. Operators & Conditionals](/liquid-basics/operators-and-conditionals/):
 
 ```json
 "visible_if": "{{ section.settings.layout == 'grid' and section.settings.show_filters }}"

@@ -14,16 +14,16 @@ Compare the two frames and describe the change in words, not pixels: "three colu
 | What you see in the frames | Usual CSS answer |
 |---|---|
 | Columns become a single stacked column | A grid or flex container that wraps, or switches `flex-direction` below a breakpoint |
-| Text shrinks | `clamp()` for fluid type, covered in [Typography & font_picker](/design-tokens/typography-and-font-picker/) — often no breakpoint needed at all |
-| Spacing shrinks | The desktop/mobile `range` setting pattern from [Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) |
+| Text shrinks | `clamp()` for fluid type, covered in [7.2. Typography & font_picker](/design-tokens/typography-and-font-picker/) — often no breakpoint needed at all |
+| Spacing shrinks | The desktop/mobile `range` setting pattern from [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) |
 | An element is hidden entirely on one size | A plain `@media` rule hiding or showing it — rarely worth a setting |
 
 ## Most of this doesn't need a new theme setting at all
 
-This is the point easiest to get wrong in the opposite direction from [the previous page](/figma-to-code/section-block-snippet-or-fixed-markup/)'s "don't over-build" caution: seeing two different frames doesn't mean every value that differs between them needs its own merchant-facing setting. A grid that reflows from three columns to one, or a heading that shrinks fluidly with `clamp()`, is something CSS handles entirely on its own — no setting required, and no Liquid logic deciding anything about screen size. Reserve an actual setting (with its own mobile variant, following the pattern already covered in [Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/)) only for the handful of values a merchant would plausibly want to adjust themselves, like a section's own top/bottom padding — not for every single thing that happens to look different between the two frames.
+This is the point easiest to get wrong in the opposite direction from [the previous page](/figma-to-code/section-block-snippet-or-fixed-markup/)'s "don't over-build" caution: seeing two different frames doesn't mean every value that differs between them needs its own merchant-facing setting. A grid that reflows from three columns to one, or a heading that shrinks fluidly with `clamp()`, is something CSS handles entirely on its own — no setting required, and no Liquid logic deciding anything about screen size. Reserve an actual setting (with its own mobile variant, following the pattern already covered in [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/)) only for the handful of values a merchant would plausibly want to adjust themselves, like a section's own top/bottom padding — not for every single thing that happens to look different between the two frames.
 
 :::caution[The same rule from Spacing & Layout Tokens applies here too]
-Never decide which frame's layout to use based on a device check inside Liquid. Liquid renders once; it has no way to react to the browser being resized, and it breaks the theme editor's live, resizable device preview. Every responsive difference between the two frames belongs in CSS (`@media` queries reading CSS custom properties, as covered in [Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/)), never in a Liquid-side device check.
+Never decide which frame's layout to use based on a device check inside Liquid. Liquid renders once; it has no way to react to the browser being resized, and it breaks the theme editor's live, resizable device preview. Every responsive difference between the two frames belongs in CSS (`@media` queries reading CSS custom properties, as covered in [7.4. Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/)), never in a Liquid-side device check.
 :::
 
 ## Key takeaways

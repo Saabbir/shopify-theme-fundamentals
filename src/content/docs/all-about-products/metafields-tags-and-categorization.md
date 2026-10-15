@@ -14,7 +14,7 @@ A product can be organized by **type**, **tags**, **taxonomy category**, and **c
 {{ product.vendor }}
 ```
 
-Both are free-text fields, one value per product, typed directly by whoever created it — there's no controlled list enforcing consistency, so `"T-Shirt"` and `"T-shirts"` can both exist as distinct values on different products if a merchant wasn't consistent. `shop.types` and `shop.vendors` (covered in [cart, customer & shop in Full](/all-about-global-objects/cart-customer-and-shop-in-full/)) return the store's complete, deduplicated sets of whatever values actually exist.
+Both are free-text fields, one value per product, typed directly by whoever created it — there's no controlled list enforcing consistency, so `"T-Shirt"` and `"T-shirts"` can both exist as distinct values on different products if a merchant wasn't consistent. `shop.types` and `shop.vendors` (covered in [31.3. cart, customer & shop in Full](/all-about-global-objects/cart-customer-and-shop-in-full/)) return the store's complete, deduplicated sets of whatever values actually exist.
 
 ## Tags: many per product, free text, alphabetically sorted
 
@@ -51,7 +51,7 @@ Unlike type and vendor, a product can have any number of tags, and `product.tags
 | `product.category` | One per product | Shopify's structured taxonomy | Reporting, some sales channels, category-aware breadcrumbs |
 | Collection membership | Many per product | Merchant, curated or rule-based | The actual navigable sections of a storefront |
 
-Collection membership (`product.collections`, covered in [product, variant & collection in Full](/all-about-global-objects/product-variant-and-collection-in-full/)) is the odd one out on this page specifically because it isn't a property *of* the product at all — it's a separate relationship, built either by a merchant manually curating a collection's product list or by a collection's own automated rules (which commonly reference tags, type, or vendor to decide membership). A product's tags existing doesn't automatically put it in any particular collection; a collection's rules have to be configured to actually use those tags.
+Collection membership (`product.collections`, covered in [31.2. product, variant & collection in Full](/all-about-global-objects/product-variant-and-collection-in-full/)) is the odd one out on this page specifically because it isn't a property *of* the product at all — it's a separate relationship, built either by a merchant manually curating a collection's product list or by a collection's own automated rules (which commonly reference tags, type, or vendor to decide membership). A product's tags existing doesn't automatically put it in any particular collection; a collection's rules have to be configured to actually use those tags.
 
 ## Accessing a metafield on a product
 
@@ -60,7 +60,7 @@ Collection membership (`product.collections`, covered in [product, variant & col
 {{ product.metafields.custom.ingredients.value }}
 ```
 
-A metafield attaches genuinely custom data beyond anything Shopify's built-in product fields cover — care instructions, ingredients, a size chart, a product-specific warranty length. [request, routes, localization & Metafield Access Patterns](/all-about-global-objects/request-routes-localization-and-metafields/) covers the full access pattern, type-specific `.value` formats, and the `size`/`first`/`last` key gotcha in depth; the one thing worth repeating here is that a metafield has to already be defined (in the admin or by an app) before a theme can read it — there's no way to discover what metafields a product *might* have from Liquid alone, which is why a theme's metafield-dependent features always need to be documented for whoever sets the store up.
+A metafield attaches genuinely custom data beyond anything Shopify's built-in product fields cover — care instructions, ingredients, a size chart, a product-specific warranty length. [31.5. request, routes, localization & Metafield Access Patterns](/all-about-global-objects/request-routes-localization-and-metafields/) covers the full access pattern, type-specific `.value` formats, and the `size`/`first`/`last` key gotcha in depth; the one thing worth repeating here is that a metafield has to already be defined (in the admin or by an app) before a theme can read it — there's no way to discover what metafields a product *might* have from Liquid alone, which is why a theme's metafield-dependent features always need to be documented for whoever sets the store up.
 
 ## Key takeaways
 
@@ -73,4 +73,4 @@ A metafield attaches genuinely custom data beyond anything Shopify's built-in pr
 
 - [Liquid objects: product](https://shopify.dev/docs/api/liquid/objects/product) (shopify.dev)
 - [Liquid objects: taxonomy_category](https://shopify.dev/docs/api/liquid/objects/taxonomy_category) (shopify.dev)
-- [request, routes, localization & Metafield Access Patterns](/all-about-global-objects/request-routes-localization-and-metafields/)
+- [31.5. request, routes, localization & Metafield Access Patterns](/all-about-global-objects/request-routes-localization-and-metafields/)

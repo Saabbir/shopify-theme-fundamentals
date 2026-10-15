@@ -56,7 +56,7 @@ A star rating is a genuinely easy component to get visually right and accessibly
 Five empty stars sit as the base layer; a second, absolutely positioned copy of five *filled* stars sits on top, clipped to a percentage width via `overflow: hidden`. At `72%`, the fill layer's fifth star is sliced through partway — the browser doesn't understand "three and a half stars" as a concept, but clipping an element to a percentage width produces the same visual result with ordinary CSS, no SVG masking or JavaScript needed. `aria-hidden="true"` on the whole visual track makes sure none of this — the repeated star glyphs, the clipping div — is ever exposed to a screen reader; it's purely decorative, since the real description already lives in the outer `aria-label`.
 
 :::note[Real SVG icons work the same way — this example uses glyph characters only to keep the markup short]
-A production component would almost certainly use inline SVG stars rather than the `★`/`☆` text glyphs shown here, for crisper rendering and real control over the icon's shape — the clipping and labeling technique is identical either way. [All About Icons](/all-about-icons/) covers the reusable icon-snippet pattern this would plug into.
+A production component would almost certainly use inline SVG stars rather than the `★`/`☆` text glyphs shown here, for crisper rendering and real control over the icon's shape — the clipping and labeling technique is identical either way. [37. All About Icons](/all-about-icons/) covers the reusable icon-snippet pattern this would plug into.
 :::
 
 ## What to never do instead
@@ -73,6 +73,6 @@ A production component would almost certainly use inline SVG stars rather than t
 
 ## Further reading
 
-- [The Shopify Product Reviews App's Standard Metafields](/all-about-product-reviews/the-shopify-product-reviews-apps-standard-metafields/)
+- [34.2. The Shopify Product Reviews App's Standard Metafields](/all-about-product-reviews/the-shopify-product-reviews-apps-standard-metafields/)
 - [`AggregateRating` Schema.org Markup for SEO](/all-about-product-reviews/aggregaterating-schema-for-seo/)
 - [ARIA: img role (MDN)](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role)

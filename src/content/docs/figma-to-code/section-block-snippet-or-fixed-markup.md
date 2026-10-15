@@ -5,13 +5,13 @@ description: Applying the decision guide from earlier in this site directly to a
 
 **TL;DR:** Applying the decision guide from earlier in this site directly to a design, instead of to an abstract feature request.
 
-[Choosing the Right Piece: A Decision Guide](/sections-blocks-snippets/choosing-the-right-piece/) already covered this decision mechanically — the questions to ask about any feature. This page is shorter on purpose: it's the same questions, answered by looking at a design rather than reading a written feature request.
+[3.6. Choosing the Right Piece: A Decision Guide](/sections-blocks-snippets/choosing-the-right-piece/) already covered this decision mechanically — the questions to ask about any feature. This page is shorter on purpose: it's the same questions, answered by looking at a design rather than reading a written feature request.
 
 ## Translating each question into something you can see
 
 | That page's question | What to look for in the design |
 |---|---|
-| Does a merchant need to add, remove, or reorder it on a page? | A visually distinct, self-contained region (a boundary from [Reading a Design Like a Developer](/figma-to-code/reading-a-design-like-a-developer/)) → likely a **section** |
+| Does a merchant need to add, remove, or reorder it on a page? | A visually distinct, self-contained region (a boundary from [9.1. Reading a Design Like a Developer](/figma-to-code/reading-a-design-like-a-developer/)) → likely a **section** |
 | Is it a smaller, repeatable piece inside a section? | Repetition *within* one of those regions (three callouts inside one bounded area) → likely a **block** |
 | Does a merchant need layout control over several blocks together? | The repeated items are arranged in a way a merchant would plausibly want to rearrange into rows/columns themselves → a nestable **group block** |
 | Is it reusable code with no settings a merchant needs to see? | The same exact visual piece (a product card's layout, say) reappears in more than one place in the overall design → a **snippet** |

@@ -147,7 +147,7 @@ This file looks like any other block — the `"static": true` key lives in the s
 {% endschema %}
 ```
 
-`feature-card`'s own schema declares `"blocks": [{ "type": "@theme" }]` — exactly the mechanism from [Block Fundamentals](/all-about-blocks/block-fundamentals/) that lets a block hold other blocks, just applied here instead of at the section level. `{% content_for 'blocks' %}` inside this file is what renders whatever children a merchant has nested inside this specific card.
+`feature-card`'s own schema declares `"blocks": [{ "type": "@theme" }]` — exactly the mechanism from [15.1. Block Fundamentals](/all-about-blocks/block-fundamentals/) that lets a block hold other blocks, just applied here instead of at the section level. `{% content_for 'blocks' %}` inside this file is what renders whatever children a merchant has nested inside this specific card.
 
 ## The nested child: `blocks/bullet.liquid`
 
@@ -175,14 +175,14 @@ This file looks like any other block — the `"static": true` key lives in the s
 
 ## Every concern from this chapter, in one place
 
-- **A standalone block reusable via `@theme`** — `feature-card` and `bullet` both live in `blocks/` as their own files, per [Block Fundamentals](/all-about-blocks/block-fundamentals/), rather than being defined inline inside the section.
-- **A static block** — `section-heading` is declared with `"static": true` in the section's schema and rendered at a fixed position with `{% content_for 'block', type:, id: %}`, per [Static Blocks](/all-about-blocks/static-blocks/). A merchant can edit its heading text but can't remove it or move it below the cards.
-- **Nested blocks, two levels deep** — a `feature-card` can hold `bullet` blocks, demonstrating the same recursive mechanism from [Advanced Nested Block Patterns](/all-about-blocks/advanced-nested-block-patterns/): `block.blocks.size`, `{% content_for 'blocks' %}`, and `"blocks": [{ "type": "@theme" }]`, all used inside a block's own file instead of a section's.
-- **`@theme` targeting** — the section allows any theme block via `@theme` rather than hardcoding `feature-card` by name, per [@app and @theme Targeting in Full](/all-about-blocks/app-and-theme-targeting-in-full/); the same section could be extended later to also accept `@app` blocks without changing this structure.
-- **A bounded limit** — `max_blocks: 6` caps the row at six cards, per [Block Limits](/all-about-blocks/block-limits/).
-- **A nested preset** — the section's `presets` entry pre-builds one card with nested bullets already filled in, per [Advanced Preset Patterns](/all-about-blocks/advanced-preset-patterns/), so a merchant sees the nesting in action immediately instead of an empty card.
+- **A standalone block reusable via `@theme`** — `feature-card` and `bullet` both live in `blocks/` as their own files, per [15.1. Block Fundamentals](/all-about-blocks/block-fundamentals/), rather than being defined inline inside the section.
+- **A static block** — `section-heading` is declared with `"static": true` in the section's schema and rendered at a fixed position with `{% content_for 'block', type:, id: %}`, per [15.2. Static Blocks](/all-about-blocks/static-blocks/). A merchant can edit its heading text but can't remove it or move it below the cards.
+- **Nested blocks, two levels deep** — a `feature-card` can hold `bullet` blocks, demonstrating the same recursive mechanism from [15.3. Advanced Nested Block Patterns](/all-about-blocks/advanced-nested-block-patterns/): `block.blocks.size`, `{% content_for 'blocks' %}`, and `"blocks": [{ "type": "@theme" }]`, all used inside a block's own file instead of a section's.
+- **`@theme` targeting** — the section allows any theme block via `@theme` rather than hardcoding `feature-card` by name, per [15.4. @app and @theme Targeting in Full](/all-about-blocks/app-and-theme-targeting-in-full/); the same section could be extended later to also accept `@app` blocks without changing this structure.
+- **A bounded limit** — `max_blocks: 6` caps the row at six cards, per [15.5. Block Limits](/all-about-blocks/block-limits/).
+- **A nested preset** — the section's `presets` entry pre-builds one card with nested bullets already filled in, per [15.6. Advanced Preset Patterns](/all-about-blocks/advanced-preset-patterns/), so a merchant sees the nesting in action immediately instead of an empty card.
 - **`block.shopify_attributes` on every block's outermost element** — `section-heading`, `feature-card`, and `bullet` all include it, so the theme editor can select any of them individually, at any nesting depth.
-- **Translated schema strings throughout**, matching the pattern from [A Complete Locale File Example](/all-about-theme-settings/a-complete-locale-file-example/).
+- **Translated schema strings throughout**, matching the pattern from [28.6. A Complete Locale File Example](/all-about-theme-settings/a-complete-locale-file-example/).
 
 ## Key takeaways
 
@@ -192,5 +192,5 @@ This file looks like any other block — the `"static": true` key lives in the s
 
 ## Further reading
 
-- [A Complete Section Example](/all-about-sections/a-complete-section-example/)
+- [14.6. A Complete Section Example](/all-about-sections/a-complete-section-example/)
 - [Theme blocks](https://shopify.dev/docs/storefronts/themes/architecture/blocks) (shopify.dev)

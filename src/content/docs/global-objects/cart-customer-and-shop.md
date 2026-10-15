@@ -45,7 +45,7 @@ A cart with nothing in it still exists as an object — `cart.item_count` is `0`
 ```
 
 :::caution[The single most important thing to know about `customer`]
-`customer` is `nil` for every guest — which is most shoppers on most stores. Always check `{% if customer %}` before reading any property off it. Writing `{{ customer.first_name }}` directly, with no check, will silently print nothing for a logged-out visitor rather than erroring (the same silent-`nil` behavior from [Debugging Liquid](/liquid-basics/debugging-liquid/)) — but it's easy to test only while logged in yourself and never notice.
+`customer` is `nil` for every guest — which is most shoppers on most stores. Always check `{% if customer %}` before reading any property off it. Writing `{{ customer.first_name }}` directly, with no check, will silently print nothing for a logged-out visitor rather than erroring (the same silent-`nil` behavior from [4.8. Debugging Liquid](/liquid-basics/debugging-liquid/)) — but it's easy to test only while logged in yourself and never notice.
 :::
 
 Once you've confirmed `customer` exists, the properties themselves are straightforward:

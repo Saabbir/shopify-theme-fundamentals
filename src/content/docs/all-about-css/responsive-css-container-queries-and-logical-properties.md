@@ -49,7 +49,7 @@ A `@media (max-width: ...)` query answers one question: how wide is the browser 
 
 ## Fluid sizing without a breakpoint at all: `clamp()`
 
-[Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) covers `clamp()` for font sizing specifically; the same function works for any numeric CSS value that should scale smoothly with the viewport instead of jumping at a fixed breakpoint:
+[18.14. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) covers `clamp()` for font sizing specifically; the same function works for any numeric CSS value that should scale smoothly with the viewport instead of jumping at a fixed breakpoint:
 
 ```css
 .hero-banner {
@@ -80,7 +80,7 @@ Most CSS tutorials teach physical properties — `margin-left`, `padding-top`, `
 }
 ```
 
-`inline` always means "along the direction text flows" (horizontal, in English; still horizontal, but reversed, in Arabic or Hebrew) and `block` always means "along the direction lines stack" (vertical, in nearly every writing system in practical use). [RTL, Print & Other Rendering Contexts](/all-about-css/rtl-print-and-other-rendering-contexts/) covers exactly what breaks if physical properties are used instead, once a store's language actually flips direction.
+`inline` always means "along the direction text flows" (horizontal, in English; still horizontal, but reversed, in Arabic or Hebrew) and `block` always means "along the direction lines stack" (vertical, in nearly every writing system in practical use). [29.8. RTL, Print & Other Rendering Contexts](/all-about-css/rtl-print-and-other-rendering-contexts/) covers exactly what breaks if physical properties are used instead, once a store's language actually flips direction.
 
 ## Key takeaways
 
@@ -90,8 +90,8 @@ Most CSS tutorials teach physical properties — `margin-left`, `padding-top`, `
 
 ## Further reading
 
-- [Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/) — vw/vh and their dvh/svh/lvh variants, and the full rem/em/px decision
-- [Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) — more old-approach-to-new-feature swaps: `:has()`, native nesting, `aspect-ratio`, `gap`, `subgrid`, and more
+- [29.2. Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/) — vw/vh and their dvh/svh/lvh variants, and the full rem/em/px decision
+- [29.10. Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) — more old-approach-to-new-feature swaps: `:has()`, native nesting, `aspect-ratio`, `gap`, `subgrid`, and more
 - [CSS container queries (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)
 - [CSS logical properties (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values)
-- [Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/)
+- [18.14. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/)

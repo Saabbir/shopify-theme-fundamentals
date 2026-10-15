@@ -17,7 +17,7 @@ Walking through the [decision guide](/sections-blocks-snippets/choosing-the-righ
 
 ## Step 2: Does it need blocks?
 
-The products shown come automatically from whatever collection the merchant picks — they're not individually, manually curated items a merchant adds one at a time. So: no blocks needed here. (Compare this to the testimonials example in [What Is a Block?](/sections-blocks-snippets/what-is-a-block/), where each testimonial genuinely is a separate, manually-added item — that's the case where blocks make sense.)
+The products shown come automatically from whatever collection the merchant picks — they're not individually, manually curated items a merchant adds one at a time. So: no blocks needed here. (Compare this to the testimonials example in [3.2. What Is a Block?](/sections-blocks-snippets/what-is-a-block/), where each testimonial genuinely is a separate, manually-added item — that's the case where blocks make sense.)
 
 ## Step 3: Is there reusable markup?
 

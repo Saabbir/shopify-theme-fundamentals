@@ -80,22 +80,22 @@ Every other page in this chapter looked at one CSS concern at a time. This page 
 
 ## Every concern from this chapter, in one place
 
-- **Co-located `{% stylesheet %}` tags**, one per file, exactly as covered in [CSS Fundamentals in a Shopify Theme](/all-about-css/css-fundamentals/) — no Liquid output inside either block, since `{% stylesheet %}` doesn't evaluate it.
-- **BEM naming** — `product-card`, `product-card__title`, `product-card__price`, per [Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/). Nothing here risks a cross-file dependency: `product-grid` only styles its own outer element, and `product-card`'s classes are defined in the same file that uses them.
-- **Design tokens, never a hardcoded value** — `var(--space-md)`, `var(--color-background)`, `var(--font-heading-family)` throughout, resolved once by the snippet shown in full on [A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/).
-- **A container query, not a viewport media query** — `product-grid` becomes a size-query container, and its own `@container` rule decides the column count based on the grid's actual available width, per [Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/). This is also why `product-card`'s own styling never needs to know how many columns it's sitting in.
-- **Logical properties** — `padding-inline`, `padding-block`, `margin-block-end`, and `text-align: start` throughout, per [Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/) — this section's spacing survives a merchant adding a right-to-left language with zero extra code, per [RTL, Print & Other Rendering Contexts](/all-about-css/rtl-print-and-other-rendering-contexts/).
-- **A cascade layer** — both stylesheets declare their rules inside `@layer components`, per [Cascade Layers & Managing Specificity](/all-about-css/cascade-layers-and-managing-specificity/), so a theme-wide utility class (declared in a later `utilities` layer) can still override either of them when needed, without a specificity fight.
-- **A color scheme, consumed correctly** — `color-{{ color_scheme }}` on the outer element supplies `--color-background` and `--color-text` from whichever scheme a merchant picked, per [A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/).
+- **Co-located `{% stylesheet %}` tags**, one per file, exactly as covered in [29.1. CSS Fundamentals in a Shopify Theme](/all-about-css/css-fundamentals/) — no Liquid output inside either block, since `{% stylesheet %}` doesn't evaluate it.
+- **BEM naming** — `product-card`, `product-card__title`, `product-card__price`, per [29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/). Nothing here risks a cross-file dependency: `product-grid` only styles its own outer element, and `product-card`'s classes are defined in the same file that uses them.
+- **Design tokens, never a hardcoded value** — `var(--space-md)`, `var(--color-background)`, `var(--font-heading-family)` throughout, resolved once by the snippet shown in full on [18.16. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/).
+- **A container query, not a viewport media query** — `product-grid` becomes a size-query container, and its own `@container` rule decides the column count based on the grid's actual available width, per [29.5. Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/). This is also why `product-card`'s own styling never needs to know how many columns it's sitting in.
+- **Logical properties** — `padding-inline`, `padding-block`, `margin-block-end`, and `text-align: start` throughout, per [29.5. Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/) — this section's spacing survives a merchant adding a right-to-left language with zero extra code, per [29.8. RTL, Print & Other Rendering Contexts](/all-about-css/rtl-print-and-other-rendering-contexts/).
+- **A cascade layer** — both stylesheets declare their rules inside `@layer components`, per [29.6. Cascade Layers & Managing Specificity](/all-about-css/cascade-layers-and-managing-specificity/), so a theme-wide utility class (declared in a later `utilities` layer) can still override either of them when needed, without a specificity fight.
+- **A color scheme, consumed correctly** — `color-{{ color_scheme }}` on the outer element supplies `--color-background` and `--color-text` from whichever scheme a merchant picked, per [17.7. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/).
 
 ## Key takeaways
 
 - A real section's CSS draws on every layer of this chapter at once: static `{% stylesheet %}` content, BEM-scoped class names, token custom properties, a container query for component-level responsiveness, logical properties, and a declared cascade layer.
 - None of these techniques are mutually exclusive — they compose, and a production theme's stylesheet typically uses most of them in every file, not just as an occasional advanced technique.
-- Tying it back to the render-tree subsetting from [Critical CSS & Loading Performance](/all-about-css/critical-css-and-loading-performance/): since `product-card`'s classes are only ever defined and used within its own file, this section is fully subsetting-safe — nothing here risks a class silently losing its styles on a page that doesn't render both files.
+- Tying it back to the render-tree subsetting from [29.7. Critical CSS & Loading Performance](/all-about-css/critical-css-and-loading-performance/): since `product-card`'s classes are only ever defined and used within its own file, this section is fully subsetting-safe — nothing here risks a class silently losing its styles on a page that doesn't render both files.
 
 ## Further reading
 
-- [A Complete Section Example](/all-about-sections/a-complete-section-example/)
-- [A Complete Snippet Example](/all-about-snippets/a-complete-snippet-example/)
-- [A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/)
+- [14.6. A Complete Section Example](/all-about-sections/a-complete-section-example/)
+- [16.5. A Complete Snippet Example](/all-about-snippets/a-complete-snippet-example/)
+- [18.16. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/)

@@ -38,7 +38,7 @@ const container = document.querySelector('[data-max-items]');
 const maxItems = Number(container.dataset.maxItems);
 ```
 
-This is the exact same idea as the CSS custom property technique from [Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/) — a Liquid-rendered value lives in the markup itself, and the non-Liquid-aware code (CSS there, JavaScript here) reads it from the markup instead of trying to access the setting directly.
+This is the exact same idea as the CSS custom property technique from [7.4. Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/) — a Liquid-rendered value lives in the markup itself, and the non-Liquid-aware code (CSS there, JavaScript here) reads it from the markup instead of trying to access the setting directly.
 
 ## When `{% javascript %}` is the right size, and when it isn't
 

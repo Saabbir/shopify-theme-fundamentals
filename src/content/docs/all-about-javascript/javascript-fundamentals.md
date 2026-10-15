@@ -48,7 +48,7 @@ const container = document.querySelector('[data-max-items]');
 const maxItems = Number(container.dataset.maxItems);
 ```
 
-[Talking to Liquid: Data Attributes & JSON Islands](/all-about-javascript/talking-to-liquid-data-attributes-and-json-islands/) covers this in full, including what to do once a single attribute isn't enough.
+[30.4. Talking to Liquid: Data Attributes & JSON Islands](/all-about-javascript/talking-to-liquid-data-attributes-and-json-islands/) covers this in full, including what to do once a single attribute isn't enough.
 :::
 
 :::caution[One `{% javascript %}` tag per file]

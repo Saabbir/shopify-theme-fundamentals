@@ -24,7 +24,7 @@ Think of it as nested boxes. A **layout** wraps everything and never changes bet
 Say a shopper visits a product page. Here's what Shopify does, step by step:
 
 1. Shopify looks at the URL and determines the page type — in this case, a product page.
-2. It loads that page type's **template** (covered in [Templates: JSON vs. Liquid](/theme-architecture/templates-json-vs-liquid/)) — for a product page, usually `templates/product.json`.
+2. It loads that page type's **template** (covered in [2.5. Templates: JSON vs. Liquid](/theme-architecture/templates-json-vs-liquid/)) — for a product page, usually `templates/product.json`.
 3. The template lists which **sections** should appear, and in what order — say, a main product section, then a "you may also like" section.
 4. Each section renders its own markup, and renders any **blocks** a merchant has added to it, in the order the merchant arranged them.
 5. All of that gets inserted into the **layout** (`layout/theme.liquid`), which wraps it with the page's `<head>`, header, footer, and any markup that's identical on every page.

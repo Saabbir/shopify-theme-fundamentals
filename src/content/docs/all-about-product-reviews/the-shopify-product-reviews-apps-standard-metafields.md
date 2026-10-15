@@ -54,7 +54,7 @@ Unlike `reviews.rating`, the count is an ordinary `number_integer` metafield —
 A brand-new product, or one with reviews collected but not yet published, simply has no `reviews.rating` metafield at all — it's `nil`, not zero. Checking the metafield's presence (not just whether the count is greater than zero) avoids rendering a "0 reviews" line on every single product that hasn't been reviewed yet, which usually looks worse than showing nothing.
 
 :::note[These two metafields are a de facto standard, not a Shopify-enforced one]
-Shopify's own Product Reviews app establishes this `reviews.rating` / `reviews.rating_count` pattern, and several popular third-party apps (including ones that predate or compete with it) deliberately write to the same namespace and keys for compatibility — but nothing forces a given app to. [Third-Party Review Apps: App Blocks vs. Metafields](/all-about-product-reviews/third-party-review-apps-app-blocks-vs-metafields/) covers how to actually confirm which metafields a specific installed app writes, rather than assuming.
+Shopify's own Product Reviews app establishes this `reviews.rating` / `reviews.rating_count` pattern, and several popular third-party apps (including ones that predate or compete with it) deliberately write to the same namespace and keys for compatibility — but nothing forces a given app to. [34.3. Third-Party Review Apps: App Blocks vs. Metafields](/all-about-product-reviews/third-party-review-apps-app-blocks-vs-metafields/) covers how to actually confirm which metafields a specific installed app writes, rather than assuming.
 :::
 
 ## Key takeaways
@@ -67,6 +67,6 @@ Shopify's own Product Reviews app establishes this `reviews.rating` / `reviews.r
 ## Further reading
 
 - [`rating` (Liquid objects, shopify.dev)](https://shopify.dev/docs/api/liquid/objects/rating)
-- [Third-Party Review Apps: App Blocks vs. Metafields](/all-about-product-reviews/third-party-review-apps-app-blocks-vs-metafields/)
-- [Rendering an Accessible Star Rating](/all-about-product-reviews/rendering-an-accessible-star-rating/)
-- [Metafields, Tags & Categorization](/all-about-products/metafields-tags-and-categorization/)
+- [34.3. Third-Party Review Apps: App Blocks vs. Metafields](/all-about-product-reviews/third-party-review-apps-app-blocks-vs-metafields/)
+- [34.4. Rendering an Accessible Star Rating](/all-about-product-reviews/rendering-an-accessible-star-rating/)
+- [32.6. Metafields, Tags & Categorization](/all-about-products/metafields-tags-and-categorization/)

@@ -24,7 +24,7 @@ Most tokens are plain kebab-case. Where a token is really one property of a larg
 snippets/util-palette-hover-shift.liquid
 ```
 
-A snippet that computes a value and returns it (no markup, no settings, nothing merchant-facing) gets a `util-` prefix, visually separating it from a snippet that renders a component's markup. This is the same "markup snippets vs. logic-only snippets" distinction from [Organizing a Large Snippet Library](/all-about-snippets/organizing-a-large-snippet-library/), with a concrete, real naming convention attached to it.
+A snippet that computes a value and returns it (no markup, no settings, nothing merchant-facing) gets a `util-` prefix, visually separating it from a snippet that renders a component's markup. This is the same "markup snippets vs. logic-only snippets" distinction from [16.3. Organizing a Large Snippet Library](/all-about-snippets/organizing-a-large-snippet-library/), with a concrete, real naming convention attached to it.
 
 ## Dynamic, per-instance scoping classes
 
@@ -66,6 +66,6 @@ Worth knowing if you read `theme-styles-variables.liquid` directly: internally, 
 
 ## Further reading
 
-- [Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/) — this same `type_`/double-dash convention, generalized into a reusable naming system for any theme
+- [18.10. Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/) — this same `type_`/double-dash convention, generalized into a reusable naming system for any theme
 - [`theme-styles-variables.liquid` (GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/theme-styles-variables.liquid)
 - [`contrast-override.liquid` (GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/contrast-override.liquid)

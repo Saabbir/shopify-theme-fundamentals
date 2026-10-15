@@ -51,6 +51,6 @@ Clicking any filter or sort link in every example in this chapter triggers a rea
 
 ## Further reading
 
-- [collection.filters in Depth](/all-about-collection-filtering-and-sorting/collection-filters-in-depth-types-values-and-url-parameters/)
+- [35.1. collection.filters in Depth](/all-about-collection-filtering-and-sorting/collection-filters-in-depth-types-values-and-url-parameters/)
 - [Support storefront filtering (shopify.dev)](https://shopify.dev/docs/storefronts/themes/navigation-search/filtering/storefront-filtering/support-storefront-filtering)
 - [Search & Discovery app (Shopify App Store)](https://apps.shopify.com/search-and-discovery)

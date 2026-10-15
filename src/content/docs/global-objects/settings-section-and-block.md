@@ -5,7 +5,7 @@ description: A quick reference for three objects already covered in depth in ear
 
 **TL;DR:** A quick reference for three objects already covered in depth in earlier chapters.
 
-You've already used all three of these extensively — this page exists as a quick lookup, not a re-teaching. For the full explanation of how sections, blocks, and schema work, see [Sections, Blocks & Snippets](/sections-blocks-snippets/).
+You've already used all three of these extensively — this page exists as a quick lookup, not a re-teaching. For the full explanation of how sections, blocks, and schema work, see [3. Sections, Blocks & Snippets](/sections-blocks-snippets/).
 
 ## `settings`
 
@@ -20,7 +20,7 @@ Every property under `settings` corresponds to an `id` in that global schema fil
 
 ## `section`
 
-`section` gives you the current section's own settings and metadata — the object behind everything in [What Is a Section?](/sections-blocks-snippets/what-is-a-section/).
+`section` gives you the current section's own settings and metadata — the object behind everything in [3.1. What Is a Section?](/sections-blocks-snippets/what-is-a-section/).
 
 ```liquid
 {{ section.settings.heading }}
@@ -38,7 +38,7 @@ Every property under `settings` corresponds to an `id` in that global schema fil
 
 ## `block`
 
-`block` is the equivalent object one level down, available inside a block's own file — the object behind everything in [What Is a Block?](/sections-blocks-snippets/what-is-a-block/).
+`block` is the equivalent object one level down, available inside a block's own file — the object behind everything in [3.2. What Is a Block?](/sections-blocks-snippets/what-is-a-block/).
 
 ```liquid
 {{ block.settings.quote }}
@@ -51,7 +51,7 @@ Every property under `settings` corresponds to an `id` in that global schema fil
 |---|---|
 | `block.settings.*` | This specific block instance's configured values |
 | `block.type` | The block's type string, as defined in its schema |
-| `block.shopify_attributes` | The hidden attributes the theme editor needs for click-to-select — see [What Is a Block?](/sections-blocks-snippets/what-is-a-block/) |
+| `block.shopify_attributes` | The hidden attributes the theme editor needs for click-to-select — see [3.2. What Is a Block?](/sections-blocks-snippets/what-is-a-block/) |
 
 ## Further reading
 

@@ -44,7 +44,7 @@ Every other page in this chapter covers what an object *contains*. This page cov
 
 ## The two objects that don't follow request.page_type at all
 
-`predictive_search` and `recommendations`, covered in full on [search, predictive_search & recommendations](/all-about-global-objects/search-predictive-search-and-recommendations/), don't depend on which template is rendering at all — they depend on *how* a section was rendered. A section referencing `recommendations` renders identically whether it's included on a product page's JSON template or anywhere else; what actually determines whether `recommendations.performed?` is `true` is whether that specific render request came through the Product Recommendations API. Template type is irrelevant to these two; rendering method is everything.
+`predictive_search` and `recommendations`, covered in full on [31.6. search, predictive_search & recommendations](/all-about-global-objects/search-predictive-search-and-recommendations/), don't depend on which template is rendering at all — they depend on *how* a section was rendered. A section referencing `recommendations` renders identically whether it's included on a product page's JSON template or anywhere else; what actually determines whether `recommendations.performed?` is `true` is whether that specific render request came through the Product Recommendations API. Template type is irrelevant to these two; rendering method is everything.
 
 ## Why a header or footer snippet needs this table the most
 
@@ -57,7 +57,7 @@ A section or snippet rendered from `sections/header.liquid` or `sections/footer.
 {% endif %}
 ```
 
-Without the `{% if product %}` guard, this line renders nothing on every template except `product` — not an error, just silently blank — which is exactly the failure mode [Global Object Fundamentals](/all-about-global-objects/global-object-fundamentals/) opened this chapter with.
+Without the `{% if product %}` guard, this line renders nothing on every template except `product` — not an error, just silently blank — which is exactly the failure mode [31.1. Global Object Fundamentals](/all-about-global-objects/global-object-fundamentals/) opened this chapter with.
 
 ## Key takeaways
 
@@ -69,6 +69,6 @@ Without the `{% if product %}` guard, this line renders nothing on every templat
 
 ## Further reading
 
-- [Global Object Fundamentals](/all-about-global-objects/global-object-fundamentals/)
+- [31.1. Global Object Fundamentals](/all-about-global-objects/global-object-fundamentals/)
 - [Liquid objects: request](https://shopify.dev/docs/api/liquid/objects/request) (shopify.dev) — the full, current list of `page_type` values
 - [Theme architecture: templates](https://shopify.dev/docs/storefronts/themes/architecture/templates) (shopify.dev)

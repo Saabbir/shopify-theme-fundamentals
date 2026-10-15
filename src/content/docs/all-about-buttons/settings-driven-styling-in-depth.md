@@ -5,7 +5,7 @@ description: Two real layers — theme-wide base styles, and a per-block overrid
 
 **TL;DR:** Two real layers — theme-wide base styles, and a per-block override — and the CSS custom properties that connect them.
 
-[Button Variants](/all-about-buttons/button-variants/) introduced Primary, Secondary, Text, and Custom as a merchant-facing choice. This page goes one level deeper: how a choice like "Custom" actually becomes real CSS, read directly from Horizon's source.
+[36.2. Button Variants](/all-about-buttons/button-variants/) introduced Primary, Secondary, Text, and Custom as a merchant-facing choice. This page goes one level deeper: how a choice like "Custom" actually becomes real CSS, read directly from Horizon's source.
 
 ## Layer one: theme-wide settings become theme-wide tokens
 
@@ -75,7 +75,7 @@ The CSS itself reads `var(--button-background-color, var(--style-button-backgrou
 }
 ```
 
-A focus outline drawn in a fully transparent background color would be invisible — so Horizon checks `effective_background_color.alpha == 0` first, and uses the *text* color for the outline instead whenever the background itself can't be seen. This is the same "don't hardcode a color that a merchant's own choice could make invisible" instinct [Interactive States](/all-about-buttons/interactive-states/) already covers for hover text — applied here to a different property (the focus outline) and a different trigger (fully transparent, rather than too dark or too light).
+A focus outline drawn in a fully transparent background color would be invisible — so Horizon checks `effective_background_color.alpha == 0` first, and uses the *text* color for the outline instead whenever the background itself can't be seen. This is the same "don't hardcode a color that a merchant's own choice could make invisible" instinct [36.3. Interactive States](/all-about-buttons/interactive-states/) already covers for hover text — applied here to a different property (the focus outline) and a different trigger (fully transparent, rather than too dark or too light).
 
 ## Key takeaways
 
@@ -89,5 +89,5 @@ A focus outline drawn in a fully transparent background color would be invisible
 
 - [`snippets/button-custom-styles.liquid` (Horizon, GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/button-custom-styles.liquid)
 - [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/)
-- [Button Variants](/all-about-buttons/button-variants/)
-- [Interactive States](/all-about-buttons/interactive-states/)
+- [36.2. Button Variants](/all-about-buttons/button-variants/)
+- [36.3. Interactive States](/all-about-buttons/interactive-states/)

@@ -5,7 +5,7 @@ description: One full, realistic section file, combining everything this chapter
 
 **TL;DR:** One full, realistic section file, combining everything this chapter covered into a single copy-pasteable example.
 
-Every other page in this chapter looked at one concern at a time — settings, restrictions, limits, performance. This page puts all of it together into a single, complete `sections/testimonials.liquid` file: the same section already referenced from [A Complete Template Example](/all-about-theme-settings/a-complete-template-example/), now shown in full, exactly as it would exist in a real theme's `sections/` folder.
+Every other page in this chapter looked at one concern at a time — settings, restrictions, limits, performance. This page puts all of it together into a single, complete `sections/testimonials.liquid` file: the same section already referenced from [28.5. A Complete Template Example](/all-about-theme-settings/a-complete-template-example/), now shown in full, exactly as it would exist in a real theme's `sections/` folder.
 
 ## The complete file
 
@@ -226,20 +226,20 @@ Every other page in this chapter looked at one concern at a time — settings, r
 
 This single section demonstrates all of the following at once:
 
-- **Settings of several different types** — `text`, `color_scheme`, `range`, and a `header` used purely for organization in the editor, per [Section Fundamentals](/all-about-sections/section-fundamentals/).
-- **A restriction on where it can appear** — `enabled_on` limits it to the `index` and `page` templates, per [Restricting Where a Section Can Appear](/all-about-sections/restricting-where-a-section-can-appear/). A merchant won't see this section offered anywhere else, like a product or collection page, where testimonials wouldn't make sense.
-- **A bounded limit** — `max_blocks` caps the section at 12 testimonials, per [Limits: max_blocks and Schema Size](/all-about-sections/limits-max-blocks-and-schema-size/), so a merchant can't accidentally paste in 200 blocks and tank the page's render time.
-- **A color scheme, not standalone color pickers** — `color_scheme` lets a merchant pick one pre-coordinated, contrast-checked scheme instead of choosing a background and text color independently, per [Color Fundamentals](/all-about-colors/color-fundamentals/). The `color-{{ color_scheme }}` class on the outer `<div>` matches whatever class a theme-wide snippet generates per scheme — see [A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) for that snippet written out in full.
-- **Full desktop/mobile spacing**, wired to CSS custom properties and overridden in a `@media` query rather than decided in Liquid, per [Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/).
+- **Settings of several different types** — `text`, `color_scheme`, `range`, and a `header` used purely for organization in the editor, per [14.1. Section Fundamentals](/all-about-sections/section-fundamentals/).
+- **A restriction on where it can appear** — `enabled_on` limits it to the `index` and `page` templates, per [14.2. Restricting Where a Section Can Appear](/all-about-sections/restricting-where-a-section-can-appear/). A merchant won't see this section offered anywhere else, like a product or collection page, where testimonials wouldn't make sense.
+- **A bounded limit** — `max_blocks` caps the section at 12 testimonials, per [14.3. Limits: max_blocks and Schema Size](/all-about-sections/limits-max-blocks-and-schema-size/), so a merchant can't accidentally paste in 200 blocks and tank the page's render time.
+- **A color scheme, not standalone color pickers** — `color_scheme` lets a merchant pick one pre-coordinated, contrast-checked scheme instead of choosing a background and text color independently, per [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/). The `color-{{ color_scheme }}` class on the outer `<div>` matches whatever class a theme-wide snippet generates per scheme — see [17.7. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) for that snippet written out in full.
+- **Full desktop/mobile spacing**, wired to CSS custom properties and overridden in a `@media` query rather than decided in Liquid, per [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/).
 - **A settings-to-variables block at the top**, read once into local variables instead of repeating `section.settings.x` throughout the file.
 - **A sensible empty state** — when a merchant removes every block, the section shows a translated message instead of an empty, broken-looking gap.
-- **A `presets` entry that isn't empty** — two real testimonial blocks with real content, so the section looks finished the moment a merchant adds it, per [Section Fundamentals](/all-about-sections/section-fundamentals/).
+- **A `presets` entry that isn't empty** — two real testimonial blocks with real content, so the section looks finished the moment a merchant adds it, per [14.1. Section Fundamentals](/all-about-sections/section-fundamentals/).
 - **A block rendered with `{{ block.shopify_attributes }}`**, which is what lets the theme editor highlight and select that specific block instance when a merchant clicks it in the preview.
-- **Translated schema strings throughout** (`t:sections.testimonials.name`, `t:labels.heading`, and so on) rather than hardcoded English, per [Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) — see [A Complete Locale File Example](/all-about-theme-settings/a-complete-locale-file-example/) for the matching locale entries this schema depends on.
+- **Translated schema strings throughout** (`t:sections.testimonials.name`, `t:labels.heading`, and so on) rather than hardcoded English, per [6.5. Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) — see [28.6. A Complete Locale File Example](/all-about-theme-settings/a-complete-locale-file-example/) for the matching locale entries this schema depends on.
 
 ## How this connects to the rest of the site
 
-This exact section — same name, same `color_scheme` default, same two testimonials — is also the one used in [A Complete Template Example](/all-about-theme-settings/a-complete-template-example/), shown there as it would actually appear once placed on a page, with real settings values stored in a JSON template. Reading the two pages together shows the full round trip: the section file defines what's configurable, and the template records what a merchant actually configured.
+This exact section — same name, same `color_scheme` default, same two testimonials — is also the one used in [28.5. A Complete Template Example](/all-about-theme-settings/a-complete-template-example/), shown there as it would actually appear once placed on a page, with real settings values stored in a JSON template. Reading the two pages together shows the full round trip: the section file defines what's configurable, and the template records what a merchant actually configured.
 
 ## Key takeaways
 
@@ -249,6 +249,6 @@ This exact section — same name, same `color_scheme` default, same two testimon
 
 ## Further reading
 
-- [A Complete Template Example](/all-about-theme-settings/a-complete-template-example/)
-- [A Complete Block Example](/all-about-blocks/a-complete-block-example/)
+- [28.5. A Complete Template Example](/all-about-theme-settings/a-complete-template-example/)
+- [15.7. A Complete Block Example](/all-about-blocks/a-complete-block-example/)
 - [Section schema](https://shopify.dev/docs/storefronts/themes/architecture/sections/section-schema) (shopify.dev)

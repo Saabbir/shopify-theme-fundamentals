@@ -5,7 +5,7 @@ description: The video_tag filter covers most cases in one call — until a them
 
 **TL;DR:** The `video_tag` filter covers most cases in one call — until a theme needs captions, which means building the `<video>` tag by hand instead.
 
-[Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/) covers when and how to autoplay; this chapter is about the UI layer on top — custom controls, poster states, inline-vs-modal placement, and accessibility — once a video is actually part of a component, not just embedded.
+[19.3. Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/) covers when and how to autoplay; this chapter is about the UI layer on top — custom controls, poster states, inline-vs-modal placement, and accessibility — once a video is actually part of a component, not just embedded.
 
 ## `video_tag`: one filter, a complete `<video>` element
 
@@ -47,7 +47,7 @@ Captions require a `<track kind="captions" src="...">` child element inside the 
 </video>
 ```
 
-Every value used here — `.sources` (an array of `video_source` objects, each with its own `.url`, `.mime_type`, `.format`, `.width`, `.height`), `.preview_image`, `.alt` — is a real, verified property directly on Shopify's `video` Liquid object; nothing here needs `video_tag` at all once a theme is building the tag by hand. [Captioning & Accessibility](/all-about-videos/captioning-and-accessibility/) covers where `captions_url` actually comes from, since Shopify doesn't generate captions automatically.
+Every value used here — `.sources` (an array of `video_source` objects, each with its own `.url`, `.mime_type`, `.format`, `.width`, `.height`), `.preview_image`, `.alt` — is a real, verified property directly on Shopify's `video` Liquid object; nothing here needs `video_tag` at all once a theme is building the tag by hand. [39.5. Captioning & Accessibility](/all-about-videos/captioning-and-accessibility/) covers where `captions_url` actually comes from, since Shopify doesn't generate captions automatically.
 
 ## Deciding which to use
 
@@ -65,7 +65,7 @@ Every value used here — `.sources` (an array of `video_source` objects, each w
 
 ## Further reading
 
-- [Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/)
+- [19.3. Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/)
 - [The `video_tag` filter (shopify.dev)](https://shopify.dev/docs/api/liquid/filters/video_tag)
 - [The `video` object (shopify.dev)](https://shopify.dev/docs/api/liquid/objects/video)
 - [The `video_source` object (shopify.dev)](https://shopify.dev/docs/api/liquid/objects/video_source)

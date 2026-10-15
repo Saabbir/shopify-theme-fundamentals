@@ -108,5 +108,5 @@ A size option value's `.swatch` is `nil` for nearly every store — there's no c
 ## Further reading
 
 - [`product_option_value` (shopify.dev)](https://shopify.dev/docs/api/liquid/objects/product_option_value)
-- [The Variants & Options Matrix in Depth](/all-about-products/the-variants-and-options-matrix-in-depth/)
+- [32.2. The Variants & Options Matrix in Depth](/all-about-products/the-variants-and-options-matrix-in-depth/)
 - [Rendering option value availability (shopify.dev)](https://shopify.dev/docs/storefronts/themes/product-merchandising/variants/support-high-variant-products#option-value-availability)

@@ -71,4 +71,4 @@ Two sibling components that never need to know about each other, but occasionall
 ## Further reading
 
 - [CustomEvent (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent)
-- [Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/)
+- [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/)

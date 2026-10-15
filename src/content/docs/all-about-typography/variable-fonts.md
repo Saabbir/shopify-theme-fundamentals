@@ -13,7 +13,7 @@ A **variable font** packs an entire range of weights (and sometimes other proper
 
 ## What this looks like with `font_picker`
 
-`font_modify` — the filter that derives a variant (a different weight or style) of an already-chosen font object, covered in full on [Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) — is the exact mechanism that benefits most from this. Changing a font's weight with `font_modify` doesn't need a second font file to exist at all when the underlying font is variable — the single loaded file already covers that weight:
+`font_modify` — the filter that derives a variant (a different weight or style) of an already-chosen font object, covered in full on [18.3. Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) — is the exact mechanism that benefits most from this. Changing a font's weight with `font_modify` doesn't need a second font file to exist at all when the underlying font is variable — the single loaded file already covers that weight:
 
 ```liquid
 {% liquid
@@ -82,7 +82,7 @@ For certainty, use the `font_url` filter to get the real file URL Shopify is ser
 
 ## What about a font loaded outside font_picker?
 
-Everything above assumes a `font_picker`-sourced font — a real `font` object exists to call `font_modify` on. [Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) covers the other case: a brand font the client licensed directly, self-hosted as a theme asset or Shopify File, with no `font_picker` setting and no `font` object anywhere. Two of the three detection methods above need adjusting for that case, and one doesn't change at all:
+Everything above assumes a `font_picker`-sourced font — a real `font` object exists to call `font_modify` on. [18.4. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/) covers the other case: a brand font the client licensed directly, self-hosted as a theme asset or Shopify File, with no `font_picker` setting and no `font` object anywhere. Two of the three detection methods above need adjusting for that case, and one doesn't change at all:
 
 | Method | For a self-hosted font |
 |---|---|
@@ -92,7 +92,7 @@ Everything above assumes a `font_picker`-sourced font — a real `font` object e
 
 ### If the custom font turns out to be variable, the loading pattern changes
 
-[Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/)'s main example writes one `@font-face` rule per static weight/style file (a `canela-regular.woff2` and a separate `canela-bold.woff2`). A variable font replaces that with a single file and a `font-weight` **range**, letting the browser render any weight inside that range from the one file:
+[18.4. Loading a Custom or Licensed Font](/all-about-typography/loading-a-custom-or-licensed-font/)'s main example writes one `@font-face` rule per static weight/style file (a `canela-regular.woff2` and a separate `canela-bold.woff2`). A variable font replaces that with a single file and a `font-weight` **range**, letting the browser render any weight inside that range from the one file:
 
 ```liquid
 {% style %}

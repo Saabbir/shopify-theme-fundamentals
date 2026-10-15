@@ -15,7 +15,7 @@ description: The three objects that connect a merchant's schema choices back to 
 {{ settings.color_scheme }}
 ```
 
-Every property under `settings` corresponds exactly to an `id` in `settings_schema.json` — there's no separate reference needed beyond knowing the schema itself, since `settings` is just that schema's current values, always in sync with whatever a merchant last saved in the theme editor. [All About Theme Settings](/all-about-theme-settings/) covers exactly where this data lives on disk and how it differs from a section or block's own settings.
+Every property under `settings` corresponds exactly to an `id` in `settings_schema.json` — there's no separate reference needed beyond knowing the schema itself, since `settings` is just that schema's current values, always in sync with whatever a merchant last saved in the theme editor. [28. All About Theme Settings](/all-about-theme-settings/) covers exactly where this data lives on disk and how it differs from a section or block's own settings.
 
 ## section
 
@@ -91,5 +91,5 @@ Skipping `block.shopify_attributes` doesn't break anything for a shopper on the 
 
 - [Liquid objects: section](https://shopify.dev/docs/api/liquid/objects/section) (shopify.dev)
 - [Liquid objects: block](https://shopify.dev/docs/api/liquid/objects/block) (shopify.dev)
-- [All About Theme Settings](/all-about-theme-settings/) — where settings, section settings, and block settings each actually live on disk
+- [28. All About Theme Settings](/all-about-theme-settings/) — where settings, section settings, and block settings each actually live on disk
 - [Theme Editor Events](/all-about-javascript/theme-editor-events-in-depth/) — the JavaScript side of what `shopify_attributes` enables

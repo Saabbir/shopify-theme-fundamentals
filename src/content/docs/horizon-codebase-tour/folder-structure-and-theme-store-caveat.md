@@ -11,7 +11,7 @@ Horizon is Shopify's current first-party flagship theme — the reference implem
 
 ## The top-level folder structure
 
-Horizon follows the same structure described in [Theme Architecture & Files](/theme-architecture/), confirmed directly against the repository root:
+Horizon follows the same structure described in [2. Theme Architecture & Files](/theme-architecture/), confirmed directly against the repository root:
 
 ```
 horizon/
@@ -28,7 +28,7 @@ horizon/
   release-notes.md
 ```
 
-Nothing exotic here — this is the exact same structure every theme in [Theme Architecture & Files](/theme-architecture/) describes, just populated with a large, real, mature codebase instead of the small examples used to teach the concept.
+Nothing exotic here — this is the exact same structure every theme in [2. Theme Architecture & Files](/theme-architecture/) describes, just populated with a large, real, mature codebase instead of the small examples used to teach the concept.
 
 ## The caveat Shopify states directly
 

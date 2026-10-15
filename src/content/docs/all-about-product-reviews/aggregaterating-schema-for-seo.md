@@ -47,7 +47,7 @@ Every value is written through the `json` filter rather than interpolated as a r
 Adding `aggregateRating` to a product's schema when that product page shows no visible star rating or review count anywhere is a direct violation of [Google's review snippet guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet) — specifically the "self-serving" review restriction, which can result in the rich result being suppressed for the entire site, not just the one offending page. The `{% if rating and rating_count > 0 %}` guard above exists for exactly this reason: never emit `aggregateRating` for a product that isn't actually displaying a rating to the shopper.
 :::
 
-This is the single most common mistake with this pattern — copying the JSON-LD snippet onto every product template unconditionally, including products with zero reviews, where the visible rating never renders at all. The guard has to gate the schema the same way it gates the visible star component in [Rendering an Accessible Star Rating](/all-about-product-reviews/rendering-an-accessible-star-rating/) — both or neither.
+This is the single most common mistake with this pattern — copying the JSON-LD snippet onto every product template unconditionally, including products with zero reviews, where the visible rating never renders at all. The guard has to gate the schema the same way it gates the visible star component in [34.4. Rendering an Accessible Star Rating](/all-about-product-reviews/rendering-an-accessible-star-rating/) — both or neither.
 
 ## Verifying it actually works
 
@@ -65,4 +65,4 @@ Google's [Rich Results Test](https://search.google.com/test/rich-results) parses
 - [AggregateRating (schema.org)](https://schema.org/AggregateRating)
 - [Review snippet structured data guidelines (Google)](https://developers.google.com/search/docs/appearance/structured-data/review-snippet)
 - [Rich Results Test (Google)](https://search.google.com/test/rich-results)
-- [Rendering an Accessible Star Rating](/all-about-product-reviews/rendering-an-accessible-star-rating/)
+- [34.4. Rendering an Accessible Star Rating](/all-about-product-reviews/rendering-an-accessible-star-rating/)

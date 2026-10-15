@@ -29,7 +29,7 @@ A product image's natural dimensions rarely match exactly across a merchant's wh
 }
 ```
 
-`aspect-ratio` alone reserves the right box shape; `object-fit: cover` is what actually makes the image fill that box without distorting — without it, a forced `aspect-ratio` on an `<img>` just squashes or stretches the image to fit, since the browser has no instruction otherwise on how to handle an image whose natural ratio doesn't match the box. [Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) covers `aspect-ratio` more generally — this is one of its most common uses in a theme specifically.
+`aspect-ratio` alone reserves the right box shape; `object-fit: cover` is what actually makes the image fill that box without distorting — without it, a forced `aspect-ratio` on an `<img>` just squashes or stretches the image to fit, since the browser has no instruction otherwise on how to handle an image whose natural ratio doesn't match the box. [29.10. Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) covers `aspect-ratio` more generally — this is one of its most common uses in a theme specifically.
 
 ## Why `width`/`height` attributes still matter, even with `aspect-ratio` set
 
@@ -60,7 +60,7 @@ The `width`/`height` HTML attributes above aren't redundant with the CSS `aspect
 }
 ```
 
-A merchant-facing ratio setting should offer a small, named set of options (`Square`, `Portrait`, `Landscape`) rather than a free-form number input — the actual numeric values (`1`, `0.8`, `1.78`) are an implementation detail a merchant shouldn't need to know or type, consistent with [Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/)'s broader point about naming settings by what they mean, not their raw value.
+A merchant-facing ratio setting should offer a small, named set of options (`Square`, `Portrait`, `Landscape`) rather than a free-form number input — the actual numeric values (`1`, `0.8`, `1.78`) are an implementation detail a merchant shouldn't need to know or type, consistent with [18.10. Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/)'s broader point about naming settings by what they mean, not their raw value.
 
 ## The one real reason to still use the old padding-hack wrapper
 
@@ -80,7 +80,7 @@ A merchant-facing ratio setting should offer a small, named set of options (`Squ
 }
 ```
 
-`aspect-ratio` has been Baseline Widely Available since 2021 (confirmed in [Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/)) — there's no realistic browser-support reason left to reach for the padding-hack version in a new theme. The only genuine remaining reason is working inside an email template or a very old third-party embed's CSS reset that specifically can't be touched; for everything an actual theme controls, `aspect-ratio` is simply the correct, modern choice.
+`aspect-ratio` has been Baseline Widely Available since 2021 (confirmed in [29.10. Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/)) — there's no realistic browser-support reason left to reach for the padding-hack version in a new theme. The only genuine remaining reason is working inside an email template or a very old third-party embed's CSS reset that specifically can't be touched; for everything an actual theme controls, `aspect-ratio` is simply the correct, modern choice.
 
 ## Key takeaways
 
@@ -91,6 +91,6 @@ A merchant-facing ratio setting should offer a small, named set of options (`Squ
 
 ## Further reading
 
-- [Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/)
-- [Image CDN Transform Parameters](/media-deep-dive/image-cdn-transform-parameters/)
-- [Lazy-Load & Loading-State Patterns](/all-about-images/lazy-load-and-loading-state-patterns/)
+- [29.10. Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/)
+- [19.4. Image CDN Transform Parameters](/media-deep-dive/image-cdn-transform-parameters/)
+- [38.3. Lazy-Load & Loading-State Patterns](/all-about-images/lazy-load-and-loading-state-patterns/)

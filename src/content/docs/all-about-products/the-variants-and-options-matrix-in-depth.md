@@ -93,7 +93,7 @@ class VariantPicker extends HTMLElement {
 customElements.define('variant-picker', VariantPicker);
 ```
 
-The Liquid side just needs to hand the full variant list to JavaScript as data, once, which [Talking to Liquid: Data Attributes & JSON Islands](/all-about-javascript/talking-to-liquid-data-attributes-and-json-islands/) covers in general — here, specifically:
+The Liquid side just needs to hand the full variant list to JavaScript as data, once, which [30.4. Talking to Liquid: Data Attributes & JSON Islands](/all-about-javascript/talking-to-liquid-data-attributes-and-json-islands/) covers in general — here, specifically:
 
 ```liquid
 <variant-picker>
@@ -123,5 +123,5 @@ A matched variant that exists but has no stock (`variant.available` is `false`) 
 
 - [Liquid objects: product_option](https://shopify.dev/docs/api/liquid/objects/product_option) (shopify.dev)
 - [Liquid objects: variant](https://shopify.dev/docs/api/liquid/objects/variant) (shopify.dev)
-- [Talking to Liquid: Data Attributes & JSON Islands](/all-about-javascript/talking-to-liquid-data-attributes-and-json-islands/)
-- [The Product Form](/forms/the-product-form/) — wiring a matched variant's ID into the actual add-to-cart submission
+- [30.4. Talking to Liquid: Data Attributes & JSON Islands](/all-about-javascript/talking-to-liquid-data-attributes-and-json-islands/)
+- [8.1. The Product Form](/forms/the-product-form/) — wiring a matched variant's ID into the actual add-to-cart submission

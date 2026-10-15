@@ -78,6 +78,6 @@ If the `<video>` keeps the `controls` attribute, the browser's native scrubber/p
 
 ## Further reading
 
-- [Video Fundamentals](/all-about-videos/video-fundamentals-video_tag-vs-building-your-own-tag/)
-- [Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/)
+- [39.1. Video Fundamentals](/all-about-videos/video-fundamentals-video_tag-vs-building-your-own-tag/)
+- [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/)
 - [HTMLMediaElement (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement)

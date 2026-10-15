@@ -5,7 +5,7 @@ description: A full color_scheme_group, the snippet that turns it into real CSS,
 
 **TL;DR:** A full `color_scheme_group`, the snippet that turns it into real CSS, and sections consuming the result.
 
-[Color Fundamentals](/all-about-colors/color-fundamentals/) introduced `color_scheme_group` and `color_scheme` as the pattern for letting a merchant pick a whole pre-coordinated look instead of independent color pickers. This page shows the complete picture: a realistic three-scheme `color_scheme_group`, the snippet every theme needs to turn that schema into actual CSS (Shopify doesn't generate this for you), and two sections consuming the result.
+[17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) introduced `color_scheme_group` and `color_scheme` as the pattern for letting a merchant pick a whole pre-coordinated look instead of independent color pickers. This page shows the complete picture: a realistic three-scheme `color_scheme_group`, the snippet every theme needs to turn that schema into actual CSS (Shopify doesn't generate this for you), and two sections consuming the result.
 
 ## The schema: `config/settings_schema.json`
 
@@ -60,7 +60,7 @@ description: A full color_scheme_group, the snippet that turns it into real CSS,
 }
 ```
 
-Three schemes here, each filling in every role `definition` requires: `scheme-1` is a plain light scheme, `scheme-2` is a dark/inverse scheme, and `scheme-3` is a warm, brand-accent scheme. This is the same `color_schemes` setting that already appears populated with real merchant-chosen values in [A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/) — that page shows what Shopify saves once a merchant has used this setting; this page shows the setting's own definition, and what makes it actually render as color.
+Three schemes here, each filling in every role `definition` requires: `scheme-1` is a plain light scheme, `scheme-2` is a dark/inverse scheme, and `scheme-3` is a warm, brand-accent scheme. This is the same `color_schemes` setting that already appears populated with real merchant-chosen values in [28.4. A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/) — that page shows what Shopify saves once a merchant has used this setting; this page shows the setting's own definition, and what makes it actually render as color.
 
 ## The missing piece: turning schemes into CSS
 
@@ -116,7 +116,7 @@ This is the loop directly documented by [Shopify's `color_scheme_group` Liquid o
 ```
 
 :::note[Real scheme IDs vs. this example's names]
-A merchant-created scheme's real `id` is usually a generated value, not a clean name like `scheme-1` — this example keeps `scheme-1`/`scheme-2`/`scheme-3` throughout purely for readability, matching the same IDs already used in [A Complete Template Example](/all-about-theme-settings/a-complete-template-example/) and [A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/).
+A merchant-created scheme's real `id` is usually a generated value, not a clean name like `scheme-1` — this example keeps `scheme-1`/`scheme-2`/`scheme-3` throughout purely for readability, matching the same IDs already used in [28.5. A Complete Template Example](/all-about-theme-settings/a-complete-template-example/) and [28.4. A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/).
 :::
 
 ## Consuming it: a section with a `color_scheme` setting
@@ -185,11 +185,11 @@ Two completely different sections, both reusing the exact same three schemes and
 
 ## Every concern from this chapter, in one place
 
-- **A full `definition` array** covering every color role a scheme must fill, per [Color Fundamentals](/all-about-colors/color-fundamentals/).
+- **A full `definition` array** covering every color role a scheme must fill, per [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/).
 - **Multiple real schemes in `default`** — a light, a dark/inverse, and a warm brand-accent scheme, each filling in every role.
-- **The CSS-generation loop**, which [Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/) and [Color Fundamentals](/all-about-colors/color-fundamentals/) both assume exists somewhere in a theme, but don't show written out — this page is that missing piece.
-- **Two independent sections consuming the same scheme set**, proving the reuse actually works the way [Building a Token System](/all-about-colors/building-a-token-system/) describes semantic tokens working: components read a variable, never a hardcoded value.
-- **A contrast-checked-by-construction set of defaults** — each scheme here pairs a background/text combination meant to already pass WCAG AA, per [A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/) — worth verifying with `color_contrast` the same way that page describes, for any scheme you ship as a real default.
+- **The CSS-generation loop**, which [17.3. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/) and [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) both assume exists somewhere in a theme, but don't show written out — this page is that missing piece.
+- **Two independent sections consuming the same scheme set**, proving the reuse actually works the way [17.5. Building a Token System](/all-about-colors/building-a-token-system/) describes semantic tokens working: components read a variable, never a hardcoded value.
+- **A contrast-checked-by-construction set of defaults** — each scheme here pairs a background/text combination meant to already pass WCAG AA, per [17.6. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/) — worth verifying with `color_contrast` the same way that page describes, for any scheme you ship as a real default.
 
 ## Key takeaways
 
@@ -199,6 +199,6 @@ Two completely different sections, both reusing the exact same three schemes and
 
 ## Further reading
 
-- [A Complete Section Example](/all-about-sections/a-complete-section-example/)
+- [14.6. A Complete Section Example](/all-about-sections/a-complete-section-example/)
 - [Liquid objects: color_scheme_group](https://shopify.dev/docs/api/liquid/objects/color_scheme_group) (shopify.dev)
-- [How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) — this same idea, scaled up to a real, production theme
+- [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) — this same idea, scaled up to a real, production theme

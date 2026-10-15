@@ -42,9 +42,9 @@ Here's a realistic case that pulls every habit from this chapter into one piece 
 
 Walking through why each piece is written the way it is:
 
-- **`{% if customer %}` wraps everything customer-related**, because `customer` is `nil` on every template for a logged-out shopper — per [cart, customer & shop in Full](/all-about-global-objects/cart-customer-and-shop-in-full/), this is the one guard in this whole snippet that's genuinely mandatory, not just careful.
+- **`{% if customer %}` wraps everything customer-related**, because `customer` is `nil` on every template for a logged-out shopper — per [31.3. cart, customer & shop in Full](/all-about-global-objects/cart-customer-and-shop-in-full/), this is the one guard in this whole snippet that's genuinely mandatory, not just careful.
 - **`customer.first_name | default: customer.email`** handles a real edge case: a customer record doesn't strictly require a first name (an account created through a bare email signup, say) — falling back to the email keeps the greeting from ever rendering as just "Hi, ".
-- **`cart` and `routes` are used with no guard at all**, because both are part of the small set of objects guaranteed to exist on every template, confirmed in [Which Objects Exist on Which Template](/all-about-global-objects/which-objects-exist-on-which-template/) — adding a defensive `{% if cart %}` here would be the "unnecessary defensive programming" this site's own conventions warn against, not real safety.
+- **`cart` and `routes` are used with no guard at all**, because both are part of the small set of objects guaranteed to exist on every template, confirmed in [31.7. Which Objects Exist on Which Template](/all-about-global-objects/which-objects-exist-on-which-template/) — adding a defensive `{% if cart %}` here would be the "unnecessary defensive programming" this site's own conventions warn against, not real safety.
 - **`routes.account_url`/`routes.account_login_url`/`routes.account_logout_url`/`routes.cart_url`** are used instead of hardcoded paths, so this snippet keeps working correctly on a multi-language store where those URLs carry a locale prefix.
 - **`cart.item_count > 0`**, not just `cart.item_count`, guards the count badge specifically so an empty cart doesn't render a visible `0` badge — a `0` is truthy in Liquid the same as any other number, so checking count alone (`{% if cart.item_count %}`) wouldn't have worked here.
 - **`shop.enabled_currencies.size > 1`** only shows a currency indicator on a store that actually has more than one currency enabled — on a single-currency store, this block never renders, rather than showing a currency label nobody needs to see.
@@ -58,6 +58,6 @@ Walking through why each piece is written the way it is:
 
 ## Further reading
 
-- [Global Object Fundamentals](/all-about-global-objects/global-object-fundamentals/)
-- [Which Objects Exist on Which Template](/all-about-global-objects/which-objects-exist-on-which-template/)
-- [cart, customer & shop in Full](/all-about-global-objects/cart-customer-and-shop-in-full/)
+- [31.1. Global Object Fundamentals](/all-about-global-objects/global-object-fundamentals/)
+- [31.7. Which Objects Exist on Which Template](/all-about-global-objects/which-objects-exist-on-which-template/)
+- [31.3. cart, customer & shop in Full](/all-about-global-objects/cart-customer-and-shop-in-full/)

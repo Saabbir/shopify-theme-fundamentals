@@ -72,7 +72,7 @@ When a merchant adds a section from a specific preset, Shopify resolves each set
 
 - `default` is per-setting, a fallback value for when nothing else sets it. `presets` is per-section/block, a named starting configuration that can override several defaults and pre-add blocks at once.
 - A schema can define multiple presets — each becomes a separate option in the theme editor's "Add section" picker.
-- Always give at least one preset a real `name`, and real values for anything the section would otherwise render strangely without — this was the same rule from [What Is a Section?](/sections-blocks-snippets/what-is-a-section/), just explained in more depth here.
+- Always give at least one preset a real `name`, and real values for anything the section would otherwise render strangely without — this was the same rule from [3.1. What Is a Section?](/sections-blocks-snippets/what-is-a-section/), just explained in more depth here.
 
 ## Further reading
 

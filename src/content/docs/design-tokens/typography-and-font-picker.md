@@ -71,7 +71,7 @@ A single font choice doesn't by itself make a theme's typography feel consistent
 ## Key takeaways
 
 - `font_picker` returns a font object, not a string — `family`, `fallback_families`, and other properties, not just a name.
-- `font_face` must be output once, somewhere global, or the chosen font never actually loads — this fails silently, the same as the typo behavior from [Debugging Liquid](/liquid-basics/debugging-liquid/).
+- `font_face` must be output once, somewhere global, or the chosen font never actually loads — this fails silently, the same as the typo behavior from [4.8. Debugging Liquid](/liquid-basics/debugging-liquid/).
 - A small, fixed type scale (reused everywhere) produces more consistent results than letting every section pick its own font sizes independently.
 
 ## Further reading

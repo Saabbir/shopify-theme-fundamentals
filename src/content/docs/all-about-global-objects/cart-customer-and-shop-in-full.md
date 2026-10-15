@@ -34,7 +34,7 @@ description: The three objects a theme reaches for constantly, with the one of t
 
 ## customer
 
-`customer` is `nil` for any shopper who isn't logged in — true on every single template, with no exception, which makes this the one global object where the `{% if customer %}` guard from [Global Object Fundamentals](/all-about-global-objects/global-object-fundamentals/) is genuinely mandatory rather than just good practice.
+`customer` is `nil` for any shopper who isn't logged in — true on every single template, with no exception, which makes this the one global object where the `{% if customer %}` guard from [31.1. Global Object Fundamentals](/all-about-global-objects/global-object-fundamentals/) is genuinely mandatory rather than just good practice.
 
 ```liquid
 {% if customer %}
@@ -106,4 +106,4 @@ Both still technically work, but Shopify's own documentation marks them deprecat
 - [Liquid objects: cart](https://shopify.dev/docs/api/liquid/objects/cart) (shopify.dev)
 - [Liquid objects: customer](https://shopify.dev/docs/api/liquid/objects/customer) (shopify.dev)
 - [Liquid objects: shop](https://shopify.dev/docs/api/liquid/objects/shop) (shopify.dev)
-- [The Cart Form](/forms/the-cart-form/) — how `cart.note` and `cart.attributes` actually get populated, end to end
+- [8.2. The Cart Form](/forms/the-cart-form/) — how `cart.note` and `cart.attributes` actually get populated, end to end

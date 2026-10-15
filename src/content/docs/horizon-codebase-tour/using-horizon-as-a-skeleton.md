@@ -32,11 +32,11 @@ This is a real, deliberate decision to make early — not something to defer, si
 
 ## Step 4: strip or rebuild sections and blocks you don't need
 
-Horizon ships a large library of sections and blocks (see [Sections, Blocks, Snippets & Assets at a Glance](/horizon-codebase-tour/sections-blocks-snippets-and-assets/)) — most new themes won't need all of them. Go through `sections/` and `blocks/` deliberately:
+Horizon ships a large library of sections and blocks (see [27.6. Sections, Blocks, Snippets & Assets at a Glance](/horizon-codebase-tour/sections-blocks-snippets-and-assets/)) — most new themes won't need all of them. Go through `sections/` and `blocks/` deliberately:
 
 - Delete section/block files the new theme has no plausible use for, rather than leaving them present but unused — an unused file is a maintenance cost and a source of confusion for whoever edits the theme next.
 - Keep and adapt the sections close to what the new design needs — adjusting an existing, working section is usually faster and safer than writing an equivalent one from scratch.
-- Build genuinely new sections for anything the design calls for that Horizon has no equivalent of, following this site's own [Worked Example: Building a Simple Section](/sections-blocks-snippets/worked-example/) and the patterns in [All About Sections](/all-about-sections/).
+- Build genuinely new sections for anything the design calls for that Horizon has no equivalent of, following this site's own [3.7. Worked Example: Building a Simple Section](/sections-blocks-snippets/worked-example/) and the patterns in [14. All About Sections](/all-about-sections/).
 
 ## Step 5: review every setting in `config/settings_schema.json`
 
@@ -58,6 +58,6 @@ Per this project's own QA conventions, validate every file you touch as you go r
 
 ## Further reading
 
-- [How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/)
-- [How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/)
+- [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/)
+- [27.3. How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/)
 - [Skeleton Theme (GitHub)](https://github.com/Shopify/skeleton-theme)

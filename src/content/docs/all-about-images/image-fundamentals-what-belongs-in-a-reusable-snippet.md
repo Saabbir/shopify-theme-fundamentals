@@ -5,7 +5,7 @@ description: One image snippet, called from dozens of places, so a loading strat
 
 **TL;DR:** One image snippet, called from dozens of places, so a loading strategy or aspect-ratio fix only ever needs making once.
 
-[Media Deep Dive](/media-deep-dive/) covers the raw mechanics — `image_url`, `srcset`, `sizes`, CDN transform parameters. This chapter is about composing those mechanics into one reusable snippet used everywhere an image appears in the theme, so decisions like "how do we lazy-load" or "what's our default aspect ratio" live in exactly one file.
+[19. Media Deep Dive](/media-deep-dive/) covers the raw mechanics — `image_url`, `srcset`, `sizes`, CDN transform parameters. This chapter is about composing those mechanics into one reusable snippet used everywhere an image appears in the theme, so decisions like "how do we lazy-load" or "what's our default aspect ratio" live in exactly one file.
 
 ## Why a shared snippet, not inline `<img>` tags everywhere
 
@@ -35,9 +35,9 @@ Every one of these is something that genuinely varies by *where* the snippet is 
 
 ## What this chapter deliberately doesn't repeat
 
-- **The CDN transform parameters themselves** (`width`, `height`, `crop`, `format`) are covered in full in [Image CDN Transform Parameters](/media-deep-dive/image-cdn-transform-parameters/) — this chapter assumes that mechanic and builds the reusable wrapper on top of it.
+- **The CDN transform parameters themselves** (`width`, `height`, `crop`, `format`) are covered in full in [19.4. Image CDN Transform Parameters](/media-deep-dive/image-cdn-transform-parameters/) — this chapter assumes that mechanic and builds the reusable wrapper on top of it.
 - **Art direction** (`<picture>` with different crops per breakpoint) is its own dedicated page, [Art Direction with `<picture>`](/media-deep-dive/art-direction-with-picture/) — a genuinely different technique from the single-`<img>` snippet this chapter focuses on, for the specific case where a *different crop*, not just a different size, is needed per breakpoint.
-- **Performance budgets** — how many images a page can afford to load eagerly — are covered in [Performance Budgets for Media-Heavy Pages](/media-deep-dive/performance-budgets-for-media-heavy-pages/).
+- **Performance budgets** — how many images a page can afford to load eagerly — are covered in [19.5. Performance Budgets for Media-Heavy Pages](/media-deep-dive/performance-budgets-for-media-heavy-pages/).
 
 ## Key takeaways
 
@@ -47,6 +47,6 @@ Every one of these is something that genuinely varies by *where* the snippet is 
 
 ## Further reading
 
-- [Media Deep Dive](/media-deep-dive/)
-- [Image CDN Transform Parameters](/media-deep-dive/image-cdn-transform-parameters/)
-- [Aspect-Ratio Wrapper Techniques](/all-about-images/aspect-ratio-wrapper-techniques/)
+- [19. Media Deep Dive](/media-deep-dive/)
+- [19.4. Image CDN Transform Parameters](/media-deep-dive/image-cdn-transform-parameters/)
+- [38.2. Aspect-Ratio Wrapper Techniques](/all-about-images/aspect-ratio-wrapper-techniques/)

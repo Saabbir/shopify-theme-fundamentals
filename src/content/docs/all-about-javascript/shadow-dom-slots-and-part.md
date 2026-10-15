@@ -5,7 +5,7 @@ description: The genuine isolation Shadow DOM, <slot>, and ::part() give you —
 
 **TL;DR:** The genuine isolation Shadow DOM, `<slot>`, and `::part()` give you — and the narrow set of theme situations where giving up design-token access is worth it.
 
-[Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) covers why most theme components deliberately skip Shadow DOM: it blocks the theme's own CSS classes and component rules from reaching inside, in exchange for style isolation most components don't actually need. This page is for the other side of that trade-off — what Shadow DOM, slots, and `::part()` actually give you, and the real situations in a theme where that trade is worth making after all.
+[30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) covers why most theme components deliberately skip Shadow DOM: it blocks the theme's own CSS classes and component rules from reaching inside, in exchange for style isolation most components don't actually need. This page is for the other side of that trade-off — what Shadow DOM, slots, and `::part()` actually give you, and the real situations in a theme where that trade is worth making after all.
 
 :::note[This is the exception, not a reason to revisit 30.2's default]
 Nothing here changes the recommendation that most theme components should stay in light DOM, scoped with BEM. This page exists because "most" isn't "all" — a handful of genuine use cases below are worth recognizing when they come up, rather than forcing every component into the same mold.
@@ -86,7 +86,7 @@ this.shadowRoot.innerHTML = `
 </sol-product-card>
 ```
 
-A `slot` attribute on the light-DOM child routes it to the matching `name` inside the shadow tree; anything with no `slot` attribute falls through to the one unnamed `<slot>`. This is the Shadow DOM equivalent of the `content_for 'blocks'` pattern covered in [All About Blocks](/all-about-blocks/) — a defined set of content holes, filled from outside.
+A `slot` attribute on the light-DOM child routes it to the matching `name` inside the shadow tree; anything with no `slot` attribute falls through to the one unnamed `<slot>`. This is the Shadow DOM equivalent of the `content_for 'blocks'` pattern covered in [15. All About Blocks](/all-about-blocks/) — a defined set of content holes, filled from outside.
 
 ### Styling projected content from inside: `::slotted()`
 
@@ -228,9 +228,9 @@ This single component demonstrates all three mechanisms at once: the `label` slo
 
 ## Further reading
 
-- [Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) — the light-DOM default, and the full reasoning for why most components skip Shadow DOM
-- [Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) — the BEM-based scoping this page's approach is an exception to
-- [A Complete Web Component Example](/all-about-javascript/a-complete-web-component-example/) — a complete light-DOM component, for contrast
+- [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) — the light-DOM default, and the full reasoning for why most components skip Shadow DOM
+- [29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) — the BEM-based scoping this page's approach is an exception to
+- [30.8. A Complete Web Component Example](/all-about-javascript/a-complete-web-component-example/) — a complete light-DOM component, for contrast
 - [`<slot>` (MDN)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot)
 - [Using shadow DOM (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM)
 - [`::part()` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/::part)

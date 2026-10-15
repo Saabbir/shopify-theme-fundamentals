@@ -123,10 +123,10 @@ customElements.define('sol-video-player', SolVideoPlayer);
 
 ## How the pieces from this chapter fit together here
 
-- **No `controls` attribute** on the `<video>` element — per [Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/), the custom button is the only playback control, so the native one is deliberately absent to avoid overlapping controls.
-- **The poster disappears and the button fades out in the same instant**, both driven by the real `play` event — per [Poster-Image States](/all-about-videos/poster-image-states/), nothing here hardcodes a timer or guesses when playback has actually started.
-- **`visibilitychange` pauses the video when the tab loses focus**, the page-level rule from [Inline vs. Modal/Lightbox Video](/all-about-videos/inline-vs-modal-lightbox-video/), included here even though this example is inline-only, since it's cheap insurance regardless of placement.
-- **Captions render only when a caption file actually exists**, per [Captioning & Accessibility](/all-about-videos/captioning-and-accessibility/) — most calls to this snippet will have `captions_file` as `nil`, and the `{% if %}` guard keeps that the normal, unbroken case.
+- **No `controls` attribute** on the `<video>` element — per [39.2. Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/), the custom button is the only playback control, so the native one is deliberately absent to avoid overlapping controls.
+- **The poster disappears and the button fades out in the same instant**, both driven by the real `play` event — per [39.3. Poster-Image States](/all-about-videos/poster-image-states/), nothing here hardcodes a timer or guesses when playback has actually started.
+- **`visibilitychange` pauses the video when the tab loses focus**, the page-level rule from [39.4. Inline vs. Modal/Lightbox Video](/all-about-videos/inline-vs-modal-lightbox-video/), included here even though this example is inline-only, since it's cheap insurance regardless of placement.
+- **Captions render only when a caption file actually exists**, per [39.5. Captioning & Accessibility](/all-about-videos/captioning-and-accessibility/) — most calls to this snippet will have `captions_file` as `nil`, and the `{% if %}` guard keeps that the normal, unbroken case.
 
 ## Key takeaways
 
@@ -135,6 +135,6 @@ customElements.define('sol-video-player', SolVideoPlayer);
 
 ## Further reading
 
-- [Video Fundamentals](/all-about-videos/video-fundamentals-video_tag-vs-building-your-own-tag/)
-- [Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/)
-- [Captioning & Accessibility](/all-about-videos/captioning-and-accessibility/)
+- [39.1. Video Fundamentals](/all-about-videos/video-fundamentals-video_tag-vs-building-your-own-tag/)
+- [39.2. Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/)
+- [39.5. Captioning & Accessibility](/all-about-videos/captioning-and-accessibility/)

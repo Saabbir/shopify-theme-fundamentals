@@ -21,7 +21,7 @@ description: The storefront contact form, and signing a shopper up for marketing
 {% endform %}
 ```
 
-Same shape as the customer forms from the previous page — a `contact[...]` prefix on every field, `form.posted_successfully?` to show a confirmation after a successful send, `form.errors` (from [Customer Forms](/forms/customer-forms/)) if something was missing or invalid.
+Same shape as the customer forms from the previous page — a `contact[...]` prefix on every field, `form.posted_successfully?` to show a confirmation after a successful send, `form.errors` (from [8.3. Customer Forms](/forms/customer-forms/)) if something was missing or invalid.
 
 ## Newsletter signup
 

@@ -84,7 +84,7 @@ Prefer `range` over `number` whenever the value has a sensible minimum and maxim
 { "type": "video_url", "id": "external_video", "label": "t:labels.external_video", "accept": ["youtube", "vimeo"] }
 ```
 
-`image_picker` returns an image object, exactly like `product.featured_image` from [Other Useful Objects](/global-objects/other-useful-objects/) — same properties, same `image_url` filter to build a URL from it. `video` is for a file uploaded directly to Shopify; `video_url` is for linking an external YouTube or Vimeo video instead.
+`image_picker` returns an image object, exactly like `product.featured_image` from [5.4. Other Useful Objects](/global-objects/other-useful-objects/) — same properties, same `image_url` filter to build a URL from it. `video` is for a file uploaded directly to Shopify; `video_url` is for linking an external YouTube or Vimeo video instead.
 
 ## Resource pickers
 
@@ -104,7 +104,7 @@ These let a merchant pick an existing resource (one specific product, an entire 
 
 - Every setting needs `id`, `type`, and `label` at minimum — `id` is how you read it in Liquid, `label` is what a merchant sees.
 - `range` is almost always better than `number` for anything with a sensible min/max — it prevents a merchant from entering a value that breaks the layout.
-- Resource-picker types (`product`, `collection`, `product_list`, and similar) return the real object, usable with everything from [Shopify's Global Objects](/global-objects/).
+- Resource-picker types (`product`, `collection`, `product_list`, and similar) return the real object, usable with everything from [5. Shopify's Global Objects](/global-objects/).
 
 ## Further reading
 

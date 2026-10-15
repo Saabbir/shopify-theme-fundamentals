@@ -28,7 +28,7 @@ A section group is a JSON file in `sections/` (not `templates/`) that lists sect
 }
 ```
 
-This is `sections/header-group.json`. It lists two sections — an announcement bar and the main header — in order. Each one is a perfectly normal section file, written exactly like any other section covered in [What Is a Section?](/sections-blocks-snippets/what-is-a-section/).
+This is `sections/header-group.json`. It lists two sections — an announcement bar and the main header — in order. Each one is a perfectly normal section file, written exactly like any other section covered in [3.1. What Is a Section?](/sections-blocks-snippets/what-is-a-section/).
 
 ## Rendering a section group
 

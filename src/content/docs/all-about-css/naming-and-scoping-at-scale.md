@@ -54,11 +54,11 @@ Beyond BEM's own structure, pick one short prefix and apply it to every class a 
 .my-theme-product-card__title { }
 ```
 
-This is the same instinct behind the CSS custom property prefix covered in [CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/), and the custom-element tag prefix covered in [Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) — one consistent namespace, applied everywhere, specifically because nothing else protects you from a collision.
+This is the same instinct behind the CSS custom property prefix covered in [29.4. CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/), and the custom-element tag prefix covered in [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) — one consistent namespace, applied everywhere, specifically because nothing else protects you from a collision.
 
 ## The real linter that catches this: `ValidScopedCSSClass`
 
-Shopify's CSS doesn't just risk collisions — since [Stylesheet content subsetting](https://shopify.dev/docs/storefronts/themes/best-practices/performance/stylesheet-subsetting) (covered in full in [Critical CSS & Loading Performance](/all-about-css/critical-css-and-loading-performance/)), a page only loads CSS from files that are actually in its render tree. That makes a specific mistake newly costly: using a class in one file that's only ever *defined* in a different, unrelated file.
+Shopify's CSS doesn't just risk collisions — since [Stylesheet content subsetting](https://shopify.dev/docs/storefronts/themes/best-practices/performance/stylesheet-subsetting) (covered in full in [29.7. Critical CSS & Loading Performance](/all-about-css/critical-css-and-loading-performance/)), a page only loads CSS from files that are actually in its render tree. That makes a specific mistake newly costly: using a class in one file that's only ever *defined* in a different, unrelated file.
 
 ```liquid
 {% comment %} sections/header.liquid {% endcomment %}
@@ -108,6 +108,6 @@ A few habits make collisions both less likely and easier to spot when they do ha
 ## Further reading
 
 - [BEM methodology](https://getbem.com/)
-- [Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) — including why `@scope` doesn't change the BEM recommendation here, and why native CSS nesting isn't a reason to bring back descendant-chain selectors
+- [29.10. Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) — including why `@scope` doesn't change the BEM recommendation here, and why native CSS nesting isn't a reason to bring back descendant-chain selectors
 - [Stylesheet content subsetting](https://shopify.dev/docs/storefronts/themes/best-practices/performance/stylesheet-subsetting) (shopify.dev)
 - [Theme Check](https://shopify.dev/docs/storefronts/themes/tools/theme-check) (shopify.dev)

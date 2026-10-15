@@ -5,7 +5,7 @@ description: select and radio return a value, never a label — and a handful of
 
 **TL;DR:** `select` and `radio` return a `value`, never a `label` — and a handful of other exact-type gotchas worth confirming once and remembering.
 
-[Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/) introduces the full catalog; this page is specifically about the exact Liquid return type for each one, including the mistakes that come from assuming rather than checking.
+[6.1. Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/) introduces the full catalog; this page is specifically about the exact Liquid return type for each one, including the mistakes that come from assuming rather than checking.
 
 ## `select`/`radio`: the `value`, never the `label`
 
@@ -43,7 +43,7 @@ This is the single most common mistake with `select`/`radio`: `section.settings.
 {% comment %} Always within min/max for a range setting — Shopify enforces the clamp in the editor's own UI {% endcomment %}
 ```
 
-Both return a plain number, but only `range` is actually constrained to stay within its declared `min`/`max` — the editor's own slider UI makes a value outside that range impossible to enter in the first place. A `number` setting has no such constraint; a merchant can type literally anything, including a negative number or an absurdly large one, which is the real reason [Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/) recommends `range` whenever a sensible bound exists.
+Both return a plain number, but only `range` is actually constrained to stay within its declared `min`/`max` — the editor's own slider UI makes a value outside that range impossible to enter in the first place. A `number` setting has no such constraint; a merchant can type literally anything, including a negative number or an absurdly large one, which is the real reason [6.1. Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/) recommends `range` whenever a sensible bound exists.
 
 ## `richtext`/`inline_richtext`: real HTML, never escape it
 
@@ -75,6 +75,6 @@ A `color` setting with no `default` and no value chosen returns an empty string,
 
 ## Further reading
 
-- [Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/)
-- [Resource Pickers: Full Objects, Not IDs](/all-about-input-settings/resource-pickers-full-objects-not-ids/)
+- [6.1. Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/)
+- [40.2. Resource Pickers: Full Objects, Not IDs](/all-about-input-settings/resource-pickers-full-objects-not-ids/)
 - [Input settings (shopify.dev)](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings)

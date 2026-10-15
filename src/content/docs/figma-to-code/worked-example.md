@@ -42,19 +42,19 @@ Mobile frame:
 
 ## Step 1: Read the design
 
-Following [Reading a Design Like a Developer](/figma-to-code/reading-a-design-like-a-developer/): there's one visually distinct, self-contained region — a clear candidate for a single **section**. Inside it, three near-identical items repeat (icon, short heading, short description) — a clear candidate for a **block**, looped, rather than three hand-copied pieces of markup.
+Following [9.1. Reading a Design Like a Developer](/figma-to-code/reading-a-design-like-a-developer/): there's one visually distinct, self-contained region — a clear candidate for a single **section**. Inside it, three near-identical items repeat (icon, short heading, short description) — a clear candidate for a **block**, looped, rather than three hand-copied pieces of markup.
 
 ## Step 2: Separate content from structure
 
-Following [Content vs. Structure](/figma-to-code/content-vs-structure/): applying the swap test, "Fast Shipping" / "Easy Returns" / "24/7 Support" and their descriptions are content — a merchant should be free to change this text, add a fourth callout, or remove one, without the code caring. The number 3 shown in the design is not a structural requirement; it's just how many examples this design happened to include.
+Following [9.2. Content vs. Structure](/figma-to-code/content-vs-structure/): applying the swap test, "Fast Shipping" / "Easy Returns" / "24/7 Support" and their descriptions are content — a merchant should be free to change this text, add a fourth callout, or remove one, without the code caring. The number 3 shown in the design is not a structural requirement; it's just how many examples this design happened to include.
 
 ## Step 3: Decide the pieces
 
-Following [Section, Block, Snippet, or Fixed Markup?](/figma-to-code/section-block-snippet-or-fixed-markup/): one section (the whole region), one block type (one callout: icon, heading, text). No snippet is needed — this exact markup doesn't appear to repeat anywhere else in the broader design. No nested group block either — a merchant rearranging items into a flat row is enough; there's no indication they'd need rows-within-rows.
+Following [9.3. Section, Block, Snippet, or Fixed Markup?](/figma-to-code/section-block-snippet-or-fixed-markup/): one section (the whole region), one block type (one callout: icon, heading, text). No snippet is needed — this exact markup doesn't appear to repeat anywhere else in the broader design. No nested group block either — a merchant rearranging items into a flat row is enough; there's no indication they'd need rows-within-rows.
 
 ## Step 4: Plan the responsive behavior
 
-Following [Planning Responsive Behavior](/figma-to-code/planning-responsive-behavior/): "three columns become one column" is the whole difference between the frames — a CSS grid that switches column count at a breakpoint, no setting and no Liquid logic involved. The section's own top/bottom spacing is the one value worth an actual desktop/mobile setting pair, following [Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/).
+Following [9.4. Planning Responsive Behavior](/figma-to-code/planning-responsive-behavior/): "three columns become one column" is the whole difference between the frames — a CSS grid that switches column count at a breakpoint, no setting and no Liquid logic involved. The section's own top/bottom spacing is the one value worth an actual desktop/mobile setting pair, following [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/).
 
 ## Step 5: Write the code
 

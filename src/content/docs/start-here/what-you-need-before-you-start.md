@@ -32,7 +32,7 @@ You don't need any of these to read sections 2 through 13 of this site — they'
 | A code editor (VS Code or similar) | Any general-purpose code editor works. A Liquid syntax-highlighting extension makes `.liquid` files much easier to read. | Only once you start building for real |
 
 :::note[Why this section doesn't walk through setting these up yet]
-Installing the CLI and creating a development store only make sense once you understand what you're about to build — otherwise you're clicking through setup screens for concepts you haven't met yet. A full setup walkthrough is a natural fit for a later, planned section once you've read [Theme Architecture & Files](/theme-architecture/) and [Sections, Blocks & Snippets](/sections-blocks-snippets/). Until then, [Shopify's own CLI quickstart](https://shopify.dev/docs/themes/tools/cli) covers the setup steps directly.
+Installing the CLI and creating a development store only make sense once you understand what you're about to build — otherwise you're clicking through setup screens for concepts you haven't met yet. A full setup walkthrough is a natural fit for a later, planned section once you've read [2. Theme Architecture & Files](/theme-architecture/) and [3. Sections, Blocks & Snippets](/sections-blocks-snippets/). Until then, [Shopify's own CLI quickstart](https://shopify.dev/docs/themes/tools/cli) covers the setup steps directly.
 :::
 
 ## Further reading

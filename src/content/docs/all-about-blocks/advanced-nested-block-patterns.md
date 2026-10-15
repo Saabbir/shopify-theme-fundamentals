@@ -5,7 +5,7 @@ description: Real layout patterns built from nested blocks, and where nesting st
 
 **TL;DR:** Real layout patterns built from nested blocks, and where nesting stops being a good idea.
 
-[Block Fundamentals](/all-about-blocks/block-fundamentals/) introduced block nesting with a single "group" block example. This page works through a few real patterns built on top of that mechanism, and where nesting starts costing more than it's worth.
+[15.1. Block Fundamentals](/all-about-blocks/block-fundamentals/) introduced block nesting with a single "group" block example. This page works through a few real patterns built on top of that mechanism, and where nesting starts costing more than it's worth.
 
 ## Pattern: rows and columns from one recursive block
 
@@ -58,7 +58,7 @@ Not every container block should accept literally any other block. A "card" bloc
 }
 ```
 
-This is the same targeting idea covered in full on [@app and @theme Targeting in Full](/all-about-blocks/app-and-theme-targeting-in-full/) — a container block doesn't have to accept every block type just because it's a container.
+This is the same targeting idea covered in full on [15.4. @app and @theme Targeting in Full](/all-about-blocks/app-and-theme-targeting-in-full/) — a container block doesn't have to accept every block type just because it's a container.
 
 ## Where nesting stops being a good idea
 

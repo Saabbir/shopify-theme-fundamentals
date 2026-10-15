@@ -5,7 +5,7 @@ description: Every way to control which block types a section or block accepts, 
 
 **TL;DR:** Every way to control which block types a section or block accepts, beyond just "allow everything."
 
-[Block Fundamentals](/all-about-blocks/block-fundamentals/) introduced `"@theme"` and `"@app"` as the two broad categories a section can allow. In practice, allowing literally everything of a given category is often not what you actually want — this page covers the finer-grained targeting underneath those two entries.
+[15.1. Block Fundamentals](/all-about-blocks/block-fundamentals/) introduced `"@theme"` and `"@app"` as the two broad categories a section can allow. In practice, allowing literally everything of a given category is often not what you actually want — this page covers the finer-grained targeting underneath those two entries.
 
 ## The broadest form: allow every theme or app block
 
@@ -54,7 +54,7 @@ This mostly matters when a section wants to give one particular block type speci
 
 ## Why narrowing matters more than it looks
 
-Going back to [Advanced Nested Block Patterns](/all-about-blocks/advanced-nested-block-patterns/)'s card example: a card block that accepts `"@theme"` wholesale would let a merchant drop an unrelated "newsletter signup" block inside a card, which likely breaks the card's intended design. Naming exactly which block types a container accepts is how you prevent that category of mistake at the schema level, rather than hoping a merchant doesn't try it.
+Going back to [15.3. Advanced Nested Block Patterns](/all-about-blocks/advanced-nested-block-patterns/)'s card example: a card block that accepts `"@theme"` wholesale would let a merchant drop an unrelated "newsletter signup" block inside a card, which likely breaks the card's intended design. Naming exactly which block types a container accepts is how you prevent that category of mistake at the schema level, rather than hoping a merchant doesn't try it.
 
 :::caution[Narrowing isn't retroactive]
 If you ship a section allowing `"@theme"` broadly and later narrow it to specific types, any block instances a merchant already added that are no longer in the allowed list typically remain in their saved settings but can no longer be added fresh elsewhere in the editor for that section. Narrowing an already-shipped section's accepted types is not something to do casually once merchants have content built on it.

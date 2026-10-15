@@ -5,7 +5,7 @@ description: One full, realistic snippet, with every optional parameter and defe
 
 **TL;DR:** One full, realistic snippet, with every optional parameter and defensive check, called from two different places.
 
-[Snippet Fundamentals](/all-about-snippets/snippet-fundamentals/) introduced `product-card` as a basic example. This page grows that same snippet into a complete, production-realistic version — more parameters, defensive checks for missing data, and two different call sites to show why scope isolation (passing everything explicitly) is what makes that reuse safe.
+[16.1. Snippet Fundamentals](/all-about-snippets/snippet-fundamentals/) introduced `product-card` as a basic example. This page grows that same snippet into a complete, production-realistic version — more parameters, defensive checks for missing data, and two different call sites to show why scope isolation (passing everything explicitly) is what makes that reuse safe.
 
 ## The complete snippet: `snippets/product-card.liquid`
 
@@ -115,7 +115,7 @@ The first call site passes only `product` and accepts every default. The second 
 
 ## Every concern from this chapter, in one place
 
-- **A full `{% doc %}` block** — every parameter is documented with its type, whether it's required, and a default, plus two `@example` calls showing it used both ways, per [Snippet Fundamentals](/all-about-snippets/snippet-fundamentals/).
+- **A full `{% doc %}` block** — every parameter is documented with its type, whether it's required, and a default, plus two `@example` calls showing it used both ways, per [16.1. Snippet Fundamentals](/all-about-snippets/snippet-fundamentals/).
 - **A defensive check wrapping the whole snippet** — `{% if product == blank %}` branches to a dedicated empty-state snippet instead of letting a blank product fall through and render a broken card further down. Liquid has no early-exit tag for a snippet, so the guard wraps the entire body rather than trying to stop execution partway through.
 - **Sensible defaults for every optional parameter** — `image_width`, `show_vendor`, and `heading_tag` all fall back with `default:` rather than erroring or rendering blank when a caller omits them.
 - **A guard around a missing image** — `product.featured_image != blank` branches to a placeholder instead of outputting a broken `<img src="">`.
@@ -130,5 +130,5 @@ The first call site passes only `product` and accepts every default. The second 
 
 ## Further reading
 
-- [Snippet Fundamentals](/all-about-snippets/snippet-fundamentals/)
+- [16.1. Snippet Fundamentals](/all-about-snippets/snippet-fundamentals/)
 - [The render tag](https://shopify.dev/docs/api/liquid/tags/render) (shopify.dev)

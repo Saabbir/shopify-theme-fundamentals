@@ -5,7 +5,7 @@ description: How to find out what a specific installed review app actually expos
 
 **TL;DR:** How to find out what a specific installed review app actually exposes to the theme, instead of assuming it matches Shopify's own.
 
-[The Shopify Product Reviews App's Standard Metafields](/all-about-product-reviews/the-shopify-product-reviews-apps-standard-metafields/) covers `reviews.rating`/`reviews.rating_count`, and several popular third-party apps (Judge.me, Loox, and others) deliberately mirror that same namespace for compatibility — but "several" isn't "all," and a theme shouldn't assume it without checking.
+[34.2. The Shopify Product Reviews App's Standard Metafields](/all-about-product-reviews/the-shopify-product-reviews-apps-standard-metafields/) covers `reviews.rating`/`reviews.rating_count`, and several popular third-party apps (Judge.me, Loox, and others) deliberately mirror that same namespace for compatibility — but "several" isn't "all," and a theme shouldn't assume it without checking.
 
 ## Checking what a specific app actually writes
 
@@ -54,6 +54,6 @@ A section that allows `{ "type": "@app" }` in its blocks list lets a merchant ad
 
 ## Further reading
 
-- [The Shopify Product Reviews App's Standard Metafields](/all-about-product-reviews/the-shopify-product-reviews-apps-standard-metafields/)
+- [34.2. The Shopify Product Reviews App's Standard Metafields](/all-about-product-reviews/the-shopify-product-reviews-apps-standard-metafields/)
 - [App blocks (shopify.dev)](https://shopify.dev/docs/storefronts/themes/architecture/blocks/app-blocks)
 - [Metafield definitions (Shopify Help Center)](https://help.shopify.com/en/manual/custom-data/metafields/metafield-definitions)

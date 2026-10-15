@@ -15,7 +15,7 @@ A `product` is never, by itself, the thing a shopper buys. Every product has at 
 {{ product.has_only_default_variant }}
 ```
 
-`product.has_only_default_variant` is the reliable way to tell these two cases apart in Liquid — `true` for the single-default-variant case, `false` the moment a product has one or more real options. This single check is what decides whether a product page needs to render an option picker at all, covered in full on [The Variants & Options Matrix in Depth](/all-about-products/the-variants-and-options-matrix-in-depth/).
+`product.has_only_default_variant` is the reliable way to tell these two cases apart in Liquid — `true` for the single-default-variant case, `false` the moment a product has one or more real options. This single check is what decides whether a product page needs to render an option picker at all, covered in full on [32.2. The Variants & Options Matrix in Depth](/all-about-products/the-variants-and-options-matrix-in-depth/).
 
 ## Identity: handle, id, title
 
@@ -36,11 +36,11 @@ A `product` is never, by itself, the thing a shopper buys. Every product has at 
 {{ product.tags }}
 ```
 
-`product.description` (identical to `product.content`, under two names) is rich HTML, not plain text — rendering it directly is correct; running it through `strip_html` first is only needed for something like a meta description or a plain-text excerpt. `product.vendor` and `product.type` are both free-text fields set per product, commonly used to build a vendor index or a type-based navigation menu (`shop.vendors` and `shop.types` return the store's complete sets, covered in [cart, customer & shop in Full](/all-about-global-objects/cart-customer-and-shop-in-full/)). [Metafields, Tags & Categorization](/all-about-products/metafields-tags-and-categorization/) covers tags, `product.category`, and how all of this differs from collection membership, in full.
+`product.description` (identical to `product.content`, under two names) is rich HTML, not plain text — rendering it directly is correct; running it through `strip_html` first is only needed for something like a meta description or a plain-text excerpt. `product.vendor` and `product.type` are both free-text fields set per product, commonly used to build a vendor index or a type-based navigation menu (`shop.vendors` and `shop.types` return the store's complete sets, covered in [31.3. cart, customer & shop in Full](/all-about-global-objects/cart-customer-and-shop-in-full/)). [32.6. Metafields, Tags & Categorization](/all-about-products/metafields-tags-and-categorization/) covers tags, `product.category`, and how all of this differs from collection membership, in full.
 
 ## A product only exists where it's eligible to
 
-`product` is `nil` everywhere except a product page, a product recommendation, or a search/collection result — [Which Objects Exist on Which Template](/all-about-global-objects/which-objects-exist-on-which-template/) covers this in full for every global object, `product` included. The practical habit that follows: any snippet referencing `product` that isn't exclusively rendered from `templates/product.json` needs an `{% if product %}` guard, the same instinct [Global Object Fundamentals](/all-about-global-objects/global-object-fundamentals/) establishes for every global object.
+`product` is `nil` everywhere except a product page, a product recommendation, or a search/collection result — [31.7. Which Objects Exist on Which Template](/all-about-global-objects/which-objects-exist-on-which-template/) covers this in full for every global object, `product` included. The practical habit that follows: any snippet referencing `product` that isn't exclusively rendered from `templates/product.json` needs an `{% if product %}` guard, the same instinct [31.1. Global Object Fundamentals](/all-about-global-objects/global-object-fundamentals/) establishes for every global object.
 
 ## Key takeaways
 
@@ -52,5 +52,5 @@ A `product` is never, by itself, the thing a shopper buys. Every product has at 
 ## Further reading
 
 - [Liquid objects: product](https://shopify.dev/docs/api/liquid/objects/product) (shopify.dev)
-- [product, variant & collection in Full](/all-about-global-objects/product-variant-and-collection-in-full/) — this site's quick-reference property list for all three objects at once
-- [The Variants & Options Matrix in Depth](/all-about-products/the-variants-and-options-matrix-in-depth/)
+- [31.2. product, variant & collection in Full](/all-about-global-objects/product-variant-and-collection-in-full/) — this site's quick-reference property list for all three objects at once
+- [32.2. The Variants & Options Matrix in Depth](/all-about-products/the-variants-and-options-matrix-in-depth/)

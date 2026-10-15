@@ -85,7 +85,7 @@ description: One image snippet combining the aspect-ratio wrapper, lazy-loading 
 </div>
 ```
 
-The badge is rendered by the *caller*, as a sibling inside its own wrapping element around `{% render 'image' %}` — not as a parameter the image snippet itself understands. This keeps the image snippet generically reusable (a hero banner calling it has no reason to know what a product badge even is) while still letting [Badge & Overlay Composition](/all-about-images/badge-and-overlay-composition/)'s positioning technique work exactly the same way, since `position: relative` lives on the same `.sol-image-wrapper` class either way.
+The badge is rendered by the *caller*, as a sibling inside its own wrapping element around `{% render 'image' %}` — not as a parameter the image snippet itself understands. This keeps the image snippet generically reusable (a hero banner calling it has no reason to know what a product badge even is) while still letting [38.4. Badge & Overlay Composition](/all-about-images/badge-and-overlay-composition/)'s positioning technique work exactly the same way, since `position: relative` lives on the same `.sol-image-wrapper` class either way.
 
 ## Reading the `:has()` rule
 
@@ -95,7 +95,7 @@ The badge is rendered by the *caller*, as a sibling inside its own wrapping elem
 }
 ```
 
-This line exists to handle a real edge case: a `loading="eager"` image has no `onload` handler attached (priority images skip the fade-in entirely, appearing immediately), but without this rule, its `opacity: 0` base style would leave it invisible until something else happened to trigger a repaint. `:has()` — covered in [Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) — lets this be expressed as a single CSS rule keyed off the image's own `loading` attribute, rather than needing a second JavaScript branch just to toggle a class differently for the priority case.
+This line exists to handle a real edge case: a `loading="eager"` image has no `onload` handler attached (priority images skip the fade-in entirely, appearing immediately), but without this rule, its `opacity: 0` base style would leave it invisible until something else happened to trigger a repaint. `:has()` — covered in [29.10. Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) — lets this be expressed as a single CSS rule keyed off the image's own `loading` attribute, rather than needing a second JavaScript branch just to toggle a class differently for the priority case.
 
 ## Key takeaways
 
@@ -105,6 +105,6 @@ This line exists to handle a real edge case: a `loading="eager"` image has no `o
 
 ## Further reading
 
-- [Image Fundamentals: What Belongs in a Reusable Snippet](/all-about-images/image-fundamentals-what-belongs-in-a-reusable-snippet/)
-- [All About Product Cards](/all-about-product-cards/)
-- [Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/)
+- [38.1. Image Fundamentals: What Belongs in a Reusable Snippet](/all-about-images/image-fundamentals-what-belongs-in-a-reusable-snippet/)
+- [33. All About Product Cards](/all-about-product-cards/)
+- [29.10. Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/)

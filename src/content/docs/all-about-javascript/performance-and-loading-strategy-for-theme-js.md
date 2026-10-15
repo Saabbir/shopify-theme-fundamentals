@@ -7,7 +7,7 @@ description: What defer already buys you for free, and lazy-loading a genuinely 
 
 ## What's already handled, without any extra work
 
-[JavaScript Fundamentals in a Shopify Theme](/all-about-javascript/javascript-fundamentals/) covered that `{% javascript %}`'s bundled output loads with `defer` automatically, and that `type="module"` (used for a Web Component's own file) behaves the same way by default. Both mean a theme's JavaScript never blocks the initial HTML from parsing and rendering — the browser downloads it in the background and runs it only once the document is ready. This already covers most of what "don't block rendering with JavaScript" means; it isn't something you need to configure yourself.
+[30.1. JavaScript Fundamentals in a Shopify Theme](/all-about-javascript/javascript-fundamentals/) covered that `{% javascript %}`'s bundled output loads with `defer` automatically, and that `type="module"` (used for a Web Component's own file) behaves the same way by default. Both mean a theme's JavaScript never blocks the initial HTML from parsing and rendering — the browser downloads it in the background and runs it only once the document is ready. This already covers most of what "don't block rendering with JavaScript" means; it isn't something you need to configure yourself.
 
 ## What's still yours to decide: when a component's own setup work happens
 
@@ -36,7 +36,7 @@ class ProductMap extends HTMLElement {
 Rather than doing expensive setup in `connectedCallback` directly, this component only *observes* itself at connect time — a cheap operation — and defers the real work until `IntersectionObserver` reports the element has actually scrolled into (or near) the viewport. `this.observer.disconnect()` afterward stops watching once the work has run once; there's no need to keep observing an element that's already done its expensive setup.
 
 :::tip[Combine this with the markup already being there]
-This pattern doesn't conflict with progressive enhancement from [Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) — the element's markup (an image, a placeholder, static content) is still present and correct from the start; only the *behavior* that makes it interactive is deferred until it's actually about to be seen.
+This pattern doesn't conflict with progressive enhancement from [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) — the element's markup (an image, a placeholder, static content) is still present and correct from the start; only the *behavior* that makes it interactive is deferred until it's actually about to be seen.
 :::
 
 ## Loading a genuinely large dependency only when needed
@@ -70,7 +70,7 @@ class Carousel extends HTMLElement {
 }
 ```
 
-A Web Component's own lifecycle is already the right place to attach and detach its listeners — `connectedCallback` to add them, `disconnectedCallback` to remove them, covered in [Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/). A listener attached once at the document level, unconditionally, on every page load, regardless of whether anything on the current page actually needs it, is a small but avoidable ongoing cost that scoping to the component itself sidesteps entirely.
+A Web Component's own lifecycle is already the right place to attach and detach its listeners — `connectedCallback` to add them, `disconnectedCallback` to remove them, covered in [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/). A listener attached once at the document level, unconditionally, on every page load, regardless of whether anything on the current page actually needs it, is a small but avoidable ongoing cost that scoping to the component itself sidesteps entirely.
 
 ## Key takeaways
 

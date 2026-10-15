@@ -110,7 +110,7 @@ Every piece below was covered on its own page earlier in this chapter; this exam
 
 - **Image and badges share one wrapper** (`sol-product-card__media`) because the badges are positioned relative to the image, not the card as a whole — this keeps a badge from drifting if the title below ever wraps to a different number of lines.
 - **The sold-out/sale/custom badge priority** from [Badges](/all-about-product-cards/badges-sale-sold-out-and-custom-tags/) is preserved exactly: the `{% else %}` means a sold-out product never also shows "Sale," regardless of its actual compare-at price.
-- **The ratings summary is rendered via the shared snippet from [All About Product Reviews](/all-about-product-reviews/)**, passed `size: 'compact'`, rather than this chapter reimplementing star-rating markup — a card's rating display and a product page's should always come from the same source, never two parallel implementations.
+- **The ratings summary is rendered via the shared snippet from [34. All About Product Reviews](/all-about-product-reviews/)**, passed `size: 'compact'`, rather than this chapter reimplementing star-rating markup — a card's rating display and a product page's should always come from the same source, never two parallel implementations.
 - **Swatches are capped at `limit: 5`** — a product with ten colors would otherwise overflow a card's limited width; a "+5 more" affordance or linking straight to the product page for the full set is a reasonable addition a real theme would likely want, left out here to keep the example focused.
 - **Quick add is the very last element**, after price and swatches — a shopper needs to see the price and have a chance to pick a color before committing to add it to the cart, so its position in the markup (and, visually, in the card's layout) reflects that order of decisions.
 
@@ -122,6 +122,6 @@ Every piece below was covered on its own page earlier in this chapter; this exam
 
 ## Further reading
 
-- [Product Card Fundamentals](/all-about-product-cards/product-card-fundamentals/)
-- [All About Product Reviews](/all-about-product-reviews/)
-- [All About Products](/all-about-products/)
+- [33.1. Product Card Fundamentals](/all-about-product-cards/product-card-fundamentals/)
+- [34. All About Product Reviews](/all-about-product-reviews/)
+- [32. All About Products](/all-about-products/)

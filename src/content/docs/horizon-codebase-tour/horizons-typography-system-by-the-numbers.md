@@ -5,7 +5,7 @@ description: The real settings count, variant count, token count, and preset cou
 
 **TL;DR:** The real settings count, variant count, token count, and preset count behind Horizon's typography — verified against its current source, not estimated.
 
-[How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) and [How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/) cover the *mechanism* — how fonts load, how presets get built. This page answers a different, more literal question: exactly how many settings, variants, tokens, and presets does that mechanism actually produce? Every number below was counted directly from Horizon's real `config/settings_schema.json` and `snippets/theme-styles-variables.liquid`, fetched fresh for this page — not estimated from the simplified examples shown elsewhere in this chapter.
+[How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/) and [27.3. How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/) cover the *mechanism* — how fonts load, how presets get built. This page answers a different, more literal question: exactly how many settings, variants, tokens, and presets does that mechanism actually produce? Every number below was counted directly from Horizon's real `config/settings_schema.json` and `snippets/theme-styles-variables.liquid`, fetched fresh for this page — not estimated from the simplified examples shown elsewhere in this chapter.
 
 :::note[Numbers, not just mechanism]
 It's entirely possible to understand how Horizon's typography system works — settings resolve to tokens, tokens resolve to presets — without ever knowing it adds up to 36 settings and roughly 130 font-related custom properties. Both matter: the mechanism tells you *how* to extend it; the count tells you *how much is already there* before you add anything.
@@ -116,7 +116,7 @@ That total is deliberately approximate — it depends on where you draw the line
 ## Further reading
 
 - [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/)
-- [How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/)
-- [Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/)
+- [27.3. How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/)
+- [18.10. Naming Conventions for Font Settings & Type Tokens](/all-about-typography/naming-conventions-for-settings-and-tokens/)
 - [`config/settings_schema.json` (GitHub)](https://github.com/Shopify/horizon/blob/main/config/settings_schema.json)
 - [`snippets/theme-styles-variables.liquid` (GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/theme-styles-variables.liquid)

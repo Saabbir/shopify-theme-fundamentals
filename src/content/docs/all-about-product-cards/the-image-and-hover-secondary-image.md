@@ -99,6 +99,6 @@ The primary image carries the real, descriptive `alt` text; the secondary image 
 
 ## Further reading
 
-- [The Media Gallery](/all-about-products/the-media-gallery/)
-- [Media Deep Dive](/media-deep-dive/)
+- [32.3. The Media Gallery](/all-about-products/the-media-gallery/)
+- [19. Media Deep Dive](/media-deep-dive/)
 - [`image_url` (shopify.dev)](https://shopify.dev/docs/api/liquid/filters/image_url)

@@ -29,7 +29,7 @@ A snippet rendered once is cheap. The same snippet rendered inside an uncapped l
 
 ## A performance benefit you get automatically
 
-It's reasonable to worry that every section's `{% stylesheet %}` and `{% javascript %}` bloats every page's bundle, even for sections not used on that specific page. That's not how it works: Shopify only includes the CSS and JavaScript for sections actually present on the page being rendered — a section type used only on your homepage contributes nothing to a product page's bundle, even though both section files live in the same theme. This is one of the real, structural benefits of the `{% stylesheet %}`/`{% javascript %}` pattern from [CSS in Shopify Themes](/css-in-shopify-themes/) and [JavaScript in Shopify Themes](/javascript-in-shopify-themes/) over one giant, hand-maintained global CSS/JS file that ships in full on every page regardless of what's actually used.
+It's reasonable to worry that every section's `{% stylesheet %}` and `{% javascript %}` bloats every page's bundle, even for sections not used on that specific page. That's not how it works: Shopify only includes the CSS and JavaScript for sections actually present on the page being rendered — a section type used only on your homepage contributes nothing to a product page's bundle, even though both section files live in the same theme. This is one of the real, structural benefits of the `{% stylesheet %}`/`{% javascript %}` pattern from [10. CSS in Shopify Themes](/css-in-shopify-themes/) and [11. JavaScript in Shopify Themes](/javascript-in-shopify-themes/) over one giant, hand-maintained global CSS/JS file that ships in full on every page regardless of what's actually used.
 
 ## More sections, more render time
 

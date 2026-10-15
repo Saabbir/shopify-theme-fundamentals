@@ -80,7 +80,7 @@ Notice this single snippet does two jobs at once: it defines the CSS custom prop
 From here on, no section or block CSS should reference `settings.type_heading_font` directly — it reads `var(--font-heading-family)` instead. This is the entire payoff: a merchant changing the Heading font setting updates every component that reads `--font-heading-family`, automatically, with zero code changes anywhere else.
 
 :::note[Notice what's missing: a font-size]
-A role token resolves `family`, `weight`, and `style` only — never a size. `.product-card__title` above is deliberately incomplete as written; a real product title needs an actual `font-size` and `line-height` from somewhere, and a role token has neither to give it. That's exactly the gap a type preset exists to fill — covered next, and in full on [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/).
+A role token resolves `family`, `weight`, and `style` only — never a size. `.product-card__title` above is deliberately incomplete as written; a real product title needs an actual `font-size` and `line-height` from somewhere, and a role token has neither to give it. That's exactly the gap a type preset exists to fill — covered next, and in full on [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/).
 :::
 
 ## Beyond fonts: type presets, briefly
@@ -105,18 +105,18 @@ A **type preset** extends this same idea beyond just which font to use — it bu
 
 Notice `--type-preset-h1-font-family` still points at `--font-heading-family` rather than hardcoding a font directly — a preset is a composition of tokens, not a replacement for them. Changing the underlying Heading font setting still cascades through; the preset layer only adds size and line-height as additional, bundled decisions on top.
 
-Building a *complete* preset system — how many presets a theme actually needs, what properties belong in one, whether to hardcode preset values or drive them from per-level merchant settings, and how Shopify's own Horizon theme answers all three at real production scale — is involved enough to deserve its own page: see [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/).
+Building a *complete* preset system — how many presets a theme actually needs, what properties belong in one, whether to hardcode preset values or drive them from per-level merchant settings, and how Shopify's own Horizon theme answers all three at real production scale — is involved enough to deserve its own page: see [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/).
 
 ## Key takeaways
 
 - A token is a named variable standing in for a design decision; every component reads the token, never the original setting, so a single change cascades everywhere automatically.
 - Define typography by role (Body, Heading, Subheading, Accent, or whatever set a design actually needs), one `font_picker` setting per role, resolved into CSS custom properties exactly once.
-- Font-role tokens pay off in almost any theme — they're the foundation a full preset system builds on top of, covered in full on [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/).
+- Font-role tokens pay off in almost any theme — they're the foundation a full preset system builds on top of, covered in full on [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/).
 
 ## Further reading
 
-- [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — designing a full preset system, and how Horizon built its own
-- [Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) — a role token vs. a preset, and when a component reaches for which
-- [Reading Typography from a Figma Design](/all-about-typography/reading-typography-from-a-figma-design/) — turning a client's actual text styles into this chapter's roles, before writing any settings
+- [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/) — designing a full preset system, and how Horizon built its own
+- [18.9. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) — a role token vs. a preset, and when a component reaches for which
+- [18.2. Reading Typography from a Figma Design](/all-about-typography/reading-typography-from-a-figma-design/) — turning a client's actual text styles into this chapter's roles, before writing any settings
 - [How Shopify's Horizon Theme Loads Typography](/all-about-typography/how-horizon-loads-typography/)
 - [Building a Token System: Primitive, Semantic, Component](/all-about-colors/building-a-token-system/) — the same idea, applied to color

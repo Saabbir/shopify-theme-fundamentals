@@ -34,7 +34,7 @@ A `default` outside the declared `min`/`max` (like `8` here, against a max of `6
 { "type": "checkbox", "id": "show_vendor", "label": "t:labels.show_vendor" }
 ```
 
-If `labels.show_vendor` doesn't exist in `locales/en.default.schema.json`, a merchant sees the literal text "Translation missing" instead of a real label in the theme editor — a schema referencing a `t:` key is only half the requirement; the matching locale file entry is the other half. Theme Check's `ValidSchemaTranslations` check exists specifically to catch this mismatch — [Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) covers the full locale-file mechanics this depends on.
+If `labels.show_vendor` doesn't exist in `locales/en.default.schema.json`, a merchant sees the literal text "Translation missing" instead of a real label in the theme editor — a schema referencing a `t:` key is only half the requirement; the matching locale file entry is the other half. Theme Check's `ValidSchemaTranslations` check exists specifically to catch this mismatch — [6.5. Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) covers the full locale-file mechanics this depends on.
 
 ## A `presets` entry needs real, resolvable settings — not just any values
 
@@ -52,7 +52,7 @@ If `labels.show_vendor` doesn't exist in `locales/en.default.schema.json`, a mer
 }
 ```
 
-Per this project's own conventions, every section needs a `presets` entry with genuinely sensible defaults, not an empty object — a merchant adding the section for the first time should see something that already looks intentional, not a blank shell. [Resource Pickers: Full Objects, Not IDs](/all-about-input-settings/resource-pickers-full-objects-not-ids/) covers the one real limit on this: a `presets.settings` value can supply a `text`, `range`, or `select` value just fine, but can't pre-select a `product`/`collection`/`image_picker` value, since those settings have no concept of a schema-level default to begin with.
+Per this project's own conventions, every section needs a `presets` entry with genuinely sensible defaults, not an empty object — a merchant adding the section for the first time should see something that already looks intentional, not a blank shell. [40.2. Resource Pickers: Full Objects, Not IDs](/all-about-input-settings/resource-pickers-full-objects-not-ids/) covers the one real limit on this: a `presets.settings` value can supply a `text`, `range`, or `select` value just fine, but can't pre-select a `product`/`collection`/`image_picker` value, since those settings have no concept of a schema-level default to begin with.
 
 ## Key takeaways
 
@@ -63,6 +63,6 @@ Per this project's own conventions, every section needs a `presets` entry with g
 
 ## Further reading
 
-- [Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/)
-- [Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/)
+- [6.1. Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/)
+- [6.5. Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/)
 - [Theme Check (shopify.dev)](https://shopify.dev/docs/storefronts/themes/tools/theme-check)

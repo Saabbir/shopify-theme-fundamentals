@@ -7,7 +7,7 @@ description: Every property worth knowing on the three objects nearly every stor
 
 ## product
 
-A `product` object represents one product in the store, and only has real data on a product page, a product recommendation, or a search/collection result — [Which Objects Exist on Which Template](/all-about-global-objects/which-objects-exist-on-which-template/) covers exactly where.
+A `product` object represents one product in the store, and only has real data on a product page, a product recommendation, or a search/collection result — [31.7. Which Objects Exist on Which Template](/all-about-global-objects/which-objects-exist-on-which-template/) covers exactly where.
 
 **Identity and content**
 
@@ -45,7 +45,7 @@ A `product` object represents one product in the store, and only has real data o
 {{ product.media }}
 ```
 
-`product.images` is the older, image-only array; `product.media` is the complete array (images, videos, 3D models) sorted by when each was added, and is the one worth reaching for by default — see [Media Fundamentals](/media-deep-dive/media-fundamentals/) for how to tell the media types apart and render each correctly.
+`product.images` is the older, image-only array; `product.media` is the complete array (images, videos, 3D models) sorted by when each was added, and is the one worth reaching for by default — see [19.1. Media Fundamentals](/media-deep-dive/media-fundamentals/) for how to tell the media types apart and render each correctly.
 
 **Variants and options**
 
@@ -162,4 +162,4 @@ Every store has an automatically generated collection containing literally every
 - [Liquid objects: product](https://shopify.dev/docs/api/liquid/objects/product) (shopify.dev)
 - [Liquid objects: variant](https://shopify.dev/docs/api/liquid/objects/variant) (shopify.dev)
 - [Liquid objects: collection](https://shopify.dev/docs/api/liquid/objects/collection) (shopify.dev)
-- [All About Products](/all-about-products/) — every property introduced here, covered in much greater depth
+- [32. All About Products](/all-about-products/) — every property introduced here, covered in much greater depth

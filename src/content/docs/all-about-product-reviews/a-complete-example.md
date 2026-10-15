@@ -71,7 +71,7 @@ A star rating shows up in two genuinely different places in a typical theme — 
 }
 ```
 
-The `nil`/zero-review guard from [The Shopify Product Reviews App's Standard Metafields](/all-about-product-reviews/the-shopify-product-reviews-apps-standard-metafields/), the accessible `role="img"`/`aria-label` pattern from [Rendering an Accessible Star Rating](/all-about-product-reviews/rendering-an-accessible-star-rating/), and a `size` parameter are all that's needed to cover both placements — the visual difference (showing the review count in text, or not) is a small CSS/markup variation, not a reason to maintain two separate components.
+The `nil`/zero-review guard from [34.2. The Shopify Product Reviews App's Standard Metafields](/all-about-product-reviews/the-shopify-product-reviews-apps-standard-metafields/), the accessible `role="img"`/`aria-label` pattern from [34.4. Rendering an Accessible Star Rating](/all-about-product-reviews/rendering-an-accessible-star-rating/), and a `size` parameter are all that's needed to cover both placements — the visual difference (showing the review count in text, or not) is a small CSS/markup variation, not a reason to maintain two separate components.
 
 ## Placement 1: the product card, compact
 
@@ -110,7 +110,7 @@ The product page uses the same snippet with `size: 'standard'`, which shows the 
 
 ## Further reading
 
-- [Review Data Fundamentals](/all-about-product-reviews/review-data-fundamentals/)
-- [Rendering an Accessible Star Rating](/all-about-product-reviews/rendering-an-accessible-star-rating/)
+- [34.1. Review Data Fundamentals](/all-about-product-reviews/review-data-fundamentals/)
+- [34.4. Rendering an Accessible Star Rating](/all-about-product-reviews/rendering-an-accessible-star-rating/)
 - [`AggregateRating` Schema.org Markup for SEO](/all-about-product-reviews/aggregaterating-schema-for-seo/)
-- [All About Product Cards](/all-about-product-cards/)
+- [33. All About Product Cards](/all-about-product-cards/)

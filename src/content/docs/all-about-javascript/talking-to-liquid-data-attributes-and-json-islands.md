@@ -81,4 +81,4 @@ Because `type="application/json"` isn't a script MIME type the browser will exec
 ## Further reading
 
 - [The `json` filter](https://shopify.dev/docs/api/liquid/filters/json) (shopify.dev)
-- [JavaScript Fundamentals in a Shopify Theme](/all-about-javascript/javascript-fundamentals/)
+- [30.1. JavaScript Fundamentals in a Shopify Theme](/all-about-javascript/javascript-fundamentals/)

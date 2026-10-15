@@ -33,12 +33,12 @@ Submitting this updates every line item's quantity at once — setting a quantit
 Each `updates[]` field needs to be indexed by the line item's **1-based position** in the cart — not its variant ID, not a 0-based index.
 
 :::caution[Why `forloop.index`, not `forloop.index0`]
-Back in [Loops](/liquid-basics/loops/), `forloop.index` starts at 1 and `forloop.index0` starts at 0. The cart's update endpoint expects line positions starting at 1, matching `cart.items`' own order — so this is one of the few places where reaching for `index0` instead of `index`, out of habit from a language where arrays are 0-indexed, produces a form that updates the *wrong* line item instead of failing loudly.
+Back in [4.4. Loops](/liquid-basics/loops/), `forloop.index` starts at 1 and `forloop.index0` starts at 0. The cart's update endpoint expects line positions starting at 1, matching `cart.items`' own order — so this is one of the few places where reaching for `index0` instead of `index`, out of habit from a language where arrays are 0-indexed, produces a form that updates the *wrong* line item instead of failing loudly.
 :::
 
 ## Reading cart totals alongside the form
 
-Nothing about displaying the cart's totals needs to be inside the `{% form %}` block itself — `cart.total_price`, `cart.item_count`, and the rest from [cart, customer & shop](/global-objects/cart-customer-and-shop/) can be read anywhere on the page.
+Nothing about displaying the cart's totals needs to be inside the `{% form %}` block itself — `cart.total_price`, `cart.item_count`, and the rest from [5.2. cart, customer & shop](/global-objects/cart-customer-and-shop/) can be read anywhere on the page.
 
 ```liquid
 <p>Subtotal: {{ cart.total_price | money }}</p>

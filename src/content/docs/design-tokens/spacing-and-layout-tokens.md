@@ -14,7 +14,7 @@ Spacing is the most common place a theme ends up looking inconsistent — one se
 { "type": "range", "id": "padding_bottom", "label": "t:labels.padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 40 }
 ```
 
-This is the `range`-over-`number` preference from [Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/), applied specifically to spacing: a bounded `min`/`max` keeps a merchant from accidentally setting 2000px of padding and breaking the page's rhythm.
+This is the `range`-over-`number` preference from [6.1. Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/), applied specifically to spacing: a bounded `min`/`max` keeps a merchant from accidentally setting 2000px of padding and breaking the page's rhythm.
 
 ## Mobile needs its own separate values, not a smaller version of the same ones
 
@@ -49,11 +49,11 @@ Reaching for one of these named values, instead of a fresh arbitrary number ever
 
 ## Key takeaways
 
-- Give every section independent desktop and mobile spacing settings (four `range` settings, not one shared value) — see [Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/) for how to wire the mobile override through CSS instead of Liquid.
+- Give every section independent desktop and mobile spacing settings (four `range` settings, not one shared value) — see [7.4. Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/) for how to wire the mobile override through CSS instead of Liquid.
 - Never decide mobile vs. desktop spacing inside Liquid based on a device check — it can't react to resizing, and it breaks the theme editor's live preview.
 - A small, named spacing scale reused everywhere produces a more consistent result than ad hoc pixel values chosen fresh in each file.
 
 ## Further reading
 
-- [Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/) — why this page's settings use `px` while its generated scale uses `rem`, and the desktop/mobile pattern as an alternative to `clamp()`
+- [29.2. Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/) — why this page's settings use `px` while its generated scale uses `rem`, and the desktop/mobile pattern as an alternative to `clamp()`
 - [The `range` setting](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#range) (shopify.dev)

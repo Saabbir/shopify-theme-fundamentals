@@ -95,6 +95,6 @@ Per this site's own JavaScript convention, anything beyond a single, simple line
 
 ## Further reading
 
-- [collection.filters in Depth](/all-about-collection-filtering-and-sorting/collection-filters-in-depth-types-values-and-url-parameters/)
-- [Rendering Filters: list, price_range & boolean](/all-about-collection-filtering-and-sorting/rendering-filters-list-price-range-and-boolean/)
-- [Sorting: collection.sort_options & sort_by](/all-about-collection-filtering-and-sorting/sorting-collection-sort_options-and-sort_by/)
+- [35.1. collection.filters in Depth](/all-about-collection-filtering-and-sorting/collection-filters-in-depth-types-values-and-url-parameters/)
+- [35.2. Rendering Filters: list, price_range & boolean](/all-about-collection-filtering-and-sorting/rendering-filters-list-price-range-and-boolean/)
+- [35.3. Sorting: collection.sort_options & sort_by](/all-about-collection-filtering-and-sorting/sorting-collection-sort_options-and-sort_by/)

@@ -5,7 +5,7 @@ description: A product card is a deliberately narrowed view of a product, built 
 
 **TL;DR:** A product card is a deliberately narrowed view of a product, built to repeat dozens of times on one page — not a smaller product page.
 
-A full product page (covered across [All About Products](/all-about-products/)) has room for a media gallery, a full variant picker, selling plans, and a long description. A product card has none of that room, and more importantly, it appears dozens of times on one collection page — every property it reads and every element it renders happens that many times over, which makes "keep it minimal" a performance requirement, not just a design preference.
+A full product page (covered across [32. All About Products](/all-about-products/)) has room for a media gallery, a full variant picker, selling plans, and a long description. A product card has none of that room, and more importantly, it appears dozens of times on one collection page — every property it reads and every element it renders happens that many times over, which makes "keep it minimal" a performance requirement, not just a design preference.
 
 ## What a card actually shows
 
@@ -35,8 +35,8 @@ This chapter consistently names the loop variable `card_product` rather than `pr
 
 ## What this chapter deliberately leaves to other chapters
 
-- **The underlying product data** — variants, pricing fields, media — is covered in full in [All About Products](/all-about-products/); this chapter only covers how a card *presents* that data, not where it comes from.
-- **Review and rating data** is covered in full in [All About Product Reviews](/all-about-product-reviews/); this chapter's ratings-summary section only covers placement on the card itself.
+- **The underlying product data** — variants, pricing fields, media — is covered in full in [32. All About Products](/all-about-products/); this chapter only covers how a card *presents* that data, not where it comes from.
+- **Review and rating data** is covered in full in [34. All About Product Reviews](/all-about-product-reviews/); this chapter's ratings-summary section only covers placement on the card itself.
 - **The actual cart-add network request** is a Cart AJAX API concern — this chapter's Quick Add page stays at the level of "what a quick-add button needs to do," cross-linking forward rather than re-teaching the full request/response shape.
 
 ## Key takeaways
@@ -47,6 +47,6 @@ This chapter consistently names the loop variable `card_product` rather than `pr
 
 ## Further reading
 
-- [All About Products](/all-about-products/)
-- [All About Product Reviews](/all-about-product-reviews/)
-- [All About Colors](/all-about-colors/)
+- [32. All About Products](/all-about-products/)
+- [34. All About Product Reviews](/all-about-product-reviews/)
+- [17. All About Colors](/all-about-colors/)

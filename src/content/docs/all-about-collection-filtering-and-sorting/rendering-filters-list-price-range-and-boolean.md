@@ -52,7 +52,7 @@ description: A real {% case %} dispatch over filter.type, including presentation
 {% endfor %}
 ```
 
-`filter.presentation` (`text`, `swatch`, or `image`) describes how a merchant has actually configured a `list` filter to display — a Color filter is commonly set to `swatch`, reusing the exact same `swatch.color`/`swatch.image` object covered in [Color & Size Swatches](/all-about-product-cards/color-and-size-swatches/), while something like Vendor stays `text`. Checking `filter.presentation` rather than assuming every `list` filter renders the same way is what makes a filter panel correctly show color swatches for Color and plain text for Vendor, from the exact same snippet.
+`filter.presentation` (`text`, `swatch`, or `image`) describes how a merchant has actually configured a `list` filter to display — a Color filter is commonly set to `swatch`, reusing the exact same `swatch.color`/`swatch.image` object covered in [33.5. Color & Size Swatches](/all-about-product-cards/color-and-size-swatches/), while something like Vendor stays `text`. Checking `filter.presentation` rather than assuming every `list` filter renders the same way is what makes a filter panel correctly show color swatches for Color and plain text for Vendor, from the exact same snippet.
 
 ## `boolean`: a single checkbox, not a list
 
@@ -94,5 +94,5 @@ A `boolean` filter has exactly one meaningful on/off state in practice (shown vi
 ## Further reading
 
 - [`filter` (shopify.dev)](https://shopify.dev/docs/api/liquid/objects/filter)
-- [Color & Size Swatches](/all-about-product-cards/color-and-size-swatches/)
-- [collection.filters in Depth](/all-about-collection-filtering-and-sorting/collection-filters-in-depth-types-values-and-url-parameters/)
+- [33.5. Color & Size Swatches](/all-about-product-cards/color-and-size-swatches/)
+- [35.1. collection.filters in Depth](/all-about-collection-filtering-and-sorting/collection-filters-in-depth-types-values-and-url-parameters/)

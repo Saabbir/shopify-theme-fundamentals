@@ -62,7 +62,7 @@ A font chosen through `font_picker` carries this distinction as a real, checkabl
 {% endif %}
 ```
 
-This is more than a curiosity — [Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) covers why every web font needs a matching `font_face` output somewhere, but a system font doesn't need one at all (there's no file to load). Checking `.system?` before deciding whether to output `font_face` avoids generating a pointless `@font-face` rule for a font the browser already has.
+This is more than a curiosity — [18.3. Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/) covers why every web font needs a matching `font_face` output somewhere, but a system font doesn't need one at all (there's no file to load). Checking `.system?` before deciding whether to output `font_face` avoids generating a pointless `@font-face` rule for a font the browser already has.
 
 ## Line-height: why the value usually has no unit
 
@@ -82,7 +82,7 @@ A **unitless** `line-height` (just `1.5`, not `1.5em` or `150%`) is a multiplier
 
 ## Letter-spacing and text-transform: smaller, often-forgotten levers
 
-Family, weight, style, and size get most of the attention, but two more properties round out a complete typographic treatment, especially for a type preset (per [Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/)):
+Family, weight, style, and size get most of the attention, but two more properties round out a complete typographic treatment, especially for a type preset (per [18.7. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/)):
 
 ```css
 .eyebrow {
@@ -104,8 +104,8 @@ Family, weight, style, and size get most of the attention, but two more properti
 
 ## Further reading
 
-- [Reading Typography from a Figma Design](/all-about-typography/reading-typography-from-a-figma-design/) — applying weight, style, line-height, and letter-spacing to a real client handoff
-- [Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/) — why line-height stays unitless and letter-spacing uses `em`, generalized across every CSS unit
+- [18.2. Reading Typography from a Figma Design](/all-about-typography/reading-typography-from-a-figma-design/) — applying weight, style, line-height, and letter-spacing to a real client handoff
+- [29.2. Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/) — why line-height stays unitless and letter-spacing uses `em`, generalized across every CSS unit
 - [`font-family` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family)
 - [Fonts](https://shopify.dev/docs/storefronts/themes/architecture/settings/fonts) (shopify.dev)
 - [Liquid objects: `font`](https://shopify.dev/docs/api/liquid/objects/font) (shopify.dev)

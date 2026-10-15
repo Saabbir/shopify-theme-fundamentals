@@ -62,7 +62,7 @@ Keys can be nested (`cart.title` reaches into the `cart` object, then `title`), 
 }
 ```
 
-Every `label`, section `name`, and option `label` inside a `{% schema %}` block should use this `t:` pattern instead of a plain hardcoded string — this is exactly the convention you've seen in every schema example since [Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/).
+Every `label`, section `name`, and option `label` inside a `{% schema %}` block should use this `t:` pattern instead of a plain hardcoded string — this is exactly the convention you've seen in every schema example since [6.1. Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/).
 
 :::caution[Why this matters beyond just "being thorough"]
 A hardcoded schema string isn't a smaller problem than hardcoded storefront text — it's often a bigger one. A merchant managing their store in French or German sees your schema labels directly in their theme editor; "Heading" never becoming "Titre" or "Überschrift" is a visible, permanent gap for every non-English merchant using this theme, not a cosmetic nitpick. Shopify's own Theme Store review checks for exactly this.

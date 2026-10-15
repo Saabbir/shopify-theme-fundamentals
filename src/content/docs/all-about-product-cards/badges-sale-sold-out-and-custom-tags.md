@@ -36,7 +36,7 @@ A badge is a small label — "Sale," "Sold Out," "New" — overlaid on a product
 {% endif %}
 ```
 
-Same reasoning as sold-out: whether a product is "on sale" is already fully determined by comparing its current price against its compare-at price — [Availability, Pricing & Compare-At in Depth](/all-about-products/availability-pricing-and-compare-at-in-depth/) covers exactly why `compare_at_price_min`/`price_min` (not `product.compare_at_price`/`product.price` directly) are the correct comparison for a product with more than one variant, since a single-variant check can miss a sale that only applies to some variants.
+Same reasoning as sold-out: whether a product is "on sale" is already fully determined by comparing its current price against its compare-at price — [32.4. Availability, Pricing & Compare-At in Depth](/all-about-products/availability-pricing-and-compare-at-in-depth/) covers exactly why `compare_at_price_min`/`price_min` (not `product.compare_at_price`/`product.price` directly) are the correct comparison for a product with more than one variant, since a single-variant check can miss a sale that only applies to some variants.
 
 :::caution[`compare_at_price` can be set without the product actually being on sale]
 Some apps and import tools set a `compare_at_price` for reasons unrelated to an active sale — a manufacturer's suggested retail price shown for comparison, for instance, with no intention of implying a discount. A badge that fires on `compare_at_price_min > price_min` with no further check is the right default for a store that uses compare-at prices exclusively for real sales; a store with a different convention needs to decide that case by case, not something this theme chapter can resolve generically.
@@ -96,6 +96,6 @@ Sold-out intentionally suppresses the sale and custom badges, rather than stacki
 
 ## Further reading
 
-- [Availability, Pricing & Compare-At in Depth](/all-about-products/availability-pricing-and-compare-at-in-depth/)
-- [Metafields, Tags & Categorization](/all-about-products/metafields-tags-and-categorization/)
-- [Price Formatting: Single, Compare-At & Ranges](/all-about-product-cards/price-formatting-single-compare-at-and-ranges/)
+- [32.4. Availability, Pricing & Compare-At in Depth](/all-about-products/availability-pricing-and-compare-at-in-depth/)
+- [32.6. Metafields, Tags & Categorization](/all-about-products/metafields-tags-and-categorization/)
+- [33.4. Price Formatting: Single, Compare-At & Ranges](/all-about-product-cards/price-formatting-single-compare-at-and-ranges/)

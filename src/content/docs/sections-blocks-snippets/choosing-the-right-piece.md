@@ -18,7 +18,7 @@ Ask these questions, in order, about whatever you're about to build:
    If yes, and a merchant needs to configure it visually → it's a **block**.
 
 3. **Does a merchant need layout control over several blocks together (rows, columns, grouping)?**
-   If yes → it's a **nestable "group" block** (see [Nesting Blocks Inside Blocks](/sections-blocks-snippets/nesting-blocks/)), not a plain block.
+   If yes → it's a **nestable "group" block** (see [3.3. Nesting Blocks Inside Blocks](/sections-blocks-snippets/nesting-blocks/)), not a plain block.
 
 4. **Is it reusable code with no settings a merchant needs to see or touch at all?**
    If yes → it's a **snippet**.

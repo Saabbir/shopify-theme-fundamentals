@@ -23,7 +23,7 @@ A global object reflects the real state of the store at the moment the page rend
 
 ## Not every global object exists everywhere
 
-This is the single most common source of confusion with global objects, and it's the reason this chapter has an entire page dedicated to it ([Which Objects Exist on Which Template](/all-about-global-objects/which-objects-exist-on-which-template/)). `product` only has real data on a product page — reference it from a collection page template and it's `nil`. `customer` is `nil` for anyone not logged in, on every template, always. `cart` is the one major exception: it exists on every single page, including pages that have nothing to do with shopping, specifically so a cart icon or mini-cart count can render in the header no matter where a shopper currently is.
+This is the single most common source of confusion with global objects, and it's the reason this chapter has an entire page dedicated to it ([31.7. Which Objects Exist on Which Template](/all-about-global-objects/which-objects-exist-on-which-template/)). `product` only has real data on a product page — reference it from a collection page template and it's `nil`. `customer` is `nil` for anyone not logged in, on every template, always. `cart` is the one major exception: it exists on every single page, including pages that have nothing to do with shopping, specifically so a cart icon or mini-cart count can render in the header no matter where a shopper currently is.
 
 :::caution[The most common global-object bug: assuming availability]
 Writing `{{ product.title }}` inside a snippet that's also rendered from the header or footer (which run on every page template) silently outputs nothing on any page that isn't a product page — no error, no warning, just an empty string where a title was expected. The fix is never to assume an object is populated; it's to check first, covered next.
@@ -63,5 +63,5 @@ Every global object is a collection of named properties, read with a dot: `produ
 ## Further reading
 
 - [Liquid objects overview](https://shopify.dev/docs/api/liquid/objects) (shopify.dev)
-- [Which Objects Exist on Which Template](/all-about-global-objects/which-objects-exist-on-which-template/)
-- [Variables, Types & Truthiness](/liquid-basics/variables-types-and-truthiness/)
+- [31.7. Which Objects Exist on Which Template](/all-about-global-objects/which-objects-exist-on-which-template/)
+- [4.2. Variables, Types & Truthiness](/liquid-basics/variables-types-and-truthiness/)

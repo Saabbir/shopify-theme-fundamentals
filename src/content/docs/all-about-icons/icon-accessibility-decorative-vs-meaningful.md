@@ -5,7 +5,7 @@ description: aria-hidden for an icon next to text that already says the same thi
 
 **TL;DR:** `aria-hidden` for an icon next to text that already says the same thing, a `<title>` or `aria-label` for one that doesn't — and why an icon font is the wrong tool entirely.
 
-[Icons & SVGs](/media-and-assets/icons-and-svgs/) covers the core decorative-vs-meaningful split; this page goes further into the actual mechanics of each labeling option, and the specific icon-font anti-pattern that still shows up in older themes.
+[12.3. Icons & SVGs](/media-and-assets/icons-and-svgs/) covers the core decorative-vs-meaningful split; this page goes further into the actual mechanics of each labeling option, and the specific icon-font anti-pattern that still shows up in older themes.
 
 ## The question that decides everything: does the icon repeat information that's already there?
 
@@ -62,6 +62,6 @@ A screen reader reads a font's underlying *character*, not however it happens to
 
 ## Further reading
 
-- [Icons & SVGs](/media-and-assets/icons-and-svgs/)
+- [12.3. Icons & SVGs](/media-and-assets/icons-and-svgs/)
 - [Accessible icon buttons (Sara Soueidan)](https://www.sarasoueidan.com/blog/accessible-icon-buttons/)
 - [ARIA: img role (MDN)](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role)

@@ -5,7 +5,7 @@ description: What actually costs performance when render is called a large numbe
 
 **TL;DR:** What actually costs performance when `render` is called a large number of times.
 
-A single `{% render %}` call is cheap. The question this page answers is what happens once a snippet is rendered dozens or hundreds of times on one page — which, same as [Section Performance Considerations](/all-about-sections/section-performance-considerations/), usually traces back to an uncapped loop rather than `render` itself being slow.
+A single `{% render %}` call is cheap. The question this page answers is what happens once a snippet is rendered dozens or hundreds of times on one page — which, same as [14.4. Section Performance Considerations](/all-about-sections/section-performance-considerations/), usually traces back to an uncapped loop rather than `render` itself being slow.
 
 ## The actual cost is multiplication, not `render` itself
 
@@ -19,11 +19,11 @@ A single `{% render %}` call is cheap. The question this page answers is what ha
 
 ## Nested `render` calls multiply further
 
-A recursive snippet (see [Recursive Snippets](/all-about-snippets/recursive-snippets/)), or simply one snippet that itself renders other snippets, multiplies cost at each level. A `product-card` snippet that renders a `product-price` snippet and a `product-badge` snippet isn't a performance problem on its own — but if that `product-card` is itself inside an uncapped loop, every snippet it calls internally is now also running once per item in that loop. Keep this in mind when a snippet rendered inside a loop is itself fairly "heavy" (several nested `render` calls, or an expensive filter chain) — the loop's cap matters even more the heavier each individual iteration's work is.
+A recursive snippet (see [16.2. Recursive Snippets](/all-about-snippets/recursive-snippets/)), or simply one snippet that itself renders other snippets, multiplies cost at each level. A `product-card` snippet that renders a `product-price` snippet and a `product-badge` snippet isn't a performance problem on its own — but if that `product-card` is itself inside an uncapped loop, every snippet it calls internally is now also running once per item in that loop. Keep this in mind when a snippet rendered inside a loop is itself fairly "heavy" (several nested `render` calls, or an expensive filter chain) — the loop's cap matters even more the heavier each individual iteration's work is.
 
 ## `{% render %}` vs. `{% include %}`
 
-Older Liquid code sometimes uses the deprecated `{% include %}` tag instead of `{% render %}`. Beyond the scope-isolation difference covered in [Snippet Fundamentals](/all-about-snippets/snippet-fundamentals/) — `{% include %}` shares the caller's full scope instead of isolating it, which is exactly the unpredictable behavior `{% render %}` was introduced to fix — `{% include %}` is also considered worse for performance in large themes, which is one of the reasons it's deprecated — always use `{% render %}` in new code, and treat any `{% include %}` found in an older codebase as worth migrating when you're already touching that file.
+Older Liquid code sometimes uses the deprecated `{% include %}` tag instead of `{% render %}`. Beyond the scope-isolation difference covered in [16.1. Snippet Fundamentals](/all-about-snippets/snippet-fundamentals/) — `{% include %}` shares the caller's full scope instead of isolating it, which is exactly the unpredictable behavior `{% render %}` was introduced to fix — `{% include %}` is also considered worse for performance in large themes, which is one of the reasons it's deprecated — always use `{% render %}` in new code, and treat any `{% include %}` found in an older codebase as worth migrating when you're already touching that file.
 
 ## Key takeaways
 
@@ -34,4 +34,4 @@ Older Liquid code sometimes uses the deprecated `{% include %}` tag instead of `
 ## Further reading
 
 - [The render tag](https://shopify.dev/docs/api/liquid/tags/render) (shopify.dev)
-- [Section Performance Considerations](/all-about-sections/section-performance-considerations/)
+- [14.4. Section Performance Considerations](/all-about-sections/section-performance-considerations/)

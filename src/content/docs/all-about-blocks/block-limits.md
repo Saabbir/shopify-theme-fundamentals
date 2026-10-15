@@ -5,7 +5,7 @@ description: How many blocks and how much nesting a section can realistically ho
 
 **TL;DR:** How many blocks and how much nesting a section can realistically hold.
 
-This is the block-focused counterpart to [Limits: max_blocks and Schema Size](/all-about-sections/limits-max-blocks-and-schema-size/) — that page covered `max_blocks` at the section level; this one covers the limits specific to nested blocks.
+This is the block-focused counterpart to [14.3. Limits: max_blocks and Schema Size](/all-about-sections/limits-max-blocks-and-schema-size/) — that page covered `max_blocks` at the section level; this one covers the limits specific to nested blocks.
 
 ## `max_blocks` works on a container block too
 
@@ -35,7 +35,7 @@ Separate from any one container's `max_blocks`, there's an overall cap on the to
 
 ## Designing within the limits
 
-In practice, these limits rarely matter for a reasonably designed layout — they start to matter once a design asks for deep, repeated nesting (a grid of cards, each containing a nested row of icons, say) at a scale that starts multiplying quickly. When a design calls for something at that scale, it's worth sketching out the actual block count before building, the same way [Planning Responsive Behavior](/figma-to-code/planning-responsive-behavior/) recommends planning ahead of time rather than discovering a constraint mid-build.
+In practice, these limits rarely matter for a reasonably designed layout — they start to matter once a design asks for deep, repeated nesting (a grid of cards, each containing a nested row of icons, say) at a scale that starts multiplying quickly. When a design calls for something at that scale, it's worth sketching out the actual block count before building, the same way [9.4. Planning Responsive Behavior](/figma-to-code/planning-responsive-behavior/) recommends planning ahead of time rather than discovering a constraint mid-build.
 
 ## Key takeaways
 
@@ -46,4 +46,4 @@ In practice, these limits rarely matter for a reasonably designed layout — the
 ## Further reading
 
 - [Theme blocks](https://shopify.dev/docs/storefronts/themes/architecture/blocks) (shopify.dev)
-- [Limits: max_blocks and Schema Size](/all-about-sections/limits-max-blocks-and-schema-size/)
+- [14.3. Limits: max_blocks and Schema Size](/all-about-sections/limits-max-blocks-and-schema-size/)

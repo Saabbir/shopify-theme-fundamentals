@@ -5,7 +5,7 @@ description: Supporting prefers-color-scheme alongside (or instead of) a merchan
 
 **TL;DR:** Supporting `prefers-color-scheme` alongside (or instead of) a merchant-controlled scheme setting.
 
-`color_scheme_group` (see [Color Fundamentals](/all-about-colors/color-fundamentals/)) lets a merchant deliberately switch a section to a different scheme — a light one, a dark one, a bold one. That's a merchant choosing a look. **Dark mode**, as the term is normally used, is different: it's the shopper's own operating system or browser preference, and a theme that respects it does so automatically, without the merchant doing anything.
+`color_scheme_group` (see [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/)) lets a merchant deliberately switch a section to a different scheme — a light one, a dark one, a bold one. That's a merchant choosing a look. **Dark mode**, as the term is normally used, is different: it's the shopper's own operating system or browser preference, and a theme that respects it does so automatically, without the merchant doing anything.
 
 ## Reading the shopper's system preference in CSS
 
@@ -36,7 +36,7 @@ This is a real design decision, not just a technical one, and themes differ on t
 There's no universally correct choice here — it depends on how much the theme is meant to prioritize brand consistency versus shopper preference. Whichever you choose, document the decision in the theme's own README or style guide, since it's exactly the kind of behavior a merchant will ask about once they notice it.
 
 :::caution[Don't let dark mode break a merchant's intentionally chosen contrast]
-If you implement the "dark mode always wins" approach, make sure the dark variant you ship still passes contrast for whatever text/background pairings appear in it — a merchant never tested your dark override against their content, so it's on the theme to have verified it, using the same workflow in [A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/).
+If you implement the "dark mode always wins" approach, make sure the dark variant you ship still passes contrast for whatever text/background pairings appear in it — a merchant never tested your dark override against their content, so it's on the theme to have verified it, using the same workflow in [17.6. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/).
 :::
 
 ## Key takeaways

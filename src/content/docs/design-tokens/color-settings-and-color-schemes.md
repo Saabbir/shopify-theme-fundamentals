@@ -5,7 +5,7 @@ description: "color_scheme_group, and why bundling related colors together beats
 
 **TL;DR:** `color_scheme_group`, and why bundling related colors together beats a pile of standalone color settings.
 
-You met the `color` setting type back in [Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/) — one setting, one color. That works fine for a single, specific thing (an accent color, say). It breaks down once you want a merchant to switch between a few complete, coordinated looks — light, dark, a bold brand color — without hunting down and changing five separate settings every time.
+You met the `color` setting type back in [6.1. Section & Block Settings: Every Type](/schema-and-settings/section-and-block-settings-every-type/) — one setting, one color. That works fine for a single, specific thing (an accent color, say). It breaks down once you want a merchant to switch between a few complete, coordinated looks — light, dark, a bold brand color — without hunting down and changing five separate settings every time.
 
 ## The problem with standalone color settings at scale
 

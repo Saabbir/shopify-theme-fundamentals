@@ -5,7 +5,7 @@ description: Two real strategies for shipping icons in a theme, and the actual t
 
 **TL;DR:** Two real strategies for shipping icons in a theme, and the actual trade-off between them — markup weight vs. network requests.
 
-[Icons & SVGs](/media-and-assets/icons-and-svgs/) introduces the two basic options; this chapter goes further into the reusable snippet pattern, systematic sizing/coloring, and accessibility depth that a real icon system needs once it's used across dozens of components. This page recaps the decision itself, with the actual trade-off spelled out rather than left implicit.
+[12.3. Icons & SVGs](/media-and-assets/icons-and-svgs/) introduces the two basic options; this chapter goes further into the reusable snippet pattern, systematic sizing/coloring, and accessibility depth that a real icon system needs once it's used across dozens of components. This page recaps the decision itself, with the actual trade-off spelled out rather than left implicit.
 
 ## Option 1: inline SVG, one snippet per icon
 
@@ -63,6 +63,6 @@ A sprite can also live in its own `.svg` file in `assets/`, loaded once via `<im
 
 ## Further reading
 
-- [Icons & SVGs](/media-and-assets/icons-and-svgs/)
-- [A Reusable Icon Snippet Pattern](/all-about-icons/a-reusable-icon-snippet-pattern/)
-- [Media Deep Dive](/media-deep-dive/)
+- [12.3. Icons & SVGs](/media-and-assets/icons-and-svgs/)
+- [37.2. A Reusable Icon Snippet Pattern](/all-about-icons/a-reusable-icon-snippet-pattern/)
+- [19. Media Deep Dive](/media-deep-dive/)

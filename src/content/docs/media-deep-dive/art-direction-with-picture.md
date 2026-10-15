@@ -7,7 +7,7 @@ description: Serving a genuinely different crop per breakpoint, not just a diffe
 
 ## What `srcset` doesn't solve
 
-[Media Fundamentals](/media-deep-dive/media-fundamentals/)'s `srcset` pattern serves different *sizes* of the same image — the browser picks whichever width fits best, but every option is the same crop, just scaled. That's the right tool when a smaller version of the exact same image genuinely looks fine at a smaller size.
+[19.1. Media Fundamentals](/media-deep-dive/media-fundamentals/)'s `srcset` pattern serves different *sizes* of the same image — the browser picks whichever width fits best, but every option is the same crop, just scaled. That's the right tool when a smaller version of the exact same image genuinely looks fine at a smaller size.
 
 It's the wrong tool when a design actually wants a different *composition* at different viewport widths — a wide, landscape-oriented crop for desktop, and a tighter, portrait-oriented crop of the same photo for mobile, where simply shrinking the desktop crop would leave the subject too small to read.
 
@@ -36,7 +36,7 @@ Each `<source>` names its own `media` condition and its own `srcset` — the bro
 
 ## This is still "one Liquid image," rendered twice
 
-Notice both `<source>` entries and the fallback `<img>` all reference the same `image` object — `<picture>` doesn't require two separate image uploads for two separate crops. `aspect_ratio` and `crop` (covered in full on [Image CDN Transform Parameters](/media-deep-dive/image-cdn-transform-parameters/)) do the actual recropping, so one merchant-uploaded image can serve genuinely different compositions at different breakpoints without the merchant uploading anything twice.
+Notice both `<source>` entries and the fallback `<img>` all reference the same `image` object — `<picture>` doesn't require two separate image uploads for two separate crops. `aspect_ratio` and `crop` (covered in full on [19.4. Image CDN Transform Parameters](/media-deep-dive/image-cdn-transform-parameters/)) do the actual recropping, so one merchant-uploaded image can serve genuinely different compositions at different breakpoints without the merchant uploading anything twice.
 
 ## When this is actually worth the extra markup
 

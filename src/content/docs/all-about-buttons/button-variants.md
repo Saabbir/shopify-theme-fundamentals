@@ -5,7 +5,7 @@ description: Primary, secondary, text, and custom — a small, named set of butt
 
 **TL;DR:** Primary, secondary, text, and custom — a small, named set of button styles, not an unbounded one.
 
-A theme with twenty different button appearances scattered across twenty sections is a theme nobody can keep visually consistent. The fix is the same one [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) teaches for text: a small, named, reusable set of variants, not a fresh style invented per section.
+A theme with twenty different button appearances scattered across twenty sections is a theme nobody can keep visually consistent. The fix is the same one [18.6. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) teaches for text: a small, named, reusable set of variants, not a fresh style invented per section.
 
 ## Four variants cover nearly everything
 
@@ -47,7 +47,7 @@ Primary and secondary each resolve to a small set of global settings a merchant 
 { "type": "select", "id": "type_font_button_primary", "options": ["body", "accent"], "default": "body" }
 ```
 
-(Secondary repeats the identical five settings with a `_secondary` suffix.) Every primary-styled button anywhere in the theme — in a section, a block, the cart, the product form — reads from these same settings, which is exactly what keeps every "primary" button looking identical no matter which component rendered it. [Settings-Driven Styling in Depth](/all-about-buttons/settings-driven-styling-in-depth/) covers how these settings actually reach a button's CSS.
+(Secondary repeats the identical five settings with a `_secondary` suffix.) Every primary-styled button anywhere in the theme — in a section, a block, the cart, the product form — reads from these same settings, which is exactly what keeps every "primary" button looking identical no matter which component rendered it. [36.6. Settings-Driven Styling in Depth](/all-about-buttons/settings-driven-styling-in-depth/) covers how these settings actually reach a button's CSS.
 
 ## Text/link: a button that doesn't look like one
 
@@ -70,7 +70,7 @@ The lowest-emphasis tier intentionally doesn't look like a button at all — und
 }
 ```
 
-Every block-level button can be switched to Custom, which reveals its own background/text/border color settings — a one-off override for the specific case where neither Primary nor Secondary fits (a single promotional banner that needs an unusual, campaign-specific color, say). The `visible_if` pattern here is what [Schema & Settings](/schema-and-settings/) calls conditional settings — these three color settings don't exist, to the merchant, until Custom is actually selected.
+Every block-level button can be switched to Custom, which reveals its own background/text/border color settings — a one-off override for the specific case where neither Primary nor Secondary fits (a single promotional banner that needs an unusual, campaign-specific color, say). The `visible_if` pattern here is what [6. Schema & Settings](/schema-and-settings/) calls conditional settings — these three color settings don't exist, to the merchant, until Custom is actually selected.
 
 :::tip[Custom is an escape hatch, not a style to reach for by default]
 A theme where every third button is set to Custom has, in effect, abandoned the point of having a small set of named variants at all — it's back to unlimited, uncoordinated styles, just spread across many blocks' settings instead of many sections' CSS. Reserve it for the genuine one-off; reach for Primary or Secondary otherwise.
@@ -86,5 +86,5 @@ A theme where every third button is set to Custom has, in effect, abandoned the 
 ## Further reading
 
 - [`blocks/button.liquid` (Horizon, GitHub)](https://github.com/Shopify/horizon/blob/main/blocks/button.liquid)
-- [Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — the same small-named-set idea, for text styles
-- [Settings-Driven Styling in Depth](/all-about-buttons/settings-driven-styling-in-depth/)
+- [18.6. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — the same small-named-set idea, for text styles
+- [36.6. Settings-Driven Styling in Depth](/all-about-buttons/settings-driven-styling-in-depth/)

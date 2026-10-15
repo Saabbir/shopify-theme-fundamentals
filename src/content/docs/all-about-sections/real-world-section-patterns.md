@@ -5,7 +5,7 @@ description: Carousels, tabs, and split layouts — common, slightly harder patt
 
 **TL;DR:** Carousels, tabs, and split layouts — common, slightly harder patterns worked through.
 
-These three patterns show up constantly in real themes. Each one combines two ideas: blocks as repeated content items (see [Section Fundamentals](/all-about-sections/section-fundamentals/)), and a native Web Component — a custom HTML element registered with `customElements.define`, written in its own `assets/*.js` file — managing the interactive behavior on top of that markup.
+These three patterns show up constantly in real themes. Each one combines two ideas: blocks as repeated content items (see [14.1. Section Fundamentals](/all-about-sections/section-fundamentals/)), and a native Web Component — a custom HTML element registered with `customElements.define`, written in its own `assets/*.js` file — managing the interactive behavior on top of that markup.
 
 ## Pattern 1: a carousel, where blocks are slides
 
@@ -33,7 +33,7 @@ A carousel section's schema looks almost identical to any other section that rep
 }
 ```
 
-Each block renders as one slide, through the same `{% content_for 'blocks' %}` mechanism covered in [Section Fundamentals](/all-about-sections/section-fundamentals/). A Web Component wraps the whole thing and handles moving between slides:
+Each block renders as one slide, through the same `{% content_for 'blocks' %}` mechanism covered in [14.1. Section Fundamentals](/all-about-sections/section-fundamentals/). A Web Component wraps the whole thing and handles moving between slides:
 
 ```js
 class CarouselElement extends HTMLElement {
@@ -151,7 +151,7 @@ A simpler pattern: an image on one side and text on the other, where a single se
 }
 ```
 
-This is the same settings-driven-modifier-class idea from [Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/) — no new concept, just a common real-world use of it.
+This is the same settings-driven-modifier-class idea from [7.4. Turning Settings into CSS Variables](/design-tokens/turning-settings-into-css-variables/) — no new concept, just a common real-world use of it.
 
 ## Key takeaways
 

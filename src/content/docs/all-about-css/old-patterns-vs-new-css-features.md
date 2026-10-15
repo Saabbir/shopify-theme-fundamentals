@@ -5,7 +5,7 @@ description: A catalog of old CSS/JS workarounds and the modern CSS feature that
 
 **TL;DR:** A catalog of old CSS/JS workarounds and the modern CSS feature that now replaces each one, with real browser support.
 
-[Modern CSS Units](/all-about-css/modern-css-units/) covers the rem/em/px/viewport-unit decision, and [Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/) covers logical properties (`padding-block-start`, `margin-inline-start`, and the rest) in depth — both are "old pattern → new feature" swaps in their own right, just common enough to deserve their own pages. This page catalogs the rest: selectors and nesting, layout shortcuts, color functions, and motion/scoping — each framed as *this is what we used to write, this is what replaces it, and here's exactly how far it can be trusted in production.*
+[Modern CSS Units](/all-about-css/modern-css-units/) covers the rem/em/px/viewport-unit decision, and [29.5. Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/) covers logical properties (`padding-block-start`, `margin-inline-start`, and the rest) in depth — both are "old pattern → new feature" swaps in their own right, just common enough to deserve their own pages. This page catalogs the rest: selectors and nesting, layout shortcuts, color functions, and motion/scoping — each framed as *this is what we used to write, this is what replaces it, and here's exactly how far it can be trusted in production.*
 
 :::note[Every feature below is checked against real browser support, not assumed]
 "New" doesn't automatically mean "safe to ship." Each section states Baseline status and minimum browser versions as of this site's last update, and flags the handful of features here that still need a fallback or a `@supports` check rather than unconditional use.
@@ -79,7 +79,7 @@ if (card.querySelector('.product-card__badge')) {
 ```
 
 :::caution[Nesting is not a reason to bring back descendant chains]
-[Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) established "one class per selector, no descendant chains" as this chapter's rule, specifically because a chain breaks the moment markup nesting changes. Native nesting doesn't change that advice — the `&__title` pattern shown crossed out above is exactly the mistake to avoid; a Sass-style nested element selector compiles down to the same flat `.product-card__title`, so there was never a reason to write it nested in the first place, with or without a build step. Native nesting is genuinely useful for the cases the example above keeps: a pseudo-class (`&:hover`) or a media query scoped to one block, where the nesting reflects a *state* or *condition* on the same element, not a different element lower in the DOM.
+[29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) established "one class per selector, no descendant chains" as this chapter's rule, specifically because a chain breaks the moment markup nesting changes. Native nesting doesn't change that advice — the `&__title` pattern shown crossed out above is exactly the mistake to avoid; a Sass-style nested element selector compiles down to the same flat `.product-card__title`, so there was never a reason to write it nested in the first place, with or without a build step. Native nesting is genuinely useful for the cases the example above keeps: a pseudo-class (`&:hover`) or a media query scoped to one block, where the nesting reflects a *state* or *condition* on the same element, not a different element lower in the DOM.
 :::
 
 :::note[Browser support: safe to use without a fallback]
@@ -366,7 +366,7 @@ Scroll-driven animations (`animation-timeline: scroll()`/`view()`) have reached 
 The block above styles any `img` inside `.product-card`, but stops at (excludes) anything inside `.product-card__actions` — a "donut scope." This is a genuinely different tool from BEM: BEM prevents collisions through a naming convention that a developer has to follow by hand; `@scope` enforces the boundary structurally, so even a plain `img` or `p` selector inside it can't leak out and affect something outside the block.
 
 :::tip[This theme's convention stays BEM — @scope doesn't change that]
-[Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) and this theme's project conventions settled on BEM plus one shared prefix specifically because it needs no new syntax, works in every CSS tool and linter already in use (including `shopify theme check`'s `ValidScopedCSSClass` rule, which reasons about class names, not `@scope` blocks), and keeps every selector flat and readable. `@scope` is worth knowing because it solves a real problem elsewhere in CSS, but adopting it here would mean maintaining two different scoping mechanisms side by side for no real gain — stick with BEM for this theme's own components.
+[29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) and this theme's project conventions settled on BEM plus one shared prefix specifically because it needs no new syntax, works in every CSS tool and linter already in use (including `shopify theme check`'s `ValidScopedCSSClass` rule, which reasons about class names, not `@scope` blocks), and keeps every selector flat and readable. `@scope` is worth knowing because it solves a real problem elsewhere in CSS, but adopting it here would mean maintaining two different scoping mechanisms side by side for no real gain — stick with BEM for this theme's own components.
 :::
 
 :::note[Browser support: Baseline Newly Available, not yet Widely Available]
@@ -414,15 +414,15 @@ The block above styles any `img` inside `.product-card`, but stops at (excludes)
 
 - Most of the features above are already Baseline Widely Available and safe to use with no fallback at all — `:has()`, native nesting, `:is()`/`:where()`, `aspect-ratio`, `gap`, `subgrid`, and `color-mix()` all fall in this group.
 - A smaller group is newer and needs a little more care: relative color syntax and `@starting-style` are usable but worth double-checking against a store's actual traffic; scroll-driven animations specifically need a `@supports` guard and a sane unanimated default, since real global support is still meaningfully below 100%.
-- Not every new feature is a reason to change this theme's existing conventions — `@scope` is a genuinely interesting alternative to naming-based scoping, but this theme's established BEM-plus-prefix convention ([Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/)) already solves the same problem with zero new syntax, so it stays the standard here.
+- Not every new feature is a reason to change this theme's existing conventions — `@scope` is a genuinely interesting alternative to naming-based scoping, but this theme's established BEM-plus-prefix convention ([29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/)) already solves the same problem with zero new syntax, so it stays the standard here.
 - Native CSS nesting replaces the *need* for a Sass build step, but it doesn't change this chapter's existing rule against descendant-chain selectors — nest a pseudo-class or a media query on the same block, not a different element further down the DOM.
 
 ## Further reading
 
-- [Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/)
-- [Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/)
-- [Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/)
-- [CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/)
+- [29.2. Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/)
+- [29.5. Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/)
+- [29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/)
+- [29.4. CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/)
 - [`:has()` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/:has)
 - [CSS nesting (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting)
 - [`subgrid` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid)

@@ -33,7 +33,7 @@ Every item in `product.media` is a `media` object with a shared set of propertie
 {% endfor %}
 ```
 
-Each media type carries its own additional properties beyond the shared ones — a `video` has `sources` and `duration`, a `model` has its own 3D-specific properties — covered in full on [Media Fundamentals](/media-deep-dive/media-fundamentals/) and the rest of that chapter, which this page deliberately doesn't repeat.
+Each media type carries its own additional properties beyond the shared ones — a `video` has `sources` and `duration`, a `model` has its own 3D-specific properties — covered in full on [19.1. Media Fundamentals](/media-deep-dive/media-fundamentals/) and the rest of that chapter, which this page deliberately doesn't repeat.
 
 ## Filtering the gallery down to one type
 
@@ -81,5 +81,5 @@ A specific variant can have its own image assigned (the photo of the actual blue
 ## Further reading
 
 - [Liquid objects: media](https://shopify.dev/docs/api/liquid/objects/media) (shopify.dev)
-- [Media Fundamentals](/media-deep-dive/media-fundamentals/) — every media type's own additional properties and the filters/tags each one needs
-- [Art Direction with picture](/media-deep-dive/art-direction-with-picture/)
+- [19.1. Media Fundamentals](/media-deep-dive/media-fundamentals/) — every media type's own additional properties and the filters/tags each one needs
+- [19.2. Art Direction with picture](/media-deep-dive/art-direction-with-picture/)

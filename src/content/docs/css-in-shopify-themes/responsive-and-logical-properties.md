@@ -7,7 +7,7 @@ description: The breakpoint convention used throughout this site, and writing CS
 
 ## The breakpoint you've already seen repeatedly
 
-Every `@media` example since [Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) has used the same breakpoint:
+Every `@media` example since [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) has used the same breakpoint:
 
 ```css
 @media screen and (max-width: 749px) {
@@ -38,7 +38,7 @@ Most CSS tutorials teach physical properties — `margin-left`, `padding-top`, `
 
 ## Why this matters even if a theme never ships in Arabic or Hebrew
 
-A theme is translatable the moment `locales/` exists at all, covered back in [Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) — and a merchant can add a right-to-left language (Arabic, Hebrew) to their store without you doing anything special for it, unless your CSS was written with physical properties that silently assume left-to-right. `margin-left` stays stuck on the visual left even when an entire page correctly flips to flow right-to-left — producing lopsided spacing that only shows up once someone actually tests in that language, often long after the CSS was written and forgotten.
+A theme is translatable the moment `locales/` exists at all, covered back in [6.5. Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) — and a merchant can add a right-to-left language (Arabic, Hebrew) to their store without you doing anything special for it, unless your CSS was written with physical properties that silently assume left-to-right. `margin-left` stays stuck on the visual left even when an entire page correctly flips to flow right-to-left — producing lopsided spacing that only shows up once someone actually tests in that language, often long after the CSS was written and forgotten.
 
 :::tip[A simple habit, not a rewrite]
 Reaching for the logical property is almost always a direct, one-for-one swap — `padding-block` instead of `padding-top`/`padding-bottom`, `margin-inline-start` instead of `margin-left`. Making it the default habit from the first line of CSS you write costs nothing extra; retrofitting an entire theme's stylesheet after the fact, section by section, is real, avoidable work.

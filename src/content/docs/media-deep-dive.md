@@ -11,11 +11,11 @@ This chapter is a complete, standalone reference on media — it starts from zer
 
 | Page | Answers |
 |---|---|
-| [Media Fundamentals](/media-deep-dive/media-fundamentals/) | The complete responsive `<img>` pattern, and the dedicated filters for video and 3D media |
-| [Art Direction with picture](/media-deep-dive/art-direction-with-picture/) | Serving a genuinely different crop per breakpoint, not just a different size of the same crop |
-| [Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/) | When autoplay is appropriate, and loading a video without blocking the rest of the page |
-| [Image CDN Transform Parameters](/media-deep-dive/image-cdn-transform-parameters/) | Every `image_url` parameter beyond `width` — cropping, format, and quality |
-| [Performance Budgets for Media-Heavy Pages](/media-deep-dive/performance-budgets-for-media-heavy-pages/) | Setting and enforcing a real limit on how much a page is allowed to weigh |
+| [19.1. Media Fundamentals](/media-deep-dive/media-fundamentals/) | The complete responsive `<img>` pattern, and the dedicated filters for video and 3D media |
+| [19.2. Art Direction with picture](/media-deep-dive/art-direction-with-picture/) | Serving a genuinely different crop per breakpoint, not just a different size of the same crop |
+| [19.3. Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/) | When autoplay is appropriate, and loading a video without blocking the rest of the page |
+| [19.4. Image CDN Transform Parameters](/media-deep-dive/image-cdn-transform-parameters/) | Every `image_url` parameter beyond `width` — cropping, format, and quality |
+| [19.5. Performance Budgets for Media-Heavy Pages](/media-deep-dive/performance-budgets-for-media-heavy-pages/) | Setting and enforcing a real limit on how much a page is allowed to weigh |
 
 ## Further reading
 

@@ -101,7 +101,7 @@ document.addEventListener('shopify:section:load', (event) => {
 });
 ```
 
-This component needs no `shopify:section:load` handler at all — because its setup lives in `connectedCallback` rather than a one-time script that only ran at initial page load, the theme editor re-rendering this section's markup naturally disconnects the old element (firing `disconnectedCallback`, which removes its listeners) and connects the new one (firing `connectedCallback` again, which attaches fresh listeners to the new buttons). This is the payoff mentioned in [Theme Editor Events in Depth](/all-about-javascript/theme-editor-events-in-depth/): building on the standard lifecycle callbacks, rather than a one-time setup function, often means the theme-editor-specific events aren't needed at all.
+This component needs no `shopify:section:load` handler at all — because its setup lives in `connectedCallback` rather than a one-time script that only ran at initial page load, the theme editor re-rendering this section's markup naturally disconnects the old element (firing `disconnectedCallback`, which removes its listeners) and connects the new one (firing `connectedCallback` again, which attaches fresh listeners to the new buttons). This is the payoff mentioned in [30.5. Theme Editor Events in Depth](/all-about-javascript/theme-editor-events-in-depth/): building on the standard lifecycle callbacks, rather than a one-time setup function, often means the theme-editor-specific events aren't needed at all.
 
 ## A sibling component reacting to the custom event
 
@@ -120,16 +120,16 @@ class CartLineItem extends HTMLElement {
 }
 ```
 
-`CartLineItem` listens for `quantity:changed` on itself, catching the event as it bubbles up from the `<my-quantity-selector>` nested somewhere inside it — exactly the pattern from [Custom Events & Cross-Component Communication](/all-about-javascript/custom-events-and-cross-component-communication/), just scoped to a listener on a specific ancestor rather than `document`, since here the relationship between the two components actually is a parent-child one.
+`CartLineItem` listens for `quantity:changed` on itself, catching the event as it bubbles up from the `<my-quantity-selector>` nested somewhere inside it — exactly the pattern from [30.6. Custom Events & Cross-Component Communication](/all-about-javascript/custom-events-and-cross-component-communication/), just scoped to a listener on a specific ancestor rather than `document`, since here the relationship between the two components actually is a parent-child one.
 
 ## Every concern from this chapter, in one place
 
-- **Progressive enhancement** — the `<input>` and buttons work as ordinary HTML before the script runs, per [Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/).
+- **Progressive enhancement** — the `<input>` and buttons work as ordinary HTML before the script runs, per [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/).
 - **The full lifecycle** — `connectedCallback` wires up listeners, `disconnectedCallback` tears them down, and `observedAttributes` plus `attributeChangedCallback` keep the input's `max` in sync if `data-max` ever changes after the component has already connected.
 - **ARIA state managed in JavaScript** — the `role="status" aria-live="polite"` element's text is updated every time the quantity actually changes, not just set once in the initial markup.
-- **Data passed from Liquid safely** — `data-max` carries the starting maximum from a setting or a product's inventory, per [Talking to Liquid: Data Attributes & JSON Islands](/all-about-javascript/talking-to-liquid-data-attributes-and-json-islands/).
+- **Data passed from Liquid safely** — `data-max` carries the starting maximum from a setting or a product's inventory, per [30.4. Talking to Liquid: Data Attributes & JSON Islands](/all-about-javascript/talking-to-liquid-data-attributes-and-json-islands/).
 - **A namespaced custom event** — `quantity:changed`, dispatched with `bubbles: true`, lets any ancestor (here, a specific `CartLineItem`; elsewhere, potentially a `document`-level cart icon) react without either component needing to know the other's tag name.
-- **No theme-editor-specific code needed at all** — a direct consequence of building on the standard lifecycle rather than a one-time setup script, per [Theme Editor Events in Depth](/all-about-javascript/theme-editor-events-in-depth/).
+- **No theme-editor-specific code needed at all** — a direct consequence of building on the standard lifecycle rather than a one-time setup script, per [30.5. Theme Editor Events in Depth](/all-about-javascript/theme-editor-events-in-depth/).
 - **A prefixed custom element tag** (`my-quantity-selector`) and **translated labels** (`t:products.quantity.decrease`), consistent with the naming and localization conventions used throughout this site.
 
 ## Key takeaways
@@ -140,6 +140,6 @@ class CartLineItem extends HTMLElement {
 
 ## Further reading
 
-- [A Complete Section Example](/all-about-sections/a-complete-section-example/)
-- [A Complete Snippet Example](/all-about-snippets/a-complete-snippet-example/)
-- [Theme Editor Events in Depth](/all-about-javascript/theme-editor-events-in-depth/)
+- [14.6. A Complete Section Example](/all-about-sections/a-complete-section-example/)
+- [16.5. A Complete Snippet Example](/all-about-snippets/a-complete-snippet-example/)
+- [30.5. Theme Editor Events in Depth](/all-about-javascript/theme-editor-events-in-depth/)

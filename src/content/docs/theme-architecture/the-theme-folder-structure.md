@@ -26,7 +26,7 @@ Only `layout/theme.liquid` is strictly required to have a working theme. Every o
 | Folder | Put here | Don't put here |
 |---|---|---|
 | `assets/` | Compiled CSS/JS, images, fonts | Liquid logic (assets are static files — though `.css.liquid`/`.js.liquid` extensions exist for limited cases) |
-| `blocks/` | Any block meant to be reused across multiple sections | A block only ever used in one section (define it inline in that section instead — see [What Is a Block?](/sections-blocks-snippets/what-is-a-block/)) |
+| `blocks/` | Any block meant to be reused across multiple sections | A block only ever used in one section (define it inline in that section instead — see [3.2. What Is a Block?](/sections-blocks-snippets/what-is-a-block/)) |
 | `config/` | Global theme settings | Settings that only one specific section or block needs (those live in that section's or block's own schema) |
 | `layout/` | Repeated page chrome: `<head>`, the overall page wrapper | Page-specific content |
 | `locales/` | All merchant- and customer-facing text | Anything hardcoded that should be translatable |

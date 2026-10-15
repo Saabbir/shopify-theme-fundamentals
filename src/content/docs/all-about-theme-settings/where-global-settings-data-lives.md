@@ -5,7 +5,7 @@ description: settings_schema.json vs. settings_data.json, the current/presets ke
 
 **TL;DR:** `settings_schema.json` vs. `settings_data.json`, the `current`/`presets` keys, and exactly where everything else is stored instead.
 
-Two files in `config/` together power every theme setting from [Theme Settings Fundamentals](/all-about-theme-settings/theme-settings-fundamentals/). They have genuinely different jobs, and knowing which does what prevents a whole category of confusion once a theme has more than a handful of settings.
+Two files in `config/` together power every theme setting from [28.1. Theme Settings Fundamentals](/all-about-theme-settings/theme-settings-fundamentals/). They have genuinely different jobs, and knowing which does what prevents a whole category of confusion once a theme has more than a handful of settings.
 
 ## `settings_schema.json`: structure, not values
 
@@ -59,14 +59,14 @@ This file stores what a specific merchant has actually set each of those setting
 `current` holds the live values — whatever the merchant has actually configured right now, which is what `settings.heading_font` actually returns in Liquid at render time. `presets` (a different, theme-level concept from a section's own `presets` array) holds one or more complete, named bundles of settings a merchant can switch their entire storefront between, from the theme editor's "Change style" feature if the theme supports it — a "Default" look, a "Bold" look, and so on, each a full set of settings values.
 
 :::caution[`presets` here is theme-level, not the same thing as a section's `presets`]
-[Advanced Preset Patterns](/all-about-blocks/advanced-preset-patterns/) and [Presets & Defaults](/schema-and-settings/presets-and-defaults/) both cover a different `presets` — the array inside a *section's* own schema, which supplies starting settings/blocks the moment that section is added to a page. The `presets` key in `settings_data.json` is unrelated: it's a set of complete, swappable theme-wide style bundles, not anything to do with how a single section starts out.
+[15.6. Advanced Preset Patterns](/all-about-blocks/advanced-preset-patterns/) and [6.2. Presets & Defaults](/schema-and-settings/presets-and-defaults/) both cover a different `presets` — the array inside a *section's* own schema, which supplies starting settings/blocks the moment that section is added to a page. The `presets` key in `settings_data.json` is unrelated: it's a set of complete, swappable theme-wide style bundles, not anything to do with how a single section starts out.
 :::
 
 This file is **not** part of the theme's checked-in code the same way `settings_schema.json` is — conceptually, it's closer to per-store data. Shopify writes to it automatically whenever a merchant changes something in the Theme Settings panel; you don't typically hand-edit a live store's `settings_data.json`. The one exception: when you're building a brand-new theme, you set sensible starting values in this file yourself, before any merchant has configured anything — those become what a merchant sees the moment they first install the theme.
 
 ## Where section and block settings actually live instead
 
-This is the detail most worth getting right: **`settings_data.json` only stores global theme settings.** A section's own settings, and a block's own settings, are **never** stored here — they live inside whichever JSON template placed that section (or a section group file, for a header/footer), as part of that specific section's own JSON object, covered in full with a complete worked example on [A Complete Template Example](/all-about-theme-settings/a-complete-template-example/).
+This is the detail most worth getting right: **`settings_data.json` only stores global theme settings.** A section's own settings, and a block's own settings, are **never** stored here — they live inside whichever JSON template placed that section (or a section group file, for a header/footer), as part of that specific section's own JSON object, covered in full with a complete worked example on [28.5. A Complete Template Example](/all-about-theme-settings/a-complete-template-example/).
 
 | Settings for... | Values actually stored in |
 |---|---|

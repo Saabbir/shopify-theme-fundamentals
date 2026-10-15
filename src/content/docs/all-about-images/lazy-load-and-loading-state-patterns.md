@@ -77,6 +77,6 @@ Services like Shopify's own image CDN don't provide a built-in blurred micro-thu
 
 ## Further reading
 
-- [Image CDN Transform Parameters](/media-deep-dive/image-cdn-transform-parameters/)
-- [Performance Budgets for Media-Heavy Pages](/media-deep-dive/performance-budgets-for-media-heavy-pages/)
-- [Aspect-Ratio Wrapper Techniques](/all-about-images/aspect-ratio-wrapper-techniques/)
+- [19.4. Image CDN Transform Parameters](/media-deep-dive/image-cdn-transform-parameters/)
+- [19.5. Performance Budgets for Media-Heavy Pages](/media-deep-dive/performance-budgets-for-media-heavy-pages/)
+- [38.2. Aspect-Ratio Wrapper Techniques](/all-about-images/aspect-ratio-wrapper-techniques/)

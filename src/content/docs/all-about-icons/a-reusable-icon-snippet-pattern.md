@@ -72,5 +72,5 @@ Directly above the `{% case %}` block in Horizon's real file sits the comment `{
 ## Further reading
 
 - [Horizon's real `snippets/icon.liquid`](https://github.com/Shopify/horizon/blob/main/snippets/icon.liquid)
-- [Icon Fundamentals: Inline SVG vs. a Sprite System](/all-about-icons/icon-fundamentals-inline-svg-vs-a-sprite-system/)
+- [37.1. Icon Fundamentals: Inline SVG vs. a Sprite System](/all-about-icons/icon-fundamentals-inline-svg-vs-a-sprite-system/)
 - [Static blocks (shopify.dev)](https://shopify.dev/docs/storefronts/themes/architecture/blocks/theme-blocks/static-blocks)

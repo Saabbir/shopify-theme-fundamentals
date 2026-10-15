@@ -5,7 +5,7 @@ description: A real, working <form> first — the AJAX enhancement that avoids a
 
 **TL;DR:** A real, working `<form>` first — the AJAX enhancement that avoids a page reload is a layer on top, not the only way it works.
 
-"Quick add" means adding a product to the cart directly from a card, without navigating to the product page first. The temptation is to build this as a JavaScript-only button; the correct foundation is the same real cart form [The Cart Form](/forms/the-cart-form/) already covers, just placed on a card instead of a product page.
+"Quick add" means adding a product to the cart directly from a card, without navigating to the product page first. The temptation is to build this as a JavaScript-only button; the correct foundation is the same real cart form [8.2. The Cart Form](/forms/the-cart-form/) already covers, just placed on a card instead of a product page.
 
 ## The foundation: a real form, works with zero JavaScript
 
@@ -72,7 +72,7 @@ customElements.define('product-form', SolProductForm);
 
 ## What quick-add deliberately doesn't do: update the cart UI itself
 
-Notice `handleSubmit` only dispatches a `product-added` custom event — it doesn't touch a cart drawer or a cart count bubble directly. [Custom Events & Cross-Component Communication](/all-about-javascript/custom-events-and-cross-component-communication/) covers exactly why: a product card has no business knowing whether the theme shows a cart drawer, a slide-out, or just a header count badge — that's a separate component's job, listening for this same event. A full build-out of what that listener does, and the complete `/cart/add.js` response shape, is the Cart AJAX API's territory — a dedicated future chapter — this page stops at "how a card tells the rest of the page a product was added," which is as much as a card component itself needs to know.
+Notice `handleSubmit` only dispatches a `product-added` custom event — it doesn't touch a cart drawer or a cart count bubble directly. [30.6. Custom Events & Cross-Component Communication](/all-about-javascript/custom-events-and-cross-component-communication/) covers exactly why: a product card has no business knowing whether the theme shows a cart drawer, a slide-out, or just a header count badge — that's a separate component's job, listening for this same event. A full build-out of what that listener does, and the complete `/cart/add.js` response shape, is the Cart AJAX API's territory — a dedicated future chapter — this page stops at "how a card tells the rest of the page a product was added," which is as much as a card component itself needs to know.
 
 ## Key takeaways
 
@@ -83,6 +83,6 @@ Notice `handleSubmit` only dispatches a `product-added` custom event — it does
 
 ## Further reading
 
-- [The Cart Form](/forms/the-cart-form/)
-- [Custom Events & Cross-Component Communication](/all-about-javascript/custom-events-and-cross-component-communication/)
-- [Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/)
+- [8.2. The Cart Form](/forms/the-cart-form/)
+- [30.6. Custom Events & Cross-Component Communication](/all-about-javascript/custom-events-and-cross-component-communication/)
+- [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/)

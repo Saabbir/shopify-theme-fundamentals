@@ -7,7 +7,7 @@ description: What actually changes once a store ships a right-to-left language, 
 
 ## RTL isn't a hypothetical edge case
 
-A theme becomes translatable the moment `locales/` exists at all — covered in [Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) — and a merchant can add a right-to-left language (Arabic, Hebrew) to their store without a developer doing anything special for it, *unless* the theme's CSS was written with physical properties that silently assume left-to-right. [Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/) introduced logical properties; this page covers what actually happens, concretely, when a page flips direction.
+A theme becomes translatable the moment `locales/` exists at all — covered in [6.5. Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) — and a merchant can add a right-to-left language (Arabic, Hebrew) to their store without a developer doing anything special for it, *unless* the theme's CSS was written with physical properties that silently assume left-to-right. [29.5. Responsive CSS, Container Queries & Logical Properties](/all-about-css/responsive-css-container-queries-and-logical-properties/) introduced logical properties; this page covers what actually happens, concretely, when a page flips direction.
 
 ## What `dir="rtl"` actually changes
 
@@ -79,5 +79,5 @@ A print stylesheet is usually about *removing* things (navigation, interactive c
 ## Further reading
 
 - [CSS logical properties (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values)
-- [Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/)
+- [6.5. Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/)
 - [The print media type (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/print)

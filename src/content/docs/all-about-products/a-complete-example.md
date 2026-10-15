@@ -124,7 +124,7 @@ This page doesn't introduce anything new — it's every earlier page in this cha
 
 A shopper landing on this page sees a gallery built from `product.media` (not `product.images`, so a video or 3D model shows up alongside photos), a price that's either a single value or a "from" range depending on `product.price_varies`, an option picker rendered from `product.options_with_values` (skipped entirely via `product.has_only_default_variant` when there's nothing to pick), an optional subscription choice only when `product.selling_plan_groups` actually has entries, a quantity input pre-filled from `quantity_rule`, and an add-to-cart button whose enabled state follows `current_variant.available` specifically — never `product.available`, which would stay `true` even while this exact variant is sold out.
 
-`product.selected_or_first_available_variant` is doing real work at the top: it's the Liquid-side equivalent of "whatever the `variant_picker.js` from [The Variants & Options Matrix in Depth](/all-about-products/the-variants-and-options-matrix-in-depth/) would resolve" on first page load, before any JavaScript has run — it reads the `variant` URL parameter when present, and falls back to the first available variant otherwise. The `<variant-picker>` Web Component then takes over for any *change* a shopper makes after that, dispatching a `variant:changed` event that a real implementation would listen for to update the price, gallery, and availability shown above without a full page reload — wiring that event up is exactly what [The Product Form](/forms/the-product-form/) covers.
+`product.selected_or_first_available_variant` is doing real work at the top: it's the Liquid-side equivalent of "whatever the `variant_picker.js` from [32.2. The Variants & Options Matrix in Depth](/all-about-products/the-variants-and-options-matrix-in-depth/) would resolve" on first page load, before any JavaScript has run — it reads the `variant` URL parameter when present, and falls back to the first available variant otherwise. The `<variant-picker>` Web Component then takes over for any *change* a shopper makes after that, dispatching a `variant:changed` event that a real implementation would listen for to update the price, gallery, and availability shown above without a full page reload — wiring that event up is exactly what [8.1. The Product Form](/forms/the-product-form/) covers.
 
 :::note[This is one deliberately linear example, not a template to copy as-is]
 A real section would split several of these pieces into their own snippets (the gallery, the price, the option picker), and would listen for `variant:changed` to update the DOM in place rather than relying on a page reload after the variant parameter changes. Keeping everything inline here is deliberate — the goal is seeing all five chapters' concepts in one place, not production-ready markup.
@@ -138,9 +138,9 @@ A real section would split several of these pieces into their own snippets (the 
 
 ## Further reading
 
-- [Product Fundamentals](/all-about-products/product-fundamentals/)
-- [The Variants & Options Matrix in Depth](/all-about-products/the-variants-and-options-matrix-in-depth/)
-- [The Media Gallery](/all-about-products/the-media-gallery/)
-- [Availability, Pricing & Compare-At in Depth](/all-about-products/availability-pricing-and-compare-at-in-depth/)
-- [Selling Plans, Subscriptions & Quantity Rules](/all-about-products/selling-plans-subscriptions-and-quantity-rules/)
-- [The Product Form](/forms/the-product-form/)
+- [32.1. Product Fundamentals](/all-about-products/product-fundamentals/)
+- [32.2. The Variants & Options Matrix in Depth](/all-about-products/the-variants-and-options-matrix-in-depth/)
+- [32.3. The Media Gallery](/all-about-products/the-media-gallery/)
+- [32.4. Availability, Pricing & Compare-At in Depth](/all-about-products/availability-pricing-and-compare-at-in-depth/)
+- [32.5. Selling Plans, Subscriptions & Quantity Rules](/all-about-products/selling-plans-subscriptions-and-quantity-rules/)
+- [8.1. The Product Form](/forms/the-product-form/)

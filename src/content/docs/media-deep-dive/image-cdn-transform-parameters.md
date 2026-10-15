@@ -13,7 +13,7 @@ Every example so far has used `image_url: width: ...`. Shopify's image CDN, whic
 {{ image | image_url: width: 800, height: 800, crop: 'center' }}
 ```
 
-`crop` tells the CDN which part of the image to keep when the requested dimensions don't match the original's proportions — `center`, `top`, `bottom`, `left`, and `right` are the available anchor points. Combined with `aspect_ratio` (used in the `<picture>` example on [Art Direction with picture](/media-deep-dive/art-direction-with-picture/)), this is how a single uploaded image can be recropped to a completely different shape on demand, without the merchant uploading a second file.
+`crop` tells the CDN which part of the image to keep when the requested dimensions don't match the original's proportions — `center`, `top`, `bottom`, `left`, and `right` are the available anchor points. Combined with `aspect_ratio` (used in the `<picture>` example on [19.2. Art Direction with picture](/media-deep-dive/art-direction-with-picture/)), this is how a single uploaded image can be recropped to a completely different shape on demand, without the merchant uploading a second file.
 
 ## `format`: requesting a specific file format
 

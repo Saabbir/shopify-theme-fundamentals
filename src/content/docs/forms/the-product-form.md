@@ -45,7 +45,7 @@ Get `name="id"` wrong (calling it `variant_id`, say) and the form submits, but S
 
 ## Showing unavailable correctly
 
-`product.available` (from [product, variant & collection](/global-objects/product-variant-and-collection/)) tells you if *any* variant can currently be purchased — use it to disable the whole form's submit button when nothing on the product is purchasable at all. For a specific variant being unavailable (one size sold out, others still in stock), check that variant's own `.available` instead, typically to disable just that one `<option>`.
+`product.available` (from [5.1. product, variant & collection](/global-objects/product-variant-and-collection/)) tells you if *any* variant can currently be purchased — use it to disable the whole form's submit button when nothing on the product is purchasable at all. For a specific variant being unavailable (one size sold out, others still in stock), check that variant's own `.available` instead, typically to disable just that one `<option>`.
 
 ```liquid
 {% for variant in product.variants %}

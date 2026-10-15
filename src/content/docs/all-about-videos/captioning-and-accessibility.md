@@ -5,7 +5,7 @@ description: Shopify never generates captions automatically — a real VTT file,
 
 **TL;DR:** Shopify never generates captions automatically — a real VTT file, uploaded via a `file_reference` metafield, is what a `<track>` element actually needs.
 
-[Video Fundamentals](/all-about-videos/video-fundamentals-video_tag-vs-building-your-own-tag/) establishes that captions require building the `<video>` tag by hand, since `video_tag` has no slot for a `<track>`. This page covers where the actual caption file comes from, and the rest of what makes a video component genuinely accessible beyond captions alone.
+[39.1. Video Fundamentals](/all-about-videos/video-fundamentals-video_tag-vs-building-your-own-tag/) establishes that captions require building the `<video>` tag by hand, since `video_tag` has no slot for a `<track>`. This page covers where the actual caption file comes from, and the rest of what makes a video component genuinely accessible beyond captions alone.
 
 ## Where a caption file actually comes from
 
@@ -33,8 +33,8 @@ A single `<track>` only covers one language — a store supporting captions in m
 ## Beyond captions: the rest of an accessible video component
 
 - **A real, descriptive label**, not a generic one — `aria-label="{{ media.alt | escape }}"` on the `<video>` element (or `video_tag`'s automatic `aria-label`, when using that filter) should describe *what the video actually shows*, the same way an image's `alt` text would, not just "video" or the filename.
-- **Keyboard access to the custom play/pause button** — since it's a real `<button>` element (from [Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/)), it's keyboard-focusable and activatable by default; verify it also has a visible `:focus-visible` outline matching the rest of the theme's interactive elements.
-- **Respecting `prefers-reduced-motion`**, covered already in [Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/) — this applies to a custom-UI video exactly the same way it applies to an autoplaying one.
+- **Keyboard access to the custom play/pause button** — since it's a real `<button>` element (from [39.2. Play/Pause UI Patterns](/all-about-videos/play-pause-ui-patterns/)), it's keyboard-focusable and activatable by default; verify it also has a visible `:focus-visible` outline matching the rest of the theme's interactive elements.
+- **Respecting `prefers-reduced-motion`**, covered already in [19.3. Video Loading & Autoplay Strategy](/media-deep-dive/video-loading-and-autoplay-strategy/) — this applies to a custom-UI video exactly the same way it applies to an autoplaying one.
 - **Never autoplaying a video with captions hidden by default** — if captions exist, `default` on the `<track>` element (shown in the example above) ensures they display from the start, rather than requiring a shopper to discover and enable a captions toggle buried in the player.
 
 ## Key takeaways
@@ -46,7 +46,7 @@ A single `<track>` only covers one language — a store supporting captions in m
 
 ## Further reading
 
-- [Video Fundamentals](/all-about-videos/video-fundamentals-video_tag-vs-building-your-own-tag/)
+- [39.1. Video Fundamentals](/all-about-videos/video-fundamentals-video_tag-vs-building-your-own-tag/)
 - [The `generic_file` object (shopify.dev)](https://shopify.dev/docs/api/liquid/objects/generic_file)
 - [The `track` element (MDN)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track)
 - [WebVTT format (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)

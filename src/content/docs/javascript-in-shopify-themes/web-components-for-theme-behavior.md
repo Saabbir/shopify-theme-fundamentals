@@ -5,7 +5,7 @@ description: The standard pattern for anything more substantial than a one-off t
 
 **TL;DR:** The standard pattern for anything more substantial than a one-off toggle — and the rule that makes it safe.
 
-A **Web Component** is a native browser feature — a custom HTML tag you define yourself, with its own JavaScript behavior, using nothing but the browser's built-in APIs. No framework, no build step required, which lines up directly with the point made all the way back in [What Is a Shopify Theme?](/theme-architecture/what-is-a-shopify-theme/): a theme can run with zero build tooling at all.
+A **Web Component** is a native browser feature — a custom HTML tag you define yourself, with its own JavaScript behavior, using nothing but the browser's built-in APIs. No framework, no build step required, which lines up directly with the point made all the way back in [2.1. What Is a Shopify Theme?](/theme-architecture/what-is-a-shopify-theme/): a theme can run with zero build tooling at all.
 
 ## The basic shape
 
@@ -39,7 +39,7 @@ Three pieces, each with its own clear job: the JavaScript class lives in its own
 
 ## Why a custom tag name needs its own prefix
 
-`customElements.define` registers a global tag name, shared across the entire page — including anything an installed app might also define. Prefixing your own custom elements (`my-announcement-bar` here; pick one consistent prefix for your own theme) avoids colliding with a tag name an app happens to choose too. This is the same instinct as the CSS class prefix from [Naming & Scoping](/css-in-shopify-themes/naming-and-scoping/), just applied to a different global namespace.
+`customElements.define` registers a global tag name, shared across the entire page — including anything an installed app might also define. Prefixing your own custom elements (`my-announcement-bar` here; pick one consistent prefix for your own theme) avoids colliding with a tag name an app happens to choose too. This is the same instinct as the CSS class prefix from [10.2. Naming & Scoping](/css-in-shopify-themes/naming-and-scoping/), just applied to a different global namespace.
 
 ## The one rule that matters more than any specific syntax
 

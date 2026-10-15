@@ -16,18 +16,18 @@ A Shopify theme is the code that controls how a store's storefront looks and beh
 | # | Section | What it answers |
 |---|---|---|
 | 1 | You're here | What this site covers, what you need before you start. |
-| 2 | [Theme Architecture & Files](/theme-architecture/) | What files make up a theme, and in what order Shopify actually renders them. |
-| 3 | [Sections, Blocks & Snippets](/sections-blocks-snippets/) | The three reusable building blocks every theme is made of, and how to pick the right one. |
-| 4 | [Liquid Language Basics](/liquid-basics/) | The actual syntax rules behind every example you've read so far: tags, output, variables, conditionals, loops, and filters. |
-| 5 | [Shopify's Global Objects](/global-objects/) | What's actually inside `product`, `cart`, `customer`, `settings`, and the rest — and which ones are available on which pages. |
-| 6 | [Schema & Settings](/schema-and-settings/) | Every setting type, presets vs. defaults, the two settings files, conditional settings, and locale/translation keys. |
-| 7 | [Design Tokens: Color, Type & Spacing](/design-tokens/) | Color schemes, loading a merchant-chosen font correctly, a spacing scale, and the CSS-variable technique that ties all three together. |
-| 8 | [Forms](/forms/) | The `{% form %}` tag, and the specific field names the product, cart, customer, and contact forms each expect. |
-| 9 | [From Figma to Code: The Mental Model](/figma-to-code/) | How to look at a finished design and decide what's a section, a block, a snippet, or just fixed markup — the chapter everything else in this site was leading up to. |
-| 10 | [CSS in Shopify Themes](/css-in-shopify-themes/) | The real difference between `{% stylesheet %}` and `{% style %}`, why nothing isolates your CSS automatically, and writing CSS that holds up responsively and across languages. |
-| 11 | [JavaScript in Shopify Themes](/javascript-in-shopify-themes/) | The `{% javascript %}` tag, Web Components as the standard pattern for anything bigger, and reacting correctly to the theme editor's live re-renders. |
-| 12 | [Media & Assets](/media-and-assets/) | A complete responsive image tag, video/3D rendering filters, and inline SVG vs. a sprite for icons. |
-| 13 | [Reference](/reference/) | A tag reference, a filter reference, a glossary, and a cheatsheet condensing every caution from this whole site onto one page. |
+| 2 | [2. Theme Architecture & Files](/theme-architecture/) | What files make up a theme, and in what order Shopify actually renders them. |
+| 3 | [3. Sections, Blocks & Snippets](/sections-blocks-snippets/) | The three reusable building blocks every theme is made of, and how to pick the right one. |
+| 4 | [4. Liquid Language Basics](/liquid-basics/) | The actual syntax rules behind every example you've read so far: tags, output, variables, conditionals, loops, and filters. |
+| 5 | [5. Shopify's Global Objects](/global-objects/) | What's actually inside `product`, `cart`, `customer`, `settings`, and the rest — and which ones are available on which pages. |
+| 6 | [6. Schema & Settings](/schema-and-settings/) | Every setting type, presets vs. defaults, the two settings files, conditional settings, and locale/translation keys. |
+| 7 | [7. Design Tokens: Color, Type & Spacing](/design-tokens/) | Color schemes, loading a merchant-chosen font correctly, a spacing scale, and the CSS-variable technique that ties all three together. |
+| 8 | [8. Forms](/forms/) | The `{% form %}` tag, and the specific field names the product, cart, customer, and contact forms each expect. |
+| 9 | [9. From Figma to Code: The Mental Model](/figma-to-code/) | How to look at a finished design and decide what's a section, a block, a snippet, or just fixed markup — the chapter everything else in this site was leading up to. |
+| 10 | [10. CSS in Shopify Themes](/css-in-shopify-themes/) | The real difference between `{% stylesheet %}` and `{% style %}`, why nothing isolates your CSS automatically, and writing CSS that holds up responsively and across languages. |
+| 11 | [11. JavaScript in Shopify Themes](/javascript-in-shopify-themes/) | The `{% javascript %}` tag, Web Components as the standard pattern for anything bigger, and reacting correctly to the theme editor's live re-renders. |
+| 12 | [12. Media & Assets](/media-and-assets/) | A complete responsive image tag, video/3D rendering filters, and inline SVG vs. a sprite for icons. |
+| 13 | [13. Reference](/reference/) | A tag reference, a filter reference, a glossary, and a cheatsheet condensing every caution from this whole site onto one page. |
 
 That's the full site, as originally planned. See the [roadmap](https://github.com/Saabbir/shopify-theme-fundamentals/blob/main/ROADMAP.md) in the repo for why it's ordered this way — and for where any future sections get scoped out before they're written.
 

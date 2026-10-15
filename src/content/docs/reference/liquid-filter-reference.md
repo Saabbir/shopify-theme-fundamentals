@@ -5,7 +5,7 @@ description: A broader, categorized filter list beyond the "common" set from ear
 
 **TL;DR:** A broader, categorized filter list beyond the "common" set from earlier.
 
-[Common Filters by Category](/liquid-basics/common-filters-by-category/) covered the filters you'll use constantly. This page is wider, not deeper — more filters, in the same categories, with no re-explanation of syntax covered in [Filters: An Overview](/liquid-basics/filters-an-overview/). Not exhaustive — see [Shopify's own filter reference](https://shopify.dev/docs/api/liquid/filters) for the complete, current list.
+[4.7. Common Filters by Category](/liquid-basics/common-filters-by-category/) covered the filters you'll use constantly. This page is wider, not deeper — more filters, in the same categories, with no re-explanation of syntax covered in [4.6. Filters: An Overview](/liquid-basics/filters-an-overview/). Not exhaustive — see [Shopify's own filter reference](https://shopify.dev/docs/api/liquid/filters) for the complete, current list.
 
 ## String
 
@@ -75,7 +75,7 @@ description: A broader, categorized filter list beyond the "common" set from ear
 | `money_with_currency` | Like `money`, but includes the currency code |
 | `money_without_trailing_zeros` | Like `money`, but omits `.00` for whole amounts |
 | `date` | Formats a date/time string |
-| `json` | Converts a value to a JSON string — useful for debugging, covered in [Debugging Liquid](/liquid-basics/debugging-liquid/) |
+| `json` | Converts a value to a JSON string — useful for debugging, covered in [4.8. Debugging Liquid](/liquid-basics/debugging-liquid/) |
 | `weight_with_unit` | Formats a weight value with its unit |
 
 ## Media, assets, and URLs
@@ -84,8 +84,8 @@ description: A broader, categorized filter list beyond the "common" set from ear
 |---|---|
 | `asset_url` | Builds a URL to a file in `assets/` |
 | `image_url` | Builds a resized image URL |
-| `video_tag` / `external_video_tag` / `model_viewer_tag` | Render uploaded video, external video, and 3D models — see [Video & 3D Media](/media-and-assets/video-and-3d-media/) |
-| `font_face` / `font_modify` | Loads a font, or returns a modified variant of it — see [Typography & font_picker](/design-tokens/typography-and-font-picker/) |
+| `video_tag` / `external_video_tag` / `model_viewer_tag` | Render uploaded video, external video, and 3D models — see [12.2. Video & 3D Media](/media-and-assets/video-and-3d-media/) |
+| `font_face` / `font_modify` | Loads a font, or returns a modified variant of it — see [7.2. Typography & font_picker](/design-tokens/typography-and-font-picker/) |
 | `link_to` | Builds a full `<a>` tag from a URL and label |
 | `stylesheet_tag` / `script_tag` | Build a `<link>`/`<script>` tag from a URL |
 
@@ -94,7 +94,7 @@ description: A broader, categorized filter list beyond the "common" set from ear
 | Filter | Does |
 |---|---|
 | `default` | Supplies a fallback value when the input is `nil`, `false`, or blank |
-| `t` | Looks up a storefront translation key — see [Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) |
+| `t` | Looks up a storefront translation key — see [6.5. Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) |
 
 ## Further reading
 

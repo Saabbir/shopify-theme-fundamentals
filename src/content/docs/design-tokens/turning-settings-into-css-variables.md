@@ -46,7 +46,7 @@ This page is where color, typography, and spacing settings actually become CSS. 
 {% endstylesheet %}
 ```
 
-Every setting involved — padding (from [Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/)), a color — ends up as one of these inline `--variable: value;` declarations on the outer `<div>`, with the actual `{% stylesheet %}` rules only ever referencing `var(--variable)`, never a literal value or a raw setting reference.
+Every setting involved — padding (from [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/)), a color — ends up as one of these inline `--variable: value;` declarations on the outer `<div>`, with the actual `{% stylesheet %}` rules only ever referencing `var(--variable)`, never a literal value or a raw setting reference.
 
 ## Why this specific approach, and not a `{% if %}` per setting
 
