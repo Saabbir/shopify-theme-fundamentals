@@ -85,7 +85,7 @@ Name a preset by **what it's for**, not what it looks like:
 
 A preset named `large` has nowhere to go once a theme needs something even larger — `--type-preset-h1`, `--type-preset-display`, or `--type-preset-eyebrow` all describe a *role* the preset plays, which stays meaningful no matter how many other presets get added around it later.
 
-:::note[Horizon actually extends `--font-`, not `--type-preset-`, for its own presets — both are legitimate]
+:::note[Horizon takes the other approach — and that's equally legitimate]
 Horizon's real preset tokens (quoted in full on [How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/)) are `--font-h2--family`, `--font-h2--size`, `--font-h2--weight`, and so on — it extends the *same* `--font-` family used for role tokens to presets too, rather than introducing a separate prefix. That keeps every typography token, role or preset, under one shared `--font-` umbrella, at the cost of the name alone not telling you whether `h2` refers to a role or a preset (you have to already know Horizon's roles are Body/Subheading/Heading/Accent, not `h1`–`h6`, to tell them apart). This site recommends `--type-preset-{name}-{property}` instead because the distinction is visible in the prefix itself, with no prior knowledge required — but if a theme already follows Horizon's double-dash role tokens, extending that same family to presets, the way Horizon does, is an equally consistent choice. Pick one approach and apply it theme-wide, the same as the single-dash/double-dash decision above.
 :::
 
