@@ -143,13 +143,25 @@ When a specific section genuinely needs its own font setting, independent of the
 Horizon's real, shipped settings and tokens follow every rule above, confirmed directly from its source (the full tour lives in [27.5. Naming & Code Conventions in Horizon](/horizon-codebase-tour/naming-and-code-conventions/), part of the separate [27. Horizon Theme Codebase Tour](/horizon-codebase-tour/) chapter):
 
 ```
-type_body_font, type_subheading_font, type_heading_font, type_accent_font
-type_size_h1, type_size_h2, ... type_size_paragraph
+type_body_font
+type_subheading_font
+type_heading_font
+type_accent_font
+
+type_size_h1
+type_size_h2
+...
+type_size_paragraph
 ```
 
 ```css
---font-body--family, --font-body--weight, --font-body--style
---font-heading--family, --font-heading--weight, --font-heading--style
+--font-body--family
+--font-body--weight
+--font-body--style
+
+--font-heading--family
+--font-heading--weight
+--font-heading--style
 ```
 
 One detail worth knowing if you ever read `theme-styles-variables.liquid` directly: Horizon's **internal** Liquid variable names for the four font roles (`primary_font`, `secondary_font`, `tertiary_font`, `accent_font`, reflecting the order they're loaded in) don't match either the **setting** names (`type_body_font`, `type_subheading_font`, `type_heading_font`, `type_accent_font`) or the **CSS output** names (`--font-body--*`, `--font-subheading--*`, `--font-heading--*`, `--font-accent--*`). Three different names for the same four roles, each aimed at a different audience — a merchant picking a setting, a developer reading the generation logic, and a developer consuming the output in CSS — is a reasonable, deliberate pattern, not a mistake, but worth recognizing so it doesn't look like an inconsistency when you first encounter it in real source.

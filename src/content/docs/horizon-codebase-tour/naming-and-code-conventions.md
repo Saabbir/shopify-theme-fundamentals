@@ -45,10 +45,23 @@ Rather than one fixed class per component, `contrast-override.liquid` generates 
 ## Settings named by role, grouped by prefix
 
 ```
-type_body_font, type_subheading_font, type_heading_font, type_accent_font
-type_size_h1, type_size_h2, ... type_size_paragraph
-palette_primary_button_background, palette_primary_button_text, palette_primary_button_border
-palette_variant_background, palette_variant_text, palette_variant_border
+type_body_font
+type_subheading_font
+type_heading_font
+type_accent_font
+
+type_size_h1
+type_size_h2
+...
+type_size_paragraph
+
+palette_primary_button_background
+palette_primary_button_text
+palette_primary_button_border
+
+palette_variant_background
+palette_variant_text
+palette_variant_border
 ```
 
 Every setting ID starts with a shared prefix for its category (`type_` for typography, `palette_` for color), followed by the specific role or property. This means every typography setting sorts together and every color setting sorts together in `settings_schema.json` and in `settings.*` autocomplete, the same reasoning behind this project's own "naming: everything gets a prefix" convention — Horizon independently arrived at the same instinct, at a much larger scale.
