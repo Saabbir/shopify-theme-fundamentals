@@ -89,6 +89,21 @@
   color: var(--sl-color-accent-high);
 }
 
+/* Nested sidebar group labels (e.g. "Foundations" inside "18. All About
+   Typography") smaller than a top-level chapter label. Starlight gives every
+   group label the same ".large" class regardless of nesting depth (see
+   node_modules/@astrojs/starlight/components/SidebarSublist.astro), so
+   there's no built-in visual hierarchy between a chapter and a sub-group
+   inside it. ul.top-level is only the root list of chapters; a group nested
+   inside a chapter always sits inside a non-top-level <ul>, which is what
+   this selector keys off. This file isn't inside Starlight's own
+   `@layer starlight.core`, so it wins the cascade without needing to repeat
+   Starlight's min-width: 50rem breakpoint or match its specificity. */
+.sidebar-content ul:not(.top-level) .group-label .large {
+  font-size: var(--sl-text-sm);
+  font-weight: 600;
+}
+
 /* External-link icon — rehype-external-links (astro.config.mjs) sets
    target="_blank" on every external (http/https) link in markdown content,
    so that attribute doubles as the hook for this indicator. Internal links
