@@ -43,7 +43,7 @@ A preset should bundle every property that's part of *that treatment's identity*
 
 - **Always include:** `font-family`, `font-weight`, `font-size`, `line-height` — the four properties that define "what this text looks like" at the most basic level.
 - **Usually include:** `letter-spacing` and `text-transform`/case — per [18.1. Typography Fundamentals](/all-about-typography/typography-fundamentals/#letter-spacing-and-text-transform-smaller-often-forgotten-levers), these round out a complete typographic treatment and are exactly the kind of property that causes visible inconsistency if left as one-off inline styles instead of part of the named preset.
-- **Leave out:** `color` and `margin`/`padding`. Color belongs to the color token system (see [17.5. Building a Token System](/all-about-colors/building-a-token-system/)), not typography, and spacing around an element is almost always contextual to where that element sits on a page, not an inherent property of its text style. Bundling either into a type preset makes the preset less reusable — a heading that needs a different color in one section shouldn't need an entirely different preset just to get it.
+- **Leave out:** `color` and `margin`/`padding`. Color belongs to the color token system (see [17.6. Building a Token System](/all-about-colors/building-a-token-system/)), not typography, and spacing around an element is almost always contextual to where that element sits on a page, not an inherent property of its text style. Bundling either into a type preset makes the preset less reusable — a heading that needs a different color in one section shouldn't need an entirely different preset just to get it.
 
 ### Decision 3: fixed values, or merchant-configurable per-level settings?
 

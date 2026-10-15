@@ -161,7 +161,7 @@ body {
 }
 ```
 
-Because every heading-styled component already reads from `--font-heading--family` rather than hardcoding a font, redefining that one custom property cascades to every one of them automatically — which is the entire point of resolving settings into tokens in the first place, and the same lesson [17.5. Building a Token System](/all-about-colors/building-a-token-system/) teaches for color: change the token, not every place that reads it.
+Because every heading-styled component already reads from `--font-heading--family` rather than hardcoding a font, redefining that one custom property cascades to every one of them automatically — which is the entire point of resolving settings into tokens in the first place, and the same lesson [17.6. Building a Token System](/all-about-colors/building-a-token-system/) teaches for color: change the token, not every place that reads it.
 
 ## Key takeaways
 

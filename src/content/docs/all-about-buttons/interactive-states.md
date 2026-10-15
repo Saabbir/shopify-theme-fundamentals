@@ -68,7 +68,7 @@ A hover state is usually "slightly darker" or "slightly lighter" than the restin
 -%}
 ```
 
-`color_brightness` returns a 0–255 brightness value for any color — Horizon checks it and picks dark or light text automatically, rather than a merchant having to separately choose a hover text color that happens to stay readable against whatever hover background gets computed. [17.3. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/) covers `color_brightness` and its relatives generically; this is that exact filter solving a real, specific accessibility problem — unreadable hover text — automatically.
+`color_brightness` returns a 0–255 brightness value for any color — Horizon checks it and picks dark or light text automatically, rather than a merchant having to separately choose a hover text color that happens to stay readable against whatever hover background gets computed. [17.4. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/) covers `color_brightness` and its relatives generically; this is that exact filter solving a real, specific accessibility problem — unreadable hover text — automatically.
 
 :::tip[The same instinct, applied to a focus ring]
 Horizon's real custom-button styling goes one step further: when a button's background is fully transparent (`alpha == 0`), it uses the *text* color for the focus outline instead of the background color, since outlining a transparent background in its own color would be invisible. The underlying idea generalizes: don't hardcode a hover or focus color by hand when a merchant's own color choice could make it unreadable or invisible — compute it from what's actually there.
@@ -86,5 +86,5 @@ Horizon's real custom-button styling goes one step further: when a button's back
 
 - [`:focus-visible` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible)
 - [WAI-ARIA: `aria-disabled`](https://www.w3.org/TR/wai-aria-1.2/#aria-disabled)
-- [17.3. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/)
+- [17.4. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/)
 - [`snippets/resolve-custom-hover.liquid` (Horizon, GitHub)](https://github.com/Shopify/horizon/blob/main/snippets/resolve-custom-hover.liquid)

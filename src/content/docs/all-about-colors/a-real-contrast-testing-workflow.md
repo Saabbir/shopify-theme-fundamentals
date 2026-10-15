@@ -18,6 +18,8 @@ This page is about actually checking against these two numbers systematically, n
 
 ## Step 2: check every default pairing with `color_contrast`
 
+The example below checks the two raw colors in a theme's [17.2. `color_palette` setting](/all-about-colors/color-palette-setting/) against each other — a reasonable first pairing to verify, since so many other settings end up defaulting from those same two colors:
+
 ```liquid
 {% liquid
   assign contrast_ratio = settings.color_palette.foreground | color_contrast: settings.color_palette.background
@@ -27,7 +29,7 @@ This page is about actually checking against these two numbers systematically, n
 {% endif %}
 ```
 
-Run this check, or its equivalent, against every default color pairing a theme ships with — not just the ones in the current default settings, but every preset and every default `color_scheme_group` entry. This is cheap to do once, directly in Liquid, and catches a shipped default that's already broken before any merchant even touches it.
+Run this check, or its equivalent, against every default color pairing a theme ships with — not just `color_palette`, but every preset and every default `color_scheme_group` entry too. This is cheap to do once, directly in Liquid, and catches a shipped default that's already broken before any merchant even touches it.
 
 ## Step 3: decide what happens when a merchant picks a bad pairing
 

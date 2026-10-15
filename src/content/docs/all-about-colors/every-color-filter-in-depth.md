@@ -70,11 +70,11 @@ Changes one named channel while leaving the others alone — this is how you'd a
 {% # => a contrast ratio, e.g. 18.1 %}
 ```
 
-Returns the WCAG contrast ratio between two colors — not a filter that changes a color, but the single most important one for accessibility. Covered in full on [17.6. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/).
+Returns the WCAG contrast ratio between two colors — not a filter that changes a color, but the single most important one for accessibility. Covered in full on [17.7. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/).
 
 ## Converting formats
 
-Covered in full on [17.2. Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/): `color_to_rgb`, `color_to_hsl`, `color_to_hex`.
+Covered in full on [17.3. Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/): `color_to_rgb`, `color_to_hsl`, `color_to_hex`.
 
 ## Key takeaways
 

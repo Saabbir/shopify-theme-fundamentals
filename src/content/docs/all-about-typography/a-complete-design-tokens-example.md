@@ -47,7 +47,7 @@ Both of these are entries within `settings_schema.json`'s top-level array, shown
 }
 ```
 
-Two `font_picker` settings for the typography roles, and one `color_scheme_group` for color — the exact same settings covered individually in [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) and [17.7. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/). Spacing, below, doesn't need a merchant-facing setting at all — it's a fixed scale, not something a merchant picks.
+Two `font_picker` settings for the typography roles, and one `color_scheme_group` for color — the exact same settings covered individually in [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) and [17.8. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/). Spacing, below, doesn't need a merchant-facing setting at all — it's a fixed scale, not something a merchant picks.
 
 ## The complete snippet: `snippets/design-tokens.liquid`
 
@@ -186,6 +186,6 @@ This page deliberately keeps typography, color, and spacing in one snippet, beca
 ## Further reading
 
 - [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
-- [17.7. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/)
+- [17.8. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/)
 - [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/)
 - [27. Horizon Theme Codebase Tour](/horizon-codebase-tour/) — the same idea, at real-theme scale
