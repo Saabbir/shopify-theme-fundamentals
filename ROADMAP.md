@@ -137,7 +137,7 @@ Everything about snippets, start to finish: what a snippet is, `{% render %}` an
 
 ## 17. All About Colors — `status: live`
 
-Everything about color, start to finish: `color` and a full `color_scheme_group` deep dive (`role`, `color_background`) from the ground up, the theme-wide `color_palette` setting and how it relates to (not replaces) `color_scheme_group`, color formats and conversions, every color filter in depth with before/after examples, dark mode (`prefers-color-scheme`), building a full primitive → semantic → component token system, a real contrast-testing workflow, and a complete color-scheme example including the CSS-generation snippet every theme actually needs (and that Shopify doesn't generate for you).
+Everything about color, start to finish: the basic `color` setting and the problem with standalone color settings at scale; a dedicated color schemes deep dive covering `color_scheme_group` and `color_scheme` (`definition`, `role`, `color_background`); the theme-wide `color_palette` setting and how it relates to (not replaces) `color_scheme_group`; color formats and conversions; every color filter in depth with before/after examples; dark mode (`prefers-color-scheme`); building a full primitive → semantic → component token system; a real contrast-testing workflow; and a complete color-scheme example including the CSS-generation snippet every theme actually needs (and that Shopify doesn't generate for you).
 
 ## 18. All About Typography — `status: live`
 

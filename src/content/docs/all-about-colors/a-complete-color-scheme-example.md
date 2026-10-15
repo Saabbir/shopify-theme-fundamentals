@@ -5,7 +5,7 @@ description: A full color_scheme_group with role and a color_background gradient
 
 **TL;DR:** A full `color_scheme_group` — with a `role` field and a `color_background` gradient role — the snippet that turns it into real CSS, and sections consuming the result.
 
-[17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) introduced `color_scheme_group`, `color_scheme`, the `role` field, and `color_background` roles as the pattern for letting a merchant pick a whole pre-coordinated look instead of independent color pickers. This page shows the complete picture: a realistic four-scheme `color_scheme_group` (including a gradient scheme), the snippet every theme needs to turn that schema into actual CSS (Shopify doesn't generate this for you), and two sections consuming the result.
+[17.2. Color Schemes](/all-about-colors/color-schemes/) introduced `color_scheme_group`, `color_scheme`, the `role` field, and `color_background` roles as the pattern for letting a merchant pick a whole pre-coordinated look instead of independent color pickers. This page shows the complete picture: a realistic four-scheme `color_scheme_group` (including a gradient scheme), the snippet every theme needs to turn that schema into actual CSS (Shopify doesn't generate this for you), and two sections consuming the result.
 
 ## The schema: `config/settings_schema.json`
 
@@ -88,7 +88,7 @@ description: A full color_scheme_group with role and a color_background gradient
 }
 ```
 
-Four schemes here, each filling in every role `definition` requires: `scheme-1` is a plain light scheme, `scheme-2` is a dark/inverse scheme, `scheme-3` is a warm, brand-accent scheme, and `scheme-4` is a bold, gradient-background scheme that only the fourth scheme actually uses — `scheme-1` through `scheme-3` leave `background_gradient` unset and rely on the plain `background` color instead. `role` doesn't change any of this at runtime; it only tells the theme editor's own scheme picker which `definition` IDs correspond to which standardized concept (background, text, primary button, and so on), so it can draw an accurate preview swatch for each scheme without guessing. The full mapping and every role key are covered in [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) — this page assumes that explanation and jumps straight to using it.
+Four schemes here, each filling in every role `definition` requires: `scheme-1` is a plain light scheme, `scheme-2` is a dark/inverse scheme, `scheme-3` is a warm, brand-accent scheme, and `scheme-4` is a bold, gradient-background scheme that only the fourth scheme actually uses — `scheme-1` through `scheme-3` leave `background_gradient` unset and rely on the plain `background` color instead. `role` doesn't change any of this at runtime; it only tells the theme editor's own scheme picker which `definition` IDs correspond to which standardized concept (background, text, primary button, and so on), so it can draw an accurate preview swatch for each scheme without guessing. The full mapping and every role key are covered in [17.2. Color Schemes](/all-about-colors/color-schemes/) — this page assumes that explanation and jumps straight to using it.
 
 This is the same `color_schemes` setting that already appears populated with real merchant-chosen values in [28.4. A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/) — that page shows what Shopify saves once a merchant has used this setting; this page shows the setting's own definition, and what makes it actually render as color.
 
@@ -230,12 +230,12 @@ Two completely different sections, both reusing the exact same four schemes and 
 
 ## Every concern from this chapter, in one place
 
-- **A full `definition` array**, using all three allowed entry types (`color` and `color_background`, plus `header` if you want to group roles visually in the editor), per [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/).
+- **A full `definition` array**, using all three allowed entry types (`color` and `color_background`, plus `header` if you want to group roles visually in the editor), per [17.2. Color Schemes](/all-about-colors/color-schemes/).
 - **A complete `role` mapping**, so the theme editor's scheme picker can render an accurate preview swatch for every scheme, including the one with a gradient background.
 - **Multiple real schemes in `default`** — a light, a dark/inverse, a warm brand-accent, and a gradient scheme, each filling in every role.
-- **The CSS-generation loop**, which [17.4. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/) and [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) both assume exists somewhere in a theme, but don't show written out — this page is that missing piece, including the `default` fallback a `color_background` role needs.
-- **Two independent sections consuming the same scheme set**, proving the reuse actually works the way [17.6. Building a Token System](/all-about-colors/building-a-token-system/) describes semantic tokens working: components read a variable, never a hardcoded value.
-- **A contrast-checked-by-construction set of defaults** — each scheme here pairs a background/text combination meant to already pass WCAG AA, per [17.7. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/) — worth verifying with `color_contrast` the same way that page describes, for any scheme you ship as a real default.
+- **The CSS-generation loop**, which [17.5. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/) and [17.2. Color Schemes](/all-about-colors/color-schemes/) both assume exists somewhere in a theme, but don't show written out — this page is that missing piece, including the `default` fallback a `color_background` role needs.
+- **Two independent sections consuming the same scheme set**, proving the reuse actually works the way [17.7. Building a Token System](/all-about-colors/building-a-token-system/) describes semantic tokens working: components read a variable, never a hardcoded value.
+- **A contrast-checked-by-construction set of defaults** — each scheme here pairs a background/text combination meant to already pass WCAG AA, per [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/) — worth verifying with `color_contrast` the same way that page describes, for any scheme you ship as a real default.
 
 ## Key takeaways
 
@@ -249,5 +249,5 @@ Two completely different sections, both reusing the exact same four schemes and 
 - [14.6. A Complete Section Example](/all-about-sections/a-complete-section-example/)
 - [Input settings: `color_scheme_group`](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#color_scheme_group) (shopify.dev)
 - [Liquid objects: color_scheme_group](https://shopify.dev/docs/api/liquid/objects/color_scheme_group) (shopify.dev)
-- [17.2. The Color Palette Setting](/all-about-colors/color-palette-setting/) — for feeding a scheme's `default` colors from one shared, theme-wide palette instead of hand-typed hex values
+- [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) — for feeding a scheme's `default` colors from one shared, theme-wide palette instead of hand-typed hex values
 - [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) — this same idea, scaled up to a real, production theme

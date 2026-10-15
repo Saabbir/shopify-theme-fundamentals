@@ -25,7 +25,7 @@ Keeping these visually distinct (not just by name, but by which naming pattern e
 { "type": "font_picker", "id": "type_heading_font", "label": "t:labels.heading_font" }
 ```
 
-**Pattern: `{category}_{role}_font`.** The category prefix (`type_`, short for "typography") is what groups every typography setting together in `settings_schema.json` and in `settings.*` editor autocomplete — scrolling or searching for `type_` surfaces every typography setting at once, regardless of how many other, unrelated settings a theme has. This is the same instinct behind `palette_` for color settings, covered in [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/), and it's not a convention invented for this site — it's the real pattern Shopify's own Horizon theme uses at production scale, covered in full below.
+**Pattern: `{category}_{role}_font`.** The category prefix (`type_`, short for "typography") is what groups every typography setting together in `settings_schema.json` and in `settings.*` editor autocomplete — scrolling or searching for `type_` surfaces every typography setting at once, regardless of how many other, unrelated settings a theme has. This is the same instinct behind `palette_` for color settings, covered in [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/), and it's not a convention invented for this site — it's the real pattern Shopify's own Horizon theme uses at production scale, covered in full below.
 
 :::tip[Why not just `heading_font`?]
 A setting named `heading_font` reads fine in isolation, but it doesn't signal *which system* it belongs to. A theme can easily end up with an unrelated `heading_color` or `heading_alignment` setting too — none of which share any naming relationship with `heading_font`, even though "everything about how a heading is typeset" is exactly the kind of group a developer six months later would want to find all at once. `type_heading_font` makes that grouping explicit in the name itself.
@@ -180,4 +180,4 @@ One detail worth knowing if you ever read `theme-styles-variables.liquid` direct
 - [27.5. Naming & Code Conventions in Horizon](/horizon-codebase-tour/naming-and-code-conventions/)
 - [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)
 - [18.11. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/)
-- [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) — the same `palette_` prefix convention, applied to color
+- [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) — the same `palette_` prefix convention, applied to color

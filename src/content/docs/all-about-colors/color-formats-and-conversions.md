@@ -44,7 +44,7 @@ A common real need is deriving a slightly darker or lighter variant of a merchan
 <button style="--button-color: {{ button_color }}; --button-hover-color: {{ button_hover_color }};">
 ```
 
-`color_darken` (covered in full on [17.4. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/)) works directly on whatever format you give it and returns a value in the same family — you don't need to manually convert to HSL first just to darken something.
+`color_darken` (covered in full on [17.5. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/)) works directly on whatever format you give it and returns a value in the same family — you don't need to manually convert to HSL first just to darken something.
 
 ## Key takeaways
 

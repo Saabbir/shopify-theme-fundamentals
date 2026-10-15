@@ -5,7 +5,7 @@ description: The color_palette setting type — a small, theme-wide set of named
 
 **TL;DR:** `color_palette` — a small, theme-wide set of named brand colors other settings can point back to — and how it's different from (and complementary to) `color_scheme_group`.
 
-[17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) covered `color`, `color_scheme_group`, and `color_scheme` — every one of them about letting a merchant *pick* colors. This page covers a different, theme-wide setting: `color_palette`, which gives a theme a small set of named "raw" brand colors other settings can reference, rather than every color setting in the theme hand-typing its own hex default.
+[17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) and [17.2. Color Schemes](/all-about-colors/color-schemes/) covered `color`, `color_scheme_group`, and `color_scheme` — every one of them about letting a merchant *pick* colors. This page covers a different, theme-wide setting: `color_palette`, which gives a theme a small set of named "raw" brand colors other settings can reference, rather than every color setting in the theme hand-typing its own hex default.
 
 ## What problem `color_palette` actually solves
 
@@ -84,7 +84,7 @@ The same pattern works for `color_background` settings, including inside a gradi
 }
 ```
 
-This is, concretely, exactly the gap in [17.7. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/)'s own example — that page checks `settings.color_palette.foreground` against `settings.color_palette.background` with `color_contrast`, which only makes sense once you know `color_palette` is a real setting a theme actually defines, not something Shopify invents automatically.
+This is, concretely, exactly the gap in [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/)'s own example — that page checks `settings.color_palette.foreground` against `settings.color_palette.background` with `color_contrast`, which only makes sense once you know `color_palette` is a real setting a theme actually defines, not something Shopify invents automatically.
 
 ## Iterating over a palette
 
@@ -128,7 +128,7 @@ A merchant can remove an entry from `color_palette` in the theme editor (as long
 It's a reasonable question to ask whether `color_palette` replaces `color_scheme_group`, given both are about "a theme's colors" at a glance. They don't compete — they solve different problems, and Shopify's own documentation and changelog are explicit that `color_scheme_group` continues to work and isn't required to be replaced:
 
 - **`color_palette`** is a small set of **raw** brand colors (2 to 20 named hex values, no roles, no bundling). Think of it as the paint cans a brand ships with.
-- **`color_scheme_group`** is a set of **pre-coordinated bundles** of color roles — background, text, button, and so on — that a merchant picks between as one unit, covered in full in [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) and [17.8. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/). Think of it as a set of rooms, each already painted using some combination of those cans.
+- **`color_scheme_group`** is a set of **pre-coordinated bundles** of color roles — background, text, button, and so on — that a merchant picks between as one unit, covered in full in [17.2. Color Schemes](/all-about-colors/color-schemes/) and [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/). Think of it as a set of rooms, each already painted using some combination of those cans.
 
 In practice the two combine naturally: a `color_scheme_group`'s own `definition` entries can use `"default": "{{ settings.color_palette.background }}"` exactly the same way any other `color` setting can, so a theme's shipped schemes start out built from the same raw palette instead of a second, disconnected set of hardcoded hex values. Shopify's own changelog describes newer reference themes (Horizon 4.0.0 and later) as using the new palette system "throughout" — but that's additive to `color_scheme_group`, not a deprecation of it. Neither mechanism is currently a Theme Store requirement, but Shopify has said it's focusing future development on palettes, which is worth keeping in mind as a direction, not an urgent migration.
 
@@ -145,4 +145,4 @@ In practice the two combine naturally: a `color_scheme_group`'s own `definition`
 - [Input settings: `color_palette`](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#color_palette) (shopify.dev)
 - [Shopify changelog: Color palettes](https://shopify.dev/changelog/posts/color-palettes) (shopify.dev)
 - [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) — Horizon's real, current source using this exact setting
-- [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) — `color_scheme_group`, `role`, and `color_background`
+- [17.2. Color Schemes](/all-about-colors/color-schemes/) — `color_scheme_group`, `role`, and `color_background`

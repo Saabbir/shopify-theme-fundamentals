@@ -83,13 +83,13 @@ Most theme tokens — colors, spacing, font families — don't need `@property`;
 
 ## Where each tier of token actually lives on this site
 
-A full primitive → semantic → component tier breakdown is covered once, generically, in [17.6. Building a Token System](/all-about-colors/building-a-token-system/) — the same three-tier idea applies regardless of domain:
+A full primitive → semantic → component tier breakdown is covered once, generically, in [17.7. Building a Token System](/all-about-colors/building-a-token-system/) — the same three-tier idea applies regardless of domain:
 
 | Tier | What it is | Where it's covered in depth |
 |---|---|---|
-| Primitive | Raw values, named by appearance (`--primitive-blue-500`) | [17.6. Building a Token System](/all-about-colors/building-a-token-system/) |
-| Semantic | Named by purpose, pointing at a primitive (`--color-accent`) | [17.6. Building a Token System](/all-about-colors/building-a-token-system/), [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) |
-| Component | Narrowed to one component's specific need (`--button-background-hover`) | [17.6. Building a Token System](/all-about-colors/building-a-token-system/) |
+| Primitive | Raw values, named by appearance (`--primitive-blue-500`) | [17.7. Building a Token System](/all-about-colors/building-a-token-system/) |
+| Semantic | Named by purpose, pointing at a primitive (`--color-accent`) | [17.7. Building a Token System](/all-about-colors/building-a-token-system/), [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) |
+| Component | Narrowed to one component's specific need (`--button-background-hover`) | [17.7. Building a Token System](/all-about-colors/building-a-token-system/) |
 
 [18.17. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/) shows color, typography, and spacing tokens merged into one real snippet, consumed by real components — the clearest single place to see the full mechanism end to end.
 

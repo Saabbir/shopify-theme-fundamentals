@@ -22,7 +22,7 @@ Primitive tokens are the raw set of actual color values a theme has, named by wh
 
 Nothing uses these directly in a component's CSS — they're the raw materials, not the thing you reach for day to day.
 
-Shopify has a schema-level setting that plays almost exactly this role for merchant-facing theme settings: `color_palette`, a small set of named brand colors other settings can point back to. It's a different mechanism — CSS custom properties versus a Liquid settings object — but the motivation is the same, and it's covered in full on [17.2. The Color Palette Setting](/all-about-colors/color-palette-setting/).
+Shopify has a schema-level setting that plays almost exactly this role for merchant-facing theme settings: `color_palette`, a small set of named brand colors other settings can point back to. It's a different mechanism — CSS custom properties versus a Liquid settings object — but the motivation is the same, and it's covered in full on [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/).
 
 ## Tier 2: semantic tokens — named by purpose
 
@@ -62,5 +62,5 @@ A small-to-medium theme usually does fine with just primitive and semantic token
 
 ## Further reading
 
-- [17.2. The Color Palette Setting](/all-about-colors/color-palette-setting/) — Shopify's own schema-level take on a primitive tier
+- [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) — Shopify's own schema-level take on a primitive tier
 - [Input settings: `color_scheme_group`](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#color_scheme_group) (shopify.dev)

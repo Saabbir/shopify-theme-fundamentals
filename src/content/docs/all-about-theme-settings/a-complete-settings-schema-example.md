@@ -168,7 +168,7 @@ This is a complete, realistic `config/settings_schema.json` — every group a ty
 
 - **`theme_info`** isn't optional and isn't a visible setting — every theme needs exactly one, for Shopify's own tooling to identify the theme's name, version, and support links.
 - **Logo** groups the one-time brand assets a merchant sets once and every layout file reads from — this is exactly the kind of setting that has to be global, since a store has one logo, not one per section.
-- **Colors** uses `color_scheme_group` rather than standalone color settings, per [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) — a full, production-realistic version of this appears on [17.8. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/).
+- **Colors** uses `color_scheme_group` rather than standalone color settings, per [17.2. Color Schemes](/all-about-colors/color-schemes/) — a full, production-realistic version of this appears on [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/).
 - **Typography** holds the font-role settings covered throughout [18. All About Typography](/all-about-typography/), plus a single `heading_scale` range — a reasonable global knob, since "how large do headings feel overall" is a theme-wide decision, not a per-section one.
 - **Layout** holds structural decisions (overall page width, base grid spacing) that every section's CSS can read from as a shared token, rather than each section defining its own.
 - **Cart** is a good example of a setting that's genuinely global by necessity — a store has one cart behavior (drawer or full page), not a different one per page.
