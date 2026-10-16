@@ -7,6 +7,10 @@ description: A deep dive into color_scheme_group and color_scheme — definition
 
 [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) ended with a problem: independent `color` settings multiply the number of ways a merchant can accidentally break contrast, and that risk compounds across every section in a theme. This page is the fix.
 
+:::note[Still fully current — not something to migrate away from]
+`color_scheme_group` is live, first-class, fully supported documentation — Shopify's own changelog says color schemes "continue to work" and that existing themes "don't need to change." Dawn, Shopify's other current reference theme, ships one today, which is what the real examples on this page are built from. Shopify's newer Horizon theme chose a different approach instead — many individual `color` settings plus the separate `color_palette` setting (see [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) and [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/)) — but that's Horizon's own architectural choice for a new theme, not Shopify deprecating this setting or recommending you move off it.
+:::
+
 ## `color_scheme_group`: several coordinated roles, picked as one unit
 
 A `color_scheme_group` setting, defined once in `settings_schema.json`, bundles several color roles into a single named "scheme" — then any section or block can offer a merchant a single choice between whole, pre-coordinated schemes, instead of four separate color pickers.

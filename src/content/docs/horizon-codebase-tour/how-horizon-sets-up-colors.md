@@ -7,6 +7,8 @@ description: color-palette.liquid, contrast-override.liquid, and the automatic h
 
 Everything on this page is read directly from three real files in Horizon's `snippets/` folder. Worth knowing up front: Horizon doesn't use `color_scheme_group` at all — its current source has no `color_scheme_group`, `color_scheme`, `definition`, or `role` anywhere. Instead it builds a more elaborate system than the single `color_scheme_group` example in [17.2. Color Schemes](/all-about-colors/color-schemes/) out of a different set of pieces entirely: many individual `color` settings, the `color_palette` setting, and automatic contrast correction. Read this page as "a different, real production approach to the same underlying problem," not as `color_scheme_group` scaled up.
 
+This is Horizon's own architectural choice, not Shopify deprecating `color_scheme_group`. Dawn, Shopify's other current reference theme, still ships `color_scheme_group` today, and Shopify's own changelog says color schemes "continue to work" and that themes don't need to change — `color_palette` is a recommendation for *new* themes, not a replacement requirement for existing ones. See [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) for that distinction in full.
+
 ## The base layer: `color-palette.liquid`
 
 This snippet runs once and writes the theme's foundational color custom properties to `:root`. Rather than one simple two-role palette, Horizon defines granular settings for specific UI roles — separate background/border/text settings for primary buttons, secondary buttons, form inputs, variant swatches, and selected variant swatches:
@@ -116,7 +118,7 @@ In words: if the merchant explicitly picked a text color, use it. Otherwise, che
 
 ## Key takeaways
 
-- Horizon's color system is a scaled-up version of the same ideas taught elsewhere on this site: named roles instead of generic ones, settings resolved into CSS custom properties once, and automatic contrast checking instead of trusting a merchant's raw color choice.
+- Horizon's color system applies the same ideas taught elsewhere on this site — named roles instead of generic ones, settings resolved into CSS custom properties once, automatic contrast checking instead of trusting a merchant's raw color choice — but through its own mechanism, not `color_scheme_group`. That's Horizon's own architectural choice for a new theme, not a sign `color_scheme_group` is being phased out; Dawn still ships it today.
 - `color_brightness`, `color_lighten`/`color_darken`, `color_modify`, and `color_contrast` — the full color filter set from [17.5. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/) — are all used together, for real, in this one system.
 - Horizon defines a real `color_palette` setting (id `color_palette`, two entries: `background`/`foreground`) distinct from its many separate `palette_*`-prefixed `color` settings, which merely default from it. See [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/).
 - The `contrast-override` snippet and its dynamic `.color-custom-{id}` scoping pattern are directly reusable ideas for any theme that lets a merchant set a custom background color anywhere.
