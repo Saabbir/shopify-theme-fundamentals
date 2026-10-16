@@ -242,6 +242,52 @@ Two completely different sections, both reusing the exact same four schemes and 
 - **Two independent sections consuming the same scheme set**, proving the reuse actually works the way [17.7. Building a Token System](/all-about-colors/building-a-token-system/) describes semantic tokens working: components read a variable, never a hardcoded value.
 - **A contrast-checked-by-construction set of defaults** — each scheme here pairs a background/text combination meant to already pass WCAG AA, per [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/) — worth verifying with `color_contrast` the same way that page describes, for any scheme you ship as a real default.
 
+## Built-in reference
+
+**Setting types used on this page**
+
+| Type | Used for |
+|---|---|
+| `color_scheme_group` | The main setting bundling roles into schemes |
+| `color_scheme` | A section's scheme picker |
+| `color` | `definition` entries — solid color only |
+| `color_background` | `definition` entry for the gradient role |
+
+**Liquid tags used on this page**
+
+| Tag | Purpose |
+|---|---|
+| `{% comment %}...{% endcomment %}` | Inline and file-path notes in the examples |
+| `{% style %}...{% endstyle %}` | Outputs a `<style>` block built from Liquid |
+| `{% for %}...{% endfor %}` | Loops over `settings.color_schemes` |
+| `{% render %}` | Includes the CSS-generation snippet in `theme.liquid` |
+| `{% schema %}...{% endschema %}` | Declares a section's settings |
+| `{% content_for 'blocks' %}` | Renders a section's blocks |
+
+**Liquid objects and global variables**
+
+| Property / variable | Returns | Notes |
+|---|---|---|
+| `settings.color_schemes` | Iterable | Every scheme currently defined for the theme |
+| `scheme.id` | String | Becomes the CSS class name |
+| `scheme.settings` | Object | Each `definition` value, keyed by the ID you chose |
+| `section.settings.color_scheme` | String | The scheme ID a merchant picked |
+| `content_for_header` | String | Shopify's required head-injection output — must be rendered once in `<head>`, regardless of colors |
+
+**Filter used on this page**
+
+| Filter | Purpose |
+|---|---|
+| `default` | Falls back to `scheme.settings.background` when `background_gradient` is `nil` |
+
+## Naming conventions
+
+| What you're naming | Convention | Example |
+|---|---|---|
+| CSS class that applies a scheme | `color-{{ scheme.id }}` | `.color-scheme-1` |
+| CSS custom property per role | `--color-{role}` | `--color-background`, `--color-button-label` |
+| Snippet file for the CSS-generation loop | Descriptive, hyphenated | `color-scheme-css-variables.liquid` |
+
 ## Key takeaways
 
 - `color_scheme_group` only supplies data; a theme must still render its own loop over `settings.color_schemes` to generate the actual `.color-*` CSS classes — Shopify does not do this automatically.

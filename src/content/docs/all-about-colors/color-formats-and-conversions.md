@@ -46,6 +46,23 @@ A common real need is deriving a slightly darker or lighter variant of a merchan
 
 `color_darken` (covered in full on [17.5. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/)) works directly on whatever format you give it and returns a value in the same family — you don't need to manually convert to HSL first just to darken something.
 
+## Built-in reference
+
+**Filters used on this page**
+
+| Filter | Converts | Notes |
+|---|---|---|
+| `color_to_rgb` | Any color format → `rgb(...)` string | |
+| `color_to_hsl` | Any color format → `hsl(...)` string | |
+| `color_to_hex` | Any color format → `#hex` string | |
+| `color_darken` | Any color format → same format, darker | Takes a percentage argument; full reference on [17.5. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/) |
+
+**Liquid object properties**
+
+| Property | Returns |
+|---|---|
+| `section.settings.<id>` | Hex color string, for a `color` setting |
+
 ## Key takeaways
 
 - A `color` setting always returns hex by default — that's usually all you need.

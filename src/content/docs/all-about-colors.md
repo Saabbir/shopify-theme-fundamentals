@@ -7,6 +7,8 @@ description: Everything about color, from the color setting and a deep dive into
 
 This chapter is a complete, standalone reference on color — it starts from zero and builds all the way up to advanced territory, so it works whether this is the first page you've ever read on this site or the fiftieth. It assumes you know HTML, CSS, and JavaScript, same as the rest of this site, but nothing Shopify-specific beyond that.
 
+Every page in this chapter ends with two reference tables: **Built-in reference**, listing everything Shopify-defined that page uses exactly as Shopify requires (setting types, type-specific property keys, fixed role names, filters, Liquid objects), and **Naming conventions**, for the parts you name yourself. The first tells you what you can't change; the second tells you how to name what you can.
+
 ## What's in this chapter
 
 | Page | Answers |

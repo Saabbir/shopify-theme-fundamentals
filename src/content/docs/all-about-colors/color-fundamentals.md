@@ -28,6 +28,26 @@ Independent `color` settings break down once several colors need to stay coordin
 
 Shopify's answer to this is `color_scheme_group`: bundling several color roles into a single named "scheme," so a merchant picks one pre-coordinated look instead of assembling colors one at a time. It's a big enough topic — `definition`, `color_scheme`, the `role` field, `color_background` gradients, and how a section actually consumes a scheme — that it has its own page: [17.2. Color Schemes](/all-about-colors/color-schemes/). Read that next.
 
+## Built-in reference
+
+**Setting types used on this page**
+
+| Type | Used for |
+|---|---|
+| `color` | A single, independent color picker |
+
+**Liquid object properties**
+
+| Property | Returns | Notes |
+|---|---|---|
+| `section.settings.<id>` | Hex color string | Reads a `color` setting's value — `<id>` is whatever you named it |
+
+## Naming conventions
+
+| What you're naming | Convention | Example |
+|---|---|---|
+| `color` setting `id` | snake_case, name the role the color plays, not its appearance | `accent_color`, `button_label_color` — not `green_color` |
+
 ## Key takeaways
 
 - A standalone `color` setting is right for one specific, independent color that doesn't need to stay visually coordinated with anything else.

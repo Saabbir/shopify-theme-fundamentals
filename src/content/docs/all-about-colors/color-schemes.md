@@ -48,14 +48,7 @@ Shopify's own Dawn reference theme ships exactly **seven** `definition` entries 
 
 A smaller theme can ship fewer — four roles (`background`, `text`, `button`, `button_label`) covers the basics, as the first example on this page shows. A theme with more distinct UI elements that need independent color control (borders, icons, a second accent) can add more roles. The practical ceiling isn't a Shopify limit — it's how many separate color decisions you're comfortable asking a merchant to keep coordinated across every scheme they create or edit.
 
-## Naming conventions for `definition` IDs
-
-Real themes (Dawn included) follow a consistent, snake_case pattern worth copying:
-
-- **Name the role, not the appearance** — `background`, `text`, `button`, never `white` or `dark_blue`. This is the same instinct behind [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/)' advice for standalone `color` settings, applied inside a scheme too.
-- **A sub-element gets `{role}_{aspect}`** — `button_label` (the button's label, not a new top-level role), `background_gradient` (background's gradient variant).
-- **A secondary/alternate version gets a `{modifier}_` prefix** — `secondary_button_label`, not `button_label_2` or `alt_button_label`.
-- **Labels are always `t:` translation keys**, never literal English, same as every other setting on this site.
+Real themes (Dawn included) follow a consistent naming pattern for these IDs too — see the Naming conventions table near the end of this page.
 
 ## `definition` only allows three setting types
 
@@ -159,6 +152,59 @@ A merchant choosing one scheme from a list you already tested for contrast can't
 ## How this relates to the `color_palette` setting
 
 Everything on this page is about letting a merchant *pick* a pre-coordinated bundle of colors. There's a separate, theme-wide setting called `color_palette` that's about something else: giving a theme a small set of named "raw" brand colors (think of it as the paint cans a brand ships with). A `color_scheme_group`'s own `definition` entries can use one of those raw colors as their `default`, instead of hand-typing the same hex value into every scheme — it's covered in full on [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/).
+
+## Built-in reference
+
+**Setting types used on this page**
+
+| Type | Used for |
+|---|---|
+| `color_scheme_group` | Bundles several color roles into one named scheme |
+| `color_scheme` | Lets a section or block pick one scheme |
+| `color` | A `definition` entry — solid color only |
+| `color_background` | A `definition` entry — solid color or gradient |
+| `header` | A `definition` entry — visual grouping, no color |
+
+**Property keys exclusive to `color_scheme_group`**
+
+| Key | Required? | Purpose |
+|---|---|---|
+| `definition` | Yes | Lists every role a scheme must fill |
+| `role` | No | Maps your `definition` IDs to Shopify's fixed role names, for the editor preview |
+
+**Fixed role names** (the only 10 keys `role` accepts)
+
+| Role | Required? | Rendered in preview? | Gradient-capable? |
+|---|---|---|---|
+| `background` | Yes | Yes | Yes |
+| `text` | Yes | Yes | No |
+| `primary_button` | Yes | Yes | Yes |
+| `primary_button_border` | Yes | Yes | No |
+| `on_primary_button` | Yes | No | No |
+| `secondary_button` | Yes | Yes | Yes |
+| `secondary_button_border` | Yes | Yes | No |
+| `on_secondary_button` | Yes | No | No |
+| `links` | Yes | No | No |
+| `icons` | Yes | No | No |
+
+**Liquid object properties**
+
+| Property | Returns | Notes |
+|---|---|---|
+| `scheme.id` | String | The scheme's ID, becomes your CSS class name |
+| `scheme.settings` | Object | Holds every `definition` value, keyed by the ID you chose |
+| `settings.color_schemes` | Iterable | All of a theme's current schemes; loop over this to generate CSS |
+| `section.settings.color_scheme` | String | The scheme ID a merchant picked for a `color_scheme` setting |
+
+## Naming conventions
+
+| What you're naming | Convention | Example |
+|---|---|---|
+| `color_scheme_group` setting `id` | snake_case, plural/collective | `color_schemes` |
+| `definition` entry `id` | snake_case, name the role, not the appearance | `background`, `button`, not `white` |
+| Sub-element of a role | `{role}_{aspect}` | `button_label`, `background_gradient` |
+| Secondary/alternate variant | `{modifier}_{role}` | `secondary_button_label`, not `button_label_2` |
+| `label` value | Always a `t:` translation key, never literal English | `t:labels.background` |
 
 ## Key takeaways
 

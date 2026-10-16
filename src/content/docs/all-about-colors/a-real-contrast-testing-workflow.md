@@ -47,6 +47,28 @@ Option 3 — constraining choices via `color_scheme_group` — prevents the prob
 
 Per the QA checklist referenced throughout this project's own conventions, color contrast belongs alongside keyboard navigation and screen-reader checks as a standard pre-ship step — not a one-time audit done only when something looks visibly wrong.
 
+## Built-in reference
+
+**Filter used on this page**
+
+| Filter | Arguments | Returns |
+|---|---|---|
+| `color_contrast` | A second color | WCAG contrast ratio, as a number |
+
+**Fixed thresholds referenced** (WCAG standard, not Shopify-specific)
+
+| Threshold | Applies to |
+|---|---|
+| 4.5:1 | Normal body text |
+| 3:1 | Large text (roughly 24px+, or bold ~19px+) and meaningful UI elements |
+
+**Shopify setting types referenced**
+
+| Type | Used for |
+|---|---|
+| `color_scheme_group` | Constraining a merchant to pre-checked combinations — see [17.2. Color Schemes](/all-about-colors/color-schemes/) |
+| `color_palette` | The example's subject — see [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) |
+
 ## Key takeaways
 
 - Check every default color pairing a theme ships — presets and `color_scheme_group` defaults included — with `color_contrast`, not just a visual once-over.

@@ -54,6 +54,22 @@ Now a design change scoped to just buttons — darkening the hover state, say �
 A small-to-medium theme usually does fine with just primitive and semantic tokens — introducing a full third, component-specific tier adds real overhead (more variables to track, more indirection to follow) that only pays off once a theme has enough distinct components with genuinely independent color needs. Add the component tier when you notice yourself wanting to change one component's color without affecting others that share the same semantic token — not preemptively.
 :::
 
+## Built-in reference
+
+This page is almost entirely about a CSS naming pattern you design yourself — custom properties aren't a Shopify-specific feature, they're plain CSS. The one official touchpoint:
+
+| Type | Used for |
+|---|---|
+| `color_palette` | Shopify's own schema-level take on a primitive tier — see [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) |
+
+## Naming conventions
+
+| Tier | Pattern | Example |
+|---|---|---|
+| Primitive | `--primitive-{name}-{shade}` | `--primitive-blue-500` |
+| Semantic | `--color-{role}` | `--color-accent`, `--color-background` |
+| Component | `--{component}-{property}[-{state}]` | `--button-background-hover` |
+
 ## Key takeaways
 
 - Primitive tokens are the raw palette, named by appearance. Semantic tokens point at a primitive, named by purpose. Component tokens narrow a semantic token to one specific component's need.

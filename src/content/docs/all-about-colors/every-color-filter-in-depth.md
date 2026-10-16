@@ -63,6 +63,15 @@ Pulls out a single numeric component (`red`, `green`, `blue`, `alpha`, `hue`, `s
 
 Changes one named channel while leaving the others alone — this is how you'd add transparency to an otherwise-opaque merchant-picked color, since a standard `color` setting has no built-in way to pick alpha/transparency itself.
 
+## Measuring brightness
+
+```liquid
+{{ "#ff6600" | color_brightness }}
+{% # => a number from 0 (black) to 255 (white) %}
+```
+
+Returns a single brightness value for a color — useful for deciding, programmatically, whether a color is "light" or "dark" overall, without checking individual channels yourself. [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) and [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) both use this to find the lightest and darkest color in a merchant's palette automatically.
+
 ## Checking contrast between two colors
 
 ```liquid
@@ -76,10 +85,36 @@ Returns the WCAG contrast ratio between two colors — not a filter that changes
 
 Covered in full on [17.4. Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/): `color_to_rgb`, `color_to_hsl`, `color_to_hex`.
 
+## Built-in reference
+
+**Filters covered on this page**
+
+| Filter | Arguments | Returns |
+|---|---|---|
+| `color_darken` | Percentage | Same color format, darker |
+| `color_lighten` | Percentage | Same color format, lighter |
+| `color_saturate` | Percentage | Same color format, more vivid |
+| `color_desaturate` | Percentage | Same color format, more muted |
+| `color_mix` | Second color, blend percentage | Blended color |
+| `color_extract` | Channel name | Number |
+| `color_modify` | Channel name, new value | Color with that one channel changed |
+| `color_brightness` | None | Number, 0 (black) to 255 (white) |
+| `color_contrast` | Second color | Contrast ratio number |
+| `color_to_rgb` / `color_to_hsl` / `color_to_hex` | None | Converted format string — full reference on [17.4. Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/) |
+
+**Fixed channel names** accepted by `color_extract` and `color_modify`
+
+| Channel | Range |
+|---|---|
+| `red`, `green`, `blue` | 0–255 |
+| `alpha` | 0–1 |
+| `hue` | 0–360 |
+| `saturation`, `lightness` | 0–100 (%) |
+
 ## Key takeaways
 
 - `color_darken`/`color_lighten` and `color_saturate`/`color_desaturate` derive a related tone from one merchant-picked color, without a second setting.
-- `color_mix` blends two colors; `color_extract` pulls out one channel; `color_modify` changes one channel while leaving the rest alone (useful for adding alpha/transparency).
+- `color_mix` blends two colors; `color_extract` pulls out one channel; `color_modify` changes one channel while leaving the rest alone (useful for adding alpha/transparency); `color_brightness` scores a color's overall lightness as one number.
 - `color_contrast` is the one to reach for before shipping any new color pairing — see the dedicated contrast-workflow page for how to use it systematically, not just spot-check it.
 
 ## Further reading

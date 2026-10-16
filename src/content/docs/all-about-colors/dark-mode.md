@@ -39,6 +39,20 @@ There's no universally correct choice here — it depends on how much the theme 
 If you implement the "dark mode always wins" approach, make sure the dark variant you ship still passes contrast for whatever text/background pairings appear in it — a merchant never tested your dark override against their content, so it's on the theme to have verified it, using the same workflow in [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/).
 :::
 
+## Built-in reference
+
+**Web platform feature used on this page** (not Shopify-specific)
+
+| Feature | Type | Notes |
+|---|---|---|
+| `prefers-color-scheme` | CSS media query | A browser/OS-level standard, not a Shopify or Liquid feature — evaluated entirely client-side, so nothing server-rendered (including Liquid) can read it |
+
+**Shopify setting type referenced**
+
+| Type | Used for |
+|---|---|
+| `color_scheme_group` | The merchant-controlled alternative (or complement) to automatic dark mode — see [17.2. Color Schemes](/all-about-colors/color-schemes/) |
+
 ## Key takeaways
 
 - Dark mode (`prefers-color-scheme`) is the shopper's own system preference, read purely in CSS — not something Liquid or a merchant setting can detect at render time.

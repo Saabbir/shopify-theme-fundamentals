@@ -132,6 +132,49 @@ It's a reasonable question to ask whether `color_palette` replaces `color_scheme
 
 In practice the two combine naturally: a `color_scheme_group`'s own `definition` entries can use `"default": "{{ settings.color_palette.background }}"` exactly the same way any other `color` setting can, so a theme's shipped schemes start out built from the same raw palette instead of a second, disconnected set of hardcoded hex values. Shopify's own changelog describes newer reference themes (Horizon 4.0.0 and later) as using the new palette system "throughout" — but that's additive to `color_scheme_group`, not a deprecation of it. Neither mechanism is currently a Theme Store requirement, but Shopify has said it's focusing future development on palettes, which is worth keeping in mind as a direction, not an urgent migration.
 
+## Built-in reference
+
+**Setting types used on this page**
+
+| Type | Used for |
+|---|---|
+| `color_palette` | One theme-wide set of named brand colors |
+| `color` | Example setting with a dynamic default pointing at a palette color |
+| `color_background` | Example setting with a dynamic-default gradient built from two palette colors |
+
+**Property keys supported by `color_palette`**
+
+| Key | Required? | Purpose |
+|---|---|---|
+| `id` | Yes | The setting's own id — becomes the Liquid accessor `settings.<id>` |
+| `default` | Yes | Flat object of 2–20 named hex colors — the palette's only content |
+| `label`, `info`, `visible_if` | Not supported | Unlike almost every other setting type, `color_palette` doesn't accept these |
+
+**Fixed constraints Shopify enforces**
+
+| Constraint | Fixed rule |
+|---|---|
+| Instances per theme | Exactly one `color_palette` setting allowed |
+| Number of entries in `default` | 2–20; outside that range fails theme check |
+| Key format | Must start with a letter; letters, digits, and underscores only after that |
+| Color format | Valid hex, no alpha — an 8-digit hex is rejected |
+
+**Liquid object properties and filters**
+
+| Property / filter | Returns | Notes |
+|---|---|---|
+| `settings.<id>.<key>` | Color object | Reads one named palette color |
+| `for color in settings.<id>` | Iterates values, not keys | The key names aren't available inside the loop |
+| `color_brightness` | Number, 0–255 | Used in the example to find the lightest/darkest palette color |
+
+## Naming conventions
+
+| What you're naming | Convention | Example |
+|---|---|---|
+| `color_palette` setting `id` | Commonly just `color_palette`, matching the type name — though any valid id works | `color_palette` |
+| A key inside `default` | snake_case; must start with a letter, then letters/digits/underscores only | `background`, `accent_2` |
+| A separate setting that defaults *from* the palette | A distinguishing prefix, so it reads as "built from the palette" rather than part of it — Horizon uses `palette_` | `palette_primary_button_text` |
+
 ## Key takeaways
 
 - `color_palette` is a single, theme-wide setting (`id` + `default` only) holding 2–20 named, fully opaque hex colors — a small source of truth, not a replacement for independent color settings.
