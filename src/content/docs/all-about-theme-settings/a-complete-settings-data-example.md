@@ -69,7 +69,7 @@ This is the `config/settings_data.json` that would actually result from a mercha
 
 ## Reading this file correctly
 
-Every key under `current` corresponds directly to an `id` from the schema file — `heading_font`, `page_width`, and so on — holding whatever value the merchant actually picked. Notice `color_schemes` has grown a third entry, `scheme-3`, beyond the two the schema shipped as defaults: a merchant can add their own additional schemes from the theme editor, and each one gets stored here the same way, keyed by its scheme ID.
+Every key under `current` corresponds directly to an `id` from the schema file — `heading_font`, `page_width`, and so on — holding whatever value the merchant actually picked. `color_schemes` itself isn't defined by the schema's `color_scheme_group` setting at all — that setting only ever declares `definition` (the roles each scheme must fill) and never ships schemes of its own. Every scheme here, including the third one, `scheme-3`, was added by a merchant from the theme editor (or shipped as a starting preset in this file, under `presets`) and stored here, keyed by its scheme ID.
 
 `social_tiktok_link` is present with an empty string, not omitted — once a merchant has interacted with a setting (even to leave it blank), Shopify typically still writes an entry for it, rather than removing the key entirely.
 
@@ -82,7 +82,7 @@ Everything in this file reflects a specific merchant's real, saved configuration
 ## Key takeaways
 
 - Every `current` key matches an `id` from `settings_schema.json` one-to-one — this file holds values, the schema file holds structure.
-- A merchant can add more entries to a `color_scheme_group` value (or any repeatable structure) beyond what the schema's own `default` shipped — those additions are saved here too.
+- A `color_scheme_group` setting in the schema never ships its own schemes — every scheme a merchant sees, including any they've added themselves, lives here in `settings_data.json`.
 - `presets` in this file is a theme-level concept (complete, named, swappable style bundles) — unrelated to a section's own `presets` array covered in [6.2. Presets & Defaults](/schema-and-settings/presets-and-defaults/).
 
 ## Further reading

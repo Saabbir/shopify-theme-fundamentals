@@ -1,9 +1,9 @@
 ---
 title: Color Schemes
-description: A deep dive into color_scheme_group and color_scheme — definition, the role field, color_background gradients, and how a section actually consumes a scheme via a class.
+description: A deep dive into color_scheme_group and color_scheme — definition, common settings and naming conventions, the role field, color_background gradients, and a complete real-world example.
 ---
 
-**TL;DR:** A deep dive into `color_scheme_group` and `color_scheme` — `definition`, the `role` field, `color_background` gradients, and how a section actually consumes a scheme via a class.
+**TL;DR:** A deep dive into `color_scheme_group` and `color_scheme` — `definition`, how many settings a scheme should have, common settings and naming conventions, the `role` field, `color_background` gradients, and a complete real-world example.
 
 [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) ended with a problem: independent `color` settings multiply the number of ways a merchant can accidentally break contrast, and that risk compounds across every section in a theme. This page is the fix.
 
@@ -20,21 +20,42 @@ A `color_scheme_group` setting, defined once in `settings_schema.json`, bundles 
     { "type": "color", "id": "text", "label": "t:labels.text" },
     { "type": "color", "id": "button", "label": "t:labels.button" },
     { "type": "color", "id": "button_label", "label": "t:labels.button_label" }
-  ],
-  "default": [
-    {
-      "id": "scheme-1",
-      "settings": { "background": "#ffffff", "text": "#121212", "button": "#121212", "button_label": "#ffffff" }
-    },
-    {
-      "id": "scheme-2",
-      "settings": { "background": "#121212", "text": "#ffffff", "button": "#ffffff", "button_label": "#121212" }
-    }
   ]
 }
 ```
 
-`definition` lists the roles every scheme must provide a color for. `default` ships one or more actual schemes a merchant can pick between right away — here, a light one and a dark one, each with all four roles already filled in and already contrasting correctly.
+`definition` lists the roles every scheme must provide a color for — it's a *template*, not actual schemes yet.
+
+:::note[`color_scheme_group` has no `default` array of its own]
+It's tempting to assume the setting also ships its actual schemes inline, the way a `color` setting ships a `default` hex value. It doesn't. `color_scheme_group` only ever has four possible keys: `type`, `id`, `definition`, and the optional `role` (covered below) — never a `default` holding an array of schemes. The real schemes a merchant sees and edits (Scheme 1, Scheme 2, and so on) live in a theme's `config/settings_data.json` file instead, under `presets.<theme name>.color_schemes` — an object keyed by scheme ID, each holding just a `settings` object. [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) and [28.4. A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/) both show this file written out in full. A merchant adding a scheme from the theme editor, or a theme shipping starting schemes, both work by writing into that file — never by editing `definition` itself.
+:::
+
+## How many settings should a scheme have? Is there a limit?
+
+Shopify doesn't document a minimum or maximum number of `definition` entries — there's no stated cap, and no error for having "too many" roles. In practice, the number is driven by how many visually distinct things a section actually needs to color, not by any platform limit.
+
+Shopify's own Dawn reference theme ships exactly **seven** `definition` entries in its `color_scheme_group`, and that's a reasonable real-world benchmark for "enough roles to cover a typical section, without overwhelming the merchant with choices":
+
+| Setting ID | Type | What it's for |
+|---|---|---|
+| `background` | `color` | The scheme's base background color |
+| `background_gradient` | `color_background` | An optional gradient alternative to `background` |
+| `text` | `color` | Body text color |
+| `button` | `color` | Primary button background |
+| `button_label` | `color` | Primary button text |
+| `secondary_button_label` | `color` | Secondary (outlined) button text, and link color |
+| `shadow` | `color` | Drop-shadow color for elevated elements |
+
+A smaller theme can ship fewer — four roles (`background`, `text`, `button`, `button_label`) covers the basics, as the first example on this page shows. A theme with more distinct UI elements that need independent color control (borders, icons, a second accent) can add more roles. The practical ceiling isn't a Shopify limit — it's how many separate color decisions you're comfortable asking a merchant to keep coordinated across every scheme they create or edit.
+
+## Naming conventions for `definition` IDs
+
+Real themes (Dawn included) follow a consistent, snake_case pattern worth copying:
+
+- **Name the role, not the appearance** — `background`, `text`, `button`, never `white` or `dark_blue`. This is the same instinct behind [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/)' advice for standalone `color` settings, applied inside a scheme too.
+- **A sub-element gets `{role}_{aspect}`** — `button_label` (the button's label, not a new top-level role), `background_gradient` (background's gradient variant).
+- **A secondary/alternate version gets a `{modifier}_` prefix** — `secondary_button_label`, not `button_label_2` or `alt_button_label`.
+- **Labels are always `t:` translation keys**, never literal English, same as every other setting on this site.
 
 ## `definition` only allows three setting types
 
@@ -59,43 +80,30 @@ A plain `color` role can only ever be a flat color. If a scheme's background sho
     { "type": "color_background", "id": "background", "label": "t:labels.background" },
     { "type": "color", "id": "button", "label": "t:labels.button" },
     { "type": "color", "id": "button_label", "label": "t:labels.button_label" }
-  ],
-  "default": [
-    {
-      "id": "scheme-1",
-      "settings": { "text": "#121212", "background": "#ffffff", "button": "#121212", "button_label": "#ffffff" }
-    },
-    {
-      "id": "scheme-2",
-      "settings": {
-        "text": "#ffffff",
-        "background": "linear-gradient(180deg, #2c6e5c, #121212 100%)",
-        "button": "#ffffff",
-        "button_label": "#121212"
-      }
-    }
   ]
 }
 ```
 
-In the theme editor, a `color_background` field shows the merchant a toggle between a plain color and a gradient builder, in one control. In the Liquid object it produces, `scheme.settings.background` is a plain hex string for `scheme-1` and a full `linear-gradient(...)` string for `scheme-2` — the theme's CSS has to handle either shape. The CSS-generation loop in [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) uses `background` (the shorthand property) rather than `background-color` for exactly this reason: `background-color` silently drops a gradient value, while `background` accepts a flat color or a gradient interchangeably.
+In the theme editor, a `color_background` field shows the merchant a toggle between a plain color and a gradient builder, in one control. In the Liquid object it produces, `scheme.settings.background` comes out as a plain hex string for a scheme that picked a solid color, and a full `linear-gradient(...)` string for one that picked a gradient — the theme's CSS has to handle either shape. The CSS-generation loop in [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) uses `background` (the shorthand property) rather than `background-color` for exactly this reason: `background-color` silently drops a gradient value, while `background` accepts a flat color or a gradient interchangeably.
 
 ## `role`: telling the editor which swatch means what
 
 `color_scheme_group` has one more optional field, `role`, that doesn't change what a merchant can pick — it only tells Shopify's own theme editor how to render the small preview swatch next to each scheme in the scheme picker. Without `role`, the editor has no way to know which of your `definition` IDs is "the background" versus "the button," so it can't draw an accurate preview.
+
+Here's the real, complete `role` object from Shopify's Dawn theme, mapped against the seven settings from the table above:
 
 ```json
 {
   "type": "color_scheme_group",
   "id": "color_schemes",
   "definition": [
-    { "type": "color", "id": "background", "label": "t:labels.background" },
-    { "type": "color_background", "id": "background_gradient", "label": "t:labels.background_gradient" },
-    { "type": "color", "id": "text", "label": "t:labels.text" },
-    { "type": "color", "id": "button", "label": "t:labels.button" },
-    { "type": "color", "id": "button_label", "label": "t:labels.button_label" },
-    { "type": "color", "id": "secondary_button_label", "label": "t:labels.secondary_button_label" },
-    { "type": "color", "id": "shadow", "label": "t:labels.shadow" }
+    { "type": "color", "id": "background", "label": "t:settings_schema.colors.settings.background.label", "default": "#FFFFFF" },
+    { "type": "color_background", "id": "background_gradient", "label": "t:settings_schema.colors.settings.background_gradient.label" },
+    { "type": "color", "id": "text", "label": "t:settings_schema.colors.settings.text.label", "default": "#121212" },
+    { "type": "color", "id": "button", "label": "t:settings_schema.colors.settings.button_background.label", "default": "#121212" },
+    { "type": "color", "id": "button_label", "label": "t:settings_schema.colors.settings.button_label.label", "default": "#FFFFFF" },
+    { "type": "color", "id": "secondary_button_label", "label": "t:settings_schema.colors.settings.secondary_button_label.label", "default": "#121212" },
+    { "type": "color", "id": "shadow", "label": "t:settings_schema.colors.settings.shadow.label", "default": "#121212" }
   ],
   "role": {
     "text": "text",
@@ -108,39 +116,26 @@ In the theme editor, a `color_background` field shows the merchant a toggle betw
     "secondary_button": "background",
     "on_secondary_button": "secondary_button_label",
     "secondary_button_border": "secondary_button_label"
-  },
-  "default": [
-    {
-      "id": "scheme-1",
-      "settings": {
-        "background": "#ffffff",
-        "text": "#121212",
-        "button": "#121212",
-        "button_label": "#ffffff",
-        "secondary_button_label": "#121212",
-        "shadow": "#121212"
-      }
-    }
-  ]
+  }
 }
 ```
 
-Every key in `role` maps a standardized role name (the left-hand side, which the editor understands) to one of your own `definition` IDs (the right-hand side, which you chose). Ten role keys exist, and the editor's preview requires most of them to be present:
+Every key in `role` maps a standardized role name (the left-hand side, which the editor understands) to one of your own `definition` IDs (the right-hand side, which you chose). Ten role keys exist in total, and **every one of them is required** — Shopify's own docs mark all ten as required, with no optional roles:
 
-| Role key | Required? | What the editor does with it |
+| Role key | What the editor does with it | Gradient-capable? |
 |---|---|---|
-| `background` | Yes | Fills the swatch's background. Can map to a single `definition` ID, or to an object with `solid` and `gradient` sub-keys, so the editor shows whichever one the active scheme actually set. |
-| `text` | Yes | Colors the swatch's sample text. |
-| `primary_button` | Yes | Renders a filled preview "button" pill. |
-| `on_primary_button` | Yes | Required by the schema, but not currently drawn in the preview. |
-| `primary_button_border` | Yes | Required by the schema, but not currently drawn in the preview. |
-| `secondary_button` | Yes | Renders a second, outlined preview "button" pill. |
-| `on_secondary_button` | Yes | Required by the schema, but not currently drawn in the preview. |
-| `secondary_button_border` | Yes | Required by the schema, but not currently drawn in the preview. |
-| `links` | Yes | Required by the schema, but not currently drawn in the preview. |
-| `icons` | Yes | Required by the schema, but not currently drawn in the preview. |
+| `background` | Fills the swatch's background. | Yes — can map to a single `definition` ID, or to an object with `solid` and `gradient` sub-keys, so the editor shows whichever one the active scheme actually set. |
+| `text` | Colors the swatch's sample text. | No |
+| `primary_button` | Renders the first, filled preview "button" pill. | Yes — same `{ "solid": ..., "gradient": ... }` pattern as `background` |
+| `primary_button_border` | Renders that same pill's border. | No |
+| `on_primary_button` | Not used in the preview. | No |
+| `secondary_button` | Renders a second, outlined preview "button" pill. | Yes — same `{ "solid": ..., "gradient": ... }` pattern |
+| `secondary_button_border` | Renders that second pill's border. | No |
+| `on_secondary_button` | Not used in the preview. | No |
+| `links` | Not used in the preview. | No |
+| `icons` | Not used in the preview. | No |
 
-Two things worth noticing: several roles are required even though the current editor preview doesn't visibly use them yet — Shopify validates that you've mapped all ten regardless, so an incomplete `role` object fails theme check even if the missing role "wouldn't show up anyway." And `role` only affects the *editor's own preview swatch* — it has no effect on the scheme object your Liquid code receives. The `scheme` object looped at render time still only exposes `scheme.id` and `scheme.settings` — there's no `scheme.role` to read. Whatever meaning a role carries, your own section or snippet markup has to apply it by reading `scheme.settings.<your-own-id>`, the same way it would without `role` defined at all.
+Two things worth noticing: all ten roles are required even though four of them (`on_primary_button`, `on_secondary_button`, `links`, `icons`) aren't currently drawn anywhere in the editor's preview swatch — Shopify validates that you've mapped every one regardless, so an incomplete `role` object fails theme check even though some of those mappings "wouldn't visibly show up anyway." And `role` only affects the *editor's own preview swatch* — it has no effect on the scheme object your Liquid code receives. The `scheme` object looped at render time still only exposes `scheme.id` and `scheme.settings` — there's no `scheme.role` to read. Whatever meaning a role carries, your own section or snippet markup has to apply it by reading `scheme.settings.<your-own-id>`, the same way it would without `role` defined at all.
 
 ## Letting a section use it
 
@@ -168,10 +163,12 @@ Everything on this page is about letting a merchant *pick* a pre-coordinated bun
 ## Key takeaways
 
 - `color_scheme_group` bundles several color roles into a single named scheme, so a merchant picks one coordinated look instead of assembling colors independently.
+- The setting itself only ever has `type`, `id`, `definition`, and optional `role` — never a `default` array of schemes. Real schemes live in `settings_data.json`.
+- There's no documented limit on how many `definition` roles a scheme can have. Dawn ships seven as a real-world reference point; four is enough to cover the basics.
+- Name roles by what they're for, not what they look like, following the `{role}`, `{role}_{aspect}`, and `{modifier}_{role}` patterns real themes use.
 - `definition` only accepts three entry types — `header`, `color`, and `color_background` — nothing else.
-- `color_background` lets a role be a gradient as well as a flat color; consume it with the `background` CSS shorthand, not `background-color`, so a gradient value isn't silently dropped.
-- The optional `role` field maps your own `definition` IDs to the ten standardized roles Shopify's editor needs to draw an accurate scheme-picker preview swatch. It only affects that preview — your own Liquid still reads `scheme.settings.<your-id>` exactly as it would without `role`.
-- A section or block consumes a scheme with a `color_scheme` setting, then applies a matching `color-{{ ... }}` class — but the theme still has to render the actual CSS for each scheme itself; Shopify doesn't generate it automatically.
+- `color_background` lets a role be a gradient as well as a flat color; consume it with the `background` CSS shorthand, not `background-color`, so a gradient value isn't silently dropped. Three role keys — `background`, `primary_button`, `secondary_button` — support this gradient mapping.
+- The `role` field maps your own `definition` IDs to ten standardized roles Shopify's editor needs for an accurate scheme-picker preview — all ten are required, even the four that aren't currently drawn in the preview. It only affects that preview; your own Liquid still reads `scheme.settings.<your-id>` exactly as it would without `role`.
 - `color_palette` is a separate, theme-wide setting for a small set of named brand colors — not a replacement for `color_scheme_group`, and not required by it. See [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/).
 
 ## Further reading
@@ -179,4 +176,5 @@ Everything on this page is about letting a merchant *pick* a pre-coordinated bun
 - [Input settings: `color_scheme_group`](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#color_scheme_group) (shopify.dev)
 - [Input settings: `color_scheme`](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#color_scheme) (shopify.dev)
 - [The `color_contrast` filter](https://shopify.dev/docs/api/liquid/filters/color_contrast) (shopify.dev), for checking a pairing programmatically
+- [Dawn's real `color_scheme_group` definition (GitHub)](https://github.com/Shopify/dawn/blob/main/config/settings_schema.json)
 - [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/)

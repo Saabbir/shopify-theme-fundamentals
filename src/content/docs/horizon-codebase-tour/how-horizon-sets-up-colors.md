@@ -5,7 +5,7 @@ description: color-palette.liquid, contrast-override.liquid, and the automatic h
 
 **TL;DR:** `color-palette.liquid`, `contrast-override.liquid`, and the automatic hover/contrast system, read from source.
 
-Everything on this page is read directly from three real files in Horizon's `snippets/` folder. Together they show a noticeably more elaborate color system than the single `color_scheme_group` example in [17.2. Color Schemes](/all-about-colors/color-schemes/) — this is what that same idea looks like scaled up to a real, production theme.
+Everything on this page is read directly from three real files in Horizon's `snippets/` folder. Worth knowing up front: Horizon doesn't use `color_scheme_group` at all — its current source has no `color_scheme_group`, `color_scheme`, `definition`, or `role` anywhere. Instead it builds a more elaborate system than the single `color_scheme_group` example in [17.2. Color Schemes](/all-about-colors/color-schemes/) out of a different set of pieces entirely: many individual `color` settings, the `color_palette` setting, and automatic contrast correction. Read this page as "a different, real production approach to the same underlying problem," not as `color_scheme_group` scaled up.
 
 ## The base layer: `color-palette.liquid`
 

@@ -36,61 +36,66 @@ description: A full color_scheme_group with role and a color_background gradient
         "secondary_button": "background",
         "on_secondary_button": "secondary_button_label",
         "secondary_button_border": "secondary_button_label"
-      },
-      "default": [
-        {
-          "id": "scheme-1",
-          "settings": {
-            "background": "#ffffff",
-            "text": "#121212",
-            "button": "#121212",
-            "button_label": "#ffffff",
-            "secondary_button_label": "#121212",
-            "border": "#e5e5e5"
-          }
-        },
-        {
-          "id": "scheme-2",
-          "settings": {
-            "background": "#121212",
-            "text": "#ffffff",
-            "button": "#ffffff",
-            "button_label": "#121212",
-            "secondary_button_label": "#ffffff",
-            "border": "#333333"
-          }
-        },
-        {
-          "id": "scheme-3",
-          "settings": {
-            "background": "#f4ede4",
-            "text": "#2c2416",
-            "button": "#8a5a3b",
-            "button_label": "#ffffff",
-            "secondary_button_label": "#8a5a3b",
-            "border": "#ddd0bd"
-          }
-        },
-        {
-          "id": "scheme-4",
-          "settings": {
-            "background_gradient": "linear-gradient(180deg, #2c6e5c, #121212 100%)",
-            "text": "#ffffff",
-            "button": "#ffffff",
-            "button_label": "#121212",
-            "secondary_button_label": "#ffffff",
-            "border": "#333333"
-          }
-        }
-      ]
+      }
     }
   ]
 }
 ```
 
-Four schemes here, each filling in every role `definition` requires: `scheme-1` is a plain light scheme, `scheme-2` is a dark/inverse scheme, `scheme-3` is a warm, brand-accent scheme, and `scheme-4` is a bold, gradient-background scheme that only the fourth scheme actually uses — `scheme-1` through `scheme-3` leave `background_gradient` unset and rely on the plain `background` color instead. `role` doesn't change any of this at runtime; it only tells the theme editor's own scheme picker which `definition` IDs correspond to which standardized concept (background, text, primary button, and so on), so it can draw an accurate preview swatch for each scheme without guessing. The full mapping and every role key are covered in [17.2. Color Schemes](/all-about-colors/color-schemes/) — this page assumes that explanation and jumps straight to using it.
+That's the entire setting — `type`, `id`, `definition`, `role`. As [17.2. Color Schemes](/all-about-colors/color-schemes/) explains, there's no `default` array of schemes living inside it. The four actual schemes a merchant sees (a light one, a dark/inverse one, a warm brand-accent one, and a bold gradient one) live in `config/settings_data.json` instead, keyed by scheme ID:
 
-This is the same `color_schemes` setting that already appears populated with real merchant-chosen values in [28.4. A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/) — that page shows what Shopify saves once a merchant has used this setting; this page shows the setting's own definition, and what makes it actually render as color.
+```json
+{
+  "current": {
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#ffffff",
+          "text": "#121212",
+          "button": "#121212",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "border": "#e5e5e5"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#121212",
+          "text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#121212",
+          "secondary_button_label": "#ffffff",
+          "border": "#333333"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background": "#f4ede4",
+          "text": "#2c2416",
+          "button": "#8a5a3b",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#8a5a3b",
+          "border": "#ddd0bd"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "background_gradient": "linear-gradient(180deg, #2c6e5c, #121212 100%)",
+          "text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#121212",
+          "secondary_button_label": "#ffffff",
+          "border": "#333333"
+        }
+      }
+    }
+  }
+}
+```
+
+Each scheme fills in every role `definition` requires, except `scheme-4` — the bold, gradient-background scheme — which sets `background_gradient` instead of `background` and leaves `background` unset. `role` doesn't change any of this at runtime; it only tells the theme editor's own scheme picker which `definition` IDs correspond to which standardized concept (background, text, primary button, and so on), so it can draw an accurate preview swatch for each scheme without guessing. The full mapping and every role key are covered in [17.2. Color Schemes](/all-about-colors/color-schemes/) — this page assumes that explanation and jumps straight to using it.
+
+This split — structure in `settings_schema.json`, real values in `settings_data.json` — is the same split shown in full in [28.3. A Complete settings_schema.json Example](/all-about-theme-settings/a-complete-settings-schema-example/) and [28.4. A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/) — those pages show `scheme-1` through `scheme-3` on a simpler four-role scheme; `scheme-4` and the gradient role are new on this page, to demonstrate `color_background`.
 
 ## The missing piece: turning schemes into CSS
 
@@ -161,7 +166,7 @@ This is the loop directly documented by [Shopify's `color_scheme_group` Liquid o
 Notice `--color-background` on `.color-scheme-4` holds a full `linear-gradient(...)` string, not a hex color. That's the whole reason the consuming CSS below reads `background: var(--color-background)` rather than `background-color: var(--color-background)` — `background-color` only ever accepts a solid color and would simply drop the gradient, leaving `scheme-4` rendering as transparent. `background` accepts either shape, so the same declaration works unmodified across all four schemes.
 
 :::note[Real scheme IDs vs. this example's names]
-A merchant-created scheme's real `id` is usually a generated value, not a clean name like `scheme-1` — this example keeps `scheme-1` through `scheme-4` throughout purely for readability, matching the same IDs already used in [28.5. A Complete Template Example](/all-about-theme-settings/a-complete-template-example/) and [28.4. A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/) (those pages only use `scheme-1` through `scheme-3` — `scheme-4` is new on this page, to demonstrate the gradient role).
+A merchant-created scheme's real `id` is usually a generated value, not a clean name like `scheme-1` — this example keeps `scheme-1` through `scheme-4` throughout purely for readability, matching the same IDs already used in [28.5. A Complete Template Example](/all-about-theme-settings/a-complete-template-example/).
 :::
 
 ## Consuming it: a section with a `color_scheme` setting
@@ -250,4 +255,5 @@ Two completely different sections, both reusing the exact same four schemes and 
 - [Input settings: `color_scheme_group`](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#color_scheme_group) (shopify.dev)
 - [Liquid objects: color_scheme_group](https://shopify.dev/docs/api/liquid/objects/color_scheme_group) (shopify.dev)
 - [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) — for feeding a scheme's `default` colors from one shared, theme-wide palette instead of hand-typed hex values
-- [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) — this same idea, scaled up to a real, production theme
+- [Dawn's real `color_scheme_group` (GitHub)](https://github.com/Shopify/dawn/blob/main/config/settings_schema.json) — the production theme this page's `definition` and `role` are modeled on
+- [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) — a different, newer production color system worth comparing against this one; Horizon doesn't use `color_scheme_group` at all

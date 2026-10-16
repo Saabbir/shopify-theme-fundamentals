@@ -54,28 +54,6 @@ This is a complete, realistic `config/settings_schema.json` — every group a ty
           { "type": "color", "id": "button", "label": "t:labels.button" },
           { "type": "color", "id": "button_label", "label": "t:labels.button_label" },
           { "type": "color", "id": "border", "label": "t:labels.border" }
-        ],
-        "default": [
-          {
-            "id": "scheme-1",
-            "settings": {
-              "background": "#ffffff",
-              "text": "#121212",
-              "button": "#121212",
-              "button_label": "#ffffff",
-              "border": "#e5e5e5"
-            }
-          },
-          {
-            "id": "scheme-2",
-            "settings": {
-              "background": "#121212",
-              "text": "#ffffff",
-              "button": "#ffffff",
-              "button_label": "#121212",
-              "border": "#333333"
-            }
-          }
         ]
       }
     ]
