@@ -31,7 +31,7 @@ A `color_scheme_group` setting, defined once in `settings_schema.json`, bundles 
 `definition` lists the roles every scheme must provide a color for — it's a *template*, not actual schemes yet.
 
 :::note[`color_scheme_group` has no `default` array of its own]
-It's tempting to assume the setting also ships its actual schemes inline, the way a `color` setting ships a `default` hex value. It doesn't. `color_scheme_group` only ever has four possible keys: `type`, `id`, `definition`, and the optional `role` (covered below) — never a `default` holding an array of schemes. The real schemes a merchant sees and edits (Scheme 1, Scheme 2, and so on) live in a theme's `config/settings_data.json` file instead, under `presets.<theme name>.color_schemes` — an object keyed by scheme ID, each holding just a `settings` object. [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) and [28.4. A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/) both show this file written out in full. A merchant adding a scheme from the theme editor, or a theme shipping starting schemes, both work by writing into that file — never by editing `definition` itself.
+It's tempting to assume the setting also ships its actual schemes inline, the way a `color` setting ships a `default` hex value. It doesn't. `color_scheme_group` only ever has four possible keys: `type`, `id`, `definition`, and `role` (covered below, and required) — never a `default` holding an array of schemes. The real schemes a merchant sees and edits (Scheme 1, Scheme 2, and so on) live in a theme's `config/settings_data.json` file instead, under `presets.<theme name>.color_schemes` — an object keyed by scheme ID, each holding just a `settings` object. [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) and [28.4. A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/) both show this file written out in full. A merchant adding a scheme from the theme editor, or a theme shipping starting schemes, both work by writing into that file — never by editing `definition` itself.
 :::
 
 ## How many settings should a scheme have? Is there a limit?
@@ -85,7 +85,11 @@ In the theme editor, a `color_background` field shows the merchant a toggle betw
 
 ## `role`: telling the editor which swatch means what
 
-`color_scheme_group` has one more optional field, `role`, that doesn't change what a merchant can pick — it only tells Shopify's own theme editor how to render the small preview swatch next to each scheme in the scheme picker. Without `role`, the editor has no way to know which of your `definition` IDs is "the background" versus "the button," so it can't draw an accurate preview.
+`color_scheme_group` has one more field, `role`, that doesn't change what a merchant can pick — it only tells Shopify's own theme editor how to render the small preview swatch next to each scheme in the scheme picker. Without `role`, the editor has no way to know which of your `definition` IDs is "the background" versus "the button," so it can't draw an accurate preview.
+
+:::note[`role` is required, not optional]
+Shopify's prose docs describe `role` as being "just" for the editor preview, which makes it sound optional — but it isn't. Shopify's own JSON Schema for `settings_schema.json` (the one editor extensions like the Shopify Liquid extension for VS Code/Cursor, and `theme-check`, validate against) lists `role` in `color_scheme_group`'s own `required` array, right alongside `definition`. Leave it out and you'll get a real "missing property `role`" warning, not a stylistic nitpick — add it to fix the error, not just to improve the preview.
+:::
 
 Here's the real, complete `role` object from Shopify's Dawn theme, mapped against the seven settings from the table above:
 
@@ -174,7 +178,7 @@ Everything on this page is about letting a merchant *pick* a pre-coordinated bun
 | Key | Required? | Purpose |
 |---|---|---|
 | `definition` | Yes | Lists every role a scheme must fill |
-| `role` | No | Maps your `definition` IDs to Shopify's fixed role names, for the editor preview |
+| `role` | Yes | Maps your `definition` IDs to Shopify's fixed role names, for the editor preview |
 
 **Fixed role names** (the only 10 keys `role` accepts)
 
@@ -213,7 +217,7 @@ Everything on this page is about letting a merchant *pick* a pre-coordinated bun
 ## Key takeaways
 
 - `color_scheme_group` bundles several color roles into a single named scheme, so a merchant picks one coordinated look instead of assembling colors independently.
-- The setting itself only ever has `type`, `id`, `definition`, and optional `role` — never a `default` array of schemes. Real schemes live in `settings_data.json`.
+- The setting itself only ever has `type`, `id`, `definition`, and `role` — never a `default` array of schemes. Real schemes live in `settings_data.json`.
 - There's no documented limit on how many `definition` roles a scheme can have. Dawn ships seven as a real-world reference point; four is enough to cover the basics.
 - Name roles by what they're for, not what they look like, following the `{role}`, `{role}_{aspect}`, and `{modifier}_{role}` patterns real themes use.
 - `definition` only accepts three entry types — `header`, `color`, and `color_background` — nothing else.
