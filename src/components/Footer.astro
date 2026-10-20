@@ -1,0 +1,87 @@
+---
+// Starlight's default Footer, with one addition: a prominent link to
+// the companion Handbook site, above the usual edit-link/last-updated
+// metadata row. Everything else here is copied unmodified from
+// @astrojs/starlight/components/Footer.astro so it stays in sync with
+// Starlight's own footer layout and styling.
+import EditLink from 'virtual:starlight/components/EditLink';
+import LastUpdated from 'virtual:starlight/components/LastUpdated';
+import Pagination from 'virtual:starlight/components/Pagination';
+import config from 'virtual:starlight/user-config';
+import { Icon } from '@astrojs/starlight/components';
+---
+
+<footer class="sl-flex">
+	<a class="related-site-link sl-flex" href="https://saabbir.github.io/shopify-theme-handbook/" target="_blank" rel="noopener noreferrer">
+		Looking for day-to-day, project-specific guidance? Jump to the Shopify Theme Handbook →
+	</a>
+
+	<div class="meta sl-flex">
+		<EditLink />
+		<LastUpdated />
+	</div>
+	<Pagination />
+
+	{
+		config.credits && (
+			<a class="kudos sl-flex" href="https://starlight.astro.build">
+				<Icon name={'starlight'} /> {Astro.locals.t('builtWithStarlight.label')}
+			</a>
+		)
+	}
+</footer>
+
+<style>
+	@layer starlight.core {
+		footer {
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		.related-site-link {
+			justify-content: center;
+			text-align: center;
+			padding: 0.75rem 1rem;
+			border-radius: 0.5rem;
+			background: var(--sl-color-accent-low);
+			color: var(--sl-color-accent-high);
+			font-size: var(--sl-text-sm);
+			font-weight: 600;
+			text-decoration: none;
+		}
+		.related-site-link:hover {
+			background: var(--sl-color-accent);
+			color: var(--sl-color-black);
+		}
+
+		.meta {
+			gap: 0.75rem 3rem;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin-top: 3rem;
+			font-size: var(--sl-text-sm);
+			color: var(--sl-color-gray-3);
+		}
+		.meta > :global(p:only-child) {
+			margin-inline-start: auto;
+		}
+
+		.kudos {
+			align-items: center;
+			gap: 0.5em;
+			margin: 1.5rem auto;
+			font-size: var(--sl-text-xs);
+			text-decoration: none;
+			color: var(--sl-color-gray-3);
+		}
+		.kudos:hover {
+			color: var(--sl-color-white);
+		}
+	}
+
+	@layer starlight.components {
+		.kudos :global(svg) {
+			color: var(--sl-color-orange);
+		}
+	}
+</style>

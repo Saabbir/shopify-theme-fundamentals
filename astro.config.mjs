@@ -86,6 +86,14 @@ export default defineConfig({
         // tab / bookmark name) without touching the on-page H1. See
         // src/components/Head.astro for why.
         Head: './src/components/Head.astro',
+        // Adds a "Handbook" link to the top header nav, pointing to the
+        // companion Shopify Theme Handbook site. See
+        // src/components/Header.astro for why.
+        Header: './src/components/Header.astro',
+        // Adds a prominent "jump to the Handbook" link above the usual
+        // edit-link/last-updated footer row. See
+        // src/components/Footer.astro for why.
+        Footer: './src/components/Footer.astro',
       },
       social: [
         {
