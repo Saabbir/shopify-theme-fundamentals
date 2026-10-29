@@ -71,6 +71,25 @@ A `.css` file in `assets/`, loaded with `stylesheet_tag`, is right for CSS that'
 
 `{% stylesheet %}` content is injected once per **file**, not once per **instance** of that section or block. If a theme allows the same section to be added to a page multiple times, and that section's styling genuinely needs to differ between instances (not just via settings read through custom properties), a `{% stylesheet %}` block can't do it — reach for an inline `<style>` tag, scoped to that one instance, instead.
 
+```liquid
+{% comment %} sections/product-grid.liquid {% endcomment %}
+<div class="product-grid">
+  {% for product in collection.products %}
+    <div class="product-grid__item">{{ product.title }}</div>
+  {% endfor %}
+</div>
+
+{% if section.settings.feature_first_item %}
+  <style>
+    #shopify-section-{{ section.id }} .product-grid__item:first-child {
+      grid-column: span 2;
+    }
+  </style>
+{% endif %}
+```
+
+Shopify already wraps every section in `<div id="shopify-section-{{ section.id }}">` automatically, so that ID is there to scope against without adding any markup of your own. The `<style>` tag above only renders when `feature_first_item` is turned on, and it only ever matches the `.product-grid__item` elements inside *this* section's own wrapper — a second `product-grid` section elsewhere on the page, with the setting left off, is completely unaffected, even though both instances share the exact same file and the exact same class names. A custom property couldn't do this on its own: `grid-column: span 2` isn't one value being swapped inside an existing rule, it's a rule that only some instances should have at all.
+
 ## Key takeaways
 
 - Most theme CSS belongs in `{% stylesheet %}`, co-located with the file it styles — it's static, doesn't evaluate Liquid, and gets bundled automatically.
