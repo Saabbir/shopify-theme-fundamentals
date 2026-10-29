@@ -109,5 +109,6 @@ A few habits make collisions both less likely and easier to spot when they do ha
 
 - [BEM methodology](https://getbem.com/)
 - [29.10. Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) — including why `@scope` doesn't change the BEM recommendation here, and why native CSS nesting isn't a reason to bring back descendant-chain selectors
+- [Styling a Shared Block for One Section](/all-about-css/styling-a-shared-block-for-one-section/) — the one case where a file styling a class it doesn't define is actually safe: a section styling a block it renders directly
 - [Stylesheet content subsetting](https://shopify.dev/docs/storefronts/themes/best-practices/performance/stylesheet-subsetting) (shopify.dev)
 - [Theme Check](https://shopify.dev/docs/storefronts/themes/tools/theme-check) (shopify.dev)

@@ -23,6 +23,8 @@ This chapter covers CSS *mechanics* — where it lives, how it's scoped, how it 
 | [29.8. RTL, Print & Other Rendering Contexts](/all-about-css/rtl-print-and-other-rendering-contexts/) | What changes once a store ships a right-to-left language, or a page gets printed |
 | [29.9. A Complete CSS Example](/all-about-css/a-complete-css-example/) | One section's stylesheet combining tokens, layers, container queries, and logical properties at once |
 | [29.10. Old Patterns vs. New CSS Features](/all-about-css/old-patterns-vs-new-css-features/) | `:has()`, native nesting, `aspect-ratio`, `gap`, `subgrid`, `color-mix()`, `@starting-style`, scroll-driven animations, `@scope`, `text-wrap` — each against the old workaround it replaces, with real browser support |
+| [29.11. Styling a Shared Block for One Section](/all-about-css/styling-a-shared-block-for-one-section/) | The decision tree for overriding a reusable block's CSS in just one placement, from a custom property to a block setting |
+| [29.12. Custom CSS: The Platform-Controlled Setting](/all-about-css/custom-css-the-platform-controlled-setting/) | What the editor's built-in `custom_css` field is for, and why a developer shouldn't add or edit it |
 
 ## Further reading
 

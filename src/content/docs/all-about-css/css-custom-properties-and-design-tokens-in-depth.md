@@ -53,7 +53,7 @@ Unlike most CSS properties, a custom property set on an element is inherited by 
 </div>
 ```
 
-This inheritance is exactly what makes the inline-custom-property pattern used throughout this site work at all: a section writes `style="--padding-top: 40px;"` on its own outer element, and every descendant — including its own `{% stylesheet %}` rules — can read `var(--padding-top)` without that value needing to be repeated anywhere else. Redefining a custom property at a more specific selector (like `.dark-section` above) overrides it for that subtree only, without touching the `:root` value anywhere else on the page.
+This inheritance is exactly what makes the inline-custom-property pattern used throughout this site work at all: a section writes `style="--padding-top: 40px;"` on its own outer element, and every descendant — including its own `{% stylesheet %}` rules — can read `var(--padding-top)` without that value needing to be repeated anywhere else. Redefining a custom property at a more specific selector (like `.dark-section` above) overrides it for that subtree only, without touching the `:root` value anywhere else on the page. [Styling a Shared Block for One Section](/all-about-css/styling-a-shared-block-for-one-section/) works through this same technique as the first step of a fuller decision tree, for the specific case of a reusable block that needs to look different inside just one section.
 
 ## `@property`: giving a custom property a type and a real default
 
