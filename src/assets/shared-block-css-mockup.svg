@@ -1,0 +1,47 @@
+<svg viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>The same icon-text block used two different ways</title>
+  <desc>Two section mockups side by side. On the left, hero-banner, with a headline and a single large icon-text block beside it. On the right, feature-callouts, with the same icon-text block repeated three times in a row at a smaller size.</desc>
+
+  <rect x="0" y="0" width="1000" height="400" fill="#f3f3f0"/>
+
+  <!-- hero-banner panel -->
+  <rect x="30" y="50" width="440" height="320" rx="14" fill="#ffffff" stroke="#ddd" stroke-width="1.5"/>
+  <rect x="58" y="70" width="128" height="26" rx="5" fill="#f1f1f1" stroke="#ddd"/>
+  <text x="122" y="88" text-anchor="middle" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#444">hero-banner</text>
+
+  <rect x="58" y="140" width="170" height="16" rx="3" fill="#333"/>
+  <rect x="58" y="168" width="130" height="16" rx="3" fill="#333"/>
+  <rect x="58" y="206" width="150" height="11" rx="2" fill="#999"/>
+  <rect x="58" y="226" width="110" height="11" rx="2" fill="#999"/>
+
+  <circle cx="370" cy="190" r="36" fill="#2457a6"/>
+  <rect x="310" y="240" width="120" height="14" rx="3" fill="#333"/>
+  <rect x="310" y="262" width="130" height="10" rx="2" fill="#888"/>
+  <rect x="310" y="280" width="100" height="10" rx="2" fill="#888"/>
+  <text x="370" y="330" text-anchor="middle" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#2457a6">icon-text (large)</text>
+
+  <!-- feature-callouts panel -->
+  <rect x="530" y="50" width="440" height="320" rx="14" fill="#ffffff" stroke="#ddd" stroke-width="1.5"/>
+  <rect x="690" y="70" width="170" height="26" rx="5" fill="#f1f1f1" stroke="#ddd"/>
+  <text x="775" y="88" text-anchor="middle" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#444">feature-callouts</text>
+
+  <g>
+    <circle cx="620" cy="180" r="22" fill="#2457a6"/>
+    <rect x="585" y="218" width="70" height="12" rx="2" fill="#333"/>
+    <rect x="578" y="238" width="84" height="9" rx="2" fill="#888"/>
+    <rect x="585" y="254" width="70" height="9" rx="2" fill="#888"/>
+  </g>
+  <g>
+    <circle cx="750" cy="180" r="22" fill="#2457a6"/>
+    <rect x="715" y="218" width="70" height="12" rx="2" fill="#333"/>
+    <rect x="708" y="238" width="84" height="9" rx="2" fill="#888"/>
+    <rect x="715" y="254" width="70" height="9" rx="2" fill="#888"/>
+  </g>
+  <g>
+    <circle cx="880" cy="180" r="22" fill="#2457a6"/>
+    <rect x="845" y="218" width="70" height="12" rx="2" fill="#333"/>
+    <rect x="838" y="238" width="84" height="9" rx="2" fill="#888"/>
+    <rect x="845" y="254" width="70" height="9" rx="2" fill="#888"/>
+  </g>
+  <text x="750" y="330" text-anchor="middle" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#2457a6">icon-text &#215; 3</text>
+</svg>

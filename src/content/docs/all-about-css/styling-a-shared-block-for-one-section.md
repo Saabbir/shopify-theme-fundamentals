@@ -95,52 +95,7 @@ The example below uses an `icon-text` block — an icon, a heading, and a line o
 
 Two sections use it exactly as shipped: `hero-banner` drops in a single large `icon-text` block beside its headline, and `feature-callouts` repeats it three times in a row to make a benefits strip. Both need it to look slightly different from the default above — for different reasons, which is why they call for different fixes.
 
-<figure style="margin: 1.5rem 0;">
-  <svg viewBox="0 0 680 260" role="img" aria-labelledby="shared-block-mockup-title" style="width: 100%; max-width: 640px; height: auto; display: block; margin: 0 auto;">
-    <title id="shared-block-mockup-title">The same icon-text block rendered once, large, inside hero-banner, and three times, small, inside feature-callouts</title>
-
-    <!-- hero-banner panel -->
-    <rect x="10" y="30" width="320" height="210" rx="6" fill="none" stroke="var(--sl-color-hairline, #444)" stroke-width="1.5" />
-    <rect x="30" y="12" width="104" height="20" rx="4" fill="var(--sl-color-bg-inline-code, #2d2d2d)" />
-    <text x="82" y="26" text-anchor="middle" font-family="var(--__sl-font-mono, ui-monospace, monospace)" font-size="12" fill="var(--sl-color-text, #ddd)">hero-banner</text>
-
-    <rect x="30" y="70" width="140" height="12" rx="2" fill="var(--sl-color-gray-4, #777)" />
-    <rect x="30" y="92" width="100" height="12" rx="2" fill="var(--sl-color-gray-5, #999)" />
-    <rect x="30" y="114" width="120" height="12" rx="2" fill="var(--sl-color-gray-5, #999)" />
-
-    <circle cx="250" cy="110" r="24" fill="var(--sl-color-accent, #8bc84a)" />
-    <rect x="208" y="148" width="84" height="11" rx="2" fill="var(--sl-color-gray-3, #bbb)" />
-    <rect x="208" y="166" width="94" height="8" rx="2" fill="var(--sl-color-gray-5, #999)" />
-    <rect x="208" y="180" width="70" height="8" rx="2" fill="var(--sl-color-gray-5, #999)" />
-    <text x="250" y="215" text-anchor="middle" font-family="var(--__sl-font-mono, ui-monospace, monospace)" font-size="12" fill="var(--sl-color-accent, #8bc84a)">icon-text (large)</text>
-
-    <!-- feature-callouts panel -->
-    <rect x="350" y="30" width="320" height="210" rx="6" fill="none" stroke="var(--sl-color-hairline, #444)" stroke-width="1.5" />
-    <rect x="450" y="12" width="150" height="20" rx="4" fill="var(--sl-color-bg-inline-code, #2d2d2d)" />
-    <text x="525" y="26" text-anchor="middle" font-family="var(--__sl-font-mono, ui-monospace, monospace)" font-size="12" fill="var(--sl-color-text, #ddd)">feature-callouts</text>
-
-    <g>
-      <circle cx="420" cy="95" r="15" fill="var(--sl-color-accent, #8bc84a)" />
-      <rect x="392" y="118" width="56" height="9" rx="2" fill="var(--sl-color-gray-3, #bbb)" />
-      <rect x="388" y="134" width="64" height="7" rx="2" fill="var(--sl-color-gray-5, #999)" />
-      <rect x="392" y="146" width="56" height="7" rx="2" fill="var(--sl-color-gray-5, #999)" />
-    </g>
-    <g>
-      <circle cx="510" cy="95" r="15" fill="var(--sl-color-accent, #8bc84a)" />
-      <rect x="482" y="118" width="56" height="9" rx="2" fill="var(--sl-color-gray-3, #bbb)" />
-      <rect x="478" y="134" width="64" height="7" rx="2" fill="var(--sl-color-gray-5, #999)" />
-      <rect x="482" y="146" width="56" height="7" rx="2" fill="var(--sl-color-gray-5, #999)" />
-    </g>
-    <g>
-      <circle cx="600" cy="95" r="15" fill="var(--sl-color-accent, #8bc84a)" />
-      <rect x="572" y="118" width="56" height="9" rx="2" fill="var(--sl-color-gray-3, #bbb)" />
-      <rect x="568" y="134" width="64" height="7" rx="2" fill="var(--sl-color-gray-5, #999)" />
-      <rect x="572" y="146" width="56" height="7" rx="2" fill="var(--sl-color-gray-5, #999)" />
-    </g>
-    <text x="510" y="215" text-anchor="middle" font-family="var(--__sl-font-mono, ui-monospace, monospace)" font-size="12" fill="var(--sl-color-accent, #8bc84a)">icon-text × 3</text>
-  </svg>
-  <figcaption style="text-align: center; font-size: var(--sl-text-sm); color: var(--sl-color-gray-3, #999); margin-top: 0.5rem;">The same <code>icon-text</code> block (green), rendered once at a large size next to the headline, and three times at a small size in a row — same file, same markup, two very different placements.</figcaption>
-</figure>
+![Two section mockups side by side. On the left, hero-banner, with a headline and a single large icon-text block beside it. On the right, feature-callouts, with the same icon-text block repeated three times in a row at a smaller size — same file, same markup, two very different placements.](../../../assets/shared-block-css-mockup.svg)
 
 ## Four ways to scope an override, from lightest to heaviest
 
