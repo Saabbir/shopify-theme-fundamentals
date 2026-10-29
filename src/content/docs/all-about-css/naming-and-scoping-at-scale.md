@@ -54,7 +54,7 @@ Beyond BEM's own structure, pick one short prefix and apply it to every class a 
 .my-theme-product-card__title { }
 ```
 
-This is the same instinct behind the CSS custom property prefix covered in [29.4. CSS Custom Properties & Design Tokens in Depth](/all-about-css/css-custom-properties-and-design-tokens-in-depth/), and the custom-element tag prefix covered in [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) — one consistent namespace, applied everywhere, specifically because nothing else protects you from a collision.
+This is the same instinct behind the custom-property naming pattern covered in [17.7. Building a Token System](/all-about-colors/building-a-token-system/) (`--{component}-{property}`, also used in [Styling a Shared Block for One Section](/all-about-css/styling-a-shared-block-for-one-section/)), and the custom-element tag prefix covered in [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) — one consistent namespace, applied everywhere, specifically because nothing else protects you from a collision.
 
 ## The real linter that catches this: `ValidScopedCSSClass`
 

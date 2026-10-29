@@ -97,6 +97,25 @@ Two sections use it exactly as shipped: `hero-banner` drops in a single large `i
 
 ![Two section mockups side by side. On the left, hero-banner, with a headline and a single large icon-text block beside it. On the right, feature-callouts, with the same icon-text block repeated three times in a row at a smaller size — same file, same markup, two very different placements.](../../../assets/shared-block-css-mockup.svg)
 
+## Deciding what to expose as a hook, before any of this is possible
+
+Step 1 only works because `icon-text.liquid` already happened to write `font-size: var(--icon-text-icon-size, 32px);` instead of `font-size: 32px;`. That's not automatic — it's a decision the block's author made while writing it, and if they'd hardcoded the value instead, there'd be no hook to redefine from `hero-banner`'s side at all. Worth being deliberate about it, rather than either hardcoding everything (and finding out later there's no hook where one's needed) or turning every declaration into a custom property on the off chance it'll matter somewhere.
+
+Part of this is already decided for you. Any value that comes from a real schema setting is exposed as a custom property automatically — that's the inline-style pattern [29.1. CSS Fundamentals in a Shopify Theme](/all-about-css/css-fundamentals/) covers in its `{% stylesheet %}` does not evaluate Liquid note: a setting's value is written into `style="--x: ...;"`, and the stylesheet reads it back with `var(--x)`. You don't choose whether `block.settings.icon_color` becomes a custom property; the pattern does that for you. The real decision only applies to values *you* chose as the block's author that aren't backed by a setting — plain implementation details, like `icon-text.liquid`'s `32px`.
+
+For those, ask whether the value is about *where the block sits* or *what the block is*. Sizing, spacing, and a block's one signature color tend to genuinely vary by placement — a hero needs a bigger icon than a dense row of three, and that's a fact about context, not a flaw in the block. Those are worth a hook. Structural choices — flex vs. grid, the DOM shape, anything load-bearing for accessibility like a focus outline — define what the component *is*; turning those into overridable knobs risks two placements of "the same block" quietly becoming different components, or a stray override breaking something nobody meant to touch.
+
+In practice, the cheapest way to apply this isn't predicting every future need up front — it's writing the block with ordinary hardcoded values first, and converting exactly one declaration to a custom property the moment a second real section actually needs a different value for it, using the original hardcoded value as the fallback:
+
+```diff
+- font-size: 32px;
++ font-size: var(--icon-text-icon-size, 32px);
+```
+
+The default appearance doesn't change — the fallback is the value that was already there — so there's nothing to regress. This is the same "wait for a second real case before promoting" instinct step 3 below uses for turning a selector override into a block setting; it just applies one step earlier, to deciding whether a value gets a custom-property hook at all.
+
+Name the hook using this site's established component-tier token pattern — `--{component}-{property}[-{state}]`, covered in full in [17.7. Building a Token System](/all-about-colors/building-a-token-system/) — so `--icon-text-icon-size`, not `--size` or `--icon-size`. The same collision risk that applies to class names applies here: a generic `--size` custom property is exactly the kind of name two unrelated blocks could each define without meaning to, and the one that loads last would silently win.
+
 ## Four ways to scope an override, from lightest to heaviest
 
 ### 1. It already reads a custom property — redefine the property, not the rule
