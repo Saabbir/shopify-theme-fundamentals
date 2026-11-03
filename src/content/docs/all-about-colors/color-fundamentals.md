@@ -43,13 +43,23 @@ It's worth seeing that mechanism end to end, once, with the simplest possible ex
 4. It usually gets written straight into an inline CSS custom property: `style="--accent: {{ section.settings.accent_color }};"`.
 5. Your stylesheet reads that property with `var(--accent)`, and the browser renders it.
 
-Steps 3 through 5, as actual code — **a section setting**, so `section.settings`, not `settings`:
+Steps 3 through 5, as actual code — **a section setting**, so `section.settings`, not `settings`. A complete section file, schema included, not just the fragment that reads it:
 
 ```liquid
 {% comment %} sections/announcement-bar.liquid {% endcomment %}
 <div class="announcement-bar" style="--accent: {{ section.settings.accent_color }};">
   {{ section.settings.message }}
 </div>
+
+{% schema %}
+{
+  "name": "t:sections.announcement_bar.name",
+  "settings": [
+    { "type": "color", "id": "accent_color", "label": "t:labels.accent_color" },
+    { "type": "text", "id": "message", "label": "t:labels.message" }
+  ]
+}
+{% endschema %}
 ```
 
 ```css
@@ -109,7 +119,7 @@ Liquid can measure this directly, with the `color_contrast` filter — this is t
 {% # => a number, e.g. 7.2 — compare it against 4.5 (normal text) or 3 (large text/UI) %}
 ```
 
-Both settings here are **section settings** (`section.settings.<id>`) — the same filter works identically on theme settings (`settings.<id>`) or block settings (`block.settings.<id>`); `color_contrast` only cares about the two hex values, not where they came from.
+Both settings here are **section settings** (`section.settings.<id>`) — the same filter works identically on theme settings (`settings.<id>`) or block settings (`block.settings.<id>`); `color_contrast` only cares about the two hex values, not where they came from. `background_color` and `text_color` are ordinary `color` settings — the schema defining exactly these two IDs is the next example below.
 
 ## The problem with standalone settings at scale
 

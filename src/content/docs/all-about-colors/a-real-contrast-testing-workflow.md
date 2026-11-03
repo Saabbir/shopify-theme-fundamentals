@@ -24,6 +24,8 @@ If a merchant can freely pick any color for a text setting and any color for a b
 
 ```liquid
 {% liquid
+  assign text_color = section.settings.text_color
+  assign background_color = section.settings.background_color
   assign ratio = text_color | color_contrast: background_color
   assign passes_normal_text = false
   assign passes_large_text = false
@@ -35,6 +37,8 @@ If a merchant can freely pick any color for a text setting and any color for a b
   endif
 %}
 ```
+
+`text_color` and `background_color` are the same two **section** settings from the schema just above.
 
 This page is about actually checking against these two numbers systematically, not just knowing what they are.
 

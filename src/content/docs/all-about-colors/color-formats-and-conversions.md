@@ -12,7 +12,16 @@ Most of the time, as [17.1](/all-about-colors/color-fundamentals/) covers, you'l
 When a merchant picks a color in the theme editor, `section.settings.your_color_id` (a **section** setting — the theme-wide equivalent is `settings.your_color_id`, with no `section.` prefix) returns a plain string in hex format, like `#ff6600`. That's the one format you can always count on without converting anything — most of the time, printing it straight into an inline style or CSS custom property is all you need:
 
 ```liquid
-<div style="--accent: {{ section.settings.accent_color }};">
+<div style="--accent: {{ section.settings.accent_color }};"></div>
+
+{% schema %}
+{
+  "name": "t:sections.example.name",
+  "settings": [
+    { "type": "color", "id": "accent_color", "label": "t:labels.accent_color", "default": "#ff6600" }
+  ]
+}
+{% endschema %}
 ```
 
 ## Why you'd ever need a different format
@@ -49,7 +58,16 @@ A common real need is deriving a slightly darker or lighter variant of a merchan
   assign button_color = section.settings.button_color
   assign button_hover_color = button_color | color_darken: 10
 %}
-<button style="--button-color: {{ button_color }}; --button-hover-color: {{ button_hover_color }};">
+<button style="--button-color: {{ button_color }}; --button-hover-color: {{ button_hover_color }};"></button>
+
+{% schema %}
+{
+  "name": "t:sections.example.name",
+  "settings": [
+    { "type": "color", "id": "button_color", "label": "t:labels.button_color", "default": "#2c6e5c" }
+  ]
+}
+{% endschema %}
 ```
 
 `color_darken` (covered in full on [17.5. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/)) works directly on whatever format you give it and returns a value in the same family — you don't need to manually convert to HSL first just to darken something.

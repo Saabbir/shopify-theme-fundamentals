@@ -51,7 +51,16 @@ The third option, "fills in a gap," concretely — only override a value the mer
       --color-background: {{ section.settings.background_color }};
     {% endunless %}
   "
->
+></div>
+
+{% schema %}
+{
+  "name": "t:sections.example.name",
+  "settings": [
+    { "type": "color", "id": "background_color", "label": "t:labels.background_color", "default": "#ffffff" }
+  ]
+}
+{% endschema %}
 ```
 
 ```css

@@ -25,10 +25,11 @@ Nothing here guarantees `button_background` and `button_text` will contrast well
 
 ### Deriving a hover color automatically, from whatever was picked
 
-A merchant picks one button color; the theme derives its hover state, rather than asking for a second setting:
+A merchant picks one button color; the theme derives its hover state, rather than asking for a second setting. Reading the merchant's actual pick first, then deriving from it — not two unrelated steps:
 
 ```liquid
 {% liquid
+  assign button_background = section.settings.button_background
   assign brightness = button_background | color_brightness
   if brightness <= 128
     assign button_hover_background = button_background | color_lighten: 10
@@ -46,6 +47,8 @@ The more interesting problem: if a merchant sets a custom background color somew
 
 ```liquid
 {% liquid
+  assign custom_background = section.settings.background_color
+  assign default_text_color = settings.page_text_color
   assign contrast_with_default = custom_background | color_contrast: default_text_color
   if contrast_with_default >= 4.5
     assign effective_text_color = default_text_color
@@ -59,6 +62,8 @@ The more interesting problem: if a merchant sets a custom background color somew
   endif
 %}
 ```
+
+`background_color` is a **section** setting; `page_text_color` is Horizon's real **theme-wide** text-color setting from [17.1](/all-about-colors/color-fundamentals/#color-isnt-something-you-write--its-something-you-let-a-merchant-choose) — the two different accessors (`section.settings.<id>` vs `settings.<id>`) side by side, in one real comparison.
 
 `color_contrast` returns the real WCAG ratio between two colors — 4.5 is the same AA threshold [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/) checks shipped defaults against. The difference here is *when* the check runs: not once, by a developer, before shipping, but every time the page renders, against whatever the merchant actually picked. If the theme's normal text color still works against this particular background, keep it, so text stays visually consistent with the rest of the page; only fall back to a safe black-or-white extreme when it genuinely wouldn't be readable.
 
