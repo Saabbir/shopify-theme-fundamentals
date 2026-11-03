@@ -47,20 +47,17 @@ The third option, "fills in a gap," concretely — only override a value the mer
 <div
   class="card"
   style="
-    {% unless section.settings.background_color == '#ffffff' %}
-      --color-background: {{ section.settings.background_color }};
+    {% unless settings.background_color == '#ffffff' %}
+      --color-background: {{ settings.background_color }};
     {% endunless %}
   "
 ></div>
+```
 
-{% schema %}
-{
-  "name": "t:sections.example.name",
-  "settings": [
-    { "type": "color", "id": "background_color", "label": "t:labels.background_color", "default": "#ffffff" }
-  ]
-}
-{% endschema %}
+```json
+// config/settings_schema.json — theme-wide; the same unless/endunless
+// pattern works identically against a section or block setting
+{ "type": "color", "id": "background_color", "label": "t:labels.background_color", "default": "#ffffff" }
 ```
 
 ```css
@@ -77,7 +74,7 @@ The third option, "fills in a gap," concretely — only override a value the mer
 }
 ```
 
-`section.settings.background_color` here is a **section** setting; the same pattern works identically against a theme-wide `settings.<id>` if the color being overridden is declared globally instead.
+`background_color` here is **theme-wide** (`settings.<id>`); the same pattern works identically against `section.settings.<id>` or `block.settings.<id>` if the color being overridden is declared at that scope instead.
 
 :::caution[Don't let dark mode break a merchant's intentionally chosen contrast]
 If you implement the "dark mode always wins" approach, make sure the dark variant you ship still passes contrast for whatever text/background pairings appear in it — a merchant never tested your dark override against their content, so it's on the theme to have verified it, using the same workflow in [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/).

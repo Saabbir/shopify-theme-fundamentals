@@ -35,15 +35,42 @@ This is the one idea the rest of this chapter assumes you already have: a theme 
 
 ## From a merchant's click to a rendered pixel
 
-It's worth seeing that mechanism end to end, once, with the simplest possible example, before the rest of this chapter builds on it. Take the most common case — a `color` setting defined on a *section* — and follow one merchant's click all the way to a rendered pixel:
+It's worth seeing that mechanism end to end, once, with the simplest possible example, before the rest of this chapter builds on it. Take the most common real-world case — a *theme-wide* `color` setting, the kind Horizon itself leans on for most of its own colors (`page_text_color`, `palette_primary_button_background`, and dozens more, all declared once in `config/settings_schema.json`) — and follow one merchant's click all the way to a rendered pixel:
 
-1. A merchant opens the theme editor and clicks a color swatch for a setting you defined on that section.
-2. Shopify stores whatever hex value they picked in that page's JSON template (`templates/index.json`, say) — specifically, in that one section instance's own `settings` object.
-3. Your Liquid reads it back with `section.settings.<id>`, scoped to that exact instance.
-4. It usually gets written straight into an inline CSS custom property: `style="--accent: {{ section.settings.accent_color }};"`.
-5. Your stylesheet reads that property with `var(--accent)`, and the browser renders it.
+1. A merchant opens the theme editor's own Colors settings and clicks a color swatch for a setting you defined.
+2. Shopify stores whatever hex value they picked in `config/settings_data.json`, under `current` — one value, the same on every page, not tied to any single section instance.
+3. Your Liquid reads it back with `settings.<id>`, no `section.` or `block.` prefix.
+4. It usually gets written once into a CSS custom property on `:root`, high up in the page — `style="--accent: {{ settings.accent_color }};"` — rather than repeated inline on every element that needs it.
+5. Your stylesheet reads that property with `var(--accent)`, anywhere in the theme, and the browser renders it.
 
-Steps 3 through 5, as actual code — **a section setting**, so `section.settings`, not `settings`. A complete section file, schema included, not just the fragment that reads it:
+Steps 3 through 5, as actual code — **a theme setting**, so `settings`, not `section.settings`. A complete, minimal example, schema included, not just the fragment that reads it:
+
+```liquid
+{% comment %} layout/theme.liquid, somewhere in <head> {% endcomment %}
+<style>
+  :root {
+    --accent: {{ settings.accent_color }};
+  }
+</style>
+```
+
+```json
+// config/settings_schema.json
+{
+  "name": "t:settings.colors",
+  "settings": [
+    { "type": "color", "id": "accent_color", "label": "t:labels.accent_color" }
+  ]
+}
+```
+
+```css
+.price {
+  color: var(--accent);
+}
+```
+
+The exact same mechanism, scoped to one section instead of the whole theme, looks like this:
 
 ```liquid
 {% comment %} sections/announcement-bar.liquid {% endcomment %}
@@ -62,13 +89,7 @@ Steps 3 through 5, as actual code — **a section setting**, so `section.setting
 {% endschema %}
 ```
 
-```css
-.announcement-bar {
-  color: var(--accent);
-}
-```
-
-Step 2 is worth being precise about, because it's easy to assume every setting's value lives in one place: it doesn't. A *section* setting's value lives in that page's own template file, which is exactly why `section.settings.<id>` only ever returns a value for the one instance currently rendering — a different page with a different instance of the same section gets its own, independently stored value. A *theme* setting — the kind that's the same everywhere, not tied to one placement — is the other case, and it's stored differently: in `config/settings_data.json`, read with `settings.<id>` instead, no `section.` prefix. [28.1. Theme Settings Fundamentals](/all-about-theme-settings/theme-settings-fundamentals/) covers that distinction — and the concrete test for telling the two apart — in full; this page's examples are all section settings, the one most developers reach for first.
+Only step 2 and step 3 actually change. A *section* setting's value lives in that page's own JSON template (`templates/index.json`, say) instead of `settings_data.json` — specifically, in that one section instance's own `settings` object, which is exactly why `section.settings.<id>` only ever returns a value for the instance currently rendering; a different page with a different instance of the same section gets its own, independently stored value. And it's read back with `section.settings.<id>` instead of `settings.<id>`. A block setting works identically to the section case, just one level deeper: `block.settings.<id>`, stored inside that block's own entry in the section's settings. [28.1. Theme Settings Fundamentals](/all-about-theme-settings/theme-settings-fundamentals/) covers all three in full, including the concrete test for telling them apart at a glance.
 
 None of this is unique to color — every schema setting follows the same path from editor to rendered page. But color is where most developers meet this pattern for the first time, so it's worth walking through explicitly here rather than assuming it's obvious.
 
@@ -104,7 +125,7 @@ The JSON above is identical no matter *where* you declare it — the `color` typ
 | A section's own `{% schema %}` | Just that one section instance | `section.settings.accent_color` |
 | A block's own `{% schema %}` | Just that one block instance | `block.settings.accent_color` |
 
-Most of the examples in this chapter use the section case, since it's the one most developers reach for first — but a block picking its own icon color, or a theme-wide setting controlling one color everywhere, both use this exact same `color` type underneath. [28.1. Theme Settings Fundamentals](/all-about-theme-settings/theme-settings-fundamentals/) covers the full distinction between these three, including the concrete test for telling a theme setting from a section/block setting at a glance.
+Most of the examples in this chapter use the theme-wide case, since that's what Horizon itself leans on for most of its own real colors — but everything shown applies identically to a section setting or a block setting too, right down to the exact same `color` type underneath. [28.1. Theme Settings Fundamentals](/all-about-theme-settings/theme-settings-fundamentals/) covers the full distinction between these three, including the concrete test for telling a theme setting from a section/block setting at a glance.
 
 ## Why color coordination isn't cosmetic: contrast and accessibility
 
@@ -115,11 +136,11 @@ This is why a bad color pairing isn't just an aesthetic miss. Text a shopper can
 Liquid can measure this directly, with the `color_contrast` filter — this is the one line of code the rest of this chapter's contrast checks all build on:
 
 ```liquid
-{{ section.settings.background_color | color_contrast: section.settings.text_color }}
+{{ settings.background_color | color_contrast: settings.text_color }}
 {% # => a number, e.g. 7.2 — compare it against 4.5 (normal text) or 3 (large text/UI) %}
 ```
 
-Both settings here are **section settings** (`section.settings.<id>`) — the same filter works identically on theme settings (`settings.<id>`) or block settings (`block.settings.<id>`); `color_contrast` only cares about the two hex values, not where they came from. `background_color` and `text_color` are ordinary `color` settings — the schema defining exactly these two IDs is the next example below.
+Both settings here are **theme-wide** (`settings.<id>`) — the same filter works identically on section settings (`section.settings.<id>`) or block settings (`block.settings.<id>`); `color_contrast` only cares about the two hex values, not where they came from. `background_color` and `text_color` are ordinary `color` settings — the schema defining exactly these two IDs is the next example below.
 
 ## The problem with standalone settings at scale
 
@@ -202,7 +223,7 @@ All four, in Horizon's own real theme-wide settings — `palette_primary_button_
 ## Key takeaways
 
 - A Shopify theme never hardcodes a merchant-facing color — it defines a *setting* that lets the merchant choose, then reads back whatever they picked.
-- A color value's real journey: editor swatch → a section's value lands in that page's own JSON template, a theme setting's value lands in `settings_data.json` → `section.settings.<id>` or `settings.<id>` in Liquid, depending on which → usually a CSS custom property → rendered page.
+- A color value's real journey: editor swatch → a theme setting's value lands in `settings_data.json`, a section's value lands in that page's own JSON template instead → `settings.<id>` or `section.settings.<id>` in Liquid, depending on which → usually a CSS custom property → rendered page.
 - The same `color` setting JSON works identically as a theme setting, a section setting, or a block setting — only where you declare it and how you read it back changes (`settings.<id>`, `section.settings.<id>`, `block.settings.<id>`).
 - A `color` setting always returns hex; RGB and HSL describe the same colors differently, and exist for cases hex alone can't handle cleanly — full depth in [17.4](/all-about-colors/color-formats-and-conversions/).
 - Contrast is a measurable accessibility requirement (4.5:1 normal text, 3:1 large text/UI, per WCAG), not a matter of taste — that's the real stakes behind everything else in this chapter.

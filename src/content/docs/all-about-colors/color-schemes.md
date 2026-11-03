@@ -29,7 +29,7 @@ A merchant picks one button color; the theme derives its hover state, rather tha
 
 ```liquid
 {% liquid
-  assign button_background = section.settings.button_background
+  assign button_background = settings.button_background
   assign brightness = button_background | color_brightness
   if brightness <= 128
     assign button_hover_background = button_background | color_lighten: 10
@@ -39,7 +39,7 @@ A merchant picks one button color; the theme derives its hover state, rather tha
 %}
 ```
 
-A dark color gets lighter on hover; a light color gets darker — either way, the change reads as a visible hover state no matter what the merchant originally picked. `color_brightness`, `color_lighten`, and `color_darken` are real filters, covered in full in [17.5. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/).
+`button_background` here is **theme-wide** (`settings.<id>`) — the same derivation works identically on a section or block setting, just swap in `section.settings.<id>` or `block.settings.<id>`. A dark color gets lighter on hover; a light color gets darker — either way, the change reads as a visible hover state no matter what the merchant originally picked. `color_brightness`, `color_lighten`, and `color_darken` are real filters, covered in full in [17.5. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/).
 
 ### Choosing a safe text color automatically, by checking contrast
 

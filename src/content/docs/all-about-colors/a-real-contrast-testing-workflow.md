@@ -10,9 +10,9 @@ description: Checking every color pairing a merchant can produce, not just the o
 If a merchant can freely pick any color for a text setting and any color for a background setting, the number of combinations they could produce is enormous — far more than anyone could manually check by eye while building the theme. A contrast problem introduced this way often isn't caught until a real merchant stumbles into it, by which point it's a support ticket, not a code review comment:
 
 ```json
-// Two independent section settings — a merchant picking freely from
+// Two independent theme-wide settings — a merchant picking freely from
 // a full color wheel on each means millions of possible pairings,
-// not the handful you actually eyeballed while building the section
+// not the handful you actually eyeballed while building the theme
 { "type": "color", "id": "background_color", "label": "t:labels.background_color" },
 { "type": "color", "id": "text_color", "label": "t:labels.text_color" }
 ```
@@ -24,8 +24,8 @@ If a merchant can freely pick any color for a text setting and any color for a b
 
 ```liquid
 {% liquid
-  assign text_color = section.settings.text_color
-  assign background_color = section.settings.background_color
+  assign text_color = settings.text_color
+  assign background_color = settings.background_color
   assign ratio = text_color | color_contrast: background_color
   assign passes_normal_text = false
   assign passes_large_text = false
@@ -38,7 +38,7 @@ If a merchant can freely pick any color for a text setting and any color for a b
 %}
 ```
 
-`text_color` and `background_color` are the same two **section** settings from the schema just above.
+`text_color` and `background_color` are the same two **theme-wide** settings from the schema just above — Step 3 below runs this same kind of check against a section setting instead, to show both scopes.
 
 This page is about actually checking against these two numbers systematically, not just knowing what they are.
 
