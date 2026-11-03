@@ -163,7 +163,84 @@ A section or block picks from the available schemes with a `color_scheme` settin
 `"type": "color_scheme"` is the fixed string Shopify requires to get this picker setting at all. `"id": "color_scheme"` is just this setting's own, developer-chosen id — it could just as easily be `id: "scheme"` or `id: "section_color_scheme"`, and you'd read it back as `section.settings.scheme` or `section.settings.section_color_scheme` instead. The two matching here is a readable, common convention (it's what you'll see in most real themes, including the examples on this page), not something Shopify checks or enforces.
 :::
 
-`section.settings.color_scheme` then holds whichever scheme ID a merchant picked (`"scheme-1"`, `"scheme-2"`, or any custom one they've added via the editor). Shopify doesn't generate the actual CSS for you automatically — the theme still needs to loop over `settings.color_schemes` itself (usually once, in a snippet rendered near the top of `theme.liquid`) and output a class per scheme, each holding that scheme's colors as CSS custom properties. A section then applies the right one with a matching class, like `color-{{ section.settings.color_scheme }}`, on its outer element. See [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) for this loop written out in full.
+`section.settings.color_scheme` then holds whichever scheme ID a merchant picked (`"scheme-1"`, `"scheme-2"`, or any custom one they've added via the editor). Shopify doesn't generate the actual CSS for you automatically — the theme still needs to loop over `settings.color_schemes` itself and output a class per scheme, each holding that scheme's colors as CSS custom properties. A section then applies the right one with a matching class, like `color-{{ section.settings.color_scheme }}`, on its outer element. That loop is the next piece.
+
+## Turning `settings.color_schemes` into CSS
+
+A `color_scheme_group` setting only ever gives you *data* — a merchant's chosen colors, available in Liquid as `settings.color_schemes`. Nothing renders yet. Write the loop once, in a snippet rendered near the top of `layout/theme.liquid`, using the same four-role scheme from the opening example on this page:
+
+```liquid
+{% comment %} snippets/color-scheme-css-variables.liquid — rendered once, in layout/theme.liquid's <head> {% endcomment %}
+{% style %}
+  {% for scheme in settings.color_schemes %}
+    .color-{{ scheme.id }} {
+      --color-background: {{ scheme.settings.background }};
+      --color-text: {{ scheme.settings.text }};
+      --color-button: {{ scheme.settings.button }};
+      --color-button-label: {{ scheme.settings.button_label }};
+    }
+  {% endfor %}
+{% endstyle %}
+```
+
+```liquid
+{% comment %} layout/theme.liquid — rendered once, near the top of <head> {% endcomment %}
+<head>
+  {% render 'color-scheme-css-variables' %}
+  {{ content_for_header }}
+</head>
+```
+
+`scheme.id` becomes the class name, and each `scheme.settings.*` value becomes one CSS custom property. Rendered for two schemes — a light one and a dark one, defined in `settings_data.json` —
+
+```json
+"color_schemes": {
+  "scheme-1": { "settings": { "background": "#ffffff", "text": "#121212", "button": "#121212", "button_label": "#ffffff" } },
+  "scheme-2": { "settings": { "background": "#121212", "text": "#ffffff", "button": "#ffffff", "button_label": "#121212" } }
+}
+```
+
+— it outputs:
+
+```css
+.color-scheme-1 {
+  --color-background: #ffffff;
+  --color-text: #121212;
+  --color-button: #121212;
+  --color-button-label: #ffffff;
+}
+.color-scheme-2 {
+  --color-background: #121212;
+  --color-text: #ffffff;
+  --color-button: #ffffff;
+  --color-button-label: #121212;
+}
+```
+
+A section consumes those classes through CSS alone — reusing the `color_scheme` setting from the example above:
+
+```liquid
+{% comment %} sections/testimonials.liquid (abridged) {% endcomment %}
+<div class="testimonials color-{{ section.settings.color_scheme }}">
+  {% content_for 'blocks' %}
+</div>
+```
+
+```css
+.testimonials {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+.testimonials .button {
+  background: var(--color-button);
+  color: var(--color-button-label);
+}
+```
+
+The section's own CSS never hardcodes a color — it only reads `var(--color-background)` and similar. Whichever class `color-{{ section.settings.color_scheme }}` resolves to at render time is what supplies those variables' actual values, so the same stylesheet produces a completely different look depending only on which scheme a merchant picked.
+
+This version keeps things simple with a flat background and four roles. A real theme usually ships more roles (Dawn ships seven — see the table earlier on this page) and often a `color_background` gradient role too, which needs a `default` fallback in the loop since `background_gradient` is `nil` on any scheme that didn't choose a gradient. [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) shows this same loop handling both, across four full schemes (including a gradient one) and two independent sections consuming them.
 
 ## Why this is worth the extra setup
 
@@ -196,6 +273,16 @@ Everything on this page is about letting a merchant *pick* a pre-coordinated bun
 | `color_background` | A `definition` entry — solid color or gradient |
 | `header` | A `definition` entry — visual grouping, no color |
 
+**Liquid tags used on this page**
+
+| Tag | Purpose |
+|---|---|
+| `{% comment %}...{% endcomment %}` | Inline and file-path notes in the examples |
+| `{% style %}...{% endstyle %}` | Outputs a `<style>` block built from Liquid |
+| `{% for %}...{% endfor %}` | Loops over `settings.color_schemes` |
+| `{% render %}` | Includes a snippet in another file |
+| `{% content_for 'blocks' %}` | Renders a section's blocks |
+
 **Property keys exclusive to `color_scheme_group`**
 
 | Key | Required? | Purpose |
@@ -226,6 +313,7 @@ Everything on this page is about letting a merchant *pick* a pre-coordinated bun
 | `scheme.settings` | Object | Holds every `definition` value, keyed by the ID you chose |
 | `settings.color_schemes` | Iterable | All of a theme's current schemes; loop over this to generate CSS |
 | `section.settings.color_scheme` | String | The scheme ID a merchant picked for a `color_scheme` setting |
+| `content_for_header` | String | Shopify's required head-injection output — must be rendered once in `<head>`, regardless of colors |
 
 ## Naming conventions
 
@@ -236,6 +324,8 @@ Everything on this page is about letting a merchant *pick* a pre-coordinated bun
 | Sub-element of a role | `{role}_{aspect}` | `button_label`, `background_gradient` |
 | Secondary/alternate variant | `{modifier}_{role}` | `secondary_button_label`, not `button_label_2` |
 | `label` value | Always a `t:` translation key, never literal English | `t:labels.background` |
+| CSS class that applies a scheme | `color-{{ scheme.id }}` | `.color-scheme-1` |
+| CSS custom property per role | `--color-{role}` | `--color-background`, `--color-button-label` |
 
 ## Key takeaways
 
@@ -245,6 +335,7 @@ Everything on this page is about letting a merchant *pick* a pre-coordinated bun
 - There's no documented limit on how many `definition` roles a scheme can have. Dawn ships seven as a real-world reference point; four is enough to cover the basics.
 - `definition` only accepts three entry types — `header`, `color`, and `color_background` — nothing else. `color_background` lets a role be a gradient as well as a flat color; consume it with the `background` CSS shorthand, not `background-color`.
 - The `role` field maps your own `definition` IDs to ten standardized roles Shopify's editor needs for an accurate scheme-picker preview — all ten are required, even the four that aren't currently drawn in the preview. It only affects that preview; your own Liquid still reads `scheme.settings.<your-id>` exactly as it would without `role`.
+- Shopify only ever hands back scheme data — `settings.color_schemes`. Turning it into real CSS is a loop the theme has to write once, outputting a `.color-{{ scheme.id }}` class per scheme with each role as a custom property. [17.9](/all-about-colors/a-complete-color-scheme-example/) shows that same loop handling a gradient role and all ten role keys, across four full schemes.
 - `color_palette` is a separate, theme-wide setting for a small set of named brand colors a scheme's `definition` entries can default from — not a replacement for `color_scheme_group`, and not required by it. See [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/).
 
 ## Further reading
