@@ -137,21 +137,25 @@
   content: none;
 }
 
-/* Inline code spans (e.g. `rem`) must never break mid-word onto two lines.
-   Narrow table columns are the usual trigger: `overflow-wrap: break-word`
-   below (needed so long plain text/URLs don't overflow a tight cell) is
-   inherited by code spans too, and without this override a short token
-   like `rem` can split into "re" / "m" inside a tight cell.
+/* Inline code spans (e.g. `rem`, `{% schema %}`, `section.settings.<id>`)
+   must always render on one line, never wrap — mid-word, at a space, or at
+   a punctuation mark like the `.` in a dotted Liquid path. A reader expects
+   to copy an inline code span as one token; a code span broken across two
+   lines (even at a "natural" break point) reads as two tokens instead.
 
-   This only blocks *mid-word* breaks — it still allows wrapping at spaces,
-   so a longer, multi-word code span (a full commit message example, say)
-   can wrap across lines like normal text instead of forcing its column
-   wide enough to fit on one unbroken line. An earlier version of this rule
-   used `white-space: nowrap`, which fixed `rem` but broke exactly that:
-   longer code spans got forced onto one line, squeezing neighboring table
-   columns. `overflow-wrap: normal` is the narrower, correct fix. */
+   `overflow-wrap: break-word` below (needed so long plain text/URLs don't
+   overflow a tight table cell) is inherited by code spans too. Browsers'
+   normal line-breaking rules (UAX #14) also treat punctuation like `.` and
+   `/` inside a long token as a break opportunity even without
+   `break-word` — which is what let `section.settings.<id>` split after
+   the period, and `{% schema %}` split at its internal space, in narrow
+   table cells. `white-space: nowrap` stops all of that at once. The
+   tradeoff: a genuinely long, multi-word code span (a full commit message
+   example, say) can no longer wrap like normal text, so its column grows
+   to fit it instead — accepted deliberately, since a split code token is
+   worse than a wide column. */
 .sl-markdown-content code {
-  overflow-wrap: normal;
+  white-space: nowrap;
 }
 
 .sl-markdown-content td,
