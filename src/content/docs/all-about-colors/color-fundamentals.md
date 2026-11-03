@@ -37,7 +37,17 @@ Two other formats describe the exact same colors, just structured differently: R
 { "type": "color", "id": "accent_color", "label": "t:labels.accent_color" }
 ```
 
-A `color` setting gives a merchant a color picker in the theme editor and returns a plain hex string, read in Liquid as `section.settings.accent_color`. This is the right choice for one specific, independent color decision — an accent color on a button, say — where nothing else needs to stay visually coordinated with it.
+A `color` setting gives a merchant a color picker in the theme editor and returns a plain hex string. This is the right choice for one specific, independent color decision — an accent color on a button, say — where nothing else needs to stay visually coordinated with it.
+
+The JSON above is identical no matter *where* you declare it — the `color` type itself doesn't know or care whether it's a theme setting, a section setting, or a block setting. What changes is where it's defined and how you read it back:
+
+| Declared in | Shared across | Read in Liquid as |
+|---|---|---|
+| `config/settings_schema.json` | Every page, every section — one value, theme-wide | `settings.accent_color` |
+| A section's own `{% schema %}` | Just that one section instance | `section.settings.accent_color` |
+| A block's own `{% schema %}` | Just that one block instance | `block.settings.accent_color` |
+
+Most of the examples in this chapter use the section case, since it's the one most developers reach for first — but a block picking its own icon color, or a theme-wide setting controlling one color everywhere, both use this exact same `color` type underneath. [28.1. Theme Settings Fundamentals](/all-about-theme-settings/theme-settings-fundamentals/) covers the full distinction between these three, including the concrete test for telling a theme setting from a section/block setting at a glance.
 
 ## Why color coordination isn't cosmetic: contrast and accessibility
 
@@ -87,7 +97,9 @@ This chapter leans on four terms that build on each other. Worth having them str
 
 | Property | Returns | Notes |
 |---|---|---|
-| `section.settings.<id>` | Hex color string | Reads a `color` setting's value — `<id>` is whatever you named it |
+| `settings.<id>` | Hex color string | Reads a `color` setting declared as a theme setting |
+| `section.settings.<id>` | Hex color string | Reads a `color` setting declared in a section's own schema |
+| `block.settings.<id>` | Hex color string | Reads a `color` setting declared in a block's own schema |
 
 ## Naming conventions
 
@@ -98,7 +110,8 @@ This chapter leans on four terms that build on each other. Worth having them str
 ## Key takeaways
 
 - A Shopify theme never hardcodes a merchant-facing color — it defines a *setting* that lets the merchant choose, then reads back whatever they picked.
-- A color value's real journey: editor swatch → `settings_data.json` → `section.settings.<id>` in Liquid → usually a CSS custom property → rendered page.
+- A color value's real journey: editor swatch → a section's value lands in that page's own JSON template, a theme setting's value lands in `settings_data.json` → `section.settings.<id>` or `settings.<id>` in Liquid, depending on which → usually a CSS custom property → rendered page.
+- The same `color` setting JSON works identically as a theme setting, a section setting, or a block setting — only where you declare it and how you read it back changes (`settings.<id>`, `section.settings.<id>`, `block.settings.<id>`).
 - A `color` setting always returns hex; RGB and HSL describe the same colors differently, and exist for cases hex alone can't handle cleanly — full depth in [17.4](/all-about-colors/color-formats-and-conversions/).
 - Contrast is a measurable accessibility requirement (4.5:1 normal text, 3:1 large text/UI, per WCAG), not a matter of taste — that's the real stakes behind everything else in this chapter.
 - Several independent `color` settings on one section multiply the number of ways a merchant can accidentally produce a pairing that fails contrast.
