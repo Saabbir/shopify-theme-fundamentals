@@ -70,7 +70,12 @@ A common real need is deriving a slightly darker or lighter variant of a merchan
 ```json
 // config/settings_schema.json — theme-wide, same as the example above;
 // the identical derivation works unchanged on a section or block setting
-{ "type": "color", "id": "button_color", "label": "t:labels.button_color", "default": "#2c6e5c" }
+{
+  "type": "color",
+  "id": "button_color",
+  "label": "t:labels.button_color",
+  "default": "#2c6e5c"
+}
 ```
 
 `color_darken` (covered in full on [17.5. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/)) works directly on whatever format you give it and returns a value in the same family — you don't need to manually convert to HSL first just to darken something.

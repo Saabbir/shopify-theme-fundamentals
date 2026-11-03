@@ -112,7 +112,11 @@ Two other formats describe the exact same colors, just structured differently: R
 ## A single, independent choice: the `color` setting
 
 ```json
-{ "type": "color", "id": "accent_color", "label": "t:labels.accent_color" }
+{
+  "type": "color",
+  "id": "accent_color",
+  "label": "t:labels.accent_color"
+}
 ```
 
 A `color` setting gives a merchant a color picker in the theme editor and returns a plain hex string. This is the right choice for one specific, independent color decision — an accent color on a button, say — where nothing else needs to stay visually coordinated with it.
@@ -190,7 +194,11 @@ All four, in Horizon's own real theme-wide settings — `palette_primary_button_
 
 ```json
 // Horizon, config/settings_schema.json (theme-wide)
-{ "type": "color", "id": "palette_primary_button_background", "default": "{{ settings.color_palette.foreground }}" }
+{
+  "type": "color",
+  "id": "palette_primary_button_background",
+  "default": "{{ settings.color_palette.foreground }}"
+}
 ```
 
 ```liquid

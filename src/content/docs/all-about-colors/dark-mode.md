@@ -57,7 +57,12 @@ The third option, "fills in a gap," concretely — only override a value the mer
 ```json
 // config/settings_schema.json — theme-wide; the same unless/endunless
 // pattern works identically against a section or block setting
-{ "type": "color", "id": "background_color", "label": "t:labels.background_color", "default": "#ffffff" }
+{
+  "type": "color",
+  "id": "background_color",
+  "label": "t:labels.background_color",
+  "default": "#ffffff"
+}
 ```
 
 ```css

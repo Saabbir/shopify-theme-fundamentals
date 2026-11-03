@@ -170,7 +170,14 @@ Side by side, the two declarations look like this:
 
 ```json
 // color_palette — theme-wide, raw colors, settings.color_palette.<key>
-{ "type": "color_palette", "id": "color_palette", "default": { "background": "#ffffff", "foreground": "#000000" } }
+{
+  "type": "color_palette",
+  "id": "color_palette",
+  "default": {
+    "background": "#ffffff",
+    "foreground": "#000000"
+  }
+}
 ```
 
 ```json

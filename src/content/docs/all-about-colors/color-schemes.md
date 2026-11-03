@@ -285,7 +285,12 @@ against Horizon's pattern, which runs real filter logic on every page view:
 Everything in this section is about letting a merchant *pick* a pre-coordinated bundle of colors. There's a separate, theme-wide setting called `color_palette` that's about something else: giving a theme a small set of named "raw" brand colors (think of it as the paint cans a brand ships with). A `color_scheme_group`'s own `definition` entries can use one of those raw colors as their `default`, instead of hand-typing the same hex value into every scheme:
 
 ```json
-{ "type": "color", "id": "background", "label": "t:labels.background", "default": "{{ settings.color_palette.background }}" }
+{
+  "type": "color",
+  "id": "background",
+  "label": "t:labels.background",
+  "default": "{{ settings.color_palette.background }}"
+}
 ```
 
 `settings.color_palette` here is the **theme-wide** palette setting — it's covered in full on [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/).
