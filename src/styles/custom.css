@@ -158,6 +158,19 @@
   white-space: nowrap;
 }
 
+/* `white-space: nowrap` above is a shorthand that also collapses runs of
+   whitespace — fine for an inline code span, but it was also matching the
+   `<code>` inside every fenced code block's `<pre><code>`, collapsing each
+   line's leading indentation down to nothing (JSON/Liquid examples were
+   rendering flush-left instead of nested). A fenced block needs the
+   opposite: whitespace preserved exactly, newlines kept as real line
+   breaks. This selector has one more element in it than the rule above
+   (`pre code` vs `code`), so it wins the cascade and restores that for
+   code blocks specifically, leaving the inline-code nowrap fix untouched. */
+.sl-markdown-content pre code {
+  white-space: pre;
+}
+
 .sl-markdown-content td,
 .sl-markdown-content th {
   overflow-wrap: break-word;
