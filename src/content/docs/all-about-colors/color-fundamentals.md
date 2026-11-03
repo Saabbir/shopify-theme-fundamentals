@@ -13,13 +13,15 @@ What you write instead is a schema *setting* that tells Shopify "let the merchan
 
 ## From a merchant's click to a rendered pixel
 
-It's worth seeing that mechanism end to end, once, with the simplest possible example, before the rest of this chapter builds on it:
+It's worth seeing that mechanism end to end, once, with the simplest possible example, before the rest of this chapter builds on it. Take the most common case — a `color` setting defined on a *section* — and follow one merchant's click all the way to a rendered pixel:
 
-1. A merchant opens the theme editor and clicks a color swatch for a setting you defined.
-2. Shopify stores whatever hex value they picked in the theme's `config/settings_data.json` file.
-3. Your Liquid reads it back with `section.settings.<id>`.
+1. A merchant opens the theme editor and clicks a color swatch for a setting you defined on that section.
+2. Shopify stores whatever hex value they picked in that page's JSON template (`templates/index.json`, say) — specifically, in that one section instance's own `settings` object.
+3. Your Liquid reads it back with `section.settings.<id>`, scoped to that exact instance.
 4. It usually gets written straight into an inline CSS custom property: `style="--accent: {{ section.settings.accent_color }};"`.
 5. Your stylesheet reads that property with `var(--accent)`, and the browser renders it.
+
+Step 2 is worth being precise about, because it's easy to assume every setting's value lives in one place: it doesn't. A *section* setting's value lives in that page's own template file, which is exactly why `section.settings.<id>` only ever returns a value for the one instance currently rendering — a different page with a different instance of the same section gets its own, independently stored value. A *theme* setting — the kind that's the same everywhere, not tied to one placement — is the other case, and it's stored differently: in `config/settings_data.json`, read with `settings.<id>` instead, no `section.` prefix. [28.1. Theme Settings Fundamentals](/all-about-theme-settings/theme-settings-fundamentals/) covers that distinction — and the concrete test for telling the two apart — in full; this page's examples are all section settings, the one most developers reach for first.
 
 None of this is unique to color — every schema setting follows the same path from editor to rendered page. But color is where most developers meet this pattern for the first time, so it's worth walking through explicitly here rather than assuming it's obvious.
 
