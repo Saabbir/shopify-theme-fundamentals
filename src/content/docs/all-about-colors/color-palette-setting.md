@@ -34,7 +34,7 @@ Picture a theme with forty independent `color` settings scattered across buttons
 - Each key must start with a letter, and can only contain letters, digits, and underscores after that (`background`, `accent_2`, not `2nd-color` or `background-color`).
 - Each value must be a valid hex color, **without alpha** — an 8-digit hex (`#ffffffcc`) is rejected. `color_palette` colors are always fully opaque.
 
-This is a real, current Shopify theme setting — Horizon itself (Shopify's own reference theme, version 4.1.4 at the time of writing) defines exactly this setting, with the id `color_palette` and exactly two entries:
+This is a real, current Shopify theme setting — Horizon itself (Shopify's own reference theme, version 4.3.0 at the time of writing — Horizon updates often, so check its current version if this matters for your own work) defines exactly this setting, with the id `color_palette` and exactly two entries:
 
 ```json
 {
