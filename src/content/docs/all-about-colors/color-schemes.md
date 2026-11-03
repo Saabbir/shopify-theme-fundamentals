@@ -249,6 +249,10 @@ A section or block picks from the available schemes with a `color_scheme` settin
 }
 ```
 
+:::note[`type` and `id` matching here is a convention, not a rule]
+`"type": "color_scheme"` is the fixed string Shopify requires to get this picker setting at all. `"id": "color_scheme"` is just this setting's own, developer-chosen id — it could just as easily be `id: "scheme"` or `id: "section_color_scheme"`, and you'd read it back as `section.settings.scheme` or `section.settings.section_color_scheme` instead. The two matching here is a readable, common convention (it's what you'll see in most real themes, including the examples on this page), not something Shopify checks or enforces.
+:::
+
 `section.settings.color_scheme` then holds whichever scheme ID a merchant picked (`"scheme-1"`, `"scheme-2"`, or any custom one they've added via the editor). Shopify doesn't generate the actual CSS for you automatically — the theme still needs to loop over `settings.color_schemes` itself (usually once, in a snippet rendered near the top of `theme.liquid`) and output a class per scheme, each holding that scheme's colors as CSS custom properties. A section then applies the right one with a matching class, like `color-{{ section.settings.color_scheme }}`, on its outer element. See [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) for this loop written out in full.
 
 ### Why this is worth the extra setup

@@ -44,6 +44,10 @@ Change the brand's base background color later, and you're hunting down and edit
 }
 ```
 
+:::note[`type` and `id` matching here is a convention, not a rule]
+`"type": "color_palette"` is fixed — it's the exact string Shopify requires to get this setting at all, same as `"color"` or `"color_scheme_group"` elsewhere in this chapter. `"id": "color_palette"` is different: the `id` is yours to name, same as any other setting's `id`, and Shopify doesn't require it to match the type. It's read back as `settings.<id>`, so naming it `color_palette` just means you read it as `settings.color_palette` — name it `brand_colors` instead and you'd read `settings.brand_colors`. Every real example on this page happens to use `color_palette` for both, because that's what Horizon itself does and it reads clearly, but don't mistake the match for something Shopify enforces.
+:::
+
 `default` is a flat object of named colors — not an array like `color_scheme_group`'s `default`. A few concrete rules govern it:
 
 - Between **2 and 20** entries are required — fewer than 2 or more than 20 fails theme check.

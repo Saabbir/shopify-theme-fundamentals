@@ -29,6 +29,8 @@ description: A full worked example of Horizon's approach — individual colors, 
 
 A small, theme-wide `color_palette` ([17.3](/all-about-colors/color-palette-setting/)) supplies the two raw colors everything else falls back to. Nothing scheme-related is declared at the theme level at all — the actual color choices live on each section.
 
+`"id": "color_palette"` matching `"type": "color_palette"` above is a naming convention, not a requirement — see [17.3](/all-about-colors/color-palette-setting/#the-setting-itself) for why the `id` is always yours to choose, even when the `type` is fixed.
+
 ### The section: `sections/testimonials.liquid`
 
 ```liquid
@@ -330,6 +332,8 @@ A merchant-created scheme's real `id` is usually a generated value, not a clean 
 ```
 
 The section's CSS never hardcodes a color — it only ever reads `var(--color-background)` and similar. Whichever class `color-{{ section.settings.color_scheme }}` resolves to at render time is what supplies those variables' actual values, so the exact same stylesheet produces four entirely different-looking results (including the gradient scheme) depending only on which scheme a merchant picked.
+
+As with `color_palette` above, `"id": "color_scheme"` matching `"type": "color_scheme"` is convention, not a requirement — see [17.2](/all-about-colors/color-schemes/#letting-a-section-use-it) for why the `id` is always yours to pick, independent of the fixed `type` string.
 
 ### A second section, picking a different scheme by default
 
