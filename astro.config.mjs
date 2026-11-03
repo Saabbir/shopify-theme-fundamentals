@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import rehypeExternalLinks from 'rehype-external-links';
 import { visit } from 'unist-util-visit';
+import { buildPageNumberMap, rehypeSectionNumbers } from './src/plugins/rehype-section-numbers.mjs';
 
 const base = '/shopify-theme-fundamentals';
 
@@ -23,90 +24,7 @@ function rehypeBaseLinks() {
   };
 }
 
-// https://astro.build/config
-export default defineConfig({
-  site: 'https://saabbir.github.io',
-  base,
-  markdown: {
-    // Every external link (http/https) in the docs opens in a new tab.
-    // rel: noopener/noreferrer prevents the new tab from getting a handle
-    // back to this page via window.opener (a known security/perf risk of
-    // target="_blank").
-    // Root-relative internal links (/start-here/) and image srcs (/images/foo.svg)
-    // are rewritten to include `base`, otherwise GitHub Pages would resolve them
-    // at saabbir.github.io/ instead of saabbir.github.io/shopify-theme-fundamentals/.
-    rehypePlugins: [
-      rehypeBaseLinks,
-      [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
-    ],
-  },
-  integrations: [
-    starlight({
-      title: 'Shopify Theme Fundamentals',
-      description:
-        'Learn Shopify theme development from scratch — Liquid, theme architecture, blocks, sections, design tokens, and the mental model for turning a design into working theme code.',
-      favicon: '/favicon.svg',
-      head: [
-        // ICO fallback for browsers that don't support SVG favicons (e.g. Safari).
-        {
-          tag: 'link',
-          attrs: { rel: 'icon', href: `${base}/favicon.ico`, sizes: '32x32' },
-        },
-        // Explicit PNG fallbacks.
-        {
-          tag: 'link',
-          attrs: { rel: 'icon', type: 'image/png', href: `${base}/favicon-32x32.png`, sizes: '32x32' },
-        },
-        {
-          tag: 'link',
-          attrs: { rel: 'icon', type: 'image/png', href: `${base}/favicon-16x16.png`, sizes: '16x16' },
-        },
-        // iOS/iPadOS home screen bookmark icon.
-        {
-          tag: 'link',
-          attrs: { rel: 'apple-touch-icon', href: `${base}/apple-touch-icon.png`, sizes: '180x180' },
-        },
-        // Makes GFM task-list checkboxes clickable, adds strikethrough + a
-        // per-list progress bar. See public/scripts/checklist.js.
-        {
-          tag: 'script',
-          attrs: { src: `${base}/scripts/checklist.js`, defer: true },
-        },
-        // Scrolls the left sidebar so the active page's link is visible on
-        // load, since Starlight only restores a scroll position when one was
-        // already saved earlier in the tab session. See public/scripts/sidebar-scroll.js.
-        {
-          tag: 'script',
-          attrs: { src: `${base}/scripts/sidebar-scroll.js`, defer: true },
-        },
-      ],
-      customCss: ['./src/styles/custom.css'],
-      components: {
-        // Adds the current section name to the document <title> (browser
-        // tab / bookmark name) without touching the on-page H1. See
-        // src/components/Head.astro for why.
-        Head: './src/components/Head.astro',
-        // Adds a "Handbook" link to the top header nav, pointing to the
-        // companion Shopify Theme Handbook site. See
-        // src/components/Header.astro for why.
-        Header: './src/components/Header.astro',
-        // Adds a prominent "jump to the Handbook" link above the usual
-        // edit-link/last-updated footer row. See
-        // src/components/Footer.astro for why.
-        Footer: './src/components/Footer.astro',
-      },
-      social: [
-        {
-          icon: 'github',
-          label: 'GitHub',
-          href: 'https://github.com/Saabbir/shopify-theme-fundamentals',
-        },
-      ],
-      editLink: {
-        baseUrl: 'https://github.com/Saabbir/shopify-theme-fundamentals/edit/main/',
-      },
-      lastUpdated: true,
-      sidebar: [
+const sidebarConfig = [
         {
           label: '1. Start Here',
           items: [
@@ -526,7 +444,95 @@ export default defineConfig({
             { label: '40.5. A Complete Example', slug: 'all-about-input-settings/a-complete-example' },
           ],
         },
+      ];
+
+const pageNumbers = buildPageNumberMap(sidebarConfig);
+
+// https://astro.build/config
+export default defineConfig({
+  site: 'https://saabbir.github.io',
+  base,
+  markdown: {
+    // Every external link (http/https) in the docs opens in a new tab.
+    // rel: noopener/noreferrer prevents the new tab from getting a handle
+    // back to this page via window.opener (a known security/perf risk of
+    // target="_blank").
+    // Root-relative internal links (/start-here/) and image srcs (/images/foo.svg)
+    // are rewritten to include `base`, otherwise GitHub Pages would resolve them
+    // at saabbir.github.io/ instead of saabbir.github.io/shopify-theme-fundamentals/.
+    rehypePlugins: [
+      rehypeBaseLinks,
+      [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
+      [rehypeSectionNumbers, pageNumbers],
+    ],
+  },
+  integrations: [
+    starlight({
+      title: 'Shopify Theme Fundamentals',
+      description:
+        'Learn Shopify theme development from scratch — Liquid, theme architecture, blocks, sections, design tokens, and the mental model for turning a design into working theme code.',
+      favicon: '/favicon.svg',
+      head: [
+        // ICO fallback for browsers that don't support SVG favicons (e.g. Safari).
+        {
+          tag: 'link',
+          attrs: { rel: 'icon', href: `${base}/favicon.ico`, sizes: '32x32' },
+        },
+        // Explicit PNG fallbacks.
+        {
+          tag: 'link',
+          attrs: { rel: 'icon', type: 'image/png', href: `${base}/favicon-32x32.png`, sizes: '32x32' },
+        },
+        {
+          tag: 'link',
+          attrs: { rel: 'icon', type: 'image/png', href: `${base}/favicon-16x16.png`, sizes: '16x16' },
+        },
+        // iOS/iPadOS home screen bookmark icon.
+        {
+          tag: 'link',
+          attrs: { rel: 'apple-touch-icon', href: `${base}/apple-touch-icon.png`, sizes: '180x180' },
+        },
+        // Makes GFM task-list checkboxes clickable, adds strikethrough + a
+        // per-list progress bar. See public/scripts/checklist.js.
+        {
+          tag: 'script',
+          attrs: { src: `${base}/scripts/checklist.js`, defer: true },
+        },
+        // Scrolls the left sidebar so the active page's link is visible on
+        // load, since Starlight only restores a scroll position when one was
+        // already saved earlier in the tab session. See public/scripts/sidebar-scroll.js.
+        {
+          tag: 'script',
+          attrs: { src: `${base}/scripts/sidebar-scroll.js`, defer: true },
+        },
       ],
+      customCss: ['./src/styles/custom.css'],
+      components: {
+        // Adds the current section name to the document <title> (browser
+        // tab / bookmark name) without touching the on-page H1. See
+        // src/components/Head.astro for why.
+        Head: './src/components/Head.astro',
+        // Adds a "Handbook" link to the top header nav, pointing to the
+        // companion Shopify Theme Handbook site. See
+        // src/components/Header.astro for why.
+        Header: './src/components/Header.astro',
+        // Adds a prominent "jump to the Handbook" link above the usual
+        // edit-link/last-updated footer row. See
+        // src/components/Footer.astro for why.
+        Footer: './src/components/Footer.astro',
+      },
+      social: [
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/Saabbir/shopify-theme-fundamentals',
+        },
+      ],
+      editLink: {
+        baseUrl: 'https://github.com/Saabbir/shopify-theme-fundamentals/edit/main/',
+      },
+      lastUpdated: true,
+      sidebar: sidebarConfig,
     }),
   ],
 });
