@@ -5,6 +5,8 @@ description: Every Liquid color filter, with before/after examples.
 
 **TL;DR:** Every Liquid color filter, with before/after examples.
 
+A `color` setting only ever gives you one color — the one the merchant picked. These filters are how you derive a related tone (a hover state, a muted variant), extract information from a color (how bright is it?), or check two colors against each other, all without asking the merchant to pick a second color themselves.
+
 :::note[Check filter names and parameters against Shopify's current docs]
 Liquid's color filters are the kind of detail Shopify adds to over time. Treat the filters below as the core, long-standing set — and check [Shopify's filter reference](https://shopify.dev/docs/api/liquid/filters#color) for anything newer before assuming this list is exhaustive.
 :::

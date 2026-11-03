@@ -13,7 +13,7 @@ Every page in this chapter ends with two reference tables: **Built-in reference*
 
 | Page | Answers |
 |---|---|
-| [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) | The `color` setting, and why bundling colors beats standalone pickers |
+| [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) | The merchant-controlled mental model, the `color` setting, contrast and accessibility stakes, and the vocabulary (role, scheme, palette, token) the rest of this chapter assumes |
 | [17.2. Color Schemes](/all-about-colors/color-schemes/) | A full `color_scheme_group` and `color_scheme` deep dive — `definition`, `role`, `color_background` gradients, and consuming a scheme via a class |
 | [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) | `color_palette` — a small, theme-wide set of named brand colors other settings can point back to |
 | [17.4. Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/) | Hex, RGB, and HSL — what a merchant's color picker actually gives you, and converting between them |

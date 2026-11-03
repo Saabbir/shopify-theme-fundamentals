@@ -5,6 +5,8 @@ description: Hex, RGB, and HSL — what a merchant's color picker actually gives
 
 **TL;DR:** Hex, RGB, and HSL — what a merchant's color picker actually gives you, and converting between them.
 
+Most of the time, as [17.1](/all-about-colors/color-fundamentals/) covers, you'll pass a merchant's color straight through without touching it. This page is for the remaining cases — deriving a hover state from a color the merchant never picked a second time for, or feeding a value into something that needs saturation and lightness as separate numbers — where you need to understand the format itself, not just pass it along.
+
 ## What a `color` setting actually returns
 
 When a merchant picks a color in the theme editor, `section.settings.your_color_id` returns a plain string in hex format, like `#ff6600`. That's the one format you can always count on without converting anything — most of the time, printing it straight into an inline style or CSS custom property is all you need:
