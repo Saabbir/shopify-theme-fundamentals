@@ -1,139 +1,17 @@
 ---
 title: A Complete Color Scheme Example
-description: A full worked example of Horizon's approach — individual colors, an automatic hover state, and a contrast-checked text color — plus Dawn's color_scheme_group version of the same completeness goal.
+description: A full, worked color_scheme_group example — definition, role, a color_background gradient, the CSS-generation snippet it needs, and two sections consuming it.
 ---
 
-**TL;DR:** A full worked example of Horizon's approach — individual colors, an automatic hover state, and a contrast-checked text color — plus Dawn's `color_scheme_group` version of the same completeness goal, for comparison.
+**TL;DR:** A full, worked `color_scheme_group` example — `definition`, `role`, a `color_background` gradient, the CSS-generation snippet it needs, and two sections consuming it.
 
-[17.2. Color Schemes](/all-about-colors/color-schemes/) introduced both of this chapter's real approaches to keeping a merchant's colors coordinated. This page shows each one assembled into a complete, working piece: the full schema, the snippet every theme needs to turn settings into real CSS, and sections consuming the result.
+[17.2. Color Schemes](/all-about-colors/color-schemes/) introduced every piece of `color_scheme_group` on its own. This page assembles all of them into one complete, working theme: the full schema, the real schemes a merchant would see, the snippet every theme needs to turn those schemes into actual CSS, and two sections consuming the result.
 
-## Horizon's approach, complete: individual colors, computed live
-
-### The schema: `config/settings_schema.json`
-
-```json
-{
-  "name": "t:settings.colors",
-  "settings": [
-    {
-      "type": "color_palette",
-      "id": "color_palette",
-      "default": {
-        "background": "#ffffff",
-        "foreground": "#121212"
-      }
-    }
-  ]
-}
-```
-
-A small, theme-wide `color_palette` ([17.3](/all-about-colors/color-palette-setting/)) supplies the two raw colors everything else falls back to. Nothing scheme-related is declared at the theme level at all — the actual color choices live on each section.
-
-`"id": "color_palette"` matching `"type": "color_palette"` above is a naming convention, not a requirement — see [17.3](/all-about-colors/color-palette-setting/#the-setting-itself) for why the `id` is always yours to choose, even when the `type` is fixed.
-
-### The section: `sections/testimonials.liquid`
-
-```liquid
-<div
-  class="testimonials"
-  style="
-    --testimonials-background: {{ section.settings.background_color }};
-    --testimonials-text: {{ section.settings.text_color | default: settings.color_palette.foreground }};
-    --testimonials-button: {{ section.settings.button_color }};
-    --testimonials-button-label: {{ section.settings.button_label_color }};
-  "
->
-  {% content_for 'blocks' %}
-</div>
-
-{% schema %}
-{
-  "name": "t:sections.testimonials.name",
-  "settings": [
-    { "type": "color", "id": "background_color", "label": "t:labels.background", "default": "#ffffff" },
-    { "type": "color", "id": "text_color", "label": "t:labels.text" },
-    { "type": "color", "id": "button_color", "label": "t:labels.button", "default": "#121212" },
-    { "type": "color", "id": "button_label_color", "label": "t:labels.button_label", "default": "#ffffff" }
-  ]
-}
-{% endschema %}
-```
-
-`text_color` is deliberately left without a `default` — blank means "use the theme's normal text color," which is what makes the automatic contrast check below meaningful: most merchants never touch it, so the theme has to get the fallback right on its own.
-
-### The missing piece: deriving a hover color and a safe text color
-
-A `color_scheme_group` setting only ever gives you *data*; Horizon's approach is the same — nothing computes a hover state or checks contrast automatically. A theme has to do that itself, once, in a reusable snippet:
-
-```liquid
-{% comment %} snippets/coordinated-colors.liquid {% endcomment %}
-{% doc %}
-  Given a background and button color a merchant picked independently, derives
-  a hover variant for the button and a text color that's guaranteed to pass
-  WCAG AA against the background — falling back to the theme's own palette
-  only when the normal text color wouldn't actually be readable.
-
-  @param {string} background_color
-  @param {string} button_color
-{% enddoc %}
-
-{% liquid
-  assign button_brightness = button_color | color_brightness
-  if button_brightness <= 128
-    assign button_hover_color = button_color | color_lighten: 10
-  else
-    assign button_hover_color = button_color | color_darken: 10
-  endif
-
-  assign default_text_contrast = background_color | color_contrast: settings.color_palette.foreground
-  if default_text_contrast >= 4.5
-    assign effective_text_color = settings.color_palette.foreground
-  else
-    assign background_brightness = background_color | color_brightness
-    if background_brightness > 128
-      assign effective_text_color = settings.color_palette.foreground
-    else
-      assign effective_text_color = settings.color_palette.background
-    endif
-  endif
-%}
-```
-
-Rendered for `testimonials`'s settings above (a white background, a dark button), this resolves `effective_text_color` to the palette's own dark `foreground` — the default passes contrast against a white background, so nothing needs correcting. A merchant who changes `background_color` to something dark triggers the fallback branch instead, flipping to the palette's light `background` color automatically, with no code change and no broken pairing shipped.
-
-### A second section, reusing the exact same snippet
-
-```liquid
-{% comment %} sections/hero-banner.liquid (abridged) {% endcomment %}
-{% render 'coordinated-colors', background_color: section.settings.background_color, button_color: section.settings.button_color %}
-
-<div class="hero-banner" style="--hero-banner-background: {{ section.settings.background_color }}; --hero-banner-text: {{ effective_text_color }};">
-  <h1>{{ section.settings.heading }}</h1>
-</div>
-
-{% schema %}
-{
-  "name": "t:sections.hero_banner.name",
-  "settings": [
-    { "type": "text", "id": "heading", "label": "t:labels.heading" },
-    { "type": "color", "id": "background_color", "label": "t:labels.background", "default": "#121212" },
-    { "type": "color", "id": "button_color", "label": "t:labels.button", "default": "#ffffff" }
-  ]
-}
-{% endschema %}
-```
-
-`hero-banner` ships a dark default background, where `testimonials` ships a light one — the same snippet computes the right text color for each, because it's checking the actual background in play each time, not assuming one fixed answer works everywhere.
-
-:::note[A teaching version, not Horizon's actual file]
-This snippet is written to be readable end to end in one sitting — Horizon's real implementation (covered in [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/)) handles more roles, border colors, transparent backgrounds, and a `preset` system for different surface types, all built from this same core idea.
+:::note[Horizon doesn't use any of this]
+Everything on this page is Dawn's pattern — Shopify's current reference theme, Horizon, has no `color_scheme_group` anywhere in its source, and solves the same "keep a merchant's colors coordinated" problem by checking and correcting individually-picked colors live instead. [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) is Horizon's own complete, real equivalent — read from its actual source, not a teaching version.
 :::
 
-## Dawn's version of the same completeness goal: a full `color_scheme_group` example
-
-The alternative approach from [17.2](/all-about-colors/color-schemes/) — pre-tested, merchant-picked schemes rather than live correction — has its own complete shape, worth seeing in full for the same reason: a `color_scheme_group` with `role` and a `color_background` gradient field, the snippet every Dawn-style theme needs to turn that schema into actual CSS, and sections consuming the result.
-
-### The schema: `config/settings_schema.json`
+## The schema: `config/settings_schema.json`
 
 ```json
 {
@@ -223,7 +101,7 @@ Each scheme fills in every role `definition` requires, except `scheme-4` — the
 
 This split — structure in `settings_schema.json`, real values in `settings_data.json` — is the same split shown in full in [28.3. A Complete settings_schema.json Example](/all-about-theme-settings/a-complete-settings-schema-example/) and [28.4. A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/) — those pages show `scheme-1` through `scheme-3` on a simpler four-role scheme; `scheme-4` and the gradient role are new on this page, to demonstrate `color_background`.
 
-### The missing piece: turning schemes into CSS
+## The missing piece: turning schemes into CSS
 
 A `color_scheme_group` setting only ever gives you *data* — a merchant's chosen colors, available in Liquid as `settings.color_schemes`. Nothing renders yet. A theme has to loop over that data itself, once, and output real CSS:
 
@@ -295,7 +173,7 @@ Notice `--color-background` on `.color-scheme-4` holds a full `linear-gradient(.
 A merchant-created scheme's real `id` is usually a generated value, not a clean name like `scheme-1` — this example keeps `scheme-1` through `scheme-4` throughout purely for readability, matching the same IDs already used in [28.5. A Complete Template Example](/all-about-theme-settings/a-complete-template-example/).
 :::
 
-### Consuming it: a section with a `color_scheme` setting
+## Consuming it: a section with a `color_scheme` setting
 
 ```liquid
 {% comment %} sections/testimonials.liquid (abridged — full version in All About Sections) {% endcomment %}
@@ -333,9 +211,9 @@ A merchant-created scheme's real `id` is usually a generated value, not a clean 
 
 The section's CSS never hardcodes a color — it only ever reads `var(--color-background)` and similar. Whichever class `color-{{ section.settings.color_scheme }}` resolves to at render time is what supplies those variables' actual values, so the exact same stylesheet produces four entirely different-looking results (including the gradient scheme) depending only on which scheme a merchant picked.
 
-As with `color_palette` above, `"id": "color_scheme"` matching `"type": "color_scheme"` is convention, not a requirement — see [17.2](/all-about-colors/color-schemes/#letting-a-section-use-it) for why the `id` is always yours to pick, independent of the fixed `type` string.
+`"id": "color_scheme"` matching `"type": "color_scheme"` is convention, not a requirement — see [17.2](/all-about-colors/color-schemes/#letting-a-section-use-it) for why the `id` is always yours to pick, independent of the fixed `type` string.
 
-### A second section, picking a different scheme by default
+## A second section, picking a different scheme by default
 
 ```liquid
 {% comment %} sections/hero-banner.liquid (abridged) {% endcomment %}
@@ -363,10 +241,10 @@ Two completely different sections, both reusing the exact same four schemes and 
 
 ## Every concern from this chapter, in one place
 
-- **Horizon's approach, complete**: individual `color` settings, a theme-wide `color_palette` for the fallback, a reusable snippet deriving a hover color (`color_brightness`, `color_lighten`/`color_darken`) and a contrast-checked text color (`color_contrast`), reused unmodified across two sections with very different default backgrounds.
-- **Dawn's approach, complete**: a full `definition` array using all three allowed entry types, a complete `role` mapping, four real schemes in `settings_data.json` (including a gradient scheme), the CSS-generation loop every `color_scheme_group` theme needs, and two independent sections consuming the same schemes.
-- **Both approaches proving the same underlying principle** — covered generically in [17.7. Building a Token System](/all-about-colors/building-a-token-system/) — that components should read a variable, never a hardcoded value, whether that variable's value was pre-tested (Dawn) or computed live (Horizon).
-- **A contrast-checked-by-construction result either way** — Horizon's by checking live with `color_contrast`; Dawn's by each scheme pairing a background/text combination meant to already pass WCAG AA, worth verifying with `color_contrast` the same way [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/) describes, for any scheme you ship as a real default.
+- A full `definition` array using all three allowed entry types (`header` isn't needed here, but `color` and `color_background` both are), plus a complete `role` mapping — [17.2](/all-about-colors/color-schemes/) covers each piece on its own; this page shows them working together.
+- Four real schemes written into `settings_data.json`, including a gradient scheme, exercising the `default` fallback a theme needs wherever `background_gradient` might be blank.
+- The CSS-generation loop every `color_scheme_group` theme has to write itself — Shopify doesn't generate it automatically — and two independent sections consuming the same schemes through nothing but CSS custom properties.
+- The same underlying principle covered generically in [17.7. Building a Token System](/all-about-colors/building-a-token-system/): a component's CSS reads a variable, never a hardcoded value. Every color pairing here was also chosen to pass WCAG AA by construction — worth verifying with `color_contrast` the way [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/) describes, for any scheme you ship as a real default.
 
 ## Built-in reference
 
@@ -374,19 +252,10 @@ Two completely different sections, both reusing the exact same four schemes and 
 
 | Type | Used for |
 |---|---|
-| `color` | Individual color roles (Horizon's approach); `definition` entries, solid color only (Dawn's approach) |
-| `color_palette` | Theme-wide fallback colors (Horizon's approach) |
-| `color_scheme_group` | The main setting bundling roles into schemes (Dawn's approach) |
-| `color_scheme` | A section's scheme picker (Dawn's approach) |
-| `color_background` | `definition` entry for the gradient role (Dawn's approach) |
-
-**Filters used on this page** (Horizon's approach)
-
-| Filter | Purpose |
-|---|---|
-| `color_brightness` | Decides whether a color needs to lighten or darken for its hover state |
-| `color_lighten` / `color_darken` | Derive the hover variant |
-| `color_contrast` | Checks the default text color against the actual background in play |
+| `color` | `definition` entries, solid color |
+| `color_scheme_group` | The main setting bundling roles into schemes |
+| `color_scheme` | A section's scheme picker |
+| `color_background` | `definition` entry for the gradient role |
 
 **Liquid tags used on this page**
 
@@ -394,7 +263,7 @@ Two completely different sections, both reusing the exact same four schemes and 
 |---|---|
 | `{% comment %}...{% endcomment %}` | Inline and file-path notes in the examples |
 | `{% style %}...{% endstyle %}` | Outputs a `<style>` block built from Liquid |
-| `{% for %}...{% endfor %}` | Loops over `settings.color_schemes` (Dawn's approach) |
+| `{% for %}...{% endfor %}` | Loops over `settings.color_schemes` |
 | `{% render %}` | Includes a snippet in another file |
 | `{% schema %}...{% endschema %}` | Declares a section's settings |
 | `{% content_for 'blocks' %}` | Renders a section's blocks |
@@ -403,14 +272,13 @@ Two completely different sections, both reusing the exact same four schemes and 
 
 | Property / variable | Returns | Notes |
 |---|---|---|
-| `settings.color_palette.<key>` | Color object | Horizon's approach — the theme-wide fallback colors |
-| `settings.color_schemes` | Iterable | Dawn's approach — every scheme currently defined for the theme |
-| `scheme.id` | String | Dawn's approach — becomes the CSS class name |
-| `scheme.settings` | Object | Dawn's approach — each `definition` value, keyed by the ID you chose |
-| `section.settings.color_scheme` | String | Dawn's approach — the scheme ID a merchant picked |
+| `settings.color_schemes` | Iterable | Every scheme currently defined for the theme |
+| `scheme.id` | String | Becomes the CSS class name |
+| `scheme.settings` | Object | Each `definition` value, keyed by the ID you chose |
+| `section.settings.color_scheme` | String | The scheme ID a merchant picked |
 | `content_for_header` | String | Shopify's required head-injection output — must be rendered once in `<head>`, regardless of colors |
 
-**Filter used on this page** (Dawn's approach)
+**Filter used on this page**
 
 | Filter | Purpose |
 |---|---|
@@ -420,24 +288,23 @@ Two completely different sections, both reusing the exact same four schemes and 
 
 | What you're naming | Convention | Example |
 |---|---|---|
-| Individual color setting `id` (Horizon's approach) | snake_case, name the role, not the appearance | `button_background`, `button_text` |
-| CSS custom property (Horizon's approach) | `--{component}-{role}` | `--testimonials-background` |
-| CSS class that applies a scheme (Dawn's approach) | `color-{{ scheme.id }}` | `.color-scheme-1` |
-| CSS custom property per role (Dawn's approach) | `--color-{role}` | `--color-background`, `--color-button-label` |
-| Snippet file for the CSS-generation loop (Dawn's approach) | Descriptive, hyphenated | `color-scheme-css-variables.liquid` |
+| CSS class that applies a scheme | `color-{{ scheme.id }}` | `.color-scheme-1` |
+| CSS custom property per role | `--color-{role}` | `--color-background`, `--color-button-label` |
+| Snippet file for the CSS-generation loop | Descriptive, hyphenated | `color-scheme-css-variables.liquid` |
 
 ## Key takeaways
 
-- Horizon's approach reaches completeness with a small `color_palette`, individual `color` settings, and one reusable snippet that derives a hover color and a contrast-checked text color live — reused unmodified across sections with very different defaults.
-- Dawn's approach reaches completeness with a full `color_scheme_group` (`definition` plus `role`), real schemes written into `settings_data.json`, and one CSS-generation loop every theme using this pattern needs to write itself — Shopify doesn't generate it automatically.
-- Both approaches converge on the same underlying discipline: a component's CSS reads a variable, never a hardcoded value, whether that variable's value was pre-tested ahead of time or computed automatically at render time.
-- Neither approach is "the old one" in a deprecated sense — `color_scheme_group` is still fully supported — but Horizon, Shopify's current reference theme, builds new themes the first way, which is why this page (and this chapter) leads with it.
+- A complete `color_scheme_group` theme needs three pieces working together: the `definition`/`role` schema, real schemes in `settings_data.json`, and a CSS-generation loop the theme author writes — Shopify only ever hands back data, never CSS.
+- `color_background` lets one role (usually `background`) be either a flat color or a gradient; consume it with the `background` CSS shorthand, not `background-color`, since the latter silently drops a gradient value.
+- Two unrelated sections can consume the exact same schemes through nothing but a shared CSS class and shared custom property names — that reuse is the entire point of defining schemes once, globally.
+- Horizon, Shopify's current reference theme, doesn't use any of this — see the note near the top of this page and [27.2](/horizon-codebase-tour/how-horizon-sets-up-colors/) for its real, current equivalent.
 
 ## Further reading
 
-- [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) — Horizon's real, current source, read line by line
+- [17.2. Color Schemes](/all-about-colors/color-schemes/)
+- [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) — Horizon's real, current source, for the theme that doesn't use schemes at all
 - [14.6. A Complete Section Example](/all-about-sections/a-complete-section-example/)
 - [Input settings: `color_scheme_group`](https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#color_scheme_group) (shopify.dev)
 - [Liquid objects: color_scheme_group](https://shopify.dev/docs/api/liquid/objects/color_scheme_group) (shopify.dev)
 - [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/)
-- [Dawn's real `color_scheme_group` (GitHub)](https://github.com/Shopify/dawn/blob/main/config/settings_schema.json) — the production theme this page's Dawn section is modeled on
+- [Dawn's real `color_scheme_group` (GitHub)](https://github.com/Shopify/dawn/blob/main/config/settings_schema.json) — the production theme this page is modeled on
