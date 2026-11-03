@@ -21,12 +21,13 @@ What you write instead is a schema *setting* that tells Shopify "let the merchan
 
 ```json
 // Horizon, config/settings_schema.json (theme-wide — global, not tied to
-// one section) — a real setting from Horizon's own source
+// one section) — the real, complete setting, exactly as Horizon ships it
 {
   "type": "color",
   "id": "page_text_color",
   "label": "t:settings.page_text_color",
-  "default": "{{ settings.color_palette.foreground }}"
+  "default": "{{ settings.color_palette.foreground }}",
+  "info": "t:info.page_text_color_default_info"
 }
 ```
 

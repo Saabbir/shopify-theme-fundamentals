@@ -77,11 +77,12 @@ In practice, a theme author doesn't rewrite that fallback logic for every block 
 {% render 'contrast-override',
   background_color: block.settings.background_color,
   text_color: block.settings.text_color,
+  border_color: block.settings.border_color,
   section_id: section_id
 %}
 ```
 
-This is the real call signature from Horizon's `snippets/contrast-override.liquid` — [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) reads that snippet's actual implementation line by line.
+This is the real `@example` call signature straight from the `{% doc %}` header of Horizon's own `snippets/contrast-override.liquid` — [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) reads that snippet's actual implementation line by line.
 
 ## The scheme-based alternative: `color_scheme_group` (Dawn's pattern, still fully supported)
 
