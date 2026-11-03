@@ -7,7 +7,17 @@ description: The three-tier color architecture larger design systems use, and wh
 
 ## The problem with naming colors by what they look like
 
-A single flat list of colors — `blue`, `dark-blue`, `light-gray` — works fine for a small theme. It breaks down as a theme grows, for a simple reason: `blue` describes what a color looks like, not what it's for. If `blue` is used as both a button color and a link color, and you later need the button to be a different shade without changing links, you're stuck, because nothing in the name `blue` ever said "button" in the first place.
+A single flat list of colors — `blue`, `dark-blue`, `light-gray` — works fine for a small theme. It breaks down as a theme grows, for a simple reason: `blue` describes what a color looks like, not what it's for. If `blue` is used as both a button color and a link color, and you later need the button to be a different shade without changing links, you're stuck, because nothing in the name `blue` ever said "button" in the first place:
+
+```css
+--blue: #2c6e5c;
+
+.button { background: var(--blue); }
+.link { color: var(--blue); }
+/* Darkening just the button now means either breaking links too, or
+   abandoning the variable and hardcoding a new value into .button —
+   both because --blue never recorded which job it was doing. */
+```
 
 ## Tier 1: primitive tokens — the raw palette
 
@@ -53,6 +63,16 @@ Now a design change scoped to just buttons — darkening the hover state, say �
 :::note[Most themes only need two tiers]
 A small-to-medium theme usually does fine with just primitive and semantic tokens — introducing a full third, component-specific tier adds real overhead (more variables to track, more indirection to follow) that only pays off once a theme has enough distinct components with genuinely independent color needs. Add the component tier when you notice yourself wanting to change one component's color without affecting others that share the same semantic token — not preemptively.
 :::
+
+Two tiers, with components reading the semantic layer directly — no third tier at all:
+
+```css
+--primitive-blue-500: #2c6e5c;
+--color-accent: var(--primitive-blue-500);
+
+.button { background: var(--color-accent); }
+.link { color: var(--color-accent); }
+```
 
 ## Built-in reference
 

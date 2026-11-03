@@ -85,6 +85,11 @@ Returns the WCAG contrast ratio between two colors — not a filter that changes
 
 ## Converting formats
 
+```liquid
+{{ "#ff6600" | color_to_hsl }}
+{% # => hsl(24, 100%, 50%) %}
+```
+
 Covered in full on [17.4. Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/): `color_to_rgb`, `color_to_hsl`, `color_to_hex`.
 
 ## Built-in reference

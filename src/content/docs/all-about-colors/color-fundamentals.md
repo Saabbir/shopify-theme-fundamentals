@@ -9,7 +9,28 @@ description: The mental model, vocabulary, and accessibility stakes behind every
 
 In ordinary web development, you write `color: #2c6e5c;` in a stylesheet and you're done — the color is baked into the code, and changing it means editing and redeploying that code. A Shopify theme works backwards from that. The actual hex value a shopper sees is chosen by a merchant, in the theme editor, after your theme is already installed on their store — your code never hardcodes it.
 
-What you write instead is a schema *setting* that tells Shopify "let the merchant pick a color here," and your Liquid and CSS read back whatever they chose. This is the one idea the rest of this chapter assumes you already have: a theme developer's job with color is building the mechanism for choosing, not doing the choosing yourself.
+```css
+/* Ordinary CSS: this color is baked in. Changing it means editing
+   and redeploying the stylesheet. */
+.price {
+  color: #2c6e5c;
+}
+```
+
+What you write instead is a schema *setting* that tells Shopify "let the merchant pick a color here," and your Liquid and CSS read back whatever they chose:
+
+```json
+// Horizon, config/settings_schema.json (theme-wide — global, not tied to
+// one section) — a real setting from Horizon's own source
+{
+  "type": "color",
+  "id": "page_text_color",
+  "label": "t:settings.page_text_color",
+  "default": "{{ settings.color_palette.foreground }}"
+}
+```
+
+This is the one idea the rest of this chapter assumes you already have: a theme developer's job with color is building the mechanism for choosing, not doing the choosing yourself.
 
 ## From a merchant's click to a rendered pixel
 
@@ -21,6 +42,21 @@ It's worth seeing that mechanism end to end, once, with the simplest possible ex
 4. It usually gets written straight into an inline CSS custom property: `style="--accent: {{ section.settings.accent_color }};"`.
 5. Your stylesheet reads that property with `var(--accent)`, and the browser renders it.
 
+Steps 3 through 5, as actual code — **a section setting**, so `section.settings`, not `settings`:
+
+```liquid
+{% comment %} sections/announcement-bar.liquid {% endcomment %}
+<div class="announcement-bar" style="--accent: {{ section.settings.accent_color }};">
+  {{ section.settings.message }}
+</div>
+```
+
+```css
+.announcement-bar {
+  color: var(--accent);
+}
+```
+
 Step 2 is worth being precise about, because it's easy to assume every setting's value lives in one place: it doesn't. A *section* setting's value lives in that page's own template file, which is exactly why `section.settings.<id>` only ever returns a value for the one instance currently rendering — a different page with a different instance of the same section gets its own, independently stored value. A *theme* setting — the kind that's the same everywhere, not tied to one placement — is the other case, and it's stored differently: in `config/settings_data.json`, read with `settings.<id>` instead, no `section.` prefix. [28.1. Theme Settings Fundamentals](/all-about-theme-settings/theme-settings-fundamentals/) covers that distinction — and the concrete test for telling the two apart — in full; this page's examples are all section settings, the one most developers reach for first.
 
 None of this is unique to color — every schema setting follows the same path from editor to rendered page. But color is where most developers meet this pattern for the first time, so it's worth walking through explicitly here rather than assuming it's obvious.
@@ -28,6 +64,16 @@ None of this is unique to color — every schema setting follows the same path f
 ## What a color value actually looks like: hex, at a glance
 
 Whatever a merchant picks, a `color` setting always hands it back to you as a hex string — six (or eight, with transparency) characters after a `#`, like `#2c6e5c`. That's the one format you can count on without converting anything, and most of the time you'll pass it straight through unchanged.
+
+Horizon's own `color_palette` setting (theme-wide — global, `settings.color_palette.<key>`) is a real, concrete example of exactly this shape — two hex strings, nothing fancier:
+
+```json
+// Horizon, config/settings_schema.json
+"default": {
+  "background": "#ffffff",
+  "foreground": "#000000"
+}
+```
 
 Two other formats describe the exact same colors, just structured differently: RGB (separate red, green, and blue numbers) and HSL (hue, saturation, and lightness). You'll see both later in this chapter, and Shopify can convert between all three with filters — the full treatment, including why you'd ever reach for one over another, is in [17.4. Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/). For now, just know hex is the default you'll meet first.
 
@@ -55,6 +101,15 @@ Most of the examples in this chapter use the section case, since it's the one mo
 
 This is why a bad color pairing isn't just an aesthetic miss. Text a shopper can't comfortably read is a real accessibility failure, and in some jurisdictions a compliance risk for the merchant running the store. Keep that in mind for everything that follows — color coordination exists to prevent this specific, measurable problem, not to enforce good taste.
 
+Liquid can measure this directly, with the `color_contrast` filter — this is the one line of code the rest of this chapter's contrast checks all build on:
+
+```liquid
+{{ section.settings.background_color | color_contrast: section.settings.text_color }}
+{% # => a number, e.g. 7.2 — compare it against 4.5 (normal text) or 3 (large text/UI) %}
+```
+
+Both settings here are **section settings** (`section.settings.<id>`) — the same filter works identically on theme settings (`settings.<id>`) or block settings (`block.settings.<id>`); `color_contrast` only cares about the two hex values, not where they came from.
+
 ## The problem with standalone settings at scale
 
 ```json
@@ -72,6 +127,20 @@ Two real, current fixes exist. Shopify's current reference theme, Horizon, check
 
 `accent_color`, never `green_color`. The reason is simple once you say it out loud: the actual color behind a role will change — a rebrand, a seasonal refresh, a dark-mode remap — but the *role* a color plays stays constant. A setting named `green_color` holding a blue value, after a rebrand, is actively confusing to the next person who opens your schema. A setting named `accent_color` is still accurate no matter what hex value sits behind it.
 
+Horizon's own settings follow this exactly — this one is **theme-wide** (`settings.palette_primary_button_background`), not a section setting:
+
+```json
+// Horizon, config/settings_schema.json — named for the job ("primary
+// button background"), not a color word
+{
+  "type": "color",
+  "id": "palette_primary_button_background",
+  "label": "t:settings.background",
+  "default": "{{ settings.color_palette.foreground }}",
+  "alpha": true
+}
+```
+
 This isn't just a style nicety — it's a principle the rest of this chapter assumes without re-explaining. Schemes bundle *roles*. A palette holds raw colors other settings point at *by role*. Tokens, covered in [17.7. Building a Token System](/all-about-colors/building-a-token-system/), are named by purpose instead of appearance as their entire reason for existing. Learning this once, here, means none of those pages have to teach it again.
 
 ## Four words you'll see constantly
@@ -84,6 +153,18 @@ This chapter leans on four terms that build on each other. Worth having them str
 | Scheme | A bundle of roles, pre-coordinated, picked by a merchant as one unit | [17.2. Color Schemes](/all-about-colors/color-schemes/) |
 | Palette | A theme's own small set of raw, named brand colors other settings point back to | [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) |
 | Token | A reusable, named CSS value (usually a custom property) standing in for a literal one | [17.7. Building a Token System](/all-about-colors/building-a-token-system/) |
+
+All four, in Horizon's own real theme-wide settings — `palette_primary_button_background` plays the primary-button-background **role**; it defaults from the **palette** (`settings.color_palette.foreground`); Horizon has no **scheme** setting at all (that's Dawn's pattern); and the CSS custom property it ultimately feeds is a **token**:
+
+```json
+// Horizon, config/settings_schema.json (theme-wide)
+{ "type": "color", "id": "palette_primary_button_background", "default": "{{ settings.color_palette.foreground }}" }
+```
+
+```liquid
+{% # Horizon, snippets/color-palette.liquid %}
+--color-primary-button-background: rgb({{ settings.palette_primary_button_background.rgba }});
+```
 
 ## Built-in reference
 

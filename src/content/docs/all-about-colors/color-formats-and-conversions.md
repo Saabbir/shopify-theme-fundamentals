@@ -9,7 +9,7 @@ Most of the time, as [17.1](/all-about-colors/color-fundamentals/) covers, you'l
 
 ## What a `color` setting actually returns
 
-When a merchant picks a color in the theme editor, `section.settings.your_color_id` returns a plain string in hex format, like `#ff6600`. That's the one format you can always count on without converting anything — most of the time, printing it straight into an inline style or CSS custom property is all you need:
+When a merchant picks a color in the theme editor, `section.settings.your_color_id` (a **section** setting — the theme-wide equivalent is `settings.your_color_id`, with no `section.` prefix) returns a plain string in hex format, like `#ff6600`. That's the one format you can always count on without converting anything — most of the time, printing it straight into an inline style or CSS custom property is all you need:
 
 ```liquid
 <div style="--accent: {{ section.settings.accent_color }};">
@@ -17,7 +17,13 @@ When a merchant picks a color in the theme editor, `section.settings.your_color_
 
 ## Why you'd ever need a different format
 
-Hex is compact but opaque — `#ff6600` tells you nothing about how to make it 20% darker or how saturated it is without doing math on the individual red/green/blue components. HSL (hue, saturation, lightness) is far easier to reason about for exactly that kind of adjustment, because lightness and saturation are already separated out as their own numbers instead of being tangled together across three channels.
+Hex is compact but opaque — `#ff6600` tells you nothing about how to make it 20% darker or how saturated it is without doing math on the individual red/green/blue components. HSL (hue, saturation, lightness) is far easier to reason about for exactly that kind of adjustment, because lightness and saturation are already separated out as their own numbers instead of being tangled together across three channels:
+
+```liquid
+{{ "#ff6600" | color_to_hsl }}
+{% # => hsl(24, 100%, 50%) — the 50% lightness is a single number you can
+   # read and reason about directly; hex has no equivalent single value %}
+```
 
 ## Converting between formats with filters
 

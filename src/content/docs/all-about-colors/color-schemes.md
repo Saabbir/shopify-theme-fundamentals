@@ -70,6 +70,19 @@ This is a compact, teaching version of the exact technique Horizon's real theme 
 
 A merchant keeps full, independent control over every color — nothing is constrained to a fixed list of pre-built looks — and still can't ship an unreadable pairing, because the theme is checking and correcting on their behalf, every time, automatically. [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) covers the other half of Horizon's real system: `color_palette`, a small set of named raw brand colors other settings — including the fallback logic above — can point back to, instead of hardcoding `#000000`/`#ffffff` the way the simplified example does.
 
+In practice, a theme author doesn't rewrite that fallback logic for every block — Horizon wraps it once, in a reusable snippet, and calls it wherever a custom background can appear:
+
+```liquid
+{% comment %} blocks/testimonial.liquid — a block setting, so block.settings {% endcomment %}
+{% render 'contrast-override',
+  background_color: block.settings.background_color,
+  text_color: block.settings.text_color,
+  section_id: section_id
+%}
+```
+
+This is the real call signature from Horizon's `snippets/contrast-override.liquid` — [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/) reads that snippet's actual implementation line by line.
+
 ## The scheme-based alternative: `color_scheme_group` (Dawn's pattern, still fully supported)
 
 The other real, current approach — and the one you're more likely to inherit maintaining an existing theme than reach for first building a new one — bundles several color roles into a single named "scheme," so a merchant picks one whole, pre-coordinated look instead of assembling colors independently:
@@ -109,7 +122,22 @@ Dawn, Shopify's other current reference theme, ships exactly **seven** `definiti
 | `secondary_button_label` | `color` | Secondary (outlined) button text, and link color |
 | `shadow` | `color` | Drop-shadow color for elevated elements |
 
-A smaller theme can ship fewer — four roles (`background`, `text`, `button`, `button_label`) covers the basics, as the first example on this page shows. A theme with more distinct UI elements that need independent color control (borders, icons, a second accent) can add more roles. The practical ceiling isn't a Shopify limit — it's how many separate color decisions you're comfortable asking a merchant to keep coordinated across every scheme they create or edit.
+A smaller theme can ship fewer — four roles (`background`, `text`, `button`, `button_label`) covers the basics:
+
+```json
+{
+  "type": "color_scheme_group",
+  "id": "color_schemes",
+  "definition": [
+    { "type": "color", "id": "background", "label": "t:labels.background" },
+    { "type": "color", "id": "text", "label": "t:labels.text" },
+    { "type": "color", "id": "button", "label": "t:labels.button" },
+    { "type": "color", "id": "button_label", "label": "t:labels.button_label" }
+  ]
+}
+```
+
+A theme with more distinct UI elements that need independent color control (borders, icons, a second accent) can add more roles, up toward Dawn's seven. The practical ceiling isn't a Shopify limit — it's how many separate color decisions you're comfortable asking a merchant to keep coordinated across every scheme they create or edit.
 
 Real themes (Dawn included) follow a consistent naming pattern for these IDs too — see the Naming conventions table near the end of this page.
 
@@ -120,6 +148,16 @@ It's easy to assume `definition` accepts any setting type, the way a section's o
 - `header` — a plain label, for grouping roles visually in the editor. Doesn't produce a color.
 - `color` — a single solid color, same as the standalone `color` setting from [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/).
 - `color_background` — a color **or** a gradient, picked from one merchant-facing control. Covered next.
+
+All three, together — this is the complete set `definition` will accept, nothing more:
+
+```json
+"definition": [
+  { "type": "header", "content": "t:headers.surface" },
+  { "type": "color", "id": "background", "label": "t:labels.background" },
+  { "type": "color_background", "id": "background_gradient", "label": "t:labels.background_gradient" }
+]
+```
 
 Nothing else is allowed here — not `range`, not `image_picker`, not `checkbox`. A scheme is strictly a bundle of colors (and, with `color_background`, gradients); anything else that needs to vary per scheme has to live outside `color_scheme_group` entirely.
 
@@ -216,9 +254,31 @@ A section or block picks from the available schemes with a `color_scheme` settin
 
 A merchant choosing one scheme from a list you already tested for contrast can't accidentally produce an unreadable combination the way independent pickers can. It's also simpler for the merchant: one decision ("which look?") instead of four ("which four colors, that happen to need to work together?"). The trade-off against Horizon's approach above: this guarantee is made once, by you, ahead of time — which means it's cheaper at render time, but only as good as the schemes you actually tested, and less flexible for a merchant who wants a color no shipped scheme offers.
 
+That render-time cost difference, concretely — Dawn's pattern reads a precomputed class, nothing more:
+
+```liquid
+{% comment %} Dawn: nothing computed at render — just applies a class {% endcomment %}
+<div class="color-{{ section.settings.color_scheme }}">
+```
+
+against Horizon's pattern, which runs real filter logic on every page view:
+
+```liquid
+{% comment %} Horizon: computed fresh, every render, from whatever the merchant picked {% endcomment %}
+{% liquid
+  assign contrast = section.settings.background_color | color_contrast: section.settings.text_color
+%}
+```
+
 ### How this relates to the `color_palette` setting
 
-Everything in this section is about letting a merchant *pick* a pre-coordinated bundle of colors. There's a separate, theme-wide setting called `color_palette` that's about something else: giving a theme a small set of named "raw" brand colors (think of it as the paint cans a brand ships with). A `color_scheme_group`'s own `definition` entries can use one of those raw colors as their `default`, instead of hand-typing the same hex value into every scheme — it's covered in full on [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/).
+Everything in this section is about letting a merchant *pick* a pre-coordinated bundle of colors. There's a separate, theme-wide setting called `color_palette` that's about something else: giving a theme a small set of named "raw" brand colors (think of it as the paint cans a brand ships with). A `color_scheme_group`'s own `definition` entries can use one of those raw colors as their `default`, instead of hand-typing the same hex value into every scheme:
+
+```json
+{ "type": "color", "id": "background", "label": "t:labels.background", "default": "{{ settings.color_palette.background }}" }
+```
+
+`settings.color_palette` here is the **theme-wide** palette setting — it's covered in full on [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/).
 
 ## Built-in reference
 

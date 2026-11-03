@@ -9,9 +9,25 @@ description: The color_palette setting type — a small, theme-wide set of named
 
 ## What problem `color_palette` actually solves
 
-Picture a theme with forty independent `color` settings scattered across buttons, badges, inputs, borders, and schemes. Most of those colors should ultimately trace back to just two or three real brand colors — a background and a foreground, say. Without `color_palette`, every one of those forty settings hardcodes its own `"default"` hex value. Change the brand's base background color later, and you're hunting down and editing forty separate defaults by hand, hoping you don't miss one.
+Picture a theme with forty independent `color` settings scattered across buttons, badges, inputs, borders, and schemes. Most of those colors should ultimately trace back to just two or three real brand colors — a background and a foreground, say. Without `color_palette`, every one of those forty settings hardcodes its own `"default"` hex value:
 
-`color_palette` gives a theme one small, named source of truth for those raw brand colors, so every other setting's default can point back at it instead of repeating the hex value.
+```json
+// The problem: the same hex value, hand-typed into every setting
+{ "type": "color", "id": "button_background", "default": "#ffffff" },
+{ "type": "color", "id": "badge_background", "default": "#ffffff" },
+{ "type": "color", "id": "input_background", "default": "#ffffff" }
+```
+
+Change the brand's base background color later, and you're hunting down and editing forty separate defaults by hand, hoping you don't miss one.
+
+`color_palette` gives a theme one small, named source of truth for those raw brand colors, so every other setting's default can point back at it instead of repeating the hex value:
+
+```json
+// The fix: one source of truth, referenced everywhere
+{ "type": "color", "id": "button_background", "default": "{{ settings.color_palette.background }}" },
+{ "type": "color", "id": "badge_background", "default": "{{ settings.color_palette.background }}" },
+{ "type": "color", "id": "input_background", "default": "{{ settings.color_palette.background }}" }
+```
 
 ## The setting itself
 
@@ -123,12 +139,46 @@ Horizon also defines dozens of individual, standalone settings with names like `
 
 A merchant can remove an entry from `color_palette` in the theme editor (as long as at least 2 remain). When they do, Shopify doesn't just silently break every setting that referenced it — the editor prompts the merchant to choose a replacement color from what's left in the palette, and every setting that was pointing at the deleted entry is repointed to that replacement.
 
+Concretely: if a merchant deletes `accent_2` from a three-entry palette —
+
+```json
+// Before
+"default": { "background": "#ffffff", "foreground": "#000000", "accent_2": "#2c6e5c" }
+```
+
+```json
+// After — accent_2 is gone, and every setting that defaulted from it
+// (e.g. "default": "{{ settings.color_palette.accent_2 }}") gets repointed
+// to the replacement the merchant chose, automatically
+"default": { "background": "#ffffff", "foreground": "#000000" }
+```
+
+Nothing in your own Liquid or schema needs to change for this to work — the dynamic-default mechanism from the section above is what makes the repointing possible at all.
+
 ## `color_palette` vs. `color_scheme_group`: not a replacement, a different layer
 
 It's a reasonable question to ask whether `color_palette` replaces `color_scheme_group`, given both are about "a theme's colors" at a glance. They don't compete — they solve different problems, and Shopify's own documentation and changelog are explicit that `color_scheme_group` continues to work and isn't required to be replaced:
 
 - **`color_palette`** is a small set of **raw** brand colors (2 to 20 named hex values, no roles, no bundling). Think of it as the paint cans a brand ships with.
 - **`color_scheme_group`** is a set of **pre-coordinated bundles** of color roles — background, text, button, and so on — that a merchant picks between as one unit, covered in full in [17.2. Color Schemes](/all-about-colors/color-schemes/) and [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/). Think of it as a set of rooms, each already painted using some combination of those cans.
+
+Side by side, the two declarations look like this:
+
+```json
+// color_palette — theme-wide, raw colors, settings.color_palette.<key>
+{ "type": "color_palette", "id": "color_palette", "default": { "background": "#ffffff", "foreground": "#000000" } }
+```
+
+```json
+// color_scheme_group — bundled roles, scheme.settings.<key>, built from the palette above
+{
+  "type": "color_scheme_group",
+  "id": "color_schemes",
+  "definition": [
+    { "type": "color", "id": "background", "label": "t:labels.background", "default": "{{ settings.color_palette.background }}" }
+  ]
+}
+```
 
 In practice the two combine naturally: a `color_scheme_group`'s own `definition` entries can use `"default": "{{ settings.color_palette.background }}"` exactly the same way any other `color` setting can, so a theme's shipped schemes start out built from the same raw palette instead of a second, disconnected set of hardcoded hex values. Shopify's own changelog describes newer reference themes (Horizon 4.0.0 and later) as using the new palette system "throughout" — but that's additive to `color_scheme_group`, not a deprecation of it. Neither mechanism is currently a Theme Store requirement, but Shopify has said it's focusing future development on palettes, which is worth keeping in mind as a direction, not an urgent migration.
 

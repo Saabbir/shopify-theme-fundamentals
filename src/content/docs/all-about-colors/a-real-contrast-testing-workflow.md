@@ -7,12 +7,34 @@ description: Checking every color pairing a merchant can produce, not just the o
 
 ## Why "it looked fine in the editor" isn't enough
 
-If a merchant can freely pick any color for a text setting and any color for a background setting, the number of combinations they could produce is enormous — far more than anyone could manually check by eye while building the theme. A contrast problem introduced this way often isn't caught until a real merchant stumbles into it, by which point it's a support ticket, not a code review comment.
+If a merchant can freely pick any color for a text setting and any color for a background setting, the number of combinations they could produce is enormous — far more than anyone could manually check by eye while building the theme. A contrast problem introduced this way often isn't caught until a real merchant stumbles into it, by which point it's a support ticket, not a code review comment:
+
+```json
+// Two independent section settings — a merchant picking freely from
+// a full color wheel on each means millions of possible pairings,
+// not the handful you actually eyeballed while building the section
+{ "type": "color", "id": "background_color", "label": "t:labels.background_color" },
+{ "type": "color", "id": "text_color", "label": "t:labels.text_color" }
+```
 
 ## Step 1: know the WCAG thresholds you're checking against
 
 - **4.5:1** for normal body text.
 - **3:1** for large text (roughly 24px and up, or bold text around 19px and up) and for meaningful UI elements like icon buttons.
+
+```liquid
+{% liquid
+  assign ratio = text_color | color_contrast: background_color
+  assign passes_normal_text = false
+  assign passes_large_text = false
+  if ratio >= 4.5
+    assign passes_normal_text = true
+  endif
+  if ratio >= 3
+    assign passes_large_text = true
+  endif
+%}
+```
 
 This page is about actually checking against these two numbers systematically, not just knowing what they are.
 
@@ -39,6 +61,19 @@ Shipped defaults are one thing — a merchant freely picking their own colors la
 2. **Warn in the theme editor**, using a `color_contrast` check inside the section's own Liquid to conditionally show a visible warning message when the live-selected pairing fails, without blocking the merchant from using it anyway.
 3. **Constrain the choices**, by offering `color_scheme_group` (see [17.2. Color Schemes](/all-about-colors/color-schemes/)) instead of independent color settings in the first place, so a merchant picks between pre-checked combinations rather than assembling their own from scratch. This is the strongest guarantee, and the reason `color_scheme_group` exists.
 
+Option 2, concretely — a visible, non-blocking warning rendered in the storefront preview only when the merchant's current **section** settings actually fail:
+
+```liquid
+{% liquid
+  assign ratio = section.settings.text_color | color_contrast: section.settings.background_color
+%}
+{% if ratio < 4.5 and request.design_mode %}
+  <p class="contrast-warning">This text/background pairing may be hard to read — consider a higher-contrast combination.</p>
+{% endif %}
+```
+
+`request.design_mode` is what keeps the warning out of the storefront shoppers actually see — it's only ever true inside the theme editor.
+
 :::tip[Prevention beats detection]
 Option 3 — constraining choices via `color_scheme_group` — prevents the problem from being possible at all, rather than detecting it after the fact. Where a design can reasonably offer a fixed set of schemes instead of fully independent color pickers, that's usually the better trade, for the exact same reason `enabled_on`/`disabled_on` prevents a section-placement mistake earlier than a Liquid conditional could.
 :::
@@ -46,6 +81,16 @@ Option 3 — constraining choices via `color_scheme_group` — prevents the prob
 ## Step 4: make this part of your actual QA checklist
 
 Per the QA checklist referenced throughout this project's own conventions, color contrast belongs alongside keyboard navigation and screen-reader checks as a standard pre-ship step — not a one-time audit done only when something looks visibly wrong.
+
+```liquid
+{% comment %}
+  QA: every default color pairing in this section's schema was checked
+  against color_contrast (see 17.8) before shipping — background/text
+  at 7.1:1, background/button_label at 5.3:1. Both pass WCAG AA.
+{% endcomment %}
+```
+
+A one-line comment like this, left in the section file itself, is cheap and makes the check visible to the next developer touching the file — a record that the step actually happened, not just a line item on a checklist that lives elsewhere.
 
 ## Built-in reference
 

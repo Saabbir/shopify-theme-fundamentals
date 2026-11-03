@@ -35,6 +35,41 @@ This is a real design decision, not just a technical one, and themes differ on t
 
 There's no universally correct choice here — it depends on how much the theme is meant to prioritize brand consistency versus shopper preference. Whichever you choose, document the decision in the theme's own README or style guide, since it's exactly the kind of behavior a merchant will ask about once they notice it.
 
+The third option, "fills in a gap," concretely — only override a value the merchant left at its shipped default, never one they explicitly changed:
+
+```liquid
+{% comment %}
+  Shopify has no built-in "has the merchant changed this?" check — Liquid
+  only ever sees the setting's current value, not whether it's still at
+  its shipped default. Comparing against that default's own literal hex
+  value is the only way to approximate it.
+{% endcomment %}
+<div
+  class="card"
+  style="
+    {% unless section.settings.background_color == '#ffffff' %}
+      --color-background: {{ section.settings.background_color }};
+    {% endunless %}
+  "
+>
+```
+
+```css
+.card {
+  /* Falls back to the light default unless the inline style above
+     overrode it with the merchant's own explicit choice. */
+  --color-background: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    --color-background: #121212;
+  }
+}
+```
+
+`section.settings.background_color` here is a **section** setting; the same pattern works identically against a theme-wide `settings.<id>` if the color being overridden is declared globally instead.
+
 :::caution[Don't let dark mode break a merchant's intentionally chosen contrast]
 If you implement the "dark mode always wins" approach, make sure the dark variant you ship still passes contrast for whatever text/background pairings appear in it — a merchant never tested your dark override against their content, so it's on the theme to have verified it, using the same workflow in [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/).
 :::
