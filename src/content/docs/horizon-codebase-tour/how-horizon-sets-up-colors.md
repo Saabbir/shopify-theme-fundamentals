@@ -5,11 +5,11 @@ description: color-palette.liquid, contrast-override.liquid, and the automatic h
 
 **TL;DR:** `color-palette.liquid`, `contrast-override.liquid`, and the automatic hover/contrast system, read from source.
 
-Everything on this page is read directly from three real files in Horizon's `snippets/` folder. Worth knowing up front: Horizon doesn't use `color_scheme_group` at all — its current source has no `color_scheme_group`, `color_scheme`, `definition`, or `role` anywhere. Instead it builds a more elaborate system than the single `color_scheme_group` example in [17.2. Color Schemes](/all-about-colors/color-schemes/) out of a different set of pieces entirely: many individual `color` settings, the `color_palette` setting, and automatic contrast correction. Read this page as "a different, real production approach to the same underlying problem," not as `color_scheme_group` scaled up.
+Everything on this page is read directly from three real files in Horizon's `snippets/` folder. Worth knowing up front: Horizon doesn't use `color_scheme_group` at all — its current source has no `color_scheme_group`, `color_scheme`, `definition`, or `role` anywhere. Instead it builds its automatic-correction system out of a different set of pieces entirely: many individual `color` settings, the `color_palette` setting, and automatic contrast correction. [17.2. Color Schemes](/all-about-colors/color-schemes/) and [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) already introduce a simplified version of this same approach — this page is the real, full version, read straight from Horizon's own source.
 
 This is Horizon's own architectural choice, not Shopify deprecating `color_scheme_group`. Dawn, Shopify's other current reference theme, still ships `color_scheme_group` today, and Shopify's own changelog says color schemes "continue to work" and that themes don't need to change — `color_palette` is a recommendation for *new* themes, not a replacement requirement for existing ones. See [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) for that distinction in full.
 
-If you've already read [17.2. Color Schemes](/all-about-colors/color-schemes/) or [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/), both built from Dawn's real source, here's the same underlying problem solved the other way:
+[17.2](/all-about-colors/color-schemes/) and [17.9](/all-about-colors/a-complete-color-scheme-example/) cover both of these approaches side by side, Horizon's first. Here's that same comparison again, as a quick reference before this page goes deep on Horizon's real implementation:
 
 | | Dawn's way (`color_scheme_group`) | Horizon's way (what this page covers) |
 |---|---|---|
@@ -17,7 +17,7 @@ If you've already read [17.2. Color Schemes](/all-about-colors/color-schemes/) o
 | Who guarantees the colors work together | The theme author, by testing each shipped scheme ahead of time | Nobody has to — the theme checks and corrects live, at render time |
 | Hover states | Author-defined per scheme, or left out entirely | Computed automatically from whatever base color the merchant picked |
 | Contrast safety | Relies on the author having tested every shipped scheme | Enforced every time, via `color_contrast`, for any color a merchant enters |
-| Where it's covered on this site | [17.2](/all-about-colors/color-schemes/), [17.9](/all-about-colors/a-complete-color-scheme-example/) | This page |
+| Where it's covered on this site | [17.2](/all-about-colors/color-schemes/), [17.9](/all-about-colors/a-complete-color-scheme-example/) | This page — the real, full Horizon source behind both |
 
 Neither approach is "more correct" — Dawn's trades flexibility for a guarantee made once, ahead of time; Horizon's trades that upfront guarantee for flexibility plus a live safety net. Worth having this table in mind as you read the rest of this page, since most of what follows is really just "how do you build that live safety net."
 

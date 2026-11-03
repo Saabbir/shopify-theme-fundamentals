@@ -66,7 +66,7 @@ This is why a bad color pairing isn't just an aesthetic miss. Text a shopper can
 
 Independent `color` settings break down once several colors need to stay coordinated. Nothing stops a merchant from picking a light background with a light text color on one specific section — four independent settings means four independent chances to accidentally fall below the contrast thresholds above. Multiply that across every section in a theme, and the risk compounds fast.
 
-Shopify's fix is `color_scheme_group`: bundling several color roles into a single named "scheme," so a merchant picks one pre-coordinated look instead of assembling colors one at a time. It's a big enough topic — `definition`, `role`, gradients, and how a section actually consumes a scheme — that it has its own page: [17.2. Color Schemes](/all-about-colors/color-schemes/). Read that next.
+Two real, current fixes exist. Shopify's current reference theme, Horizon, checks and corrects a merchant's independent choices automatically, live, every time the page renders. Dawn, Shopify's other current reference theme, bundles roles into a single pre-tested "scheme" instead, so a merchant picks one coordinated look rather than assembling colors one at a time. Both are big enough topics — and different enough from each other — that they share one page: [17.2. Color Schemes](/all-about-colors/color-schemes/), Horizon's approach first. Read that next.
 
 ## Name the job, not the appearance
 

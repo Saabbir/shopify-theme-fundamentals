@@ -5,7 +5,7 @@ description: The color_palette setting type — a small, theme-wide set of named
 
 **TL;DR:** `color_palette` — a small, theme-wide set of named brand colors other settings can point back to — and how it's different from (and complementary to) `color_scheme_group`.
 
-[17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) and [17.2. Color Schemes](/all-about-colors/color-schemes/) covered `color`, `color_scheme_group`, and `color_scheme` — every one of them about letting a merchant *pick* colors. This page covers a different, theme-wide setting: `color_palette`, which gives a theme a small set of named "raw" brand colors other settings can reference, rather than every color setting in the theme hand-typing its own hex default.
+[17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) and [17.2. Color Schemes](/all-about-colors/color-schemes/) covered `color`, `color_scheme_group`, and `color_scheme` — every one of them about letting a merchant *pick* colors. This page covers a different, theme-wide setting: `color_palette`, which gives a theme a small set of named "raw" brand colors other settings can reference, rather than every color setting in the theme hand-typing its own hex default. It's used by both of 17.2's approaches — Horizon's individual colors fall back to it directly, and a `color_scheme_group`'s `definition` entries can default from it too.
 
 ## What problem `color_palette` actually solves
 
