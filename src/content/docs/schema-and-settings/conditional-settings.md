@@ -7,7 +7,7 @@ description: "Showing or hiding a setting based on another setting's value, with
 
 Some settings only make sense in combination with another one. A "custom color" setting is pointless to show if a merchant has chosen a preset color scheme instead of "custom" — `visible_if` lets you hide it until it's actually relevant.
 
-## The basic pattern
+## The basic `visible_if` pattern
 
 ```json
 {
@@ -30,7 +30,7 @@ Some settings only make sense in combination with another one. A "custom color" 
 
 `custom_background_color` only appears in the theme editor once a merchant has set `background_style` to `"custom"`. Before that, it's hidden entirely — not just disabled or grayed out.
 
-## The syntax is a Liquid expression, as a string
+## `visible_if`'s syntax is a Liquid expression, as a string
 
 `visible_if`'s value is a string containing an actual Liquid condition, referencing the current scope — `section.settings.*` inside a section, `block.settings.*` inside a block. It supports the same comparison operators covered in [4.3. Operators & Conditionals](/liquid-basics/operators-and-conditionals/):
 
@@ -38,7 +38,7 @@ Some settings only make sense in combination with another one. A "custom color" 
 "visible_if": "{{ section.settings.layout == 'grid' and section.settings.show_filters }}"
 ```
 
-## What it can and can't check
+## What `visible_if` can and can't check
 
 `visible_if` can only reference **other settings in the same section or block** — it can't check something unrelated, like how many blocks have been added, or a global theme setting, or anything about the current page. If the condition needs information from outside that one schema's own settings, `visible_if` isn't the right tool for it.
 

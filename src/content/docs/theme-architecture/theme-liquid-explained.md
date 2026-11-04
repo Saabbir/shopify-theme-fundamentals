@@ -7,7 +7,7 @@ description: The one file every theme must have, and exactly what it's responsib
 
 `layout/theme.liquid` is the only file strictly required for a theme to work at all. It's the outermost wrapper around every single page — the layout layer from the [rendering chain](/theme-architecture/how-a-page-gets-rendered/). If you deleted every other file in a theme and kept only this one, Shopify would still render a (very plain) page.
 
-## A minimal example
+## A minimal theme.liquid example
 
 ```liquid
 {% comment %} layout/theme.liquid {% endcomment %}
@@ -38,7 +38,7 @@ Two Liquid outputs here are not optional — every theme needs both, and they're
 | `{{ content_for_header }}` | Shopify injects required `<head>` content here: analytics scripts, SEO meta tags, and anything Shopify or an installed app needs in the page's head. Always place this inside `<head>`. |
 | `{{ content_for_layout }}` | This is where the current page's **template** output gets inserted — the sections and blocks that are specific to whatever page the shopper is on. Without it, no page content would ever render inside your layout. |
 
-## Why so little lives here
+## Why so little lives in theme.liquid
 
 Because `theme.liquid` wraps every page, anything you put directly in it (outside the two outputs above) appears on every single page, with no way to vary it per page type. That's exactly right for a handful of things — the overall HTML skeleton, a header and footer rendered via [section groups](/sections-blocks-snippets/section-groups/), global analytics or font loading — and exactly wrong for anything page-specific, which belongs in a template or section instead.
 

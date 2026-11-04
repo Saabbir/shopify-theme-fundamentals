@@ -64,7 +64,7 @@ A schema's `presets` array can have more than one entry, and each becomes its ow
 
 Both presets use the exact same section file and the exact same schema — they just hand a merchant two different, sensibly pre-configured starting points instead of one.
 
-## How they interact, in order
+## How `default` and `presets` interact, in order
 
 When a merchant adds a section from a specific preset, Shopify resolves each setting's value in this order: the preset's own value for that setting, if the preset specifies one; otherwise, that setting's own `default`; otherwise, the setting has no value at all (which is fine for picker types, but worth avoiding for text/number settings a template directly relies on).
 

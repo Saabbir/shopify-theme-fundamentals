@@ -7,7 +7,7 @@ description: A straightforward set of questions to answer before creating any ne
 
 By now you've seen all three pieces on their own. The practical skill is choosing correctly between them *before* you start building — getting it wrong early is cheap to fix; getting it wrong after other code depends on it is not.
 
-## The decision, as a flowchart in words
+## The section/block/snippet decision, as a flowchart in words
 
 Ask these questions, in order, about whatever you're about to build:
 
@@ -23,7 +23,7 @@ Ask these questions, in order, about whatever you're about to build:
 4. **Is it reusable code with no settings a merchant needs to see or touch at all?**
    If yes → it's a **snippet**.
 
-## The same decision, as a table
+## The section/block/snippet decision, as a table
 
 | If it's... | And it needs merchant-visible settings... | Then it's a... |
 |---|---|---|
@@ -34,7 +34,7 @@ Ask these questions, in order, about whatever you're about to build:
 | A layout container for other blocks | Yes (direction, alignment, etc.) | Nestable group block |
 | Shared markup/logic across multiple files, no settings | — | Snippet |
 
-## A worked decision
+## A worked example: picking the right piece for a logo strip
 
 Say you're asked to build "a strip of customer logos" for a homepage. Walking through the questions:
 

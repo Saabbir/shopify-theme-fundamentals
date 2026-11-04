@@ -7,15 +7,15 @@ description: A complete section, block, and snippet, built from nothing, with ev
 
 This page builds one small feature end to end — a "featured collection" section, showing a heading and a row of product cards — using everything covered so far in this section of the site. Every file, and every decision behind it, is explained as we go.
 
-## The brief
+## The brief: a featured collection section
 
 "Add a section merchants can place anywhere on a page, showing a heading and a configurable number of products from a collection they choose."
 
-## Step 1: Is this a section?
+## Step 1: Is the featured collection a section?
 
 Walking through the [decision guide](/sections-blocks-snippets/choosing-the-right-piece/): a merchant needs to add, remove, and reorder this on a page, and configure it (which collection, how many products). That's a **section**.
 
-## Step 2: Does it need blocks?
+## Step 2: Does the featured collection need blocks?
 
 The products shown come automatically from whatever collection the merchant picks — they're not individually, manually curated items a merchant adds one at a time. So: no blocks needed here. (Compare this to the testimonials example in [3.2. What Is a Block?](/sections-blocks-snippets/what-is-a-block/), where each testimonial genuinely is a separate, manually-added item — that's the case where blocks make sense.)
 
@@ -23,7 +23,7 @@ The products shown come automatically from whatever collection the merchant pick
 
 Rendering a single product (image, title, price) is something this section needs, and it's exactly the kind of markup likely to be reused elsewhere — a search results page, a "related products" section, anywhere a product needs a compact visual representation. That reuse is the signal to extract it into a **snippet**.
 
-## The snippet
+## The `product-card` snippet
 
 ```liquid
 {% comment %} snippets/product-card.liquid {% endcomment %}
@@ -46,7 +46,7 @@ Rendering a single product (image, title, price) is something this section needs
 </div>
 ```
 
-## The section
+## The `featured-collection` section
 
 ```liquid
 {% comment %} sections/featured-collection.liquid {% endcomment %}
@@ -112,7 +112,7 @@ Rendering a single product (image, title, price) is something this section needs
 {% endschema %}
 ```
 
-## Why each piece looks the way it does
+## Design decisions behind the featured-collection section and snippet
 
 - **Settings are assigned to variables at the top**, via one `{% liquid %}` block, instead of writing `section.settings.heading` repeatedly further down. This keeps the markup readable and makes it obvious, at a glance, exactly which settings this section uses.
 - **The empty state is handled explicitly** (`{% else %}` when no collection is selected) instead of letting the section silently render nothing. A merchant adding this section for the first time, before configuring it, sees a clear instruction rather than a blank space that looks broken.

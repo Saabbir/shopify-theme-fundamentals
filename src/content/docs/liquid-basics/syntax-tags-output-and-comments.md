@@ -30,7 +30,7 @@ Output prints a value directly into the page. Anything inside `{{ }}` gets evalu
 
 That last example evaluates to `2` and prints `2` — output isn't limited to printing a variable as-is; it can run the expression through filters first (covered in [4.6. Filters: An Overview](/liquid-basics/filters-an-overview/)).
 
-## The one rule that explains most beginner confusion
+## Tags don't print — output always does
 
 **Tags never print anything. Output always prints something.** `{% assign x = 5 %}` produces no visible output at all — it just stores a value. If you want to see that value, you need a separate `{{ x }}`. Beginners often expect `{% %}` to render something and get confused when nothing appears; it's working correctly, it's just the wrong delimiter for printing.
 

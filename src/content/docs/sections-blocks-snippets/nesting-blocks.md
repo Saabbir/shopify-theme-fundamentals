@@ -7,7 +7,7 @@ description: How blocks can now contain other blocks, several levels deep — th
 
 For a long time, the rendering chain stopped at one level of blocks: a section could contain blocks, but a block could never contain another block. That's no longer true. **Blocks can now hold other blocks**, nested as many levels deep as the design calls for. If you've read any older Shopify tutorials or blog posts, this is the single most likely thing to be out of date.
 
-## What this actually looks like
+## What nesting blocks inside blocks actually looks like
 
 Picture a "group" block — a plain container with no visual content of its own, used purely to hold other blocks in a specific layout (say, a row versus a column). That group block's schema can allow other blocks inside it, the same way a section allows blocks:
 
@@ -45,7 +45,7 @@ Picture a "group" block — a plain container with no visual content of its own,
 
 `{% content_for 'blocks' %}` and `"blocks": [{ "type": "@theme" }]` are doing the same job here that they did inside a section — they just now appear inside a block's own file instead. A merchant can drop a text block, an image block, or even another group block inside this one, and that nested group can hold more blocks of its own.
 
-## Why this changes how you plan a design
+## Why nesting blocks changes how you plan a design
 
 Before nesting existed, the only available layout was: section, then a flat list of blocks inside it. Now, a block itself can be a layout container. That means when you're deciding how to structure something (this matters a lot once you get to the planned "Figma to code" section later), you have a real choice between:
 

@@ -5,7 +5,7 @@ description: Trimming the blank lines and spaces Liquid tags leave behind in the
 
 **TL;DR:** Trimming the blank lines and spaces Liquid tags leave behind in the rendered HTML.
 
-## The problem
+## The whitespace Liquid tags leave behind
 
 Every Liquid tag you write on its own line leaves behind the line break and indentation around it — Liquid only removes the tag itself, not the whitespace surrounding it. This is harmless for how a browser renders the page (HTML collapses most whitespace visually), but it can leave noticeably messy output if you ever look at the raw HTML, and it occasionally matters for genuinely whitespace-sensitive output, like inline elements that shouldn't have a stray space between them.
 
@@ -35,7 +35,7 @@ Adding a hyphen to the inside of a tag's delimiters trims the whitespace on that
 
 The same hyphen syntax works on output too: `{{- product.title -}}`.
 
-## A concrete before/after
+## A before-and-after example of whitespace trimming
 
 ```liquid
 {% comment %} Without trimming: {% endcomment %}
@@ -71,7 +71,7 @@ Renders as:
 <p>In stock</p>
 ```
 
-## When this actually matters
+## When whitespace control actually matters
 
 Most of the time, extra whitespace in HTML is invisible to a shopper — browsers collapse it. Whitespace control matters in a few specific, real situations:
 

@@ -21,7 +21,7 @@ Every Shopify theme uses the exact same top-level folder layout. This isn't a co
 
 Only `layout/theme.liquid` is strictly required to have a working theme. Every other folder gets added as you build features that need it.
 
-## What goes where
+## What goes in each folder
 
 | Folder | Put here | Don't put here |
 |---|---|---|
@@ -34,7 +34,7 @@ Only `layout/theme.liquid` is strictly required to have a working theme. Every o
 | `snippets/` | Small Liquid partials rendered with `{% render %}` | Anything that needs its own settings UI in the theme editor (that's a section or block) |
 | `templates/` | One file per page type (home, product, collection, etc.) | Layout chrome (that's `layout/`) |
 
-## A worked example: where does this file go?
+## A worked example: where does a related-products feature's code go?
 
 Say you're building a feature that shows a "related products" strip at the bottom of a product page. Here's how you'd reason through where each piece of it belongs.
 

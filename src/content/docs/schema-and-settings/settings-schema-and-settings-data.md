@@ -56,7 +56,7 @@ This file stores the current values a merchant has actually chosen for everythin
 }
 ```
 
-## The misconception worth clearing up directly
+## The misconception that `settings_data.json` stores everything
 
 It's tempting to assume `settings_data.json` is where *all* settings data lives — sections, blocks, everything. It isn't. It only stores values for the **global** settings defined in `settings_schema.json`. A section's own settings (`section.settings.*`) and a block's own settings (`block.settings.*`) are stored somewhere else entirely: inside the JSON template that placed that section (covered in [2.5. Templates: JSON vs. Liquid](/theme-architecture/templates-json-vs-liquid/)), or inside a section group file for the header/footer.
 
@@ -66,7 +66,7 @@ It's tempting to assume `settings_data.json` is where *all* settings data lives 
 | A section's own settings (`section.settings.*`) | The JSON template that placed it, or a section group file |
 | A block's own settings (`block.settings.*`) | The same JSON template/group file, nested under that section's entry |
 
-## In practice, you rarely hand-edit either file directly
+## In practice, you rarely hand-edit `settings_schema.json` or `settings_data.json` directly
 
 Shopify's theme editor manages both files automatically as a merchant changes settings — a save in the editor is, mechanically, an update to one of these files (or a template JSON file, for section/block settings). As a developer, you mostly interact with them indirectly: you define what's *possible* in `settings_schema.json`, and Shopify handles writing the chosen values. The main time you'd touch `settings_data.json` by hand is setting sensible starting values for a brand-new theme, before a merchant has configured anything.
 

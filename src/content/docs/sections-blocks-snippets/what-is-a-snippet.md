@@ -7,7 +7,7 @@ description: Reusable Liquid code with no settings UI of its own — for develop
 
 A **snippet** is a small, reusable chunk of Liquid code, stored in `snippets/`. It's the simplest of the three building blocks on this site: no schema, no settings a merchant can configure, no visibility in the theme editor at all. A snippet exists purely to avoid repeating the same markup or logic in more than one place in your code.
 
-## A basic example
+## A basic snippet example
 
 ```liquid
 {% comment %} snippets/product-card.liquid {% endcomment %}
