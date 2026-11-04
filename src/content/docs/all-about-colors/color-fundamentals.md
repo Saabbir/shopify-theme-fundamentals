@@ -95,7 +95,7 @@ None of this is unique to color — every schema setting follows the same path f
 
 ## What a color value actually looks like: hex, at a glance
 
-Whatever a merchant picks, a `color` setting always hands it back to you as a hex string — six (or eight, with transparency) characters after a `#`, like `#2c6e5c`. That's the one format you can count on without converting anything, and most of the time you'll pass it straight through unchanged.
+Whatever a merchant picks, a `color` setting always hands it back to you as a hex string — six (or eight, with transparency) characters after a `#`, like `#2c6e5c`. That's the one format you can count on without converting anything, and most of the time you'll pass it straight through unchanged. Technically there's more hiding behind that hex string than this page needs to go into — it's a full color object, not a plain string — but printing it directly, which is what you'll do most of the time, always gives you exactly that hex value. [17.4. Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/) covers what else that object exposes.
 
 Horizon's own `color_palette` setting (theme-wide — global, `settings.color_palette.<key>`) is a real, concrete example of exactly this shape — two hex strings, nothing fancier:
 
@@ -130,6 +130,31 @@ The JSON above is identical no matter *where* you declare it — the `color` typ
 | A block's own `{% schema %}` | Just that one block instance | `block.settings.accent_color` |
 
 Most of the examples in this chapter use the theme-wide case, since that's what Horizon itself leans on for most of its own real colors — but everything shown applies identically to a section setting or a block setting too, right down to the exact same `color` type underneath. [28.1. Theme Settings Fundamentals](/all-about-theme-settings/theme-settings-fundamentals/) covers the full distinction between these three, including the concrete test for telling a theme setting from a section/block setting at a glance.
+
+## Making a color setting optional: `placeholder` and blank
+
+Not every color needs a merchant-facing default. An optional overlay color, say, should start out doing nothing until a merchant deliberately turns it on:
+
+```json
+{
+  "type": "color",
+  "id": "banner_overlay",
+  "label": "t:labels.banner_overlay",
+  "placeholder": "t:labels.none"
+}
+```
+
+Leave `default` off entirely, and the theme editor shows a "Clear" option next to the swatch. `placeholder` is text shown inside the picker while nothing's selected — a hint about intent, like "None" or "Inherited" — without changing anything that actually gets stored.
+
+If a merchant leaves it cleared, Shopify stores an empty string in `settings_data.json`, and `settings.banner_overlay` comes back as Liquid's `blank`:
+
+```liquid
+{% if settings.banner_overlay != blank %}
+  <div class="overlay" style="background: {{ settings.banner_overlay }};"></div>
+{% endif %}
+```
+
+That's a genuinely different thing from a merchant deliberately picking a fully transparent color, `#00000000`. A transparent color is a real, chosen value — invisible, but not blank. The check above only skips rendering the overlay for a merchant who never touched the setting at all; a merchant who picked transparent on purpose still gets an (invisible) overlay `div`, because they did pick something. If your Liquid logic needs to know "did anyone choose anything here," check against `blank` specifically, not against a particular color value.
 
 ## Why color coordination isn't cosmetic: contrast and accessibility
 
@@ -206,6 +231,8 @@ All four, in Horizon's own real theme-wide settings — `palette_primary_button_
 --color-primary-button-background: rgb({{ settings.palette_primary_button_background.rgba }});
 ```
 
+`.rgba` there is a property read directly off the color object, not a filter — [17.4. Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/) covers exactly what properties a color object exposes, and why `.rgba` specifically is the shape Horizon needs here.
+
 ## Built-in reference
 
 **Setting types used on this page**
@@ -214,13 +241,19 @@ All four, in Horizon's own real theme-wide settings — `palette_primary_button_
 |---|---|
 | `color` | A single, independent color picker |
 
+**Type-specific attributes covered on this page**
+
+| Attribute | Setting type | Purpose |
+|---|---|---|
+| `placeholder` | `color` | Hint text shown in the picker while nothing's selected; doesn't affect the stored value |
+
 **Liquid object properties**
 
 | Property | Returns | Notes |
 |---|---|---|
-| `settings.<id>` | Hex color string | Reads a `color` setting declared as a theme setting |
-| `section.settings.<id>` | Hex color string | Reads a `color` setting declared in a section's own schema |
-| `block.settings.<id>` | Hex color string | Reads a `color` setting declared in a block's own schema |
+| `settings.<id>` | Hex color string, or `blank` if cleared with no `default` | Reads a `color` setting declared as a theme setting |
+| `section.settings.<id>` | Hex color string, or `blank` | Reads a `color` setting declared in a section's own schema |
+| `block.settings.<id>` | Hex color string, or `blank` | Reads a `color` setting declared in a block's own schema |
 
 ## Naming conventions
 
@@ -233,7 +266,8 @@ All four, in Horizon's own real theme-wide settings — `palette_primary_button_
 - A Shopify theme never hardcodes a merchant-facing color — it defines a *setting* that lets the merchant choose, then reads back whatever they picked.
 - A color value's real journey: editor swatch → a theme setting's value lands in `settings_data.json`, a section's value lands in that page's own JSON template instead → `settings.<id>` or `section.settings.<id>` in Liquid, depending on which → usually a CSS custom property → rendered page.
 - The same `color` setting JSON works identically as a theme setting, a section setting, or a block setting — only where you declare it and how you read it back changes (`settings.<id>`, `section.settings.<id>`, `block.settings.<id>`).
-- A `color` setting always returns hex; RGB and HSL describe the same colors differently, and exist for cases hex alone can't handle cleanly — full depth in [17.4](/all-about-colors/color-formats-and-conversions/).
+- A `color` setting always prints as hex; underneath, it's a full color object, with more exposed than the hex string alone — full depth in [17.4](/all-about-colors/color-formats-and-conversions/).
+- `placeholder` hints at an optional color's intent without affecting what's stored. A cleared setting with no `default` returns `blank` in Liquid, which is a genuinely different thing from a deliberately transparent color (`#00000000`) — check for `blank` specifically if your logic depends on "did a merchant choose anything at all."
 - Contrast is a measurable accessibility requirement (4.5:1 normal text, 3:1 large text/UI, per WCAG), not a matter of taste — that's the real stakes behind everything else in this chapter.
 - Several independent `color` settings on one section multiply the number of ways a merchant can accidentally produce a pairing that fails contrast.
 - Name a color setting after the job it does, not its current appearance — the value behind a role changes; the role doesn't.

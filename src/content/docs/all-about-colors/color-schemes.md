@@ -89,7 +89,11 @@ A plain `color` role can only ever be a flat color. If a scheme's background sho
 }
 ```
 
-In the theme editor, a `color_background` field shows the merchant a toggle between a plain color and a gradient builder, in one control. In the Liquid object it produces, `scheme.settings.background` comes out as a plain hex string for a scheme that picked a solid color, and a full `linear-gradient(...)` string for one that picked a gradient — the theme's CSS has to handle either shape. The CSS-generation loop in [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) uses `background` (the shorthand property) rather than `background-color` for exactly this reason: `background-color` silently drops a gradient value, while `background` accepts a flat color or a gradient interchangeably.
+In the theme editor, a `color_background` field shows the merchant a toggle between a plain color and a gradient builder, in one control. In the Liquid object it produces, `scheme.settings.background` comes out as a plain hex string for a scheme that picked a solid color, and a full `linear-gradient(...)` string for one that picked a gradient — the theme's CSS has to handle either shape.
+
+:::note[`color_background` can't do everything "background" can]
+A `color_background` field accepts any valid CSS background value — a flat color or a gradient — but Shopify's own documentation is explicit that it does not support image-related background properties. If a role genuinely needs a merchant-uploaded image, that has to live outside `color_scheme_group` entirely, as a separate `image_picker` setting.
+::: The CSS-generation loop in [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) uses `background` (the shorthand property) rather than `background-color` for exactly this reason: `background-color` silently drops a gradient value, while `background` accepts a flat color or a gradient interchangeably.
 
 ## `role`: telling the editor which swatch means what
 

@@ -56,6 +56,8 @@ The third argument controls the blend ratio — 50 is an even split; a lower num
 
 Pulls out a single numeric component (`red`, `green`, `blue`, `alpha`, `hue`, `saturation`, `lightness`) from a color, rather than the whole color itself — useful when you need to make a decision based on one channel, like checking how light or dark a color already is.
 
+The same channels are also readable directly off a color object, with no filter at all — `settings.accent_color.red` instead of `settings.accent_color | color_extract: "red"`. [17.4. Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/) covers that direct-property path, plus a few channels (`chroma`, `color_space`, `oklch`) `color_extract` doesn't reach.
+
 ## Adjusting a specific channel
 
 ```liquid
@@ -83,6 +85,15 @@ Returns a single brightness value for a color — useful for deciding, programma
 
 Returns the WCAG contrast ratio between two colors — not a filter that changes a color, but the single most important one for accessibility. Covered in full on [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/).
 
+## Measuring perceived brightness difference
+
+```liquid
+{{ "#E800B0" | brightness_difference: "#FECEE9" }}
+{% # => 134 %}
+```
+
+A second, different accessibility measurement from `color_contrast` above — this one scores the perceived brightness gap between two colors, rather than their WCAG contrast ratio. Accessibility guidance recommends a minimum brightness difference of 125 between a color and whatever sits behind it. It's a quicker, rougher check than `color_contrast`, worth running as a second signal, not a replacement for the WCAG ratio check covered in full on [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/).
+
 ## Converting formats
 
 ```liquid
@@ -107,6 +118,7 @@ Covered in full on [17.4. Color Formats & Conversions](/all-about-colors/color-f
 | `color_modify` | Channel name, new value | Color with that one channel changed |
 | `color_brightness` | None | Number, 0 (black) to 255 (white) |
 | `color_contrast` | Second color | Contrast ratio number |
+| `brightness_difference` | Second color | Brightness-difference number; a minimum of 125 is the recommended accessibility threshold |
 | `color_to_rgb` / `color_to_hsl` / `color_to_hex` | None | Converted format string — full reference on [17.4. Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/) |
 
 **Fixed channel names** accepted by `color_extract` and `color_modify`
@@ -121,8 +133,8 @@ Covered in full on [17.4. Color Formats & Conversions](/all-about-colors/color-f
 ## Key takeaways
 
 - `color_darken`/`color_lighten` and `color_saturate`/`color_desaturate` derive a related tone from one merchant-picked color, without a second setting.
-- `color_mix` blends two colors; `color_extract` pulls out one channel; `color_modify` changes one channel while leaving the rest alone (useful for adding alpha/transparency); `color_brightness` scores a color's overall lightness as one number.
-- `color_contrast` is the one to reach for before shipping any new color pairing — see the dedicated contrast-workflow page for how to use it systematically, not just spot-check it.
+- `color_mix` blends two colors; `color_extract` pulls out one channel (the same channels are also readable directly as color object properties, covered in [17.4](/all-about-colors/color-formats-and-conversions/)); `color_modify` changes one channel while leaving the rest alone (useful for adding alpha/transparency); `color_brightness` scores a color's overall lightness as one number.
+- `color_contrast` is the one to reach for before shipping any new color pairing — see the dedicated contrast-workflow page for how to use it systematically, not just spot-check it. `brightness_difference` is a second, rougher accessibility signal, worth running alongside `color_contrast`, not instead of it.
 
 ## Further reading
 

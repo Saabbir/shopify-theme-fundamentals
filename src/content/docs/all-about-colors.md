@@ -16,7 +16,7 @@ Every page in this chapter ends with two reference tables: **Built-in reference*
 | [17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) | The merchant-controlled mental model, the `color` setting, contrast and accessibility stakes, and the vocabulary (role, scheme, palette, token) the rest of this chapter assumes |
 | [17.2. Color Schemes](/all-about-colors/color-schemes/) | A full `color_scheme_group` and `color_scheme` deep dive — `definition`, `role`, `color_background` gradients, and consuming a scheme via a class (plus why Horizon doesn't use any of this) |
 | [17.3. The Color Palette Setting](/all-about-colors/color-palette-setting/) | `color_palette` — a small, theme-wide set of named brand colors other settings can point back to |
-| [17.4. Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/) | Hex, RGB, and HSL — what a merchant's color picker actually gives you, and converting between them |
+| [17.4. Color Formats & Conversions](/all-about-colors/color-formats-and-conversions/) | Hex, RGB, HSL, and OKLCH — what a merchant's color picker actually gives you, the color object's own properties, and converting between formats |
 | [17.5. Every Color Filter in Depth](/all-about-colors/every-color-filter-in-depth/) | Every Liquid color filter, with before/after examples |
 | [17.6. Dark Mode](/all-about-colors/dark-mode/) | Supporting `prefers-color-scheme` alongside (or instead of) a merchant-controlled scheme setting |
 | [17.7. Building a Token System: Primitive, Semantic, Component](/all-about-colors/building-a-token-system/) | The three-tier color architecture larger design systems use, and why one tier isn't enough |
