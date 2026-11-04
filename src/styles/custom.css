@@ -219,24 +219,28 @@
 /* Section-number badge (e.g. "17.3.1") -- see src/plugins/rehype-section-numbers.mjs,
    which stamps a data-section-number attribute (not `title`: a browser tooltip is
    slow to appear and can't be styled) onto every H2 with a chapter.page number.
-   Rendered here as a small pill via a ::after pseudo-element reading that attribute,
-   so there's nothing to keep in sync by hand and nothing added to the heading's
-   accessible name or its auto-generated anchor id.
+   Rendered here as a small pill via a ::before pseudo-element reading that
+   attribute, so there's nothing to keep in sync by hand and nothing added to
+   the heading's accessible name or its auto-generated anchor id.
+
+   ::before, not ::after: the badge reads better ahead of the heading text
+   ("17.3.1 What problem..." rather than trailing it), and as the first inline
+   box in the heading it always has the full line width to itself -- it can't
+   get squeezed out and wrap onto its own line the way trailing content after
+   a long, already-wrapped heading could.
 
    font-size is a fixed var(--sl-text-xs), not an em relative to the heading --
-   H1/H2 are large enough that an em-based size came out as big as body text,
-   which also made it too wide to fit at the end of a wrapped two-line heading
-   and forced it onto its own line below. Fixed size keeps it genuinely small
-   and, being narrow, far more likely to fit inline after the heading text.
+   H1/H2 are large enough that an em-based size came out as big as body text.
+   Fixed size keeps it genuinely small regardless of heading level.
 
    Revealed on hover the same way Starlight reveals its own anchor-link icon
    (see node_modules/@astrojs/starlight/style/anchor-links.css): hidden by default
    on hover-capable devices, shown when .sl-heading-wrapper -- the div Starlight
    wraps every heading + anchor-link icon in -- is hovered or contains focus. */
-.sl-markdown-content h2[data-section-number]::after {
+.sl-markdown-content h2[data-section-number]::before {
   content: attr(data-section-number);
   display: inline-block;
-  margin-inline-start: 0.5em;
+  margin-inline-end: 0.5em;
   padding: 0.05em 0.35em;
   vertical-align: 0.1em;
   font-family: var(--__sl-font-mono);
@@ -251,12 +255,12 @@
 }
 
 @media (hover: hover) {
-  .sl-markdown-content h2[data-section-number]::after {
+  .sl-markdown-content h2[data-section-number]::before {
     opacity: 0;
     transition: opacity 0.15s ease;
   }
-  .sl-markdown-content .sl-heading-wrapper:hover h2[data-section-number]::after,
-  .sl-markdown-content .sl-heading-wrapper:focus-within h2[data-section-number]::after {
+  .sl-markdown-content .sl-heading-wrapper:hover h2[data-section-number]::before,
+  .sl-markdown-content .sl-heading-wrapper:focus-within h2[data-section-number]::before {
     opacity: 1;
   }
 }
