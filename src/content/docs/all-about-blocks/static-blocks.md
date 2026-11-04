@@ -49,7 +49,7 @@ The `id` here (`static-logo`) ties the markup position back to a specific static
 Static blocks are a newer part of theme architecture, and the exact rendering syntax is the kind of detail worth double-checking against [Shopify's current documentation](https://shopify.dev/docs/storefronts/themes/architecture/blocks) before shipping — treat the shape above as the concept, and verify the precise tag signature against what's current when you use it.
 :::
 
-## When to reach for this
+## When to reach for a static block
 
 Use a static block when a section would genuinely break, or stop making sense, without a specific piece present — a header's logo, a product page's always-present "Add to cart" block, a footer's copyright line. Don't reach for it just to discourage a merchant from removing something that's merely usually present; if removing it wouldn't actually break anything, leave it as an ordinary, removable block and let the merchant decide.
 

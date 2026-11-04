@@ -33,7 +33,7 @@ Like other platform-level numeric limits, the exact maximum nesting depth is a d
 
 Separate from any one container's `max_blocks`, there's an overall cap on the total number of blocks (counting every nested block at every level) a single section instance can contain. A deeply nested structure can hit this total before any individual container's own `max_blocks` would have stopped it — worth keeping in mind for a design that nests heavily, rather than assuming each container's own limit is the only constraint in play.
 
-## Designing within the limits
+## Designing within block limits
 
 In practice, these limits rarely matter for a reasonably designed layout — they start to matter once a design asks for deep, repeated nesting (a grid of cards, each containing a nested row of icons, say) at a scale that starts multiplying quickly. When a design calls for something at that scale, it's worth sketching out the actual block count before building, the same way [9.4. Planning Responsive Behavior](/figma-to-code/planning-responsive-behavior/) recommends planning ahead of time rather than discovering a constraint mid-build.
 

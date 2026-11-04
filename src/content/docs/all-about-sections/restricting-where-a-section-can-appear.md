@@ -5,7 +5,7 @@ description: "enabled_on / disabled_on — keeping a section off pages it would 
 
 **TL;DR:** `enabled_on` / `disabled_on` — keeping a section off pages it would break on.
 
-## Why this exists
+## Why `enabled_on` and `disabled_on` exist
 
 Shopify's built-in `product` and `collection` objects are only populated on specific pages — `product` only has real data on a product page, `collection` only on a collection page. A "related products" section built around `product.id` renders correctly on a product page — and breaks, or quietly shows nothing, if a merchant adds it to a page where there's no product in context, like the cart page. `enabled_on` and `disabled_on` let you prevent that mistake from being possible in the first place, rather than just defending against it with Liquid conditionals.
 

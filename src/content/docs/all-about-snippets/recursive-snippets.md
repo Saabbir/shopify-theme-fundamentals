@@ -35,7 +35,7 @@ A snippet can call `{% render %}` on itself, passing in whatever smaller piece o
 
 Each call to `menu-item` only knows about its own `link` and that link's direct children — it doesn't need to know how deep the overall menu goes, because every level solves the exact same smaller problem by calling itself again.
 
-## Always include a stopping condition
+## Always include a stopping condition for the recursion
 
 The `{% if link.links.size > 0 %}` check above isn't decorative — it's what stops the recursion. Without a condition like this, a snippet that unconditionally renders itself again would only stop once the data itself runs out of nested children, which is usually fine for a menu, but is worth stating explicitly: a recursive snippet's stopping condition is "no more data to recurse into," not an explicit depth counter, since Liquid itself doesn't give you a clean way to track "how deep am I" across recursive `render` calls.
 

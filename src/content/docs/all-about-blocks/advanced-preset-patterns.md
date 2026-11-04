@@ -59,7 +59,7 @@ Once a section or block supports nesting (see [15.1. Block Fundamentals](/all-ab
 
 This preset gives a merchant a group block laid out as a row, containing an image on one side and a nested column (text over a button) on the other — exactly the kind of layout that would otherwise take several manual steps in the theme editor to assemble from scratch.
 
-## Why this matters more as nesting goes deeper
+## Why nested presets matter more as nesting goes deeper
 
 The deeper a theme leans on nested, recursive blocks (per [15.3. Advanced Nested Block Patterns](/all-about-blocks/advanced-nested-block-patterns/)), the more a merchant benefits from starting somewhere sensible rather than an empty container they have to populate themselves. A recursive group block is powerful specifically because it's unopinionated — but that same lack of opinion means an empty one, added fresh, gives a merchant no hint about the layout it's capable of. A good preset is often the only place that intended structure is actually communicated.
 

@@ -34,11 +34,11 @@ It's the wrong tool when a design actually wants a different *composition* at di
 
 Each `<source>` names its own `media` condition and its own `srcset` — the browser evaluates them in order and uses the first one whose condition matches, falling back to the plain `<img>` if nothing matches (which also serves as the fallback for browsers that don't support `<picture>` at all, though that's essentially none in practice today).
 
-## This is still "one Liquid image," rendered twice
+## `<picture>` is still "one Liquid image," rendered twice
 
 Notice both `<source>` entries and the fallback `<img>` all reference the same `image` object — `<picture>` doesn't require two separate image uploads for two separate crops. `aspect_ratio` and `crop` (covered in full on [19.4. Image CDN Transform Parameters](/media-deep-dive/image-cdn-transform-parameters/)) do the actual recropping, so one merchant-uploaded image can serve genuinely different compositions at different breakpoints without the merchant uploading anything twice.
 
-## When this is actually worth the extra markup
+## When `<picture>` is actually worth the extra markup
 
 `<picture>` is more markup than a plain `srcset`, and most images don't need it — reserve it for the specific case where a design calls for a real compositional change between breakpoints, most commonly a wide hero image on desktop that needs a taller, narrower crop on mobile to keep its subject legible. For anything where the same crop just needs to scale, plain `srcset`/`sizes` is simpler and sufficient.
 

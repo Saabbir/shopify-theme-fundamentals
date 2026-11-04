@@ -15,7 +15,7 @@ description: Capping how many blocks a section can hold, and the limits Shopify 
 
 Set at the top level of a section's schema, `max_blocks` caps the total number of blocks a merchant can add to that section instance. Once reached, the theme editor stops offering to add more.
 
-## Why you'd deliberately limit this
+## Why you'd deliberately limit `max_blocks`
 
 It's tempting to think more flexibility (no limit at all) is always better, but two real reasons justify a cap:
 

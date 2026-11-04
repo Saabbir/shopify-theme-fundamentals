@@ -50,7 +50,7 @@ Sometimes a client sends over font files and a CSS file that, on first read, loo
 }
 ```
 
-## Recognizing what this actually is
+## Recognizing a substitute-font file for what it actually is
 
 Three details give it away, and they're worth training your eye to catch before writing any theme code against a file like this:
 
@@ -134,7 +134,7 @@ These are tiny — a few thousandths of an em — which is itself a signal: this
 Font-matching work like this sometimes comes with a numeric score — something like "0.4 × shared ink + 0.3 × outline closeness + 0.3 × width match, averaged per character, with extra weight on the worst-matching 20%" is a plausible real formula, applied per glyph and then combined into one number per font. Whatever the exact formula, a documented score comparing the chosen substitute against the plainest alternative (an unmodified stock font, say) is evidence that a real comparison happened, not a guess — treat it the same way as the tuned numeric values: worth preserving as documentation, and a reason to re-run the same comparison rather than eyeball a replacement if the substitute ever needs to change.
 :::
 
-## What to actually do with a file like this
+## What to actually do with a substitute-font file
 
 Once the file is understood correctly, handling it is mostly familiar ground from elsewhere in this chapter, plus a few things specific to a substitute:
 

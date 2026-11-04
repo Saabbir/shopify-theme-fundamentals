@@ -76,7 +76,7 @@ description: One full, realistic snippet, with every optional parameter and defe
 </div>
 ```
 
-## Called from two different places
+## Calling `product-card` from two different places
 
 ### 1. A collection grid
 

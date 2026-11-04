@@ -7,7 +7,7 @@ description: One full, realistic set of block files, combining nesting, static b
 
 Every other page in this chapter looked at one block feature in isolation. This page puts them together: a complete `sections/feature-row.liquid`, a standalone `blocks/feature-card.liquid` that can itself hold nested children, and a small `blocks/section-heading.liquid` used as a **static** block — all wired together exactly as they'd exist in a real theme.
 
-## What this example builds
+## What the feature-row example builds
 
 A "feature row" section: a fixed heading at the top that a merchant can edit but never remove or delete, followed by a merchant-addable row of feature cards, where each card can optionally hold its own small list of nested bullet points.
 

@@ -7,11 +7,11 @@ description: What to do when a client's exact brand font isn't in Shopify's font
 
 [18.2. Reading Typography from a Figma Design](/all-about-typography/reading-typography-from-a-figma-design/) flags this as the exception, not the default: most of the time, `font_picker` (covered in [18.3. Font Settings & Loading a Font Correctly](/all-about-typography/font-settings-and-loading-a-font-correctly/)) is the right tool, because it gives a merchant a real, editable choice and Shopify handles licensing and hosting for you. This page is specifically for the case where that's not an option — the client owns a license for a real font file that genuinely isn't in Shopify's library, and the theme needs to load it directly.
 
-## First: confirm the license actually allows this
+## First: confirm the license actually allows web embedding
 
 A font a client "has" — bought from a foundry, downloaded from their brand guidelines, or licensed through a service like Adobe Fonts or Monotype — is not automatically licensed for **web embedding**. Desktop-use and web-use licenses are commonly sold separately, and a web license is sometimes further restricted by page views or domains. This is a licensing question for the client to confirm with whoever sold them the font, not something a theme developer should assume either way. Shopify's own font library sidesteps this entirely, which is the biggest single reason to prefer it when the exact family happens to be available there.
 
-## Getting the right files
+## Getting the right font files
 
 A real web font license typically includes the file formats browsers need directly — `.woff2` (serves nearly every current browser on its own) and `.woff` (a reasonable fallback for anything older). If a client instead hands over a desktop format (`.otf`, `.ttf`), it needs converting to `.woff2`/`.woff` with a tool like [Google's Webfonts Helper](https://gwfh.mranftl.com/fonts) or `fonttools`'s `fonttobdf`-adjacent conversion utilities before it's usable here — ask whoever licensed the font whether conversion is permitted under the license, since not all are.
 
@@ -82,7 +82,7 @@ Two real `@font-face` rules, both named `'Canela'`, distinguished only by `font-
 
 A `font_picker`-based font comes with a ready-made `fallback_families` string. A hand-loaded font doesn't — the fallback stack has to be chosen and written manually, same as plain CSS anywhere else. Pick a fallback with a similar overall character (a serif-for-serif, geometric-sans-for-geometric-sans) rather than a generic default, for the same layout-shift reasons [18.7. Font-Loading Performance](/all-about-typography/font-loading-performance/) covers.
 
-## Still wiring it into the same token system
+## Still wiring the custom font into the same token system
 
 The rest of the theme doesn't need to know this font was loaded differently — it can still be exposed as a normal design token, following [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/)'s pattern, just with a hardcoded value instead of one read from `settings`:
 

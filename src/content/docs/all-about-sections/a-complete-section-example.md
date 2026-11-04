@@ -7,7 +7,7 @@ description: One full, realistic section file, combining everything this chapter
 
 Every other page in this chapter looked at one concern at a time — settings, restrictions, limits, performance. This page puts all of it together into a single, complete `sections/testimonials.liquid` file: the same section already referenced from [28.5. A Complete Template Example](/all-about-theme-settings/a-complete-template-example/), now shown in full, exactly as it would exist in a real theme's `sections/` folder.
 
-## The complete file
+## The complete `sections/testimonials.liquid` file
 
 ```liquid
 {% comment %}
@@ -237,7 +237,7 @@ This single section demonstrates all of the following at once:
 - **A block rendered with `{{ block.shopify_attributes }}`**, which is what lets the theme editor highlight and select that specific block instance when a merchant clicks it in the preview.
 - **Translated schema strings throughout** (`t:sections.testimonials.name`, `t:labels.heading`, and so on) rather than hardcoded English, per [6.5. Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) — see [28.6. A Complete Locale File Example](/all-about-theme-settings/a-complete-locale-file-example/) for the matching locale entries this schema depends on.
 
-## How this connects to the rest of the site
+## How the testimonials section connects to the rest of the site
 
 This exact section — same name, same `color_scheme` default, same two testimonials — is also the one used in [28.5. A Complete Template Example](/all-about-theme-settings/a-complete-template-example/), shown there as it would actually appear once placed on a page, with real settings values stored in a JSON template. Reading the two pages together shows the full round trip: the section file defines what's configurable, and the template records what a merchant actually configured.
 

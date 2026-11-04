@@ -9,7 +9,7 @@ description: What a snippet is, why it isn't a block, and how its scope isolatio
 
 A **snippet** is a small, reusable chunk of Liquid code, stored in `snippets/`. It's the simplest of a theme's building blocks: no schema, no settings a merchant can configure, no visibility in the theme editor at all. A snippet exists purely to avoid repeating the same markup or logic in more than one place in your code.
 
-## A basic example
+## A basic snippet example
 
 ```liquid
 {% comment %} snippets/product-card.liquid {% endcomment %}

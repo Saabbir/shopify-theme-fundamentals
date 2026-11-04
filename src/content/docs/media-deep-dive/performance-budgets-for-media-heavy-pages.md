@@ -19,7 +19,7 @@ A performance budget is a concrete, numeric limit agreed on ahead of time — mo
 
 The exact numbers matter less than having any agreed number at all — a budget with specific thresholds gives everyone building the theme a shared, checkable target, instead of a vague sense that "the page shouldn't be too heavy."
 
-## Checking against the budget
+## Checking a page against its performance budget
 
 Browser developer tools (the Network tab, filtered by total transferred size) give a direct, real reading of what a page actually weighs once built — this is the simplest way to check a page against a budget without any special tooling. Lighthouse (covered in the planned Performance Deep Dive chapter) goes further, flagging specific oversized images and giving an overall performance score, but the Network tab's plain transferred-size total is often enough to catch a page that's clearly over budget.
 

@@ -23,7 +23,7 @@ A font file, even a small one, takes real time to download. Browsers have to dec
 Unless there's a specific reason not to, `swap` is the sensible default — reading or shopping is rarely worth delaying for a specific typeface, and a brief font swap is a smaller problem than text that's invisible while loading.
 :::
 
-## Avoiding layout shift during the swap
+## Avoiding layout shift during a font swap
 
 A `swap` strategy solves "text is readable immediately," but introduces a different problem: if the fallback font and the real font have noticeably different letter widths, text can visibly reflow once the swap happens — headings jumping to a new line, buttons resizing. This is a real, measurable layout shift, the kind Core Web Vitals specifically penalizes.
 

@@ -133,7 +133,7 @@ Loading the font files (Step 2) is necessary but not sufficient — a component 
 
 This single snippet is rendered once, early, and every one of Horizon's hundreds of section and block files then reads from these twelve variables instead of touching `settings.type_*_font` directly. This is precisely the "resolve once, consume everywhere" token pattern from [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/) — Horizon is a real, shipping example of that exact idea, not a theoretical one.
 
-## Consuming the tokens in a component
+## Consuming the font tokens in a component
 
 A component that wants heading typography just reads the token — it never re-derives anything from the original settings:
 
@@ -151,7 +151,7 @@ Any component in the theme that wants "heading" typography uses the same three v
 `--font-heading--family`, `--font-heading--style`, and `--font-heading--weight` are the complete role token — there's no `--font-heading--size` to go with them, by design. A real product title in Horizon isn't actually styled by these three alone; it also carries (or inherits, via its tag) one of the `.h1`–`.h6` preset classes covered in [27.3. How Horizon Sets Up Typography & Design Tokens](/horizon-codebase-tour/how-horizon-sets-up-typography-and-design-tokens/), which is what supplies `font-size` and `line-height`. The `.product-title` example above isolates the role-token layer specifically to show how it resolves — [18.13. Typography in Components: A Day-to-Day Cheat Sheet](/all-about-typography/typography-in-components-a-day-to-day-cheat-sheet/) covers exactly when a component should stop at the role token versus reach for a full preset.
 :::
 
-## The practical upshot for overriding or debugging
+## The practical upshot for overriding or debugging Horizon's fonts
 
 A real, commonly-reported question from people customizing Horizon is "why isn't my custom font showing up everywhere?" The answer, consistently, traces back to this same token system: Horizon's component CSS is scoped fairly specifically (many elements carry their own block-specific classes), so overriding a font by targeting individual selectors one at a time is a losing battle — there are simply too many of them, and new ones appear as the theme is updated.
 

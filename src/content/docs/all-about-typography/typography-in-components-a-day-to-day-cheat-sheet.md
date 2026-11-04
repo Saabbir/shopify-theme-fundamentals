@@ -7,11 +7,11 @@ description: A decision tree and example set for what typography CSS belongs in 
 
 [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/), [18.11. Type Presets & Building a Complete Type System](/all-about-typography/type-presets-and-building-a-complete-type-system/), and [Wiring Typography Settings into Sections & Blocks](/all-about-typography/wiring-typography-into-sections-and-blocks/) each cover one piece of this mechanism in depth. This page doesn't introduce anything new — it's the practical recap, written for the moment you're actually writing a section's `{% stylesheet %}` and need a fast, concrete answer to "does this typography CSS belong here?"
 
-## The one rule
+## The one rule for typography in a component's stylesheet
 
 A component's own `{% stylesheet %}` or `{% style %}` should almost never contain `font-family`, `font-weight`, `font-size`, or `line-height` as a literal value, and should almost never reconstruct a full preset by hand-listing several `--type-preset-*` tokens either. Two different things already supply typography — a **role token** or a **preset class** — and almost everything a component needs is one of those two, applied correctly. Knowing which one to reach for is the entire skill this page teaches.
 
-## Two layers, two different jobs
+## Role tokens vs. preset classes: two layers, two different jobs
 
 It's easy to blur these together, so it's worth being precise about what each one actually is, since they look similar but answer different questions.
 
@@ -24,7 +24,7 @@ It's easy to blur these together, so it's worth being precise about what each on
 
 The detail most worth remembering: **a role token has no size property at all.** [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/#step-3-resolve-every-role-into-css-custom-properties-once) resolves each role into exactly three properties — family, weight, style. If a component reaches for a role token and then also needs a `font-size`, that's a sign it actually needs a *preset* (apply the class), not a role token with a hand-picked size bolted on.
 
-## The decision tree
+## The decision tree for choosing a role token or a preset
 
 Work through these in order; stop at the first one that applies.
 
@@ -62,7 +62,7 @@ None of that is typography, and none of it has an equivalent "global class" the 
 
 A component that's just *using* typography — the overwhelming majority of sections, blocks, and snippets — should essentially never need `{% style %}` for it at all. If you find yourself reaching for `{% style %}` to output a font-related value and the component doesn't have its own `font_picker` setting, that's usually a sign the value should have come from an existing token or preset instead.
 
-## Good vs. not-good, side by side
+## Good vs. not-good typography CSS, side by side
 
 ### A product card title
 
@@ -159,7 +159,7 @@ A new preset is the right call once a treatment genuinely recurs in more than on
 
 A raw size control lets a merchant land on a value that doesn't match any tested treatment and may not pair sensibly with the line-height or letter-spacing the design actually needs at that size — the bounded `select` keeps every available choice a real, designed preset.
 
-## Common mistakes, at a glance
+## Common typography CSS mistakes, at a glance
 
 - Redeclaring a preset's properties by hand in a component's own stylesheet, instead of applying the class.
 - Reaching for a preset class when only `font-family` actually matters, forcing an unwanted size onto the component.
