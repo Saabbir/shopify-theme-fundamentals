@@ -5,7 +5,7 @@ description: A merchant-controlled default, a shopper-controlled override, and t
 
 **TL;DR:** A merchant-controlled default, a shopper-controlled override, and the one Liquid idiom that correctly combines both.
 
-## Three related properties, each with a different job
+## Three sort-related properties: `default_sort_by`, `sort_by`, and `sort_options`
 
 ```liquid
 {{ collection.default_sort_by }}
@@ -17,7 +17,7 @@ description: A merchant-controlled default, a shopper-controlled override, and t
 - **`collection.sort_by`** — the order actually applied *right now*, from the `sort_by` URL parameter. This is `nil` the moment a shopper hasn't picked anything, which is exactly why reading it alone, with no fallback, is wrong.
 - **`collection.sort_options`** — the list of choices to actually render in a sort dropdown, each a real `sort_option` object with `.name` (customer-facing, editable via the language editor) and `.value` (what goes in the URL).
 
-## The one correct idiom
+## The one correct idiom: `sort_by | default: default_sort_by`
 
 ```liquid
 {% liquid
@@ -27,7 +27,7 @@ description: A merchant-controlled default, a shopper-controlled override, and t
 
 This single line is the entire mechanism: use the shopper's explicit choice if they made one, otherwise fall back to the merchant's own configured default for this collection. Skipping the `default:` fallback and reading `collection.sort_by` directly means a shopper who hasn't touched the sort dropdown sees an un-set, effectively undefined sort order, rather than the order the merchant actually intended as the collection's starting state.
 
-## Rendering the dropdown
+## Rendering the sort dropdown
 
 ```liquid
 <select onchange="window.location.href = this.value" aria-label="{{ 'collection.sort.label' | t }}">

@@ -15,7 +15,7 @@ A poster image is what a shopper sees before pressing play — [19.3. Video Load
 
 `media.preview_image` is a real `image` object Shopify generates automatically for every uploaded video — no merchant action required, and it's already the right fallback for a video with no explicit cover image chosen.
 
-## Letting a merchant override it
+## Letting a merchant override the poster image
 
 ```liquid
 {% liquid

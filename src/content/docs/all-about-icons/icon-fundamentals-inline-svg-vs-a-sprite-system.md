@@ -40,7 +40,7 @@ Every use of `{% render 'icon-cart' %}` repeats the full `<path>` markup at that
 
 Every icon's actual path data is defined exactly once, in a hidden `<svg>` of `<symbol>` definitions rendered near the top of the page — every other use is just a tiny `<use href="#icon-cart">` reference. This is the better choice specifically once the same handful of icons repeat heavily across many components, since it keeps the *repeated* markup small, at the cost of a small amount of setup (defining and maintaining the sprite in one place).
 
-## The actual trade-off, stated plainly
+## The actual trade-off between inline SVG and a sprite, stated plainly
 
 | | Inline SVG per use | Sprite with `<use>` |
 |---|---|---|

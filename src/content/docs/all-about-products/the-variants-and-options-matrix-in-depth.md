@@ -5,7 +5,7 @@ description: Building a real option picker that correctly matches a shopper's ch
 
 **TL;DR:** Building a real option picker that correctly matches a shopper's choices back to one specific variant.
 
-## Two different views of the same options
+## The two ways a product exposes its options
 
 A product exposes its options two ways, and they answer two different questions:
 

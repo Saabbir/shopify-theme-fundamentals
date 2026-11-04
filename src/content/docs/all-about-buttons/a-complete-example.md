@@ -7,7 +7,7 @@ description: A real add-to-cart button combining a variant, every interactive st
 
 Every earlier page in this chapter covered one piece in isolation. This page combines all of them into one realistic add-to-cart button, built as a Web Component since the loading state genuinely needs JavaScript to manage — following the same pattern [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) establishes for interactive theme behavior generally.
 
-## The markup
+## The add-to-cart button's markup
 
 ```liquid
 {% # snippets/add-to-cart-button.liquid %}
@@ -24,7 +24,7 @@ Every earlier page in this chapter covered one piece in isolation. This page com
 </add-to-cart-button>
 ```
 
-## The CSS
+## The add-to-cart button's CSS
 
 ```css
 .button {
@@ -76,7 +76,7 @@ Every earlier page in this chapter covered one piece in isolation. This page com
 }
 ```
 
-## The Web Component
+## The add-to-cart button's Web Component
 
 ```js
 // assets/add-to-cart-button.js
@@ -128,7 +128,7 @@ class AddToCartButton extends HTMLElement {
 customElements.define('add-to-cart-button', AddToCartButton);
 ```
 
-## Reading it in order
+## Reading the add-to-cart button's code in order
 
 A shopper clicking this button triggers `handleSubmit`, which first checks `aria-busy` to guard against a duplicate request — exactly the problem [36.4. Accessible Loading & Busy States](/all-about-buttons/accessible-loading-and-busy-states/) covers. `setLoadingState(true)` then does three things together: sets `aria-busy="true"` (announced to a screen reader), disables the button natively (blocks a second click), and reveals the spinner (visible proof to a sighted shopper) — all three problems, solved by the one method, every time it's called.
 

@@ -7,7 +7,7 @@ description: A Web Component wrapping a real <video> element, syncing a custom b
 
 The native browser video controls (`controls` attribute) are accessible and functional out of the box, but visually don't match a theme's design system — most themes replace them with a custom play/pause button styled to match everything else, while still relying on the real `<video>` element's own playback API underneath.
 
-## The component
+## The `<video-player>` Web Component
 
 ```js
 // assets/video-player.js

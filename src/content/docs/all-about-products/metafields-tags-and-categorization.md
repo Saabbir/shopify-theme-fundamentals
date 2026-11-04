@@ -41,7 +41,7 @@ Unlike type and vendor, a product can have any number of tags, and `product.tags
 
 `product.category` is different from everything else on this page: it's Shopify's own standardized product taxonomy (the same one powering category-based reporting and some sales channels), not a merchant-authored free-text field. `product.category.ancestors` gives the full parent chain — a product categorized as "Vitamins & Supplements" might have ancestors like "Health & Beauty," useful for building a breadcrumb that reflects the category hierarchy rather than a merchant-maintained collection structure.
 
-## Four systems, four different purposes
+## Type, tags, category, and collections: four systems, four different purposes
 
 | System | Cardinality | Who controls the values | Typical use |
 |---|---|---|---|

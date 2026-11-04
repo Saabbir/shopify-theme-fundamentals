@@ -59,7 +59,7 @@ Five empty stars sit as the base layer; a second, absolutely positioned copy of 
 A production component would almost certainly use inline SVG stars rather than the `★`/`☆` text glyphs shown here, for crisper rendering and real control over the icon's shape — the clipping and labeling technique is identical either way. [37. All About Icons](/all-about-icons/) covers the reusable icon-snippet pattern this would plug into.
 :::
 
-## What to never do instead
+## What to never do when building a star rating
 
 - **Never rely on color alone** to distinguish filled from empty stars — someone with a color vision deficiency needs the same shape-based distinction (filled vs. outline, or a percentage fill) sighted color contrast alone doesn't guarantee.
 - **Never read five individual star elements as five separate, unlabeled list items** — that reads to a screen reader as five meaningless icons in a row, with no way to know the rating is "4 out of 5" without counting filled icons visually, which a screen reader user can't do.

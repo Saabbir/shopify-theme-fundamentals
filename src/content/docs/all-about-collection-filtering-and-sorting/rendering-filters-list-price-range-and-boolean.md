@@ -7,7 +7,7 @@ description: A real {% case %} dispatch over filter.type, including presentation
 
 [`collection.filters` in Depth](/all-about-collection-filtering-and-sorting/collection-filters-in-depth-types-values-and-url-parameters/) establishes the three filter types; this page renders each one correctly.
 
-## The dispatcher
+## Dispatching on `filter.type` with a `{% case %}`
 
 ```liquid
 {% for filter in collection.filters %}

@@ -22,7 +22,7 @@ Shopify has no concept of a dedicated "hover image" — `secondary_image` here i
 `card_product.images[1]` is `nil` for any product with fewer than two images, which is common for a brand-new or simply-photographed product. Every example on this page checks for this before rendering the swap markup; skipping the check doesn't break anything visually (an empty `<img>` just doesn't render), but it's still worth guarding explicitly rather than relying on that accident.
 :::
 
-## The swap, with CSS alone — no JavaScript needed
+## The hover-image swap, with CSS alone — no JavaScript needed
 
 ```liquid
 <a href="{{ card_product.url }}" class="product-card__media">

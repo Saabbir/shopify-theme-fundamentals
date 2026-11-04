@@ -38,7 +38,7 @@ Some apps — particularly ones built around a fully managed, iframe-rendered wi
 
 A section that allows `{ "type": "@app" }` in its blocks list lets a merchant add any installed app's block through the theme editor, including a reviews widget — the theme defines *where* it's allowed to render, the app defines everything about *what* renders there. This is a legitimate, often-correct choice: it's less work, it stays current automatically as the app updates its own widget, and it's the only option when metafields genuinely aren't available — the trade-off is giving up control over the widget's markup, styling, and whether it participates in anything the theme itself defines, like a custom star-rating component or `AggregateRating` schema.
 
-## A practical decision
+## A practical decision: metafields or an app block
 
 | Situation | Reach for |
 |---|---|

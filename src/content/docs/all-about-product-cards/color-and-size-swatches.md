@@ -72,7 +72,7 @@ A swatch's actual color or image is configured per option value in Shopify's adm
 
 `value.variant` is the variant that would result from selecting this value *together with whatever else is currently selected* — this is Shopify's own recommended way to link a swatch to the right variant, rather than a theme trying to reconstruct that lookup by hand. `value.product_url` is the fallback for a card context with nothing else "currently selected" yet, linking straight to the product page with that option pre-selected via a query parameter.
 
-### Disabled, not hidden, for an unavailable combination
+### A swatch is disabled, not hidden, for an unavailable combination
 
 `value.available` reflects whether this option value has any purchasable combination at all, given what's already selected — a swatch for a color with zero sizes left in stock should show as disabled (`aria-disabled="true"`, dimmed), not disappear from the list entirely. Removing it outright makes the set of options look smaller and less complete than it really is, and removes a shopper's ability to see that a color *exists*, just not in a size that's currently in stock.
 

@@ -108,7 +108,7 @@ customElements.define('video-player', VideoPlayer);
 }
 ```
 
-## Calling it from a product page
+## Calling the `video-player` snippet from a product page
 
 ```liquid
 {% liquid

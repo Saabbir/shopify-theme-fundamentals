@@ -35,7 +35,7 @@ Every item in `product.media` is a `media` object with a shared set of propertie
 
 Each media type carries its own additional properties beyond the shared ones — a `video` has `sources` and `duration`, a `model` has its own 3D-specific properties — covered in full on [19.1. Media Fundamentals](/media-deep-dive/media-fundamentals/) and the rest of that chapter, which this page deliberately doesn't repeat.
 
-## Filtering the gallery down to one type
+## Filtering product.media down to one type
 
 ```liquid
 {% assign product_images = product.media | where: 'media_type', 'image' %}
@@ -44,7 +44,7 @@ Each media type carries its own additional properties beyond the shared ones —
 
 The [`where` filter](https://shopify.dev/docs/api/liquid/filters/where) against `media_type` is the standard way to build, say, an image-only thumbnail strip while still supporting a video or model as the main gallery's featured item — without maintaining two entirely separate data sources.
 
-## The featured item isn't always the first array entry
+## product.featured_image vs. product.featured_media: not always the first array entry
 
 ```liquid
 {{ product.featured_image }}
@@ -57,7 +57,7 @@ The [`where` filter](https://shopify.dev/docs/api/liquid/filters/where) against 
 `product.featured_media`'s own documentation notes a real exception: in search results or a filtered collection, the *variant's* most relevant media is returned instead of the product's own first item — relevance here is based on the active search terms or filters. Worth knowing if a featured image seems to "change" between viewing a product directly and finding it through a filtered search.
 :::
 
-## A variant can override the gallery too
+## A variant can override the product's gallery too
 
 ```liquid
 {{ variant.featured_image }}

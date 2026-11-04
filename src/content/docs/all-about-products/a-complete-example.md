@@ -7,7 +7,7 @@ description: A real product page section combining variants, media, availability
 
 This page doesn't introduce anything new — it's every earlier page in this chapter, combined into one realistic `sections/main-product.liquid`-style example, to show how these pieces actually fit together on a real product page rather than in isolation.
 
-## The section
+## The sections/main-product.liquid example
 
 ```liquid
 {% # sections/main-product.liquid %}
@@ -120,7 +120,7 @@ This page doesn't introduce anything new — it's every earlier page in this cha
 </div>
 ```
 
-## Reading the section in order
+## Reading the sections/main-product.liquid example in order
 
 A shopper landing on this page sees a gallery built from `product.media` (not `product.images`, so a video or 3D model shows up alongside photos), a price that's either a single value or a "from" range depending on `product.price_varies`, an option picker rendered from `product.options_with_values` (skipped entirely via `product.has_only_default_variant` when there's nothing to pick), an optional subscription choice only when `product.selling_plan_groups` actually has entries, a quantity input pre-filled from `quantity_rule`, and an add-to-cart button whose enabled state follows `current_variant.available` specifically — never `product.available`, which would stay `true` even while this exact variant is sold out.
 

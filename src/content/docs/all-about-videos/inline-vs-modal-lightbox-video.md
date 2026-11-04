@@ -68,7 +68,7 @@ The native `<dialog>` element, opened with `showModal()`, is the right foundatio
 A shopper closing the modal (via the close button, <kbd>Escape</kbd>, or clicking the backdrop) should never leave the video silently still playing, invisible, in the background. The `close` event listener above exists specifically for this — `<dialog>`'s native close methods all fire the same `close` event, so one listener correctly covers every way a shopper might dismiss it, rather than needing a separate pause call wired to each dismissal method individually.
 :::
 
-## The one rule that applies regardless of which is chosen
+## The one rule that applies to both inline and modal video: pause on tab hide
 
 ```js
 // In a parent component managing multiple videos on one page

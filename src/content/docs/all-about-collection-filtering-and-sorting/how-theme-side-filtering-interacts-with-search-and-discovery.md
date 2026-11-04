@@ -7,7 +7,7 @@ description: The app decides which filters exist and what options they have; the
 
 Every page in this chapter so far has been about rendering `collection.filters` — this page is about the boundary between what a theme controls and what the Search & Discovery app controls, since confusing the two is a common source of "why isn't my filter showing up" questions.
 
-## What the app owns
+## What the Search & Discovery app owns
 
 A merchant configures *which* filters appear on a given collection, and in what order, entirely inside the Search & Discovery app's own admin interface — which product properties become filters (an option like Color, a specific metafield, price), and for a `list` filter, whether it presents as `text`, `swatch`, or `image`. None of this is theme code. A theme has no setting, schema field, or Liquid logic that adds a new filter to the list `collection.filters` returns — it only ever renders whatever the app has configured for that collection.
 

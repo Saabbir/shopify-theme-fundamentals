@@ -7,7 +7,7 @@ description: Shopify's older, app-independent tag filtering system — real link
 
 Everything in this chapter so far — `collection.filters` — is powered by the Search & Discovery app. A much older mechanism, built into Shopify core rather than any app, still works today: filtering a collection by product tag directly through the URL.
 
-## The URL convention
+## The tag-based URL convention
 
 ```
 /collections/frontpage/new
@@ -42,7 +42,7 @@ Appending `/{tag-handle}` to a collection's URL filters it down to only products
 
 `link_to_add_tag` and `link_to_remove_tag` are the real, dedicated filters for this — each one builds the correct `+`-joined URL automatically, adding or removing just the one tag while preserving every other currently active tag. This is the direct equivalent of `filter_value.url_to_add`/`url_to_remove` from the Search & Discovery system — a theme never manually concatenates tag strings into a URL path by hand, same underlying principle as the modern filter system, just a different, older mechanism.
 
-## When this is the right (or only) tool
+## When the tag-based fallback is the right (or only) tool
 
 - **A store with no Search & Discovery app installed at all** — a genuinely rare case today, since the app ships free and pre-installed on new stores, but still possible on an older store that's never enabled it, or one that's deliberately uninstalled it.
 - **A simple, tag-only filter need** — a "Shop by Collection Tag" navigation pattern that was never meant to support color swatches, price ranges, or boolean filters, where the full `collection.filters` system would be more machinery than the actual requirement calls for.

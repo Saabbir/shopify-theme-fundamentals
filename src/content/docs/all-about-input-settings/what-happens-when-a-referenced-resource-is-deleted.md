@@ -7,7 +7,7 @@ description: The setting silently goes back to nil — there's no error, no brok
 
 A merchant picks a product for a `product`-type setting, ships the section, and three months later deletes that exact product from the catalog (discontinued, seasonal, whatever the reason). Nothing about this is unusual — and a theme needs to handle it correctly.
 
-## The setting simply becomes `nil` again
+## A resource-picker setting simply becomes `nil` again
 
 ```liquid
 {{ section.settings.featured_product }}
@@ -30,7 +30,7 @@ This exact guard — written once, for the ordinary unselected case — already 
 
 A merchant looking at the section in the theme editor won't see an obvious "this product no longer exists" indicator in most cases — the setting's picker field may just appear empty again, the same as if it had never been set. This means a theme's *storefront-facing* empty state (not an admin-only warning) is doing real, user-facing work here: a shopper landing on a page with a since-deleted featured product needs to see something sensible, not a broken-looking gap, since there's no guarantee a merchant has noticed and fixed it yet.
 
-## This applies to every resource-picker type, not just `product`
+## The same `nil`-on-deletion behavior applies to every resource-picker type, not just `product`
 
 ```liquid
 {% if section.settings.featured_collection %}...{% endif %}

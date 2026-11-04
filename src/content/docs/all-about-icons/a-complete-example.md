@@ -44,7 +44,7 @@ svg.icon {
 }
 ```
 
-## Using it decoratively, next to visible text
+## Using the icon-render snippet decoratively, next to visible text
 
 ```liquid
 <button class="button">
@@ -55,7 +55,7 @@ svg.icon {
 
 No `label` is passed — the icon renders `aria-hidden="true"`, correctly silent to a screen reader, since the button's own visible text already says everything a shopper (sighted or not) needs to know.
 
-## Using it as the only label, inside an icon-only button
+## Using the icon-render snippet as the only label, inside an icon-only button
 
 ```liquid
 <button class="button button--icon-only" aria-label="{{ 'products.add_to_wishlist' | t }}">
@@ -65,7 +65,7 @@ No `label` is passed — the icon renders `aria-hidden="true"`, correctly silent
 
 Still no `label` passed to the snippet — even here, the icon itself stays decorative (`aria-hidden="true"`), because the *button* carries the real `aria-label`, per [37.4. Icon Accessibility: Decorative vs. Meaningful](/all-about-icons/icon-accessibility-decorative-vs-meaningful/)'s guidance to label the containing control rather than the icon, whenever a containing control exists.
 
-## Using it standalone, with no containing control at all
+## Using the icon-render snippet standalone, with no containing control at all
 
 ```liquid
 <span class="order-status">

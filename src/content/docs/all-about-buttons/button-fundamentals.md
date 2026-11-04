@@ -25,7 +25,7 @@ Visually, "a button" is just a styled rectangle with a label. Underneath, a them
 A clickable element with only a mouse-click handler and no `role`, no `tabindex`, and no keyboard handler works perfectly for a mouse user and is completely invisible and unreachable for a keyboard or screen-reader user. This isn't a rare edge case — it's one of the most frequently cited issues in real storefront accessibility audits, and it's entirely avoidable by reaching for a real `<button>` or `<a>` in the first place.
 :::
 
-## The rule: does it navigate, or does it act?
+## The rule: does the button navigate, or does it act?
 
 This is the one question that resolves nearly every case:
 

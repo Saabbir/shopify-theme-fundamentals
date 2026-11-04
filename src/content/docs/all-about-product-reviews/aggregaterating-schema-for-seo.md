@@ -7,7 +7,7 @@ description: JSON-LD that lets a product's star rating actually show up in Googl
 
 A star rating rendered only in a page's visible HTML doesn't automatically show up as a rich result in Google search — that requires a separate, structured description of the same data, written as [schema.org](https://schema.org) JSON-LD and placed in the page's `<head>`.
 
-## The markup
+## The AggregateRating JSON-LD markup
 
 ```liquid
 {% comment %} snippets/product-schema.liquid — rendered once on the product template {% endcomment %}
@@ -49,7 +49,7 @@ Adding `aggregateRating` to a product's schema when that product page shows no v
 
 This is the single most common mistake with this pattern — copying the JSON-LD snippet onto every product template unconditionally, including products with zero reviews, where the visible rating never renders at all. The guard has to gate the schema the same way it gates the visible star component in [34.4. Rendering an Accessible Star Rating](/all-about-product-reviews/rendering-an-accessible-star-rating/) — both or neither.
 
-## Verifying it actually works
+## Verifying the AggregateRating markup actually works
 
 Google's [Rich Results Test](https://search.google.com/test/rich-results) parses a live product URL and reports exactly which structured data it found and whether it's eligible for a rich result — the only reliable way to confirm the JSON-LD is both valid and actually detected, rather than trusting that the markup "looks right."
 

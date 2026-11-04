@@ -106,7 +106,7 @@ Every piece below was covered on its own page earlier in this chapter; this exam
 </div>
 ```
 
-## Reading the composition, piece by piece
+## Reading the product card snippet, piece by piece
 
 - **Image and badges share one wrapper** (`product-card__media`) because the badges are positioned relative to the image, not the card as a whole — this keeps a badge from drifting if the title below ever wraps to a different number of lines.
 - **The sold-out/sale/custom badge priority** from [Badges](/all-about-product-cards/badges-sale-sold-out-and-custom-tags/) is preserved exactly: the `{% else %}` means a sold-out product never also shows "Sale," regardless of its actual compare-at price.

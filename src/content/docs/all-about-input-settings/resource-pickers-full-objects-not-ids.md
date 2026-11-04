@@ -5,7 +5,7 @@ description: product, collection, image_picker, and video all return the real, u
 
 **TL;DR:** `product`, `collection`, `image_picker`, and `video` all return the real, usable object — and none of them support a schema-level `default` at all.
 
-## The return value is the real object, ready to use
+## Every resource picker returns the full object, ready to use
 
 ```liquid
 {{ section.settings.featured_product.title }}
@@ -37,7 +37,7 @@ A `product`-type setting doesn't return a product ID that then needs a second lo
 
 The first is correct; the second simply doesn't work — `product`, `collection`, `product_list`, `collection_list`, `blog`, `page`, `link_list`, `image_picker`, `video`, and `video_url` have no `default` key at all. A merchant has to actively choose a value through the picker UI; there's no way for a developer to pre-select one in the schema itself, which is the real reason a section's `presets` entry (covered next) matters more for these settings than for almost any other type.
 
-## Presets can't fill this gap either, for a store-specific resource
+## A `presets` entry can't pre-select a merchant's product or collection either
 
 ```json
 {

@@ -13,7 +13,7 @@ description: What has to happen, beyond just showing a spinner, while a button's
 2. **Telling a sighted user something is happening.** Without any visual feedback, a click that takes a second or two to resolve can look like nothing happened at all, inviting exactly the double-click from problem 1.
 3. **Telling a screen-reader user something is happening — and when it's done.** This is the part a spinner alone doesn't solve: a spinner is a purely visual signal, with nothing for assistive technology to announce on its own.
 
-## A real, minimal pattern
+## A real, minimal loading-state pattern
 
 ```html
 <button type="submit" class="button" aria-busy="false">

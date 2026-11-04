@@ -49,7 +49,7 @@ Captions require a `<track kind="captions" src="...">` child element inside the 
 
 Every value used here — `.sources` (an array of `video_source` objects, each with its own `.url`, `.mime_type`, `.format`, `.width`, `.height`), `.preview_image`, `.alt` — is a real, verified property directly on Shopify's `video` Liquid object; nothing here needs `video_tag` at all once a theme is building the tag by hand. [39.5. Captioning & Accessibility](/all-about-videos/captioning-and-accessibility/) covers where `captions_url` actually comes from, since Shopify doesn't generate captions automatically.
 
-## Deciding which to use
+## Deciding between `video_tag` and a hand-built `<video>` tag
 
 | Situation | Reach for |
 |---|---|

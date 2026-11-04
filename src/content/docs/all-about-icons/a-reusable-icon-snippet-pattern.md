@@ -57,7 +57,7 @@ This split matters: the caller controls the `<svg>` wrapper's attributes (`viewB
 Directly above the `{% case %}` block in Horizon's real file sits the comment `{% # To be removed when we can use the icon static block instead %}`. This signals Shopify's own direction: a native `icon` static block type already exists in theme architecture (seen in some theme JSON configurations with `"type": "icon"` and an `icon` setting), suggesting icon rendering may eventually move toward a built-in mechanism rather than a hand-maintained `{% case %}` dispatcher. The dispatcher pattern on this page remains the right approach for a custom theme today — it's simply worth knowing Shopify's own flagship theme considers it a stepping stone, not necessarily the final word.
 :::
 
-## Why this beats one file per icon, at scale
+## Why one dispatcher snippet beats one file per icon, at scale
 
 - **Adding an icon is one new `{% when %}` branch**, not a new file, a new snippet name to remember, and a new place for a typo in the filename to silently produce a 404-like `{% render %}` failure.
 - **Every icon shares exactly the same calling convention** (`{% render 'icon', icon: '...' %}`) — a developer who's learned the pattern once can use any icon in the set without checking each icon's own snippet signature.

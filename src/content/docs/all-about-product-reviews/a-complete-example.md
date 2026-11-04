@@ -7,7 +7,7 @@ description: One rating snippet, reused with different settings on a product car
 
 A star rating shows up in two genuinely different places in a typical theme — a compact version on a product card in a grid, and a fuller version on the product page itself — and treating them as the same component with a size option, rather than two separate implementations, is what keeps both in sync as the underlying data or styling changes.
 
-## The shared snippet
+## The shared product-rating snippet
 
 ```liquid
 {% comment %}

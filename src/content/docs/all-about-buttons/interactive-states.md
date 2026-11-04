@@ -7,7 +7,7 @@ description: Four states every button needs, one of which is routinely implement
 
 A button isn't one static appearance — it's at least four, and skipping any of them is a real, specific failure for someone using the keyboard, not a cosmetic nitpick.
 
-## The four states
+## The four button states
 
 ```css
 .button { }              /* resting */

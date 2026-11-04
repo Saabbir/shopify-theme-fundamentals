@@ -76,7 +76,7 @@ description: One image snippet combining the aspect-ratio wrapper, lazy-loading 
 }
 ```
 
-## Calling it from a product card, with a badge layered on top
+## Calling the image snippet from a product card, with a badge layered on top
 
 ```liquid
 <div class="product-card__media">
