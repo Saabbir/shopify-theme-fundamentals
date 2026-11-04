@@ -131,6 +131,29 @@ The JSON above is identical no matter *where* you declare it — the `color` typ
 
 Most of the examples in this chapter use the theme-wide case, since that's what Horizon itself leans on for most of its own real colors — but everything shown applies identically to a section setting or a block setting too, right down to the exact same `color` type underneath. [28.1. Theme Settings Fundamentals](/all-about-theme-settings/theme-settings-fundamentals/) covers the full distinction between these three, including the concrete test for telling a theme setting from a section/block setting at a glance.
 
+## Letting a merchant pick transparency: `alpha`
+
+A `color` setting also accepts an `alpha` attribute — one that doesn't appear anywhere in Shopify's own written input-settings reference, but is genuinely present and in active use in Horizon's real, current source:
+
+```json
+// Horizon, config/settings_schema.json (theme-wide) — real, unmodified
+{
+  "type": "color",
+  "id": "palette_primary_button_background",
+  "label": "t:settings.background",
+  "default": "{{ settings.color_palette.foreground }}",
+  "alpha": true
+}
+```
+
+With `alpha: true`, the theme editor's color picker shows a transparency slider alongside the usual hue and saturation controls, so a merchant can pick a genuinely semi-transparent color — an eight-digit hex value, like `#2c6e5c80` — directly through the picker, instead of only ever landing on a fully opaque one.
+
+:::note[Undocumented, but real]
+Shopify's own written input-settings reference doesn't mention `alpha` for the `color` type at all — only `placeholder` is listed there. It's genuinely used in Horizon's real theme source, exactly as shown above, confirmed directly against Horizon's current `config/settings_schema.json`. Treat this the way you'd treat any gap between Shopify's prose docs and its actual shipped behavior: trust what a real theme's source and the editor itself show you over an incomplete docs page.
+:::
+
+This connects directly to the blank-vs-transparent distinction below: a merchant with `alpha` enabled can pick a fully transparent color on purpose, through the picker itself, rather than only ever typing `#00000000` by hand into a setting that doesn't expose it in the UI.
+
 ## Making a color setting optional: `placeholder` and blank
 
 Not every color needs a merchant-facing default. An optional overlay color, say, should start out doing nothing until a merchant deliberately turns it on:
@@ -246,6 +269,7 @@ All four, in Horizon's own real theme-wide settings — `palette_primary_button_
 | Attribute | Setting type | Purpose |
 |---|---|---|
 | `placeholder` | `color` | Hint text shown in the picker while nothing's selected; doesn't affect the stored value |
+| `alpha` | `color` | Shows a transparency slider in the picker, so a merchant can choose a semi-transparent color directly. Real and in active use (Horizon's own source), but absent from Shopify's own written docs for this type |
 
 **Liquid object properties**
 
@@ -268,6 +292,7 @@ All four, in Horizon's own real theme-wide settings — `palette_primary_button_
 - The same `color` setting JSON works identically as a theme setting, a section setting, or a block setting — only where you declare it and how you read it back changes (`settings.<id>`, `section.settings.<id>`, `block.settings.<id>`).
 - A `color` setting always prints as hex; underneath, it's a full color object, with more exposed than the hex string alone — full depth in [17.4](/all-about-colors/color-formats-and-conversions/).
 - `placeholder` hints at an optional color's intent without affecting what's stored. A cleared setting with no `default` returns `blank` in Liquid, which is a genuinely different thing from a deliberately transparent color (`#00000000`) — check for `blank` specifically if your logic depends on "did a merchant choose anything at all."
+- `alpha: true` adds a transparency slider to the picker itself, letting a merchant choose a semi-transparent color on purpose. It's real (confirmed in Horizon's own source) but missing from Shopify's own written docs for the `color` type — a reminder to check real theme source when the docs fall short.
 - Contrast is a measurable accessibility requirement (4.5:1 normal text, 3:1 large text/UI, per WCAG), not a matter of taste — that's the real stakes behind everything else in this chapter.
 - Several independent `color` settings on one section multiply the number of ways a merchant can accidentally produce a pairing that fails contrast.
 - Name a color setting after the job it does, not its current appearance — the value behind a role changes; the role doesn't.
