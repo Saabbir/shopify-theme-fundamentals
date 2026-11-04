@@ -14,7 +14,7 @@ Here's the concrete version of the question from the previous page: **if a merch
 - If yes — the code was built around *structure*, and the specific words/images were always meant to be *content*. This is correct.
 - If no — something in the code assumes a detail the design happened to show, rather than the general shape behind it. That's a sign structure and content got mixed up somewhere.
 
-## A concrete example of getting this wrong
+## A concrete example of getting content vs. structure wrong
 
 Imagine the design shows exactly three feature callouts, each with a short, one-line description. It's tempting to write:
 
@@ -34,7 +34,7 @@ The corrected version treats "a callout" as a block type a merchant can add as m
 {% endfor %}
 ```
 
-## Why this connects to stress-testing from earlier chapters
+## Why content vs. structure connects to stress-testing from earlier chapters
 
 This is the same instinct behind handling an empty or unconfigured state, from the [Sections, Blocks & Snippets worked example](/sections-blocks-snippets/worked-example/) — in both cases, the fix is building for content you haven't seen yet, not just the specific example in front of you. A design with a very long headline, zero callouts, or a missing image is exactly the kind of case the design itself will never show you, but the finished code still has to handle.
 

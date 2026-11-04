@@ -5,7 +5,7 @@ description: The breakpoint convention used throughout this site, and writing CS
 
 **TL;DR:** The breakpoint convention used throughout this site, and writing CSS that still works in a right-to-left language.
 
-## The breakpoint you've already seen repeatedly
+## The `749px` breakpoint used throughout this site
 
 Every `@media` example since [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) has used the same breakpoint:
 
@@ -36,7 +36,7 @@ Most CSS tutorials teach physical properties — `margin-left`, `padding-top`, `
 }
 ```
 
-## Why this matters even if a theme never ships in Arabic or Hebrew
+## Why logical properties matter even if a theme never ships in Arabic or Hebrew
 
 A theme is translatable the moment `locales/` exists at all, covered back in [6.5. Locale Files & Translation Keys](/schema-and-settings/locale-files-and-translation-keys/) — and a merchant can add a right-to-left language (Arabic, Hebrew) to their store without you doing anything special for it, unless your CSS was written with physical properties that silently assume left-to-right. `margin-left` stays stuck on the visual left even when an entire page correctly flips to flow right-to-left — producing lopsided spacing that only shows up once someone actually tests in that language, often long after the CSS was written and forgotten.
 

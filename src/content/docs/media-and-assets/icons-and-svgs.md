@@ -34,7 +34,7 @@ If a theme uses the same large set of icons across many different components, a 
 
 This trades a small amount of setup complexity (defining the sprite once, usually in `theme.liquid`) for not repeating the same icon's markup every time it's used. For a smaller, more varied set of icons used inconsistently across different sections, individual inline snippets are usually simpler and perfectly fine.
 
-## Accessibility: decorative vs. meaningful
+## Icon accessibility: decorative vs. meaningful
 
 Whether an icon needs an accessible label depends entirely on whether it's purely decorative or carries meaning on its own.
 

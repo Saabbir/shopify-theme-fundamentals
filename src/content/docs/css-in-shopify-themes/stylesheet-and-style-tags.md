@@ -36,7 +36,7 @@ Shopify collects every section and block's `{% stylesheet %}` content and compil
 
 `{% style %}` **does** evaluate Liquid — it renders directly into the page as an inline `<style>` tag, at the exact point it appears, every time the page renders. This is the right tool for CSS that genuinely needs a setting's value computed directly into it, rather than relayed through an inline custom property on one specific element — most commonly, defining global, page-wide custom properties once, near the top of `theme.liquid`.
 
-## Choosing between them
+## Choosing between `{% stylesheet %}` and `{% style %}`
 
 | | `{% stylesheet %}` | `{% style %}` |
 |---|---|---|

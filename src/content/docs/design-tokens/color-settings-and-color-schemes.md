@@ -47,7 +47,7 @@ A `color_scheme_group` setting, defined once in `settings_schema.json`, bundles 
 
 `definition` lists the roles every scheme must provide a color for. `default` ships one or more actual schemes a merchant can pick between right away — here, a light one and a dark one, each with all four roles already filled in and already contrasting correctly.
 
-## Letting a section use it
+## Letting a section use a color scheme
 
 A section or block picks from the available schemes with a `color_scheme` setting:
 
@@ -62,7 +62,7 @@ A section or block picks from the available schemes with a `color_scheme` settin
 
 `section.settings.color_scheme` then holds whichever scheme ID a merchant picked (`"scheme-1"`, `"scheme-2"`, or any custom one they've added via the editor) — Shopify handles generating the actual CSS for every defined scheme and applying it wherever that scheme ID is referenced, typically through a class you add to the section's outer element. The exact mechanics of how that generated CSS is structured are worth reading directly from Shopify's own docs (linked below) rather than guessing at the specifics here.
 
-## Why this is worth the extra setup
+## Why `color_scheme_group` is worth the extra setup
 
 A merchant choosing one scheme from a list you already tested for contrast can't accidentally produce an unreadable combination the way four independent pickers can. It's also simpler for the merchant: one decision ("which look?") instead of four ("which four colors, that happen to need to work together?").
 

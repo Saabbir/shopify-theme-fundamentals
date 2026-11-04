@@ -5,7 +5,7 @@ description: Updating line item quantities, and a 1-indexed detail that's easy t
 
 **TL;DR:** Updating line item quantities, and a 1-indexed detail that's easy to miss.
 
-## The basic pattern
+## The basic cart form pattern
 
 ```liquid
 {% form 'cart', cart %}
@@ -28,7 +28,7 @@ description: Updating line item quantities, and a 1-indexed detail that's easy t
 
 Submitting this updates every line item's quantity at once — setting a quantity to `0` removes that line entirely — and a button with `name="checkout"` sends the shopper straight to checkout instead of just saving the updated quantities.
 
-## The detail that's genuinely easy to get wrong
+## The 1-based index detail that's easy to get wrong
 
 Each `updates[]` field needs to be indexed by the line item's **1-based position** in the cart — not its variant ID, not a 0-based index.
 

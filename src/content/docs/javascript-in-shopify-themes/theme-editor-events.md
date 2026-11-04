@@ -7,11 +7,11 @@ description: Why a component sometimes needs to react to a page that's changing 
 
 Every other page in this chapter assumed a fairly ordinary situation: a script loads once, the page it's attached to doesn't fundamentally change shape afterward. The theme editor breaks that assumption on purpose — a merchant can add, remove, reorder, or reconfigure a section while the page is open, without a full reload, and Shopify re-renders just that section's Liquid in place when they do.
 
-## Why this matters for a Web Component specifically
+## Why the theme editor's live re-rendering matters for a Web Component
 
 A component whose `connectedCallback` only ever runs once, when the page first loads, can end up broken the moment a merchant interacts with it live in the editor — a section gets re-rendered with fresh HTML, but your component's JavaScript doesn't automatically know to run its setup again on that new markup. Shopify surfaces this situation as a set of custom events, dispatched on `document`, specifically so your code has a hook to react correctly.
 
-## The events
+## The theme editor's section and block events
 
 | Event | Fires when |
 |---|---|
@@ -32,7 +32,7 @@ document.addEventListener('shopify:section:load', (event) => {
 
 Listening for `shopify:section:load` and re-running your setup logic from there — rather than only from a one-time `connectedCallback` — means a carousel, slider, or any other stateful component keeps working correctly no matter how many times a merchant edits that section's settings during one editing session.
 
-## These events are specific to the theme editor
+## Theme editor events don't fire for an ordinary shopper
 
 :::note[They don't fire for an ordinary shopper]
 A regular visitor loading the storefront never triggers these events — there's no live re-rendering happening on an ordinary page view, only in the editor's own preview. If you need to tell whether your code is currently running inside the editor at all (to adjust behavior specifically for that context), check `Shopify.designMode`, which Shopify sets to `true` only there.

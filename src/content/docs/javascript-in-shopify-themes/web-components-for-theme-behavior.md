@@ -7,7 +7,7 @@ description: The standard pattern for anything more substantial than a one-off t
 
 A **Web Component** is a native browser feature — a custom HTML tag you define yourself, with its own JavaScript behavior, using nothing but the browser's built-in APIs. No framework, no build step required, which lines up directly with the point made all the way back in [2.1. What Is a Shopify Theme?](/theme-architecture/what-is-a-shopify-theme/): a theme can run with zero build tooling at all.
 
-## The basic shape
+## The basic shape of a Web Component
 
 ```js
 // assets/announcement-bar.js
@@ -41,7 +41,7 @@ Three pieces, each with its own clear job: the JavaScript class lives in its own
 
 `customElements.define` registers a global tag name, shared across the entire page — including anything an installed app might also define. Prefixing your own custom elements (`my-announcement-bar` here; pick one consistent prefix for your own theme) avoids colliding with a tag name an app happens to choose too. This is the same instinct as the CSS class prefix from [10.2. Naming & Scoping](/css-in-shopify-themes/naming-and-scoping/), just applied to a different global namespace.
 
-## The one rule that matters more than any specific syntax
+## The one rule that matters more than syntax: progressive enhancement
 
 :::caution[Progressive enhancement: markup must work before the script loads]
 Never hide content or controls behind JavaScript that hasn't run yet. The `<my-announcement-bar>` example above renders its message and dismiss button correctly in the HTML from the start — the script only adds the dismiss *behavior*; it was never required for the content to be visible or readable. If a component's markup looks broken or empty until its script finishes loading, that's a sign the component was built backwards: enhance working markup with JavaScript, don't use JavaScript to create markup that didn't already work.

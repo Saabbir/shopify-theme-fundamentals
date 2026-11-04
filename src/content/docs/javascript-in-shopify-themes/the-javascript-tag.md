@@ -5,7 +5,7 @@ description: A smaller, file-scoped counterpart to {% stylesheet %} — and the 
 
 **TL;DR:** A smaller, file-scoped counterpart to `{% stylesheet %}` — and the same Liquid limitation.
 
-## The basic pattern
+## The basic `{% javascript %}` pattern
 
 ```liquid
 {% comment %} sections/announcement-bar.liquid {% endcomment %}

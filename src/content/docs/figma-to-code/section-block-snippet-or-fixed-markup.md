@@ -7,7 +7,7 @@ description: Applying the decision guide from earlier in this site directly to a
 
 [3.6. Choosing the Right Piece: A Decision Guide](/sections-blocks-snippets/choosing-the-right-piece/) already covered this decision mechanically — the questions to ask about any feature. This page is shorter on purpose: it's the same questions, answered by looking at a design rather than reading a written feature request.
 
-## Translating each question into something you can see
+## Translating the decision guide's questions into something you can see
 
 | That page's question | What to look for in the design |
 |---|---|

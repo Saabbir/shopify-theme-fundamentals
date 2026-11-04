@@ -5,11 +5,11 @@ description: "Why {% stylesheet %} doesn't actually isolate your CSS, and what t
 
 **TL;DR:** Why `{% stylesheet %}` doesn't actually isolate your CSS, and what to do about it.
 
-## A common misconception worth correcting directly
+## The misconception that `{% stylesheet %}` scopes CSS to one section
 
 It's easy to assume that because `{% stylesheet %}` lives inside one specific section file, its CSS is somehow scoped to just that section — the way a component-scoped stylesheet works in some JavaScript frameworks, or the way Shadow DOM isolates styles. **It isn't.** Every `{% stylesheet %}` block across the entire theme gets bundled into one combined CSS file, applied globally to the whole page. A class named `.title` in one section's `{% stylesheet %}` and a different, unrelated `.title` in another section's `{% stylesheet %}` will collide — whichever one loads later in the bundle wins, silently overriding the other wherever both happen to appear.
 
-## The fix: a consistent naming convention, not a technical feature
+## The fix for collisions: a consistent naming convention, not a technical feature
 
 Since nothing enforces isolation automatically, avoiding collisions is entirely about discipline in how you name things.
 

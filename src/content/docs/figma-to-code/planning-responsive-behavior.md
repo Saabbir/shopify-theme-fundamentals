@@ -18,7 +18,7 @@ Compare the two frames and describe the change in words, not pixels: "three colu
 | Spacing shrinks | The desktop/mobile `range` setting pattern from [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/) |
 | An element is hidden entirely on one size | A plain `@media` rule hiding or showing it — rarely worth a setting |
 
-## Most of this doesn't need a new theme setting at all
+## Most responsive differences don't need a new theme setting at all
 
 This is the point easiest to get wrong in the opposite direction from [the previous page](/figma-to-code/section-block-snippet-or-fixed-markup/)'s "don't over-build" caution: seeing two different frames doesn't mean every value that differs between them needs its own merchant-facing setting. A grid that reflows from three columns to one, or a heading that shrinks fluidly with `clamp()`, is something CSS handles entirely on its own — no setting required, and no Liquid logic deciding anything about screen size. Reserve an actual setting (with its own mobile variant, following the pattern already covered in [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/)) only for the handful of values a merchant would plausibly want to adjust themselves, like a section's own top/bottom padding — not for every single thing that happens to look different between the two frames.
 

@@ -43,7 +43,7 @@ Two input names in a product form aren't something you choose — Shopify's cart
 
 Get `name="id"` wrong (calling it `variant_id`, say) and the form submits, but Shopify has no idea which field represents the variant — the add-to-cart request fails or behaves unpredictably, with no obvious error pointing at the actual cause.
 
-## Showing unavailable correctly
+## Showing a sold-out state correctly
 
 `product.available` (from [5.1. product, variant & collection](/global-objects/product-variant-and-collection/)) tells you if *any* variant can currently be purchased — use it to disable the whole form's submit button when nothing on the product is purchasable at all. For a specific variant being unavailable (one size sold out, others still in stock), check that variant's own `.available` instead, typically to disable just that one `<option>`.
 
@@ -55,7 +55,7 @@ Get `name="id"` wrong (calling it `variant_id`, say) and the form submits, but S
 {% endfor %}
 ```
 
-## What happens after submit
+## What happens after a product form submits
 
 By default, submitting this form does a full page navigation to the cart page — the simplest version that works with zero JavaScript. Most themes intercept the submit instead, to add the item via JavaScript and show immediate feedback (a cart drawer, a confirmation message) without leaving the page. That interception is a JavaScript concern, not a Liquid one — the form above works correctly either way; JavaScript only changes what happens to the response, not what the form itself needs to contain.
 

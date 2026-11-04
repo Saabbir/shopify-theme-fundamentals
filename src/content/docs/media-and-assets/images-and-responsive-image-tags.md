@@ -7,7 +7,7 @@ description: "srcset/sizes, preventing layout shift, and the difference between 
 
 Every image example so far has used `image_url` to request one single size. A real, production `<img>` needs a few more attributes working together — not because any one of them is complicated, but because skipping any one of them causes a real, specific problem.
 
-## The complete pattern
+## The complete `<img>` pattern
 
 ```liquid
 <img

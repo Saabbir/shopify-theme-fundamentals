@@ -7,7 +7,7 @@ description: The inline custom-property pattern, and why it's the only approach 
 
 This page is where color, typography, and spacing settings actually become CSS. The technique is the same regardless of which kind of setting is involved: put each value on the section or block's outermost element as an inline CSS custom property, then read it back inside `{% stylesheet %}` with `var()`.
 
-## The pattern
+## The inline custom-property pattern
 
 ```liquid
 {% liquid
@@ -48,11 +48,11 @@ This page is where color, typography, and spacing settings actually become CSS. 
 
 Every setting involved — padding (from [7.3. Spacing & Layout Tokens](/design-tokens/spacing-and-layout-tokens/)), a color — ends up as one of these inline `--variable: value;` declarations on the outer `<div>`, with the actual `{% stylesheet %}` rules only ever referencing `var(--variable)`, never a literal value or a raw setting reference.
 
-## Why this specific approach, and not a `{% if %}` per setting
+## Why the inline custom-property pattern, and not a `{% if %}` per setting
 
 You could, in theory, write a different CSS class for every combination of settings, or branch with `{% if %}` inside the stylesheet. Both break down fast: a numeric range setting (padding, in increments of 4px from 0–120) would need dozens of classes to cover every possible value, and `{% if %}` branching doesn't scale past two or three options. Exposing the raw value as a variable sidesteps the problem entirely — one rule, `var(--padding-top)`, correctly handles every possible value a merchant could choose.
 
-## Why this is what keeps the theme editor's live preview working
+## Why the inline custom-property pattern is what keeps the theme editor's live preview working
 
 This is the real reason the pattern matters, beyond convenience. Shopify's theme editor re-renders a section's Liquid instantly whenever a merchant changes a setting, without a full page reload — but it does that by re-rendering the HTML (including this inline `style` attribute), not by re-running your CSS file from scratch. If a setting's value only affected something baked into a separate stylesheet file, there'd be no mechanism for a live change to reach it. Because the value lives in the HTML itself as a custom property, the moment the HTML updates, the CSS that reads `var(--padding-top)` picks up the new value automatically — no extra wiring required.
 

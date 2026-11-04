@@ -160,7 +160,7 @@ Following [9.4. Planning Responsive Behavior](/figma-to-code/planning-responsive
 {% endschema %}
 ```
 
-## Why it matches the design without copying it literally
+## Why the code matches the design without copying it literally
 
 Notice what did and didn't make it into the code. The three specific callouts from the design became the **preset's** three starting blocks — not three hardcoded settings — so a merchant genuinely can add a fourth, remove one, or reword any of them, exactly the flexibility the content/structure separation in step 2 called for. The column-to-single-column shift lives entirely in the stylesheet's `@media` block, with no Liquid or settings involved. The one thing that *did* become real settings — top/bottom spacing — is the one value from this whole design actually worth giving a merchant direct control over.
 
