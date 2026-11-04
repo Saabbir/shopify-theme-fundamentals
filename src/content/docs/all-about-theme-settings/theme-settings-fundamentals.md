@@ -37,7 +37,7 @@ Defined in `config/settings_schema.json`, read anywhere in any Liquid file with 
 
 Defined inside a section's own `{% schema %}` block, read as `section.settings.heading` only within that section's own file. If a merchant adds the same section type to three different pages, each of those three instances has its **own**, independently-set value for `heading` — changing one doesn't touch the other two. This per-instance behavior is sometimes referred to as **theme content**, to distinguish it from the single, shared theme settings described above — the same JSON setting types, but a completely different storage and sharing model.
 
-## The test that actually distinguishes them
+## The test that actually distinguishes theme settings from section/block settings
 
 Ask: *if a merchant changes this value, does it change everywhere this type of section appears, or only in the one place they're currently editing?*
 
@@ -48,7 +48,7 @@ Ask: *if a merchant changes this value, does it change everywhere this type of s
 | Liquid reference | `settings.your_id` | `section.settings.your_id` / `block.settings.your_id` |
 | Defined in | `config/settings_schema.json` | That section or block's own `{% schema %}` |
 
-## A concrete example of the difference
+## A concrete example of theme settings vs. section/block settings
 
 Picture a `heading_font` theme setting and a `heading` text setting on a "Hero banner" section. A merchant:
 

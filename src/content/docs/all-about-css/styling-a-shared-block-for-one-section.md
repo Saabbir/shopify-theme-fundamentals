@@ -99,7 +99,7 @@ Two sections use it exactly as shipped: `hero-banner` drops in a single large `i
 
 ## Four ways to scope an override, from lightest to heaviest
 
-### 1. It already reads a custom property — redefine the property, not the rule
+### 1. The block already reads a custom property — redefine the property, not the rule
 
 `hero-banner` wants its one `icon-text` block's icon noticeably larger than the compact size `feature-callouts` uses for its row of three. `icon-text__icon`'s font size already reads `var(--icon-text-icon-size, 32px)`, so nothing about the rule itself needs to change — only the value reaching it does:
 
@@ -155,7 +155,7 @@ Name the hook using this site's established component-tier token pattern — `--
 
 `feature-callouts.liquid` is reaching into a class it doesn't define — normally the exact mistake [29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) warns about. It's safe here specifically because `feature-callouts` renders `icon-text` directly, one level deep, through `{% content_for 'blocks' %}`. Shopify's CSS subsetting always loads a parent's stylesheet whenever a child it renders is on the page, so `.feature-callouts`'s rule and `icon-text`'s own markup are guaranteed to arrive together. `shopify theme check`'s `ValidScopedCSSClass` rule only flags a dependency between two *unrelated* files — a parent styling a class belonging to a block it actually renders is exactly the case it allows.
 
-### 3. More than one or two sections need it — promote it to a real setting on the block
+### 3. More than one or two sections need the same override — promote it to a block setting
 
 Say a third section, then a fourth, also wants `icon-text`'s heading centered. Copy-pasting `.that-section .icon-text__heading { text-align: center; }` into every new section's stylesheet works, but now the same visual choice is implemented N times, in N different files, with no single place that owns it. Once it's not just this one section's quirk, it's a real option the block itself should offer:
 

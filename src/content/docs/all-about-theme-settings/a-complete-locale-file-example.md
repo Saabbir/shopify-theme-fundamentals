@@ -108,7 +108,7 @@ Every key here follows the same shape: nested objects group related strings (`ca
 
 Notice two valid patterns for schema keys shown here: a flat, reusable key like `t:labels.heading` (used across many different sections' schemas, since "Heading" means the same thing everywhere it appears), and a deeply-nested, section-specific key like `t:sections.hero_banner.name` (used for text that's genuinely specific to one section, like its display name in the "Add section" picker). Both are valid — reach for the flat, shared form by default (it's what every schema example throughout this site uses, per the `t:labels.*` convention), and reserve a nested, section-specific key only for text that's never reused anywhere else.
 
-## How these two files work together on one page
+## How `en.default.json` and `en.default.schema.json` work together on one page
 
 A single rendered page typically draws from both files at once. A cart drawer, for instance, might show `{{ 'cart.title' | t }}` from the storefront-text file as its heading — text a shopper reads — while the section that contains that drawer has its own display name in the theme editor, `"t:sections.hero_banner.name"`, from the schema-text file — text only a merchant ever sees, and only while editing, never on the live storefront.
 

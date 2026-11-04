@@ -27,7 +27,7 @@ Whatever a merchant types into that field ends up stored as raw CSS text, not as
 
 For the theme-wide field, it lands in `settings_data.json`, under a `platform_customizations` object rather than the `current` settings object a developer normally edits.
 
-## What it's for
+## What custom_css is for
 
 It exists so a merchant can make a genuinely one-off, store-specific visual tweak — nudge a heading's size on one page, add a touch of extra spacing somewhere, adjust a single color — directly from the editor, without filing a request with a developer or waiting on a code change. It's a release valve for the long tail of small preferences no settings panel could ever fully anticipate.
 
@@ -35,7 +35,7 @@ That's also exactly its limit: it's meant for a merchant's own personalization, 
 
 > As a theme developer, you shouldn't add this setting, or edit the value of this setting after it's set. Instead, you should use dedicated CSS assets and stylesheet Liquid tags, and introduce customization options for CSS in these areas using theme settings.
 
-## Why committing to it is the wrong move, even when it's tempting
+## Why committing to custom_css is the wrong move, even when it's tempting
 
 It's possible to open a JSON template or `settings_data.json` directly and hand-write a `custom_css` entry — nothing stops a developer from doing it, and from the browser the visual result is identical to a real `{% stylesheet %}` rule. It's worth resisting anyway, for reasons that aren't obvious until something breaks:
 
@@ -44,7 +44,7 @@ It's possible to open a JSON template or `settings_data.json` directly and hand-
 - **It's invisible from the component's own file.** Anyone reading `feature-callouts.liquid` to understand how it's styled has no reason to suspect part of its appearance is actually determined by a string buried in a JSON template three directories away.
 - **It's the editor's field, not the codebase's.** The moment a merchant opens that same section in the editor and touches *anything* in its Custom CSS panel, they're editing — and can overwrite — exactly the value a developer hand-committed. Code and merchant customization end up fighting over the same field.
 
-## What a developer should do instead
+## What a developer should do instead of touching custom_css
 
 Whatever the merchant-facing problem actually is, it already has a home elsewhere on this site:
 

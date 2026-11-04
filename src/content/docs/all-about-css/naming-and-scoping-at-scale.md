@@ -56,7 +56,7 @@ Beyond BEM's own structure, pick one short prefix and apply it to every class a 
 
 This is the same instinct behind the custom-property naming pattern covered in [17.7. Building a Token System](/all-about-colors/building-a-token-system/) (`--{component}-{property}`, also used in [Styling a Shared Block for One Section](/all-about-css/styling-a-shared-block-for-one-section/)), and the custom-element tag prefix covered in [30.2. Web Components for Theme Behavior in Depth](/all-about-javascript/web-components-for-theme-behavior-in-depth/) — one consistent namespace, applied everywhere, specifically because nothing else protects you from a collision.
 
-## The real linter that catches this: `ValidScopedCSSClass`
+## The real linter that catches a cross-file CSS dependency: `ValidScopedCSSClass`
 
 Shopify's CSS doesn't just risk collisions — since [Stylesheet content subsetting](https://shopify.dev/docs/storefronts/themes/best-practices/performance/stylesheet-subsetting) (covered in full in [29.7. Critical CSS & Loading Performance](/all-about-css/critical-css-and-loading-performance/)), a page only loads CSS from files that are actually in its render tree. That makes a specific mistake newly costly: using a class in one file that's only ever *defined* in a different, unrelated file.
 

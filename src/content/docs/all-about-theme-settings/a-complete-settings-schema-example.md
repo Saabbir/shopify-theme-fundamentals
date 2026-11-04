@@ -142,7 +142,7 @@ This is a complete, realistic `config/settings_schema.json` — every group a ty
 ]
 ```
 
-## Why each group exists
+## Why each group in `settings_schema.json` exists
 
 - **`theme_info`** isn't optional and isn't a visible setting — every theme needs exactly one, for Shopify's own tooling to identify the theme's name, version, and support links.
 - **Logo** groups the one-time brand assets a merchant sets once and every layout file reads from — this is exactly the kind of setting that has to be global, since a store has one logo, not one per section.

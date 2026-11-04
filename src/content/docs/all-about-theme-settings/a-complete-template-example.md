@@ -57,7 +57,7 @@ description: A full JSON template, showing exactly where section and block setti
 }
 ```
 
-## Reading this file against the settings data example
+## Reading the `templates/index.json` example against the settings data example
 
 Compare this to [28.4. A Complete settings_data.json Example](/all-about-theme-settings/a-complete-settings-data-example/) — notice `color_scheme` here holds a scheme *ID* (`"scheme-2"`, `"scheme-3"`), referencing a scheme whose actual color values live over in `settings_data.json`'s `color_schemes` object. This is the connective tissue between the two files: a section's settings (stored here, in the template) can point at a global resource (stored there, in the settings data), without duplicating that resource's actual values in every template that uses it.
 
@@ -73,7 +73,7 @@ This single template demonstrates every scope of settings from [28.1. Theme Sett
 
 Notice the `testimonials` section's blocks are keyed by arbitrary IDs (`testimonial-1`, `testimonial-2`) — those keys don't determine display order. The separate `block_order` array does, exactly the same role `order` plays for sections at the top level of the file. A merchant reordering blocks in the theme editor changes this array, not the keys themselves.
 
-## What actually changes when a merchant edits this page
+## What actually changes when a merchant edits a section's settings
 
 If a merchant edits the `hero` section's heading on this specific homepage, only this file changes — specifically, `sections.hero.settings.heading`. No other file is touched, and no other page is affected, even if `hero-banner` as a section *type* is also used on a completely different page (which would have its own separate template file, with its own separate `sections.hero.settings.heading` value, entirely independent of this one).
 

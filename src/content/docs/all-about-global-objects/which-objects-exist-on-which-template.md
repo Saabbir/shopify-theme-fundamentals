@@ -46,7 +46,7 @@ Every other page in this chapter covers what an object *contains*. This page cov
 
 `predictive_search` and `recommendations`, covered in full on [31.6. search, predictive_search & recommendations](/all-about-global-objects/search-predictive-search-and-recommendations/), don't depend on which template is rendering at all — they depend on *how* a section was rendered. A section referencing `recommendations` renders identically whether it's included on a product page's JSON template or anywhere else; what actually determines whether `recommendations.performed?` is `true` is whether that specific render request came through the Product Recommendations API. Template type is irrelevant to these two; rendering method is everything.
 
-## Why a header or footer snippet needs this table the most
+## Why a header or footer snippet needs the request.page_type table the most
 
 A section or snippet rendered from `sections/header.liquid` or `sections/footer.liquid` runs on *every single page*, across every row in the table above — which means any reference to `product`, `collection`, `article`, or `customer` inside one has to be guarded, every time, with no exception:
 

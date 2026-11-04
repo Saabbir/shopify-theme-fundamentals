@@ -11,7 +11,7 @@ An ordinary web page loads its JavaScript once, and the page it's attached to do
 
 Shopify surfaces this as a set of custom events, dispatched on `document`, specifically so a component has a hook to react correctly.
 
-## Every event
+## Every `shopify:section:*` and `shopify:block:*` event
 
 | Event | Fires when |
 |---|---|
@@ -69,7 +69,7 @@ document.addEventListener('shopify:block:select', (event) => {
 
 `shopify:block:select` and `shopify:section:select` are optional, not something every component needs to handle — reach for them specifically when a merchant actively clicking a block or section in the editor's sidebar should visibly do something in the live preview, like scrolling a carousel to the slide containing the block they just selected, so they can see what they're editing without hunting for it manually.
 
-## These events are specific to the theme editor
+## Theme editor events don't fire for an ordinary shopper
 
 :::note[They don't fire for an ordinary shopper]
 A regular visitor loading the storefront never triggers any of these events — there's no live re-rendering happening on an ordinary page view, only in the editor's own preview. To check whether code is currently running inside the editor at all (to adjust behavior specifically for that context), check `Shopify.designMode` in JavaScript (`true` inside the editor, `undefined` otherwise) or `request.design_mode` in Liquid (`true`/`false`).

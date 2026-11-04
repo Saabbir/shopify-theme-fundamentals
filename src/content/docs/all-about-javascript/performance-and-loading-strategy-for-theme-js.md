@@ -5,7 +5,7 @@ description: What defer already buys you for free, and lazy-loading a genuinely 
 
 **TL;DR:** What `defer` already buys you for free, and lazy-loading a genuinely heavy component with `IntersectionObserver`.
 
-## What's already handled, without any extra work
+## What `defer` already handles, without any extra work
 
 [30.1. JavaScript Fundamentals in a Shopify Theme](/all-about-javascript/javascript-fundamentals/) covered that `{% javascript %}`'s bundled output loads with `defer` automatically, and that `type="module"` (used for a Web Component's own file) behaves the same way by default. Both mean a theme's JavaScript never blocks the initial HTML from parsing and rendering — the browser downloads it in the background and runs it only once the document is ready. This already covers most of what "don't block rendering with JavaScript" means; it isn't something you need to configure yourself.
 

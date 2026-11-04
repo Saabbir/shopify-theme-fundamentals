@@ -148,7 +148,7 @@ The browser parses `<template shadowrootmode="open">` and attaches it as a real 
 Declarative Shadow DOM reached cross-browser Baseline in August 2024 — Chrome/Edge 111+, Safari 16.4+, Firefox 125+.
 :::
 
-## When this is actually the right call in a theme
+## When Shadow DOM isolation is actually the right call in a theme
 
 Genuine Shadow DOM isolation is worth its cost specifically when a component's styling must survive contexts the theme itself doesn't control — situations where light DOM's "scoping by naming discipline" promise has nothing to protect against:
 

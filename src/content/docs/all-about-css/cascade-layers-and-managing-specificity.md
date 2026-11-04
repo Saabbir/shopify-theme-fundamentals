@@ -51,7 +51,7 @@ CSS that isn't declared inside any `@layer` block is treated as if it belongs to
 `@layer` only helps with CSS *you* write and *you* order. An app's unlayered CSS still sits above all of it in the cascade, by the behavior described above — the naming-prefix discipline from [29.3. Naming & Scoping at Scale](/all-about-css/naming-and-scoping-at-scale/) is still the real defense against an app's CSS accidentally matching one of your own selectors in the first place. Layers solve ordering *within* your own CSS; they don't solve collisions with CSS that was never layered to begin with.
 :::
 
-## When the extra structure is worth it
+## When `@layer` is worth the extra structure
 
 A small theme with a handful of sections and no utility-class layer rarely needs `@layer` at all — plain BEM-scoped selectors, each specific enough to only match their own component, are usually sufficient on their own. `@layer` starts paying off once a theme has enough moving pieces — utility classes meant to deliberately override components, a design-system reset, or enough sections that tracking specificity by hand becomes genuinely error-prone — that an explicit, declared order is clearer than hoping every selector was written with exactly the right specificity.
 

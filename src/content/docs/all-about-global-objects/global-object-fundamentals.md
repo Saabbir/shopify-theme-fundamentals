@@ -29,7 +29,7 @@ This is the single most common source of confusion with global objects, and it's
 Writing `{{ product.title }}` inside a snippet that's also rendered from the header or footer (which run on every page template) silently outputs nothing on any page that isn't a product page — no error, no warning, just an empty string where a title was expected. The fix is never to assume an object is populated; it's to check first, covered next.
 :::
 
-## The habit that prevents most of these bugs: check before you use
+## The habit that prevents most missing-object bugs: check before you use
 
 ```liquid
 {% if product %}

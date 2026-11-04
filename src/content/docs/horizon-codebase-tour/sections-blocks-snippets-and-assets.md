@@ -35,7 +35,7 @@ Translation files — an `en.default.json` (storefront text) and an `en.default.
 
 One JSON file per page type — `index.json`, `product.json`, `collection.json`, `cart.json`, and the rest of the standard set from [2.5. Templates: JSON vs. Liquid](/theme-architecture/templates-json-vs-liquid/), each referencing sections from `sections/` by type.
 
-## How to actually explore these yourself
+## How to actually explore Horizon's folders yourself
 
 Since this page is deliberately not a complete inventory, the practical next step is browsing the real thing:
 

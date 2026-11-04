@@ -58,7 +58,7 @@ A `CustomEvent` doesn't bubble up the DOM by default — without `bubbles: true`
 
 `cart:item-added` rather than just `item-added` follows the same collision-avoidance reasoning as the CSS class prefix and the custom-element tag prefix covered elsewhere in this site — a generic event name like `change` or `update` risks colliding with a browser-native event or an unrelated component's own custom event of the same name. A namespaced event name (`cart:item-added`, `carousel:slide-changed`) makes both the event's origin and its purpose clear at the listening end, and avoids that collision entirely.
 
-## When this is worth it, and when it's overkill
+## When custom events are worth it, and when they're overkill
 
 Two sibling components that never need to know about each other, but occasionally need to coordinate, are the clearest case for custom events. A parent component talking to its own direct children (or vice versa) often doesn't need this machinery at all — a parent can call a child's method directly, or pass data through an attribute, since the relationship between them is already explicit in the markup's nesting. Reach for a dispatched custom event specifically when two components have no natural parent-child relationship, and coupling them directly would mean one needs to know the other's exact tag name and internals just to do its job.
 

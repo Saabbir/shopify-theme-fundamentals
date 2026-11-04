@@ -89,7 +89,7 @@ A handful of components get their own dedicated font tokens, built from the 4 ro
 
 `--cart-secondary-font-family` is a good example of why these exist separately: it resolves to `var(--font-{{ settings.cart_price_font }}--family)` — `cart_price_font` is its own merchant setting (not one of the main four roles directly), so the cart needed a token that could point at whichever role got picked, rather than reusing a role token that already means something more specific elsewhere.
 
-## Everything added up
+## All of Horizon's typography numbers, added up
 
 | Category | Count |
 |---|---|

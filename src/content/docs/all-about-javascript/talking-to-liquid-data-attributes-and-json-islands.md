@@ -64,7 +64,7 @@ const productData = JSON.parse(script.textContent);
 
 Because `type="application/json"` isn't a script MIME type the browser will execute, the browser treats its contents purely as inert text — no escaping concern the way an HTML attribute has, since there's no surrounding attribute-quote for a stray character to break out of. This is the better choice specifically once a JSON attribute would otherwise become unwieldy to read or debug in the rendered HTML.
 
-## Choosing between the three
+## Choosing between data attributes, a JSON attribute, and a JSON island
 
 | Need | Reach for |
 |---|---|

@@ -42,7 +42,7 @@ Logical properties handle spacing, alignment, and positioning — they don't aut
 - **Any hardcoded `left`/`right` in JavaScript** — if a script reads or sets `style.left` directly (rather than letting CSS handle positioning), it needs its own RTL-aware branch; logical properties are a CSS-only concept.
 - **Background images with inherent directionality** — an image containing a left-to-right arrow or a left-aligned design element doesn't automatically mirror just because its container's text direction did.
 
-## Testing this for real
+## Testing RTL changes for real
 
 :::tip[A quick way to check, without changing a store's actual language]
 Add `dir="rtl"` directly to an element via browser devtools (or temporarily to `<html>`) and look at the page. Anything that visually breaks — padding on the wrong side, an arrow pointing the wrong way, content overflowing oddly — is exactly what a real right-to-left shopper would see. This is a much faster check than actually switching a store's language setting during development.

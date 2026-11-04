@@ -30,7 +30,7 @@ horizon/
 
 Nothing exotic here — this is the exact same structure every theme in [2. Theme Architecture & Files](/theme-architecture/) describes, just populated with a large, real, mature codebase instead of the small examples used to teach the concept.
 
-## The caveat Shopify states directly
+## The Theme Store caveat Shopify states directly
 
 Horizon's own README contains a rule worth repeating exactly, because it changes how you should actually use this theme:
 

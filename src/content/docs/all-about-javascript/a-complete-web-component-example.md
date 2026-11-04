@@ -33,7 +33,7 @@ Every other page in this chapter looked at one JavaScript concern at a time. Thi
 
 The native `<input type="number">` already works correctly with no JavaScript at all — a shopper can type a quantity, or use the browser's own built-in step controls, before the component's script has even loaded. The custom `+`/`−` buttons and the live-announced status message are enhancements on top of that, not a replacement for it.
 
-## The component
+## The `QuantitySelector` component
 
 ```js
 // assets/quantity-selector.js
@@ -103,7 +103,7 @@ document.addEventListener('shopify:section:load', (event) => {
 
 This component needs no `shopify:section:load` handler at all — because its setup lives in `connectedCallback` rather than a one-time script that only ran at initial page load, the theme editor re-rendering this section's markup naturally disconnects the old element (firing `disconnectedCallback`, which removes its listeners) and connects the new one (firing `connectedCallback` again, which attaches fresh listeners to the new buttons). This is the payoff mentioned in [30.5. Theme Editor Events in Depth](/all-about-javascript/theme-editor-events-in-depth/): building on the standard lifecycle callbacks, rather than a one-time setup function, often means the theme-editor-specific events aren't needed at all.
 
-## A sibling component reacting to the custom event
+## A sibling component reacting to the `quantity:changed` event
 
 ```js
 // assets/cart-line-item.js

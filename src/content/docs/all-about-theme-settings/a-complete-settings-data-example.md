@@ -67,7 +67,7 @@ This is the `config/settings_data.json` that would actually result from a mercha
 }
 ```
 
-## Reading this file correctly
+## Reading the `settings_data.json` example correctly
 
 Every key under `current` corresponds directly to an `id` from the schema file — `heading_font`, `page_width`, and so on — holding whatever value the merchant actually picked. `color_schemes` itself isn't defined by the schema's `color_scheme_group` setting at all — that setting only ever declares `definition` (the roles each scheme must fill) and never ships schemes of its own. Every scheme here, including the third one, `scheme-3`, was added by a merchant from the theme editor (or shipped as a starting preset in this file, under `presets`) and stored here, keyed by its scheme ID.
 

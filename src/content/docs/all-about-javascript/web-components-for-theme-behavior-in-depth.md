@@ -5,7 +5,7 @@ description: Every lifecycle callback that matters for a theme, observed attribu
 
 **TL;DR:** Every lifecycle callback that matters for a theme, observed attributes, and encapsulation without Shadow DOM.
 
-## The basic shape, as a reminder
+## The basic shape of a Web Component, as a reminder
 
 ```js
 // assets/announcement-bar.js

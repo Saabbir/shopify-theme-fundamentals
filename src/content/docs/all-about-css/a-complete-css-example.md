@@ -7,7 +7,7 @@ description: One section's stylesheet combining tokens, cascade layers, containe
 
 Every other page in this chapter looked at one CSS concern at a time. This page combines them into a single, realistic `sections/product-grid.liquid` — BEM naming, custom-property tokens, a container query, logical properties, and a cascade-layer-aware stylesheet, all in one file.
 
-## The complete section
+## The complete product-grid section
 
 ```liquid
 {% comment %}

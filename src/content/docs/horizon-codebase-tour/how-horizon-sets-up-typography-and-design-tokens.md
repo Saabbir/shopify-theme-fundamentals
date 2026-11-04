@@ -77,7 +77,7 @@ Beyond raw sizes, the file builds a complete preset per text role (`paragraph`, 
 
 This is precisely the type-preset idea from [18.9. Design Tokens & Type Presets](/all-about-typography/design-tokens-and-type-presets/), built for real: `--font-h2--family`, `--font-h2--size`, `--font-h2--weight`, `--font-h2--case`, `--font-h2--line-height` all exist as one named bundle a component reads from, rather than a component assembling those five decisions itself every time it needs "H2 styling." Notice each preset's font-family doesn't hardcode a font — it points at `var(--font-heading--family)` (one of the four role tokens from the typography chapter), so changing the Heading font setting still cascades through every preset built on top of it.
 
-## The rest of the file: a full design-token system, not just type
+## The rest of `theme-styles-variables.liquid`: a full design-token system, not just type
 
 Past typography, the same file defines CSS custom properties for nearly every other design decision a Horizon component might need — confirmed directly in the source, organized by comment headers in the file itself:
 
