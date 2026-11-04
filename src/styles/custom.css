@@ -223,11 +223,12 @@
    attribute, so there's nothing to keep in sync by hand and nothing added to
    the heading's accessible name or its auto-generated anchor id.
 
-   ::before, not ::after: the badge reads better ahead of the heading text
-   ("17.3.1 What problem..." rather than trailing it), and as the first inline
-   box in the heading it always has the full line width to itself -- it can't
-   get squeezed out and wrap onto its own line the way trailing content after
-   a long, already-wrapped heading could.
+   position: absolute, not inline-block: this is supplementary info shown only
+   on hover, so it should never affect the heading's own layout -- not push the
+   heading text over (inline-block did), not reserve space when hidden. Taken
+   out of flow entirely and pinned to the left of .sl-heading-wrapper (which is
+   given `position: relative` as the positioning anchor), vertically centered,
+   so it floats before the heading text without shifting anything.
 
    font-size is a fixed var(--sl-text-xs), not an em relative to the heading --
    H1/H2 are large enough that an em-based size came out as big as body text.
@@ -237,12 +238,17 @@
    (see node_modules/@astrojs/starlight/style/anchor-links.css): hidden by default
    on hover-capable devices, shown when .sl-heading-wrapper -- the div Starlight
    wraps every heading + anchor-link icon in -- is hovered or contains focus. */
+.sl-markdown-content .sl-heading-wrapper {
+  position: relative;
+}
+
 .sl-markdown-content h2[data-section-number]::before {
   content: attr(data-section-number);
-  display: inline-block;
-  margin-inline-end: 0.5em;
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 50%;
+  transform: translate(calc(-100% - 0.6em), -50%);
   padding: 0.05em 0.35em;
-  vertical-align: 0.1em;
   font-family: var(--__sl-font-mono);
   font-size: var(--sl-text-xs);
   font-weight: 600;
@@ -250,6 +256,8 @@
   color: var(--sl-color-gray-3);
   background-color: var(--sl-color-bg-inline-code);
   border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
   -webkit-user-select: none;
   user-select: none;
 }
