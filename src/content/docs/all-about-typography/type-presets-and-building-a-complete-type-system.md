@@ -278,4 +278,5 @@ Because the override is scoped to `.hero`, every other element reading `--type-p
 - [Building a Token System: Primitive, Semantic, Component](/all-about-colors/building-a-token-system/) — the same shared-scale idea, applied to color
 - [18.10. Fluid Type Scales in Depth](/all-about-typography/fluid-type-scales-in-depth/) — the `clamp()` mechanics behind a preset's font-size property
 - [29.2. Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/) — when a preset's font-size genuinely needs `clamp()`, versus a fixed `rem` value
+- [18.18. A Complete Fluid Type Preset Example](/all-about-typography/a-complete-fluid-type-preset-example/) — the worked example behind this page's "computed, not hand-picked" case study: generating every preset's font-size from desktop/mobile settings, by loop or by hand
 - [`assets/base.css` (GitHub)](https://github.com/Shopify/horizon/blob/main/assets/base.css) — the real global `.h1`-`.h6`/`.paragraph` class rules quoted in Decision 5

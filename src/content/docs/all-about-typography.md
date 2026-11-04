@@ -41,6 +41,7 @@ The short version: every role token and every preset token *is* a CSS custom pro
 | [18.15. Font Fallback for Multi-Language Stores](/all-about-typography/font-fallback-for-multi-language-stores/) | What happens when a chosen font doesn't support every character a shopper's language needs |
 | [18.16. Typography Best Practices](/all-about-typography/typography-best-practices/) | A practical checklist, distilled from everything else in this chapter |
 | [18.17. A Complete Design Tokens Example](/all-about-typography/a-complete-design-tokens-example/) | One snippet merging typography, color, and spacing settings into CSS custom properties |
+| [18.18. A Complete Fluid Type Preset Example](/all-about-typography/a-complete-fluid-type-preset-example/) | Generating a font-size preset per level from a loop (and the manual alternative), converting px to rem, and deriving `clamp()` from desktop and mobile settings |
 
 ## Further reading
 

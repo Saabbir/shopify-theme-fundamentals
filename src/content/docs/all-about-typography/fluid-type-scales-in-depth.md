@@ -48,5 +48,6 @@ The real payoff of a type scale isn't any individual `clamp()` formula — it's 
 ## Further reading
 
 - [29.2. Modern CSS Units: rem, em, px & Viewport Units](/all-about-css/modern-css-units/) — when to reach for `clamp()` at all, versus a fixed `rem` value
+- [18.18. A Complete Fluid Type Preset Example](/all-about-typography/a-complete-fluid-type-preset-example/) — deriving a `clamp()`'s min/max/preferred values from settings, with the actual math, instead of picking them by eye
 - [`clamp()` (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp)
 - [7.2. Typography & font_picker](/design-tokens/typography-and-font-picker/)

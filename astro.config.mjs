@@ -254,6 +254,7 @@ const sidebarConfig = [
                 { label: '18.15. Font Fallback for Multi-Language Stores', slug: 'all-about-typography/font-fallback-for-multi-language-stores' },
                 { label: '18.16. Typography Best Practices', slug: 'all-about-typography/typography-best-practices' },
                 { label: '18.17. A Complete Design Tokens Example', slug: 'all-about-typography/a-complete-design-tokens-example' },
+                { label: '18.18. A Complete Fluid Type Preset Example', slug: 'all-about-typography/a-complete-fluid-type-preset-example' },
               ],
             },
           ],
