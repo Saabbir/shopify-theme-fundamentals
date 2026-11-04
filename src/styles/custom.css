@@ -223,6 +223,12 @@
    so there's nothing to keep in sync by hand and nothing added to the heading's
    accessible name or its auto-generated anchor id.
 
+   font-size is a fixed var(--sl-text-xs), not an em relative to the heading --
+   H1/H2 are large enough that an em-based size came out as big as body text,
+   which also made it too wide to fit at the end of a wrapped two-line heading
+   and forced it onto its own line below. Fixed size keeps it genuinely small
+   and, being narrow, far more likely to fit inline after the heading text.
+
    Revealed on hover the same way Starlight reveals its own anchor-link icon
    (see node_modules/@astrojs/starlight/style/anchor-links.css): hidden by default
    on hover-capable devices, shown when .sl-heading-wrapper -- the div Starlight
@@ -230,13 +236,13 @@
 .sl-markdown-content h2[data-section-number]::after {
   content: attr(data-section-number);
   display: inline-block;
-  margin-inline-start: 0.6em;
-  padding: 0.15em 0.5em;
-  vertical-align: middle;
+  margin-inline-start: 0.5em;
+  padding: 0.05em 0.35em;
+  vertical-align: 0.1em;
   font-family: var(--__sl-font-mono);
-  font-size: 0.5em;
+  font-size: var(--sl-text-xs);
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.6;
   color: var(--sl-color-gray-3);
   background-color: var(--sl-color-bg-inline-code);
   border-radius: 4px;
