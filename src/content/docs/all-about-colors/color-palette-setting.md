@@ -67,6 +67,37 @@ This is a real, current Shopify theme setting — Horizon itself (Shopify's own 
 }
 ```
 
+## `color_palette` doesn't check contrast for you
+
+[17.1. Color Fundamentals](/all-about-colors/color-fundamentals/) ended with a real risk: independent color settings let a merchant accidentally produce an unreadable combination, because nothing coordinates them. `color_palette` doesn't change that calculus for its own entries — the constraints table above is everything Shopify actually enforces, and none of it is about contrast. A merchant (or a theme author, in the shipped `default`) can set `background` and `foreground` to the same color, or two colors close enough to be unreadable together, and nothing stops the save:
+
+```json
+// Passes theme check — valid hex, two entries, nothing checks them against each other
+{
+  "type": "color_palette",
+  "id": "color_palette",
+  "default": {
+    "background": "#ffffff",
+    "foreground": "#f5f5f5"
+  }
+}
+```
+
+It's tempting to assume Horizon's own live contrast-correction (covered in [27.2. How Horizon Sets Up Colors](/horizon-codebase-tour/how-horizon-sets-up-colors/)) catches this automatically, since Horizon ships both `color_palette` and that correction system. It doesn't — not for this pairing. Checked directly against Horizon's real source: the setting that's supposed to track `color_palette.foreground`, `page_text_color`, writes straight to CSS with no check against the background at all —
+
+```liquid
+{% comment %} snippets/color-palette.liquid — Horizon's real source, :root block {% endcomment %}
+:root {
+  --color-background: {{ settings.page_background_color }};
+  --color-foreground: {{ settings.page_text_color }};
+  {% # no contrast check between these two anywhere above or below this line %}
+}
+```
+
+— and Horizon's `contrast-override` snippet, the thing that *does* do live correction, only ever runs for a component with an explicit **custom** background (a block or section setting the merchant overrode away from the page default). The base page-wide pairing — `page_text_color` against `page_background_color`, which itself defaults from `color_palette.background` — never passes through it. All Horizon does for that base pairing is show the merchant an editor-only warning paragraph next to the `page_text_color` setting ("make sure this contrasts with your background," in effect) and trust them to read it.
+
+So the risk from [17.1] is still fully present here, just one layer removed: it's not that `color_palette` itself is unsafe to use, it's that nothing — not `color_palette`'s own validation, not Horizon's live correction, not Shopify's theme editor — checks a palette's `background` against its `foreground` for you. [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/) exists specifically to close that gap: it checks `settings.color_palette.foreground` against `settings.color_palette.background` with `color_contrast`, as something a theme author has to build and run themselves, because nothing upstream already does.
+
 ## Reading it in Liquid: `settings.<id>.<key>`
 
 Because the setting's own `id` is `color_palette`, its values are read as `settings.color_palette.<key>` — each one a full Liquid `color` object, the same type a `color` setting itself returns:
@@ -239,6 +270,7 @@ In practice the two combine naturally: a `color_scheme_group`'s own `definition`
 ## Key takeaways
 
 - `color_palette` is a single, theme-wide setting (`id` + `default` only) holding 2–20 named, fully opaque hex colors — a small source of truth, not a replacement for independent color settings.
+- Nothing checks a palette's `background` against its `foreground` for contrast — not `color_palette`'s own validation, not Horizon's live correction (which only applies to components with an explicit custom background, never this base pairing), not Shopify's theme editor. [17.8](/all-about-colors/a-real-contrast-testing-workflow/) is what actually closes that gap, and a theme author has to build and run it themselves.
 - Read an entry with `settings.<id>.<key>`; reference one as another setting's dynamic default with `"default": "{{ settings.<id>.<key> }}"`, including inside a `color_background` gradient string.
 - It's directly iterable (`for color in settings.color_palette`), yielding values in `default`'s key order — but not the keys themselves.
 - Horizon's own `palette_*`-prefixed settings are separate, standalone `color` settings that merely default *from* `color_palette` — they aren't part of the `color_palette` object itself.
