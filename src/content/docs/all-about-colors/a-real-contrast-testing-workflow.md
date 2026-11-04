@@ -82,7 +82,7 @@ Option 2, concretely — a visible, non-blocking warning rendered in the storefr
 Option 3 — constraining choices via `color_scheme_group` — prevents the problem from being possible at all, rather than detecting it after the fact. Where a design can reasonably offer a fixed set of schemes instead of fully independent color pickers, that's usually the better trade, for the exact same reason `enabled_on`/`disabled_on` prevents a section-placement mistake earlier than a Liquid conditional could.
 :::
 
-## Step 4: make this part of your actual QA checklist
+## Step 4: make contrast-checking part of your actual QA checklist
 
 Per the QA checklist referenced throughout this project's own conventions, color contrast belongs alongside keyboard navigation and screen-reader checks as a standard pre-ship step — not a one-time audit done only when something looks visibly wrong.
 

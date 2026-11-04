@@ -146,7 +146,7 @@ Every key in `role` maps a standardized role name (the left-hand side, which the
 
 Two things worth noticing: all ten roles are required even though four of them (`on_primary_button`, `on_secondary_button`, `links`, `icons`) aren't currently drawn anywhere in the editor's preview swatch — Shopify validates that you've mapped every one regardless, so an incomplete `role` object fails theme check even though some of those mappings "wouldn't visibly show up anyway." And `role` only affects the *editor's own preview swatch* — it has no effect on the scheme object your Liquid code receives. The `scheme` object looped at render time still only exposes `scheme.id` and `scheme.settings` — there's no `scheme.role` to read. Whatever meaning a role carries, your own section or snippet markup has to apply it by reading `scheme.settings.<your-own-id>`, the same way it would without `role` defined at all.
 
-## Letting a section use it
+## Letting a section pick a scheme: the `color_scheme` setting
 
 A section or block picks from the available schemes with a `color_scheme` setting:
 
@@ -242,11 +242,11 @@ The section's own CSS never hardcodes a color — it only reads `var(--color-bac
 
 This version keeps things simple with a flat background and four roles. A real theme usually ships more roles (Dawn ships seven — see the table earlier on this page) and often a `color_background` gradient role too, which needs a `default` fallback in the loop since `background_gradient` is `nil` on any scheme that didn't choose a gradient. [17.9. A Complete Color Scheme Example](/all-about-colors/a-complete-color-scheme-example/) shows this same loop handling both, across four full schemes (including a gradient one) and two independent sections consuming them.
 
-## Why this is worth the extra setup
+## Why `color_scheme_group` is worth the extra setup
 
 A merchant choosing one scheme from a list you already tested for contrast can't accidentally produce an unreadable combination the way independent pickers can. It's also simpler for the merchant: one decision ("which look?") instead of four ("which four colors, that happen to need to work together?"). The trade-off: this guarantee is made once, by you, ahead of time — which means nothing needs to be computed at render time, but the guarantee is only as good as the schemes you actually tested, and less flexible for a merchant who wants a color no shipped scheme offers. (Horizon's live-correction approach makes the opposite trade — see the note at the top of this page.)
 
-## How this relates to the `color_palette` setting
+## How `color_scheme_group` relates to the `color_palette` setting
 
 Everything on this page is about letting a merchant *pick* a pre-coordinated bundle of colors. There's a separate, theme-wide setting called `color_palette` that's about something else: giving a theme a small set of named "raw" brand colors (think of it as the paint cans a brand ships with). A `color_scheme_group`'s own `definition` entries can use one of those raw colors as their `default`, instead of hand-typing the same hex value into every scheme:
 

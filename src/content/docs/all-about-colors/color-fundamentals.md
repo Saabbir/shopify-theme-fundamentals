@@ -179,7 +179,7 @@ Horizon's own settings follow this exactly — this one is **theme-wide** (`sett
 
 This isn't just a style nicety — it's a principle the rest of this chapter assumes without re-explaining. Schemes bundle *roles*. A palette holds raw colors other settings point at *by role*. Tokens, covered in [17.7. Building a Token System](/all-about-colors/building-a-token-system/), are named by purpose instead of appearance as their entire reason for existing. Learning this once, here, means none of those pages have to teach it again.
 
-## Four words you'll see constantly
+## Four color vocabulary words you'll see constantly
 
 This chapter leans on four terms that build on each other. Worth having them straight before you hit them in context for the first time:
 

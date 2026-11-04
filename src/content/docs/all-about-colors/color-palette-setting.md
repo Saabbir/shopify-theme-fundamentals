@@ -29,7 +29,7 @@ Change the brand's base background color later, and you're hunting down and edit
 { "type": "color", "id": "input_background", "default": "{{ settings.color_palette.background }}" }
 ```
 
-## The setting itself
+## The `color_palette` setting
 
 `color_palette` is declared exactly once per theme, in `config/settings_schema.json`. Unlike `color_scheme_group`, it only supports two attributes — `id` and `default` — nothing else. No `label`, no `info`, no `visible_if`:
 
@@ -98,7 +98,7 @@ It's tempting to assume Horizon's own live contrast-correction (covered in [27.2
 
 So the risk from [17.1] is still fully present here, just one layer removed: it's not that `color_palette` itself is unsafe to use, it's that nothing — not `color_palette`'s own validation, not Horizon's live correction, not Shopify's theme editor — checks a palette's `background` against its `foreground` for you. [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/) exists specifically to close that gap: it checks `settings.color_palette.foreground` against `settings.color_palette.background` with `color_contrast`, as something a theme author has to build and run themselves, because nothing upstream already does.
 
-## Reading it in Liquid: `settings.<id>.<key>`
+## Reading `color_palette` in Liquid: `settings.<id>.<key>`
 
 Because the setting's own `id` is `color_palette`, its values are read as `settings.color_palette.<key>` — each one a full Liquid `color` object, the same type a `color` setting itself returns:
 
@@ -137,7 +137,7 @@ The same pattern works for `color_background` settings, including inside a gradi
 
 This is, concretely, exactly the gap in [17.8. A Real Contrast-Testing Workflow](/all-about-colors/a-real-contrast-testing-workflow/)'s own example — that page checks `settings.color_palette.foreground` against `settings.color_palette.background` with `color_contrast`, which only makes sense once you know `color_palette` is a real setting a theme actually defines, not something Shopify invents automatically.
 
-## Iterating over a palette
+## Iterating over the `color_palette` setting
 
 `color_palette`'s value is also directly iterable, which is the pattern Horizon itself uses to compute the lightest and darkest color in the palette (used as a smart fallback elsewhere in its CSS):
 

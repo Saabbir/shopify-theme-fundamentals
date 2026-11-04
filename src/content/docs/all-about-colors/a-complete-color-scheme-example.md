@@ -173,7 +173,7 @@ Notice `--color-background` on `.color-scheme-4` holds a full `linear-gradient(.
 A merchant-created scheme's real `id` is usually a generated value, not a clean name like `scheme-1` — this example keeps `scheme-1` through `scheme-4` throughout purely for readability, matching the same IDs already used in [28.5. A Complete Template Example](/all-about-theme-settings/a-complete-template-example/).
 :::
 
-## Consuming it: a section with a `color_scheme` setting
+## Consuming the color schemes: a section with a `color_scheme` setting
 
 ```liquid
 {% comment %} sections/testimonials.liquid (abridged — full version in All About Sections) {% endcomment %}
@@ -211,7 +211,7 @@ A merchant-created scheme's real `id` is usually a generated value, not a clean 
 
 The section's CSS never hardcodes a color — it only ever reads `var(--color-background)` and similar. Whichever class `color-{{ section.settings.color_scheme }}` resolves to at render time is what supplies those variables' actual values, so the exact same stylesheet produces four entirely different-looking results (including the gradient scheme) depending only on which scheme a merchant picked.
 
-`"id": "color_scheme"` matching `"type": "color_scheme"` is convention, not a requirement — see [17.2](/all-about-colors/color-schemes/#letting-a-section-use-it) for why the `id` is always yours to pick, independent of the fixed `type` string.
+`"id": "color_scheme"` matching `"type": "color_scheme"` is convention, not a requirement — see [17.2](/all-about-colors/color-schemes/#letting-a-section-pick-a-scheme-the-color_scheme-setting) for why the `id` is always yours to pick, independent of the fixed `type` string.
 
 ## A second section, picking a different scheme by default
 
@@ -239,7 +239,7 @@ The section's CSS never hardcodes a color — it only ever reads `var(--color-ba
 
 Two completely different sections, both reusing the exact same four schemes and the exact same `.color-*` classes — this is the entire payoff of defining schemes once, globally, instead of giving every section its own independent color pickers.
 
-## Every concern from this chapter, in one place
+## Every color-scheme concern from this chapter, in one place
 
 - A full `definition` array using all three allowed entry types (`header` isn't needed here, but `color` and `color_background` both are), plus a complete `role` mapping — [17.2](/all-about-colors/color-schemes/) covers each piece on its own; this page shows them working together.
 - Four real schemes written into `settings_data.json`, including a gradient scheme, exercising the `default` fallback a theme needs wherever `background_gradient` might be blank.

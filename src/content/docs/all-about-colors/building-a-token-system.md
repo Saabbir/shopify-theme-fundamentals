@@ -58,7 +58,7 @@ For a large enough theme, even semantic tokens can be too broad. A component tok
 
 Now a design change scoped to just buttons — darkening the hover state, say — touches only `--button-background-hover`, without any risk of accidentally affecting every other place `--color-accent` is used.
 
-## When each tier is actually worth it
+## When each token tier is actually worth adding
 
 :::note[Most themes only need two tiers]
 A small-to-medium theme usually does fine with just primitive and semantic tokens — introducing a full third, component-specific tier adds real overhead (more variables to track, more indirection to follow) that only pays off once a theme has enough distinct components with genuinely independent color needs. Add the component tier when you notice yourself wanting to change one component's color without affecting others that share the same semantic token — not preemptively.

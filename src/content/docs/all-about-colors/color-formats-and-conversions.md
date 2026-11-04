@@ -30,7 +30,7 @@ When a merchant picks a color in the theme editor, `settings.your_color_id` (a *
 }
 ```
 
-## Why you'd ever need a different format
+## Why you'd ever need a color format other than hex
 
 Hex is compact but opaque — `#ff6600` tells you nothing about how to make it 20% darker or how saturated it is without doing math on the individual red/green/blue components. HSL (hue, saturation, lightness) is far easier to reason about for exactly that kind of adjustment, because lightness and saturation are already separated out as their own numbers instead of being tangled together across three channels:
 
