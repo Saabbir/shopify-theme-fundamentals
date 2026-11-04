@@ -3,7 +3,11 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import rehypeExternalLinks from 'rehype-external-links';
 import { visit } from 'unist-util-visit';
-import { buildPageNumberMap, rehypeSectionNumbers } from './src/plugins/rehype-section-numbers.mjs';
+import {
+  buildPageNumberMap,
+  rehypeSectionNumbers,
+  rehypeTocSectionNumbers,
+} from './src/plugins/rehype-section-numbers.mjs';
 
 const base = '/shopify-theme-fundamentals';
 
@@ -534,5 +538,30 @@ export default defineConfig({
       lastUpdated: true,
       sidebar: sidebarConfig,
     }),
+    // Prefixes each page's "On this page" table-of-contents entries with their
+    // section number (17.1.1, 17.1.2, ...). This has to be a separate
+    // integration, listed after starlight() above, rather than another entry
+    // in this file's own `markdown.rehypePlugins` array: it needs
+    // file.data.astro.headings to already exist, and that's only created by
+    // @astrojs/markdown-remark's rehypeHeadingIds plugin, which Starlight
+    // injects via its own updateConfig call inside starlight()'s
+    // astro:config:setup hook. Astro appends each integration's config
+    // contributions in the order integrations run, so listing this
+    // integration after starlight() guarantees its rehypePlugins are
+    // appended after -- and therefore run after -- Starlight's own. See
+    // rehypeTocSectionNumbers in src/plugins/rehype-section-numbers.mjs for
+    // the actual logic.
+    {
+      name: 'section-number-toc',
+      hooks: {
+        'astro:config:setup': ({ updateConfig }) => {
+          updateConfig({
+            markdown: {
+              rehypePlugins: [[rehypeTocSectionNumbers, pageNumbers]],
+            },
+          });
+        },
+      },
+    },
   ],
 });

@@ -83,3 +83,46 @@ export function rehypeSectionNumbers(pageNumbers) {
     });
   };
 }
+
+/**
+ * Prefixes each H2 entry in Astro's per-page headings array with its
+ * section number (e.g. "17.1.1  Bundling roles into a scheme"), so
+ * Starlight's right-hand "On this page" table of contents shows the number
+ * for every section, not just this page's own headings as plain text.
+ *
+ * That headings array -- `file.data.astro.headings` -- is what Starlight's
+ * table of contents is built from (see @astrojs/starlight/utils/generateToC.ts),
+ * and it's created by @astrojs/markdown-remark's own `rehypeHeadingIds`
+ * plugin, which Starlight injects *after* this project's own
+ * `markdown.rehypePlugins` (Astro appends each integration's config in the
+ * order integrations run). So this plugin can't go in the same rehypePlugins
+ * list as rehypeSectionNumbers above -- it needs to run after that one is
+ * done. See where this is registered in astro.config.mjs: a small separate
+ * integration, listed after starlight() in the integrations array, whose
+ * own rehypePlugins Astro appends after Starlight's.
+ *
+ * Unlike rehypeSectionNumbers, this prefixes real, always-visible text --
+ * the table of contents is a compact nav list a reader scans for a specific
+ * section, where a plain visible number is exactly what's useful. No hover
+ * affordance needed there the way there is for the much larger on-page H2.
+ */
+export function rehypeTocSectionNumbers(pageNumbers) {
+  return (_tree, file) => {
+    const filePath = file.path ?? file.history?.[0];
+    const slug = slugFromFilePath(filePath);
+    if (slug === null) return;
+
+    const pageNumber = pageNumbers.get(slug);
+    if (!pageNumber) return;
+
+    const headings = file.data.astro?.headings;
+    if (!headings) return;
+
+    let sectionCount = 0;
+    for (const heading of headings) {
+      if (heading.depth !== 2) continue;
+      sectionCount += 1;
+      heading.text = `${pageNumber}.${sectionCount}  ${heading.text}`;
+    }
+  };
+}
