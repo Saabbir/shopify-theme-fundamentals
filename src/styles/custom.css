@@ -171,6 +171,18 @@
   white-space: pre;
 }
 
+/* Starlight's own inline-code rule (markdown.css) only pads *inside* each
+   code span — it adds no margin between the span and the plain text next to
+   it, so a paragraph with several short code spans close together (common
+   inside a `:::note`/`:::caution` aside explaining a setting's `type` and
+   `id`) reads as cramped, each pill touching the word before and after it.
+   Scoped to asides specifically, not every code span site-wide, since that's
+   where this is dense enough to actually hurt readability — most other
+   content has code spans spaced further apart by ordinary prose. */
+.starlight-aside code {
+  margin-inline: 0.2em;
+}
+
 .sl-markdown-content td,
 .sl-markdown-content th {
   overflow-wrap: break-word;
